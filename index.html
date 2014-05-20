@@ -5,10 +5,75 @@
   <title>roamzhen's blog</title>
 </head>
 <style type="text/css">
-body{ margin: 0; width: 100%; height: 100%; min-width: 500px; min-height: 500px; position: relative;}
-.main{ width: 50%; height: 100px; line-height: 100px; font-size: 60px; text-align: center; position: absolute; color: #0f0f0f; font-family: "LeagueGothicRegular",Lucida, sans-serif; left: 0; top: 0; right: 0; bottom: 0; margin: auto;}
+html,body{ margin: 0; width: 100%; height: 100%; min-width: 500px; min-height: 500px; position: relative;}
+
+.face-box-wrap{ 
+	width: 260px; height: 300px;
+	position: absolute; left: 0; right: 0; top: 30px; margin: auto;
+
+}
+
+.face-box{
+	width:160px; height: 60px;line-height:60px; text-align: center; position: absolute; left: 50px;
+
+	-moz-transform-style:preserve-3d;
+	-moz-transform-origin:50% 50% 80px;
+	-moz-backface-visibility:visiable;
+	-webkit-transform-style:preserve-3d;
+	-webkit-transform-origin:50% 50% 80px;
+	-webkit-backface-visibility:visiable;
+}
+
+#face-top{
+	top: 30px;
+}
+#face-mid{ 
+	top: 90px;
+}
+#face-bottom{ 
+	top: 150px;
+}
+
+#face-top ul li{ background-position: left top;}
+#face-mid ul li{ background-position: left center;}
+#face-bottom ul li{ background-position: left bottom;}
+
+
+.face-box ul{ list-style: none;}
+.face-box ul li{ position: absolute; width: 160px; height: 60px; left: 0; top: 0;}
+.face-box ul li:nth-of-type(1){
+	background: url(img/face1.jpg) no-repeat;
+	-moz-transform-origin:50% 50%;
+	-moz-transform:rotateY(-180deg);
+	-webkit-transform-origin:50% 50%;
+	-webkit-transform:rotateY(-180deg);
+}
+.face-box ul li:nth-of-type(2){
+	background: url(img/face2.jpg) no-repeat;
+	-moz-transform-origin:left;
+	-moz-transform:rotateY(-90deg);
+	-webkit-transform-origin:left;
+	-webkit-transform:rotateY(-90deg);
+}
+.face-box ul li:nth-of-type(3){
+	background: url(img/face3.jpg) no-repeat;
+	-moz-transform-origin:right;
+	-moz-transform:rotateY(90deg);
+	-webkit-transform-origin:right;
+	-webkit-transform:rotateY(90deg);
+}
+.face-box ul li:nth-of-type(4){
+	background: url(img/face4.jpg) no-repeat;
+	-moz-transform:translateZ(160px);
+	-webkit-transform:translateZ(160px);
+}
+
 
 .masked{
+	width: 50%; height: 100px; line-height: 100px; font-size: 60px; text-align: center;
+	color: #0f0f0f; font-family: "LeagueGothicRegular",Lucida, sans-serif; 
+	position: absolute; left: 0; right: 0; bottom: 0; margin: auto;
+
 	background: url(img/paint.png) repeat, white;
 	-webkit-text-fill-color: transparent;
 	-webkit-background-clip: text;
@@ -25,6 +90,134 @@ body{ margin: 0; width: 100%; height: 100%; min-width: 500px; min-height: 500px;
 
 
 <body>
-	<div class="main masked">404 Not Build Yet :)</div>
+  <div class="face-box-wrap">
+    <div id="face-top" class="face-box">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div id="face-mid" class="face-box">
+    	<ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div id="face-bottom" class="face-box">
+    	<ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+  <div class="masked">404 Not Build Yet :)</div>
 </body>
+
+<script type="text/javascript">
+var angleTnow=0,
+	angleMnow=0,
+	angleBnow=0;
+
+window.onload=function(){
+  faceSlider();
+}
+ 
+function faceSlider(){
+  var top=document.getElementById('face-top');
+  var mid=document.getElementById('face-mid');
+  var bottom=document.getElementById('face-bottom');
+
+  var angleT=0;
+  var angleM=0;
+  var angleB=0;
+
+  setInterval(function(){
+    var num = parseInt(Math.random()*6);
+
+    switch(num){
+    	case 0:
+    		angleT+=90;
+    		break;
+    	case 1:
+    		angleT-=90;
+    		break;
+    	case 2:
+    		angleB+=90;
+    		break;
+    	case 3:
+    		angleB-=90;
+    		break;
+    	case 4:
+    		angleM+=90;
+    		break;
+    	case 5:
+    		angleM-=90;
+    		break;
+    }
+
+    sliderAnimate(top,angleT,1);
+    sliderAnimate(mid,angleM,2);
+    sliderAnimate(bottom,angleB,3);
+    
+  },1000)
+}
+
+function sliderAnimate(obj,target,type){
+	clearInterval(obj.timer);
+	obj.timer=setInterval(function(){
+		var cur = 0;
+		var speed = 0;
+
+		switch(type){
+			case 1:
+				cur = angleTnow;
+				speed = (target-cur)/8;
+				angleTnow += speed;
+    			setCss3(obj,{transform:"rotateY("+angleTnow+"deg)"});
+				break;
+			case 2:
+				cur = angleMnow;
+				speed = (target-cur)/8;
+				angleMnow += speed;
+    			setCss3(obj,{transform:"rotateY("+angleMnow+"deg)"});
+				break;
+			case 3:
+				cur = angleBnow;
+				speed = (target-cur)/8;
+				angleBnow += speed;
+    			setCss3(obj,{transform:"rotateY("+angleBnow+"deg)"});
+				break;
+		}
+		
+
+    	if(cur==target)
+    		clearInterval(obj.timer);
+
+    },30);
+}
+
+function setCss3 (obj,attrObj) {
+for (var i in attrObj) {
+  var newi=i;
+  if(newi.indexOf("-")>0){
+    var num=newi.indexOf("-");
+    newi=newi.replace(newi.substr(num,2),newi.substr(num+1,1).toUpperCase());
+  }
+  obj.style[newi]=attrObj[i];
+  newi=newi.replace(newi.charAt(0),newi.charAt(0).toUpperCase());
+  obj.style["webkit"+newi]=attrObj[i];
+  obj.style["moz"+newi]=attrObj[i];
+  obj.style["o"+newi]=attrObj[i];
+  obj.style["ms"+newi]=attrObj[i];
+ }
+}
+
+</script>
+
 </html>
