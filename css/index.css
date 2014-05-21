@@ -1,4 +1,4 @@
-html,body{ margin: 0; width: 100%; height: auto; min-width: 500px; min-height: 500px; position: relative; background: url(../img/bg.jpg) no-repeat center 0; background-size: cover;}
+html,body{ margin: 0; width: 100%; height: auto; min-width: 500px; min-height: 500px; position: relative; background: url(../images/bg.jpg) no-repeat center 0; background-size: cover;}
 
 /*intr*/
 .intr{ width: 800px; height: 240px; position: absolute; left: 0; bottom: 0; top: 0; right: 0; margin: auto; background: rgba(0,0,0,0.5); border-radius:  10px;}
