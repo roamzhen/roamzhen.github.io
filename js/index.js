@@ -3,8 +3,25 @@ var angleTnow=0,
   angleBnow=0;
 
 window.onload=function(){
+  scrollEvent();
   faceSlider();
 }
+
+function scrollEvent(){
+  var slider1 = document.getElementById("slider1");
+  var slider2 = document.getElementById("slider2");
+  var slider3 = document.getElementById("slider3");
+
+  window.onscroll=function(){
+    var scrollTop = Math.max(document.documentElement.scrollTop,document.body.scrollTop);
+    
+    slider1.style.backgroundPosition = "0% " + (-scrollTop*0.5) + "px";
+    slider2.style.backgroundPosition = "0% "+ (310 - scrollTop*0.5) + "px";
+    slider3.style.backgroundPosition = "0% "+ (620 - scrollTop*0.5) + "px";
+
+  }
+}
+
  
 function faceSlider(){
   var top=document.getElementById('face-top');
