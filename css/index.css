@@ -1,7 +1,7 @@
-html,body{ margin: 0; width: 100%; height: auto; min-width: 500px; min-height: 500px; position: relative; background: #f0f0f0;}
+html,body{ margin: 0; width: 100%; height: auto; min-width: 500px; min-height: 500px; position: relative; background: url(../img/bg.jpg) no-repeat center 0; background-size: cover;}
 
 /*intr*/
-.intr{ width: 800px; height: 240px; position: absolute; left: 0; bottom: 0; top: 0; right: 0; margin: auto; background: #fff; }
+.intr{ width: 800px; height: 240px; position: absolute; left: 0; bottom: 0; top: 0; right: 0; margin: auto; background: rgba(0,0,0,0.5); border-radius:  10px;}
 
 /*face box*/
 .face-box-wrap{ 
@@ -104,8 +104,11 @@ html,body{ margin: 0; width: 100%; height: auto; min-width: 500px; min-height: 5
 /*end face box*/
 
 /*intr word*/
-.intr-title{ float: left; width: 500px; height: 100px; font-size: 38px; margin: 30px 0 10px; padding: 0; font-family: "norwester",Lucida, sans-serif;}
-.intr-word{float: left; width: 500px; height: 50px; font-size: 12px; margin: 0; padding: 0; font-family: "AkzidenzGroteskBlack",Lucida, sans-serif;}
+.intr-title{ float: left; width: 500px; height: 120px; font-size: 46px; color: white; margin: 30px 0 15px; padding: 0; font-family: "norwester",Lucida, sans-serif;}
+.intr-word{float: left; width: 500px; height: 30px; font-size: 14px; color: white; margin: 0; padding: 0; font-family: "AkzidenzGroteskBlack",Lucida, sans-serif;}
+
+.yellow{ color: yellow;}
+.green{ color: green;}
 
 .masked{
     width: 50%; height: 100px; line-height: 100px; font-size: 60px; text-align: center;
