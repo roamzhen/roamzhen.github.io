@@ -42,7 +42,7 @@ html,body{ margin: 0; width: 100%; height: auto; min-width: 500px; min-height: 5
 .face-box ul{ list-style: none;}
 .face-box ul li{ position: absolute; width: 160px; height: 60px; left: 0; top: 0;}
 .face-box ul li:nth-of-type(1){
-    background: url(../img/faceColor/face1.jpg) no-repeat;
+    background: url(../images/faceColor/face1.jpg) no-repeat;
   background-size: cover;
 
   transform: rotateY(-180deg);
@@ -58,7 +58,7 @@ html,body{ margin: 0; width: 100%; height: auto; min-width: 500px; min-height: 5
     -webkit-transform:rotateY(-180deg);
 }
 .face-box ul li:nth-of-type(2){
-    background: url(../img/faceColor/face2.jpg) no-repeat;
+    background: url(../images/faceColor/face2.jpg) no-repeat;
   background-size: cover;
 
   transform: rotateY(-90deg);
@@ -74,7 +74,7 @@ html,body{ margin: 0; width: 100%; height: auto; min-width: 500px; min-height: 5
     -webkit-transform:rotateY(-90deg);
 }
 .face-box ul li:nth-of-type(3){
-    background: url(../img/faceColor/face3.jpg) no-repeat;
+    background: url(../images/faceColor/face3.jpg) no-repeat;
   background-size: cover;
 
   transform: rotateY(90deg);
@@ -90,7 +90,7 @@ html,body{ margin: 0; width: 100%; height: auto; min-width: 500px; min-height: 5
     -webkit-transform:rotateY(90deg);
 }
 .face-box ul li:nth-of-type(4){
-    background: url(../img/faceColor/face4.jpg) no-repeat;
+    background: url(../images/faceColor/face4.jpg) no-repeat;
   background-size: cover;
 
   transform: translateZ(160px);
@@ -105,7 +105,7 @@ html,body{ margin: 0; width: 100%; height: auto; min-width: 500px; min-height: 5
 
 /*intr word*/
 .intr-title{ float: left; width: 500px; height: 120px; font-size: 46px; color: white; margin: 30px 0 15px; padding: 0; font-family: "norwester",Lucida, sans-serif;}
-.intr-word{float: left; width: 500px; height: 30px; font-size: 14px; color: white; margin: 0; padding: 0; font-family: "AkzidenzGroteskBlack",Lucida, sans-serif;}
+.intr-word{float: left; width: 500px; height: 30px; font-size: 16px; color: #ba9; margin: 0; padding: 0; font-family: "norwester",Lucida, sans-serif;}
 
 .yellow{ color: yellow;}
 .green{ color: green;}
@@ -115,7 +115,7 @@ html,body{ margin: 0; width: 100%; height: auto; min-width: 500px; min-height: 5
     color: #0f0f0f; font-family: "norwester",Lucida, sans-serif; 
     position: absolute; left: 0; right: 0; bottom: 0; margin: auto;
 
-    background: url(../img/paint.png) repeat, white;
+    background: url(../images/paint.png) repeat, white;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     -webkit-animation-name: masked-animation;
