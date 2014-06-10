@@ -1,7 +1,10 @@
 html,body{ margin: 0; width: 100%; height: auto; min-width: 1000px; min-height: 620px;}
 
+.yellow{ color: yellow;}
+.green{ color: green;}
+
 /*slider*/
-.slider{width: 100%; height: 100%; min-width: 1000px; min-height: 620px; position: relative;background-repeat: no-repeat;
+.slider{width: 100%; min-width: 1000px; min-height: 620px; position: relative;background-repeat: no-repeat;
   background-attachment: fixed; background-size: cover; background-position: 0% 0px;}
 
 /*slider1*/
@@ -10,6 +13,26 @@ html,body{ margin: 0; width: 100%; height: auto; min-width: 1000px; min-height: 
 #slider2{ background-image: url(../images/bg2.jpg);}
 /*slider3*/
 #slider3{ background-image: url(../images/bg3.jpg);}
+/*slider3*/
+#slider4{ background-image: url(../images/bg4.jpg);}
+
+.product-slider-wrap{width: 960px; height: 620px; margin: 0 auto; position: relative;}
+
+.product-wrap{position: absolute; left: 75px; top: 0; width: 810px; height: 620px; overflow: hidden;}
+#product{ position: relative; width: 1620px; height: 620px; left: 0; top: 0;}
+#arrow_left{ position: absolute; left: 10px; top: 50%; width: 50px; height: 50px; margin-top: -25px; background-color: #000; cursor: pointer;}
+#arrow_right{ position: absolute; right: 10px; top: 50%; width: 50px; height: 50px; margin-top: -25px; background-color: #000; cursor: pointer;}
+
+.product-item{ position: relative; float: left; width: 246px; height: 180px; border: 2px solid #000; margin: 50px 10px 50px;}
+.product-title{ position: absolute; width: 250px; line-height: 26px; height: 52px; text-align: center; top: 190px; left: 0; color: #000; font-size: 20px; font-family: "OswaldLight";}
+
+/*wrap-text*/
+.wrap-text{ width: 960px; height: 100%; margin: 0 auto; }
+
+.wrap-intr{ width: 400px; height: 580px;font-family: "OswaldLight"; }
+.wrap-intr h2{ font-size: 48px; margin: 0; padding: 40px 0 20px;}
+.wrap-intr p{ font-size: 16px; line-height: 30px; margin: 0px; padding: 15px 0;}
+.wrap-intr p span.big{ font-size: 26px; font-weight: bold;}
 
 /*intr*/
 .intr{ width: 800px; height: 240px; position: absolute; left: 0; bottom: 0; top: 0; right: 0; margin: auto; background: rgba(0,0,0,0.5); border-radius:  10px;}
@@ -19,7 +42,7 @@ html,body{ margin: 0; width: 100%; height: auto; min-width: 1000px; min-height: 
 }
 
 .face-box{
-    width:160px; height: 60px;line-height:60px; text-align: center; position: absolute; left: 35px;
+  width:160px; height: 60px;line-height:60px; text-align: center; position: absolute; left: 35px;
 
   transform-style:preserve-3d;
   transform-origin:50% 50% 80px;
@@ -116,9 +139,6 @@ html,body{ margin: 0; width: 100%; height: auto; min-width: 1000px; min-height: 
 /*intr word*/
 .intr-title{ float: left; width: 500px; height: 120px; font-size: 46px; color: white; margin: 30px 0 15px; padding: 0; font-family: "norwester",Lucida, sans-serif;}
 .intr-word{float: left; width: 500px; height: 30px; font-size: 16px; color: #ba9; margin: 0; padding: 0; font-family: "norwester",Lucida, sans-serif;}
-
-.yellow{ color: yellow;}
-.green{ color: green;}
 
 .masked{
     width: 50%; height: 100px; line-height: 100px; font-size: 60px; text-align: center;

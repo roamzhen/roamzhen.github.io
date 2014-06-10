@@ -1,16 +1,66 @@
 var angleTnow=0,
   angleMnow=0,
-  angleBnow=0;
+  angleBnow=0,
+  product_left=0,
+  product_location=0;
 
 window.onload=function(){
   scrollEvent();
   faceSlider();
+  productSlider();
 }
+
+function productSlider(){
+  var product = document.getElementById("product");
+  var arrow_left = document.getElementById("arrow_left");
+  var arrow_right = document.getElementById("arrow_right");
+
+  var product_number = parseInt(GetClass("product-item").length/6);
+  var product_item_width = 810;
+
+  product.style.width = (product_number+1)*product_item_width +"px";
+
+  arrow_left.onclick = function(){
+    if(product_location!=0){
+      product_left = product_location;
+      productionAnimate(product,(-product_item_width));
+    }
+  }
+
+  arrow_right.onclick = function(){
+    if(product_location!=product_number*product_item_width){
+      product_left = product_location;
+      productionAnimate(product,product_item_width);
+    }
+  }
+
+
+}
+
+function productionAnimate(obj,target){
+  clearInterval(obj.timer);
+  
+  product_location = product_left + target;
+
+  obj.timer=setInterval(function(){
+    product_left+=(product_location - product_left)/4;
+    obj.style.left=(-product_left)+"px";
+
+    if(Math.abs(product_left-product_location)<=1){
+      product_left = product_location;
+      obj.style.left = (-product_left)+"px";
+      clearInterval(obj.timer);
+    }
+
+  },30);
+}
+
 
 function scrollEvent(){
   var slider1 = document.getElementById("slider1");
   var slider2 = document.getElementById("slider2");
   var slider3 = document.getElementById("slider3");
+  var slider4 = document.getElementById("slider4");
 
   window.onscroll=function(){
     var scrollTop = Math.max(document.documentElement.scrollTop,document.body.scrollTop);
@@ -18,9 +68,11 @@ function scrollEvent(){
     slider1.style.backgroundPosition = "0% " + (-scrollTop*0.5) + "px";
     slider2.style.backgroundPosition = "0% "+ (310 - scrollTop*0.5) + "px";
     slider3.style.backgroundPosition = "0% "+ (620 - scrollTop*0.5) + "px";
+    slider4.style.backgroundPosition = "0% "+ (930 - scrollTop*0.5) + "px";
 
   }
 }
+
 
  
 function faceSlider(){

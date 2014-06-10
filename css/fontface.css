@@ -1,8 +1,7 @@
 @font-face {
-    font-family: 'AkzidenzGroteskBlack';
-    src: url('fonts/akzidenzgrotesk-black-webfont.eot');
-    src: url('fonts/akzidenzgrotesk-black-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/akzidenzgrotesk-black-webfont.woff') format('woff');
+    font-family: 'OswaldLight';
+    src: url('fonts/Oswald-Light-webfont.woff');
+
     font-weight: normal;
     font-style: normal;
 }
