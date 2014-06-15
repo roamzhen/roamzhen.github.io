@@ -5,7 +5,7 @@ html,body{ margin: 0; min-height: 620px;}
 
 /*slider*/
 .slider{width: 100%; min-height: 620px; position: relative;background-repeat: no-repeat;
-  background-attachment: fixed; background-position: 0% 0%; overflow: hidden;}
+   background-position: fixed; overflow: hidden;}
 /*slider1*/
 #slider1{ background-image: url(../images/bg1.jpg);}
 /*slider2*/
@@ -16,7 +16,15 @@ html,body{ margin: 0; min-height: 620px;}
 #slider4{ background-image: url(../images/bg4.jpg);}
 
 @media all and (max-width:640px){
-  .slider{background-size: auto 120%;}
+  .slider{background-size: 100%;}
+  /*slider1*/
+  #slider1{ background-image: url(../images/mobg1.jpg);}
+  /*slider2*/
+  #slider2{ background-image: url(../images/mobg2.jpg);}
+  /*slider3*/
+  #slider3{ background-image: url(../images/mobg3.jpg);}
+  /*slider3*/
+  #slider4{ background-image: url(../images/mobg4.jpg);}
 }
 @media all and (min-width:640px){
   .slider{background-size: cover;}
@@ -169,5 +177,9 @@ html,body{ margin: 0; min-height: 620px;}
 .product-con{ float: left; padding-top: 60px;}
 .product-item{ display: block; position: relative; width: 246px; height: 180px; border: 2px solid #000; margin: 0px 10px 120px;}
 .product-title{ position: absolute; width: 250px; line-height: 26px; height: 52px; text-align: center; top: 190px; left: 0; color: #000; font-size: 20px; font-family: "OswaldLight";}
+.product-pic-wrap{width: 160px; height: 160px; position: absolute; left: 45px; top: 10px; overflow: hidden;}
+.product-pic-inner{ width: 400px; height: 400px; margin: -120px 0 0 -120px; text-align: center; display: inline-block; zoom:1; line-height: 400px; vertical-align: middle;}
+.product-pic-inner img{vertical-align: middle; border: none; width: 160px;}
+
 
 
