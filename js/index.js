@@ -102,9 +102,37 @@ var productClass = (function(){
 //productSlider class end
 
 window.onload=function(){
+  scrollEvent();
   faceSlider();
   productClass.productSlider();
 }
+
+
+
+function scrollEvent(){
+  var slider1 = document.getElementById("slider1");
+  var slider2 = document.getElementById("slider2");
+  var slider3 = document.getElementById("slider3");
+  var slider4 = document.getElementById("slider4");
+
+  var slider1Height = slider1.clientHeight;
+  var slider2Height = slider2.clientHeight;
+  var slider3Height = slider3.clientHeight;
+  var slider4Height = slider4.clientHeight;
+
+  window.onscroll=function(){
+    var scrollTop = Math.max(document.documentElement.scrollTop,document.body.scrollTop);
+    var downSpeed = 0.2;
+    var downHeight = scrollTop*downSpeed;
+
+    slider1.style.backgroundPosition = "0% " + (-downHeight) + "px";
+    slider2.style.backgroundPosition = "0% "+ (slider1Height*downSpeed - downHeight) + "px";
+    slider3.style.backgroundPosition = "0% "+ ((slider1Height+slider2Height)*downSpeed - downHeight) + "px";
+    slider4.style.backgroundPosition = "0% "+ ((slider1Height+slider2Height+slider3)*downSpeed - downHeight) + "px";
+
+  }
+}
+
 
  
 function faceSlider(){
