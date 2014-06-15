@@ -16,7 +16,7 @@ html,body{ margin: 0; min-height: 620px;}
 #slider4{ background-image: url(../images/bg4.jpg);}
 
 @media all and (max-width:640px){
- .slider{background-size: auto 120%;}
+ .slider{background-size: auto 140%;}
 }
 @media all and (min-width:640px){
   .slider{background-size: cover;}
