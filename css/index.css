@@ -9,13 +9,13 @@ html,body{ margin: 0; min-height: 620px;}
 @media all and (max-width:640px){
  .slider{background-size: auto 120%;}
  /*slider1*/
-  #slider1{ background-image: url(../images/_bg1.jpg);}
+  #slider1{ background-image: url(../images/mobg1.jpg);}
   /*slider2*/
-  #slider2{ background-image: url(../images/_bg2.jpg);}
+  #slider2{ background-image: url(../images/mobg2.jpg);}
   /*slider3*/
-  #slider3{ background-image: url(../images/_bg3.jpg);}
+  #slider3{ background-image: url(../images/mobg3.jpg);}
   /*slider3*/
-  #slider4{ background-image: url(../images/_bg4.jpg);}
+  #slider4{ background-image: url(../images/mobg4.jpg);}
 }
 @media all and (min-width:640px){
   .slider{background-size: cover;}
