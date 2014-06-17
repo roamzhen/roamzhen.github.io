@@ -154,8 +154,9 @@ html,body{ margin: 0; min-height: 620px;}
 
 .wrap-intr{ margin: 0 20px; font-family: "OswaldLight"; text-decoration: none;}
 .wrap-intr h2{ font-size: 48px; margin: 0; padding: 40px 0 20px;}
-.wrap-intr p{ font-size: 16px; line-height: 30px; margin: 0px; padding: 15px 0; text-decoration: none;}
+.wrap-intr p{ font-size: 16px; line-height: 30px; margin: 0px; padding: 15px 0;}
 .wrap-intr p span.big{ font-size: 26px; font-weight: bold;}
+.wrap-intr a{color: #000; text-decoration: none;}
 
 /* product-slider-wrap */
 .product-slider-wrap{ position: relative; margin: 0 auto; max-width: 840px;}
@@ -175,7 +176,7 @@ html,body{ margin: 0; min-height: 620px;}
 #arrow_right{ position: absolute; right: 10px; top: 50%; width: 50px; height: 50px; margin-top: -25px; background-color: #000; cursor: pointer;}
 
 .product-con{ float: left; padding-top: 60px;}
-.product-item{ display: block; position: relative; width: 246px; height: 180px; border: 2px solid #000; margin: 0px 10px 120px;}
+.product-item{ display: block; position: relative; width: 246px; height: 180px; border: 2px solid #000; margin: 0px 10px 120px; text-decoration: none;}
 .product-title{ position: absolute; width: 250px; line-height: 26px; height: 52px; text-align: center; top: 190px; left: 0; color: #000; font-size: 20px; font-family: "OswaldLight";}
 .product-pic-wrap{width: 160px; height: 160px; position: absolute; left: 45px; top: 10px; overflow: hidden;}
 .product-pic-inner{ width: 400px; height: 400px; margin: -120px 0 0 -120px; text-align: center; display: inline-block; zoom:1; line-height: 400px; vertical-align: middle;}
