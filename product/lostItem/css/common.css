@@ -1,0 +1,70 @@
+/* common css by Roam */
+html,body{ margin: 0; padding: 0; width: 100%; height: 100%; position: relative; font-family: "Helvetica"; background-color: #efeff4;}
+body.index{ background-color: #fff;}
+p{margin: 0;}
+
+/* wrap */
+.wrap{width: 100%; height: 100%;}
+
+/*center*/
+/* tab */
+.tab-wrap{ padding: 10px 0; overflow: hidden; background-color: #f2f2f2;}
+.tab-button-wrap{ width: 50%; height: 100%; float: left;}
+.tab-button-wrap a{ display: block; height: 30px; line-height: 30px; text-align: center; text-decoration: none; font-size: 13px; color: #fff; border: none; border-radius: 5px;}
+.tab-button-wrap.left a{background-color: #2ecc71; margin: 0 5px 0 10px;}
+.tab-button-wrap.right a{background-color: #3498db; margin: 0 10px 0 5px;}
+/* search */
+.search-wrap{ padding: 0 0 15px; background-color: #f2f2f2;}
+.search-input-wrap{ display: block; position: relative; height: 30px; margin: 0 10px; border: 1px solid #d7d7d7; border-radius: 5px;background: url(../images/search-icon.png) no-repeat 8px; background-size: 18px; -webkit-background-size:18px; background-color: #fafafa; }
+.search-clear{position: absolute; top: 0px; right: 0px; text-indent: -999px; width: 30px; height: 30px; background: url(../images/search-clear.png) no-repeat 5px 5px; background-size: 20px; display: none;}
+.search-up{position: absolute; top: 0px; right: -50px; width: 50px; text-align: center; height: 30px; line-height: 30px; color: #0b61fe; font-size: 16px; text-decoration: none; display: none;}
+.search-input-wrap input{ display: block; margin: 5px 0 5px 30px; font-size: 14px; width: 82%; height: 20px; line-height: 20px; border: none; background-color: #fafafa; outline: none;}
+/* item */
+.item-wrap{ border-top: 1px solid #d7d7d7; border-left: none; border-right: none;}
+.list-item{  border-bottom: 1px solid #d7d7d7; background-color: #fafafa; position: relative; display: block; text-decoration: none;}
+.list-item:active{background-color: #f0f0f0;}
+.list-item .left{width: 78px; height: 100%; position: absolute; left: 0; top: 0;}
+.list-item .center{ margin: 0 39px 0 78px;}
+.list-item .right{width: 39px; height: 100%; position: absolute; right: 0; top: 0; background: url(../images/item-right.png) no-repeat 10px 32px; background-size: 16px;}
+
+.list-item .left .images-wrap{ width: 46px; height: 46px; margin: 16px; overflow: hidden;}
+.list-item .left .images-wrap .images-inner{ width: 160px; height: 160px; margin: -57px 0 0 -57px; text-align: center; display: inline-block; zoom:1; line-height: 160px; vertical-align: middle;}
+.list-item .left .images-wrap .images-inner img{ vertical-align: middle; border: none; height: 45px;}
+.list-item .center h2.item-title{ margin: 0; padding: 15px 0 10px; color: #000; font-weight: normal; font-size: 18px; line-height: 20px;overflow: hidden; text-overflow: ellipsis;white-space: nowrap;}
+.list-item .center p.item-place{ margin: 0; padding-bottom: 15px; color: #aaadad; font-size: 15px; height: 20px; line-height: 20px; overflow: hidden; text-overflow: ellipsis;white-space: nowrap;}
+
+/* detail */
+.picture_box{padding-top: 20px; background-color: #fff;}
+.picture_wrap{width: 200px;height: 150px; margin: 0px auto; overflow: hidden;}
+.picture_inner{width: 250px; height: 250px; margin: -50px 0 0 -25px; text-align: center; display: inline-block; zoom:1; line-height: 260px; }
+.picture_box img {height: 150px;border: 0;vertical-align: middle;}
+.description_box{padding: 15px 20px; background-color: #fff; border-bottom: 1px solid #ccc;}
+.first_line {text-align: right;color: #aaadad;font-size: 15px;width: 80px;float: left;}
+.second_line {font-size: 15px;color: #22282b;margin-left: 85px;word-wrap:break-word;}
+.second_line_phone{color: #0b61fe;}
+.text_box{border-bottom: 1px solid #eeeeee;padding:10px 10px 10px 0px;}
+.text_box_last{margin: 0 10px;}
+.text_box:last-child{border-bottom-width: 0;padding-bottom: 20px;}
+.edit {display: block;background-color: #2ecc71;height: 45px;margin: 10px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
+.delect {background-color: #e74c3c;display: block;height: 45px;margin: 10px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 50px;text-decoration: none;}
+.send {display: block;background-color: #2ecc71;height: 45px;margin: 10px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
+.delect_send {background-color: #bdc3c7;display: block;height: 45px;margin: 10px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 50px;text-decoration: none;}
+.save {display: block;background-color: #2ecc71;height: 45px;margin: 10px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
+.delect_save {background-color: #bdc3c7;display: block;height: 45px;margin: 10px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 50px;text-decoration: none;}
+/* end deatil */
+
+/* overlay pop */
+#overlay{ position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); display: none;}
+#pop-message{ height: 260px; margin:-130px 25px 0;  position: relative; top: 50%; background-color: #fff; border-radius: 8px; display: none; overflow: hidden;}
+#pop-status{ width: 150px; height: 150px; position: fixed; left: 0; top: 0; right: 0; bottom: 0; margin: auto; background-color: rgba(0,0,0,0.7); border-radius: 5px; display: none;}
+
+#pop-message .title{ margin: 20px 0 15px; padding: 0; font-weight: bold; font-size: 18px; height: 30px; line-height: 30px; text-align: center;}
+#pop-message .detail{ margin: 0px 0 25px; padding: 0; font-size: 18px; line-height: 20px; height: 40px; text-align: center;}
+#pop-message .line{ display: block; border-bottom: 1px solid #e3e3e3;}
+#pop-message a{ display: block; margin:  0px 20px; height: 40px; line-height: 40px; border-radius: 5px; color: #fff; text-align: center; font-size: 18px; text-decoration: none;}
+#pop-message .sure-btn{ background-color: #2ecc71; margin-top:20px;}
+#pop-message .cancel-btn{ background-color: #bdc3c7; margin-top: 10px;}
+#pop-status img{width: 80px; height: 80px; border: none; position: absolute; left: 35px; top: 20px;}
+#pop-status p{padding-top: 100px; margin: 0 5px; line-height: 20px; height: 40px; color: #fff; text-align: center; font-size: 15px;}
+
+
