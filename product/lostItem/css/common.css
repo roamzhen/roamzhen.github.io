@@ -45,6 +45,7 @@ p{margin: 0;}
 .text_box{border-bottom: 1px solid #eeeeee;padding:10px 10px 10px 0px;}
 .text_box_last{margin: 0 10px;}
 .text_box:last-child{border-bottom-width: 0;padding-bottom: 20px;}
+.btn_box{ overflow: hidden; padding-bottom: 10px;}
 .edit {display: block;background-color: #2ecc71;height: 45px;margin: 10px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
 .delect {background-color: #e74c3c;display: block;height: 45px;margin: 10px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 50px;text-decoration: none;}
 .send {display: block;background-color: #2ecc71;height: 45px;margin: 10px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
