@@ -38,7 +38,7 @@ p{margin: 0;}
 .picture_inner{width: 300px; height: 300px; margin: -85px 0 0 -60px; text-align: center; display: inline-block; zoom:1; line-height: 300px; vertical-align: middle;}
 .picture_box img {height: 130px;border: 0;vertical-align: middle;}
 .picture_box #input-pic{display: none;}
-.description_box{padding: 15px 20px; background-color: #fff; border-bottom: 1px solid #ccc;}
+.description_box{padding: 15px 20px; background-color: #fff; border-bottom: 1px solid #eeeeee;}
 /* text box */
 .text_box{border-bottom: 1px solid #eeeeee;padding:10px 10px 10px 0px; overflow: hidden;}
 .text_box_last{margin: 0 10px;}

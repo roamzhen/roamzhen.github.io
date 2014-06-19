@@ -33,6 +33,18 @@ Array.prototype.each=function(func){
 };
 /* end GetClass */
 
+/* check null */
+function checkNull(){
+	var inputArr = GetClass("input-right");
+
+	if(inputArr[0].value!=""||inputArr[1].value!=""||inputArr[2].value!=""||inputArr[3].value!=""||inputArr[4].value!="")
+		showPop(1);
+	else
+		location.href = "index.html";
+}
+
+/* end check null */
+
 /* submit loading */
 function submitLoading(obj){
 	if(obj.timer!=null)
