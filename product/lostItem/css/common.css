@@ -45,7 +45,7 @@ p{margin: 0;}
 .text_box:last-child{border-bottom-width: 0;padding-bottom: 20px;}
 .first_line {text-align: right;color: #aaadad;font-size: 15px;width: 30%; float: left;}
 .second_line {font-size: 15px;color: #22282b; width: 70%; float: left;}
-.second_line_phone{color: #0b61fe;}
+.second_line_phone{color: #0b61fe; text-decoration: none;}
 p.input-words{ color: #3b4042;}
 input.input-right{ border: none; outline: none; margin: 0; padding: 0;}
 textarea.input-right{ height: 40px; line-height: 20px; border: none; outline: none; margin: 0; padding: 0;}
