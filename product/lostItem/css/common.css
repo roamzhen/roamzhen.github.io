@@ -1,6 +1,5 @@
 /* common css by Roam */
-html,body{ margin: 0; padding: 0; width: 100%; height: 100%; position: relative; font-family: "Helvetica"; background-color: #efeff4;}
-body.index{ background-color: #fff;}
+html,body{ margin: 0; padding: 0; width: 100%; height: 100%; position: relative; font-family: "Helvetica"; background-color: #fff;}
 p{margin: 0;}
 
 /* wrap */
@@ -49,7 +48,7 @@ p{margin: 0;}
 .second_line_phone{color: #0b61fe;}
 p.input-words{ color: #3b4042;}
 input.input-right{ border: none; outline: none; margin: 0; padding: 0;}
-textarea.input-right{ border: none; outline: none; margin: 0; padding: 0;}
+textarea.input-right{ height: 40px; line-height: 20px; border: none; outline: none; margin: 0; padding: 0;}
 /* btn box */
 .btn_box{ overflow: hidden; padding-bottom: 10px;}
 .edit {display: block;background-color: #2ecc71;height: 45px;margin: 10px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
