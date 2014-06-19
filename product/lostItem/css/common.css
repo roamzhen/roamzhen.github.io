@@ -10,7 +10,7 @@ p{margin: 0;}
 /* tab */
 .tab-wrap{ padding: 10px 0; overflow: hidden; background-color: #f2f2f2;}
 .tab-button-wrap{ width: 50%; height: 100%; float: left;}
-.tab-button-wrap a{ display: block; height: 30px; line-height: 30px; text-align: center; text-decoration: none; font-size: 13px; color: #fff; border: none; border-radius: 5px;}
+.tab-button-wrap a{ display: block; height: 35px; line-height: 35px; text-align: center; text-decoration: none; font-size: 16px; color: #fff; border: none; border-radius: 5px;}
 .tab-button-wrap.left a{background-color: #2ecc71; margin: 0 5px 0 10px;}
 .tab-button-wrap.right a{background-color: #3498db; margin: 0 10px 0 5px;}
 /* search */
