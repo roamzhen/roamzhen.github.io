@@ -52,11 +52,11 @@ textarea.input-right{ height: 40px; line-height: 20px; border: none; outline: no
 /* btn box */
 .btn_box{ overflow: hidden; padding-bottom: 10px;}
 .edit {display: block;background-color: #2ecc71;height: 45px;margin: 20px 10px 0px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
-.delect {background-color: #e74c3c;display: block;height: 45px;margin: 10px 10px 20px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 50px;text-decoration: none;}
+.delect {background-color: #e74c3c;display: block;height: 45px;margin: 10px 10px 20px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 45px;text-decoration: none;}
 .send {display: block;background-color: #2ecc71;height: 45px;margin: 20px 10px 0px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
-.delect_send {background-color: #bdc3c7;display: block;height: 45px;margin: 10px 10px 20px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 50px;text-decoration: none;}
+.delect_send {background-color: #bdc3c7;display: block;height: 45px;margin: 10px 10px 20px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 45px;text-decoration: none;}
 .save {display: block;background-color: #2ecc71;height: 45px;margin: 20px 10px 0px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
-.delect_save {background-color: #bdc3c7;display: block;height: 45px;margin: 10px 10px 20px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 50px;text-decoration: none;}
+.delect_save {background-color: #bdc3c7;display: block;height: 45px;margin: 10px 10px 20px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 45px;text-decoration: none;}
 /* end deatil */
 
 /* overlay pop */
