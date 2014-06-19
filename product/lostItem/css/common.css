@@ -9,7 +9,7 @@ p{margin: 0;}
 /* tab */
 .tab-wrap{ padding: 10px 0; overflow: hidden; background-color: #f2f2f2;}
 .tab-button-wrap{ width: 50%; height: 100%; float: left;}
-.tab-button-wrap a{ display: block; height: 35px; line-height: 35px; text-align: center; text-decoration: none; font-size: 16px; color: #fff; border: none; border-radius: 5px;}
+.tab-button-wrap a{ display: block; height: 35px; line-height: 37px; text-align: center; text-decoration: none; font-size: 16px; color: #fff; border: none; border-radius: 5px;}
 .tab-button-wrap.left a{background-color: #2ecc71; margin: 0 5px 0 10px;}
 .tab-button-wrap.right a{background-color: #3498db; margin: 0 10px 0 5px;}
 /* search */
@@ -34,9 +34,9 @@ p{margin: 0;}
 
 /* detail */
 .picture_box{padding-top: 20px; background-color: #fff;}
-.picture_wrap{ width: 200px;height: 150px; margin: 0px auto; overflow: hidden;}
-.picture_inner{width: 300px; height: 300px; margin: -75px 0 0 -50px; text-align: center; display: inline-block; zoom:1; line-height: 300px; vertical-align: middle;}
-.picture_box img {height: 150px;border: 0;vertical-align: middle;}
+.picture_wrap{ width: 180px;height: 130px; margin: 0px auto; overflow: hidden;}
+.picture_inner{width: 300px; height: 300px; margin: -85px 0 0 -60px; text-align: center; display: inline-block; zoom:1; line-height: 300px; vertical-align: middle;}
+.picture_box img {height: 130px;border: 0;vertical-align: middle;}
 .picture_box #input-pic{display: none;}
 .description_box{padding: 15px 20px; background-color: #fff; border-bottom: 1px solid #ccc;}
 /* text box */
@@ -51,12 +51,12 @@ input.input-right{ border: none; outline: none; margin: 0; padding: 0;}
 textarea.input-right{ height: 40px; line-height: 20px; border: none; outline: none; margin: 0; padding: 0;}
 /* btn box */
 .btn_box{ overflow: hidden; padding-bottom: 10px;}
-.edit {display: block;background-color: #2ecc71;height: 45px;margin: 10px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
-.delect {background-color: #e74c3c;display: block;height: 45px;margin: 10px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 50px;text-decoration: none;}
-.send {display: block;background-color: #2ecc71;height: 45px;margin: 10px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
-.delect_send {background-color: #bdc3c7;display: block;height: 45px;margin: 10px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 50px;text-decoration: none;}
-.save {display: block;background-color: #2ecc71;height: 45px;margin: 10px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
-.delect_save {background-color: #bdc3c7;display: block;height: 45px;margin: 10px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 50px;text-decoration: none;}
+.edit {display: block;background-color: #2ecc71;height: 45px;margin: 20px 10px 0px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
+.delect {background-color: #e74c3c;display: block;height: 45px;margin: 10px 10px 20px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 50px;text-decoration: none;}
+.send {display: block;background-color: #2ecc71;height: 45px;margin: 20px 10px 0px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
+.delect_send {background-color: #bdc3c7;display: block;height: 45px;margin: 10px 10px 20px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 50px;text-decoration: none;}
+.save {display: block;background-color: #2ecc71;height: 45px;margin: 20px 10px 0px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
+.delect_save {background-color: #bdc3c7;display: block;height: 45px;margin: 10px 10px 20px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 50px;text-decoration: none;}
 /* end deatil */
 
 /* overlay pop */
