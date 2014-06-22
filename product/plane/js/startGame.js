@@ -146,7 +146,7 @@ function startGame(){
 					
 				});
 			}else{
-				$(window).bind("mousemove",function(e){
+				$("#game").bind("mousemove",function(e){
 					var canvasOffset =canvas.offset();
 					var canvasX = Math.floor(e.pageX-canvasOffset.left);
 					var canvasY = Math.floor(e.pageY-canvasOffset.top);

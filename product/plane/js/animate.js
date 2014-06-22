@@ -105,7 +105,7 @@ function animate(){
 								$(window).unbind("touchmove");
 								$(window).unbind("touchend");
 							}else{
-								$(window).unbind("mousemove");
+								$("#game").unbind("mousemove");
 							}
 
 					}
@@ -291,7 +291,7 @@ function animate(){
 					$(window).unbind("touchmove");
 					$(window).unbind("touchend");
 				}else{
-					$(window).unbind("mousemove");
+					$("#game").unbind("mousemove");
 				}
 
 			}

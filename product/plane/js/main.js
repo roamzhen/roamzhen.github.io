@@ -136,7 +136,7 @@ $(document).ready(function()
 					$(window).unbind("touchmove");
 					$(window).unbind("touchend");
 				}else{
-					$(window).unbind("mousemove");
+					$("#game").unbind("mousemove");
 				}
 
 				clearTimeout(scoreTimeout);
