@@ -101,7 +101,9 @@ function animate(){
 //							$(window).unbind("keyup");
 
 							if(isSupportTouch){
-								$(window).unbind("touchmove");
+								$("#game").unbind("touchstart");
+								$("#game").unbind("touchmove");
+								$("#game").unbind("touchend");
 							}else{
 								$("#game").unbind("mousemove");
 							}
@@ -285,7 +287,9 @@ function animate(){
 //				$(window).unbind("keyup");
 
 				if(isSupportTouch){
-					$(window).unbind("touchmove");
+					$("#game").unbind("touchstart");
+					$("#game").unbind("touchmove");
+					$("#game").unbind("touchend");
 				}else{
 					$("#game").unbind("mousemove");
 				}

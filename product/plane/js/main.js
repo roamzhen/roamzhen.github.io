@@ -38,6 +38,8 @@ var scoreTimeout;
 
 var isSupportTouch = "ontouchend" in document ? true : false;
 
+var touched;
+var downed;
 /*
 var arrowLeft = 37;
 var arrowUp =38;
@@ -130,7 +132,9 @@ $(document).ready(function()
 //				$(window).unbind("keydown");
 				
 				if(isSupportTouch){
+					$("#game").unbind("touchstart");
 					$("#game").unbind("touchmove");
+					$("#game").unbind("touchend");
 				}else{
 					$("#game").unbind("mousemove");
 				}

@@ -23,6 +23,9 @@ function startGame(){
 			numAsteroids = 10;
 
 			score = 0;
+
+			touched = false;
+			downed = false;
 			
 //			player = new Player(canvasWidth/2,canvasHeight-10);
 
@@ -106,8 +109,7 @@ function startGame(){
 			});
 			*/
 			if(isSupportTouch){
-				
-				$(window).bind("touchmove",function(){
+				$("#game").bind("touchstart",function(){
 
 					if(!playGame){
 						playGame = true;
@@ -120,9 +122,28 @@ function startGame(){
 				  	{
 				    	var touch = event.targetTouches[0];
 				      	// 把元素放在手指所在的位置
+				      	if(Math.abs(player.x - touch.pageX)<25&&Math.abs(player.y - touch.pageY)<30)
+				      	{
+				      		touched = true;
+					      	player.x = touch.pageX;
+					        player.y = touch.pageY;
+					    }
+				    }
+				});
+				$("#game").bind("touchmove",function(){
+
+					// 如果这个元素的位置内只有一个手指的话
+				    if (event.targetTouches.length == 1 && touched ==true) 
+				  	{
+				    	var touch = event.targetTouches[0];
+				      	// 把元素放在手指所在的位置
 				      	player.x = touch.pageX;
 				        player.y = touch.pageY;
 				    }
+				});
+				$("#game").bind("touchend",function(){
+					touched =false;
+					
 				});
 			}else{
 				$("#game").bind("mousemove",function(e){
@@ -135,7 +156,7 @@ function startGame(){
 						animate();
 						timer();
 					};
-
+					
 					player.x = canvasX;
 				    player.y = canvasY;
 
