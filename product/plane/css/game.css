@@ -57,7 +57,6 @@ a.button:hover{
 	margin:20px 0;
 }
 #gameStats .gameReset{
-	border: 1px solid #000;
 	padding: 3px 5px;
 	margin:20px 20px 0 0;
 	position:absolute;

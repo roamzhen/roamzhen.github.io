@@ -84,13 +84,14 @@ function animate(){
 					var hx = player.halfWidth/3 + tmpAsteroid.halfWidth/3;
 					var hy = player.halfHeight/3 + tmpAsteroid.halfHeight/3;
 
+					if(speedFlag&&distance < Math.floor(Math.sqrt(hx*hx+hy*hy)*2)){
+						asteroids.splice(j,1);
+						player.kill++;
+						asteroidsLength = asteroids.length;
+						continue;
+					}
+
 					if(distance < Math.floor(Math.sqrt(hx*hx+hy*hy))){
-						if(speedFlag){
-							asteroids.splice(j,1);
-							player.kill++;
-							asteroidsLength = asteroids.length;
-							continue;
-						}else{
 							playGame = false;
 							clearTimeout(scoreTimeout);
 							uiStats.hide();
@@ -100,13 +101,12 @@ function animate(){
 //							$(window).unbind("keyup");
 
 							if(isSupportTouch){
-								$("#game").unbind("touchmove");
+								$(window).unbind("touchmove");
 							}else{
 								$("#game").unbind("mousemove");
 							}
 
-						}
-					};
+					}
 					
 
 					context.save();
@@ -250,6 +250,7 @@ function animate(){
 			//画玩家
 			context.save();
 			context.translate(player.x-player.halfWidth,player.y-player.halfHeight);
+			/*
 			if(player.moveUp){
 				if(speedFlag){
 					context.shadowBlur = 20;
@@ -259,6 +260,7 @@ function animate(){
 					context.shadowColor = "rgb(0,0,0)";
 				}
 			}
+			*/
 
 			context.drawImage(playerImg,0,0);
 
@@ -283,7 +285,7 @@ function animate(){
 //				$(window).unbind("keyup");
 
 				if(isSupportTouch){
-					$("#game").unbind("touchmove");
+					$(window).unbind("touchmove");
 				}else{
 					$("#game").unbind("mousemove");
 				}

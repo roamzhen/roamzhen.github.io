@@ -106,7 +106,8 @@ function startGame(){
 			});
 			*/
 			if(isSupportTouch){
-				$("#game").bind("touchmove",function(){
+				
+				$(window).bind("touchmove",function(){
 
 					if(!playGame){
 						playGame = true;
