@@ -109,7 +109,7 @@ function startGame(){
 			});
 			*/
 			if(isSupportTouch){
-				$("#game").bind("touchstart",function(){
+				$(window).bind("touchstart",function(){
 
 					if(!playGame){
 						playGame = true;
@@ -130,7 +130,7 @@ function startGame(){
 					    }
 				    }
 				});
-				$("#game").bind("touchmove",function(){
+				$(window).bind("touchmove",function(){
 
 					// 如果这个元素的位置内只有一个手指的话
 				    if (event.targetTouches.length == 1 && touched ==true) 
@@ -141,12 +141,12 @@ function startGame(){
 				        player.y = touch.pageY;
 				    }
 				});
-				$("#game").bind("touchend",function(){
+				$(window).bind("touchend",function(){
 					touched =false;
 					
 				});
 			}else{
-				$("#game").bind("mousemove",function(e){
+				$(window).bind("mousemove",function(e){
 					var canvasOffset =canvas.offset();
 					var canvasX = Math.floor(e.pageX-canvasOffset.left);
 					var canvasY = Math.floor(e.pageY-canvasOffset.top);

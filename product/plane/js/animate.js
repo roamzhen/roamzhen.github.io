@@ -101,11 +101,11 @@ function animate(){
 //							$(window).unbind("keyup");
 
 							if(isSupportTouch){
-								$("#game").unbind("touchstart");
-								$("#game").unbind("touchmove");
-								$("#game").unbind("touchend");
+								$(window).unbind("touchstart");
+								$(window).unbind("touchmove");
+								$(window).unbind("touchend");
 							}else{
-								$("#game").unbind("mousemove");
+								$(window).unbind("mousemove");
 							}
 
 					}
@@ -287,11 +287,11 @@ function animate(){
 //				$(window).unbind("keyup");
 
 				if(isSupportTouch){
-					$("#game").unbind("touchstart");
-					$("#game").unbind("touchmove");
-					$("#game").unbind("touchend");
+					$(window).unbind("touchstart");
+					$(window).unbind("touchmove");
+					$(window).unbind("touchend");
 				}else{
-					$("#game").unbind("mousemove");
+					$(window).unbind("mousemove");
 				}
 
 			}

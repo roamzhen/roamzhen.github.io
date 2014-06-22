@@ -132,11 +132,11 @@ $(document).ready(function()
 //				$(window).unbind("keydown");
 				
 				if(isSupportTouch){
-					$("#game").unbind("touchstart");
-					$("#game").unbind("touchmove");
-					$("#game").unbind("touchend");
+					$(window).unbind("touchstart");
+					$(window).unbind("touchmove");
+					$(window).unbind("touchend");
 				}else{
-					$("#game").unbind("mousemove");
+					$(window).unbind("mousemove");
 				}
 
 				clearTimeout(scoreTimeout);
