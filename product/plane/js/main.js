@@ -132,9 +132,9 @@ $(document).ready(function()
 //				$(window).unbind("keydown");
 				
 				if(isSupportTouch){
-					$("#game")[0].removeEventListener("touchstart");
-					$("#game")[0].removeEventListener("touchmove");
-					$("#game")[0].removeEventListener("touchend");
+					$("#game").unbind("touchstart");
+					$("#game").unbind("touchmove");
+					$("#game").unbind("touchend");
 				}else{
 					$("#game").unbind("mousemove");
 				}
