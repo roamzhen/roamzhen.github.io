@@ -107,8 +107,6 @@ function clickAnimate(obj,left,top){
 
 function menuShow(obj){
   var number = obj.getAttribute("value");
-  var screenWidth = window.screen.width;
-  var screenHeight = window.screen.height;
       
   if(number!=null){
     var bg
@@ -140,8 +138,8 @@ function menuShow(obj){
 
       addClass(bg,"showStatus");
       
-      bg.style.width=screenWidth+"px";
-      bg.style.height=screenHeight+"px";
+      bg.style.width="100%";
+      bg.style.height="100%";
       bg.style.left="0";
       bg.style.top="0";
       bg.style.margin="0";

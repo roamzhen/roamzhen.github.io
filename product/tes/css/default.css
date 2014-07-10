@@ -238,6 +238,7 @@ header {
   position: relative;
   height: 100%; width: 100%;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .bottom-bar{
@@ -267,9 +268,6 @@ header {
   .contain-wrap{
     max-width: 580px;
   }
-  .contain-box{
-    height: 500px;
-  }
   .menu1 .contain-wrap{
     max-width: 1300px;
   }
@@ -277,10 +275,10 @@ header {
 
 /* card box */
 .card-line{
-  padding: 0 20px 20px;
+  padding: 10px 20px;
 }
 .card-wrap{
-  margin-top: 20px;
+  padding: 10px 0;
   height: 150px;
 }
 .card-left{
