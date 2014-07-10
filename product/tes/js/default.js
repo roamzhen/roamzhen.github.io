@@ -107,6 +107,8 @@ function clickAnimate(obj,left,top){
 
 function menuShow(obj){
   var number = obj.getAttribute("value");
+  var screenWidth = window.screen.width;
+  var screenHeight = window.screen.height;
       
   if(number!=null){
     var bg
@@ -138,8 +140,8 @@ function menuShow(obj){
 
       addClass(bg,"showStatus");
       
-      bg.style.width="100%";
-      bg.style.height="100%";
+      bg.style.width=screenWidth+"px";
+      bg.style.height=screenHeight+"px";
       bg.style.left="0";
       bg.style.top="0";
       bg.style.margin="0";
@@ -150,18 +152,37 @@ function menuShow(obj){
 
       backBtn.style.opacity = "1";
 
+      var enterBtn = bg.getElementsByClassName("enter")[0];
+
+      
+      if(enterBtn!=null){
+        enterBtn.style.opacity = "1";
+
+        enterBtn.onclick = function(){
+          containShow(bg);
+        }
+
+      }
+
       backBtn.onclick = function(){
-        menuHide(this,bg,obj,status);
+        if(enterBtn!=null&&enterBtn.style.display=="none"){
+          setTimeout(function(){menuHide(backBtn,enterBtn,bg,obj,status)},200);
+          containHide(bg);
+        }else{
+          menuHide(backBtn,enterBtn,bg,obj,status);
+        }
       }
     }
   }
 }
 
-function menuHide(backBtn,bg,obj,status){
+function menuHide(backBtn,enterBtn,bg,obj,status){
   removeClass(bg,"showStatus");
   addClass(bg,"hideStatus");
 
   backBtn.style.opacity="0";
+  if(enterBtn!=null)
+    enterBtn.style.opacity="0";
 
   bg.style.width=status.width;
   bg.style.height=status.height;
@@ -172,13 +193,34 @@ function menuHide(backBtn,bg,obj,status){
   bg.style.position = status.position;
   setTimeout(function(){bg.style.display = "none";},300);
 
-  obj.style.zIndex = "11";
+  obj.style.zIndex = null;
 
   var menu = document.getElementsByClassName("menu");
   for (var i = menu.length - 1; i >= 0; i--) {
     menu[i].clicked=false;
   };
 
+}
+
+function containShow(bg){
+  var contain = bg.getElementsByClassName("contain-box")[0];
+  var bottom = bg.getElementsByClassName("bottom-bar")[0];
+  var enterBtn = bg.getElementsByClassName("enter")[0];
+
+  bottom.style.height = 0;
+  setTimeout(function(){enterBtn.style.display="none";},100);
+  contain.style.top = 0;
+
+}
+function containHide(bg){
+  var contain = bg.getElementsByClassName("contain-box")[0];
+  var bottom = bg.getElementsByClassName("bottom-bar")[0];
+  var enterBtn = bg.getElementsByClassName("enter")[0];
+
+  setTimeout(function(){enterBtn.style.display="block";},300);
+  
+  bottom.style.height = 64+ "px";
+  contain.style.top = "100%";
 }
 
 
