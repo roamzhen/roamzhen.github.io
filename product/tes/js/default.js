@@ -210,6 +210,7 @@ function containShow(bg){
   contain.style.top = 0;
 
 }
+
 function containHide(bg){
   var contain = bg.getElementsByClassName("contain-box")[0];
   var bottom = bg.getElementsByClassName("bottom-bar")[0];
