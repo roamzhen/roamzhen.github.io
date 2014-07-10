@@ -265,8 +265,8 @@ header {
 }
 .contain-inner{
   width: 100%; height: 100%;
-  padding-right: 15px;
-  overflow-y:scroll;
+  padding-right: 30px;
+  overflow-x:scroll;
 }
 
 @media screen and (min-width: 579px){
@@ -274,7 +274,7 @@ header {
     max-width: 580px;
   }
   .menu1 .contain-wrap{
-    max-width: 1300px;
+    max-width: 1360px;
   }
 }
 
@@ -314,20 +314,5 @@ header {
     float: left;
     width: 250px;
     padding: 0 0 20px 10px; 
-  }
-}
-@media screen and (min-width: 541px) and ( max-width: 800px){
-  .menu1 .contain-box{
-    width: 540px;
-  }
-}
-@media screen and (min-width: 801px) and ( max-width: 1070px){
-  .menu1 .contain-box{
-    width: 800px;
-  }
-}
-@media screen and (min-width: 1071px) and ( max-width: 1300px){
-  .menu1 .contain-box{
-    width: 1070px;
   }
 }
