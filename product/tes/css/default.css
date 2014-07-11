@@ -1,4 +1,5 @@
 html,body{ margin: 0; width: 100%; background-color: rgb(255,255,255); position: relative; font-family: "RobotoDraft";}
+h1,h2,p{margin: 0; padding: 0;}
 
 @font-face
 {
@@ -287,6 +288,7 @@ header {
   height: 150px;
 }
 .card-left{
+  position: relative;
   float: left;
   width: 97%;
   height: 100%;
@@ -300,12 +302,66 @@ header {
   float: left;
   width: 3%;
   height: 100%;
-  background-color: #00bad1;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
-@media screen and (min-width: 540px){
+.week1{
+  background-color: #00bad1;
+}
+.week2{
+  background-color: #7e57c2;
+}
+.week3{
+  background-color: #ff5353;
+}
+.week4{
+  background-color: #00bad1;
+}
+.week5{
+  background-color: #ffea3c;
+}
+
+.class-name{
+  position: absolute;
+  left: 10%; top: 10%;
+  font-weight: bolder;
+  font-size: 18px;
+  width: 90%;
+  height: 20%;
+  line-height: 100%;
+}
+.class-teacher{
+  position: absolute;
+  left: 10%; top: 36%;
+  font-weight: lighter;
+  font-size: 12px;
+  width: 100%;
+  line-height: 100%;
+}
+.class-time{
+  position: absolute;
+  left: 0; bottom: 0;
+  font-weight: lighter;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  background-color: #f5f5f5;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.class-week{
+  position: absolute;
+  padding: 5px;
+  top: 0; right: 5px;
+  color: #fff;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+@media screen and (min-width: 560px){
   .card-wrap{
     width: 250px;
     height: 100px;
@@ -314,5 +370,20 @@ header {
     float: left;
     width: 250px;
     padding: 0 0 20px 10px; 
+  }
+}
+@media screen and (min-width: 561px) and ( max-width: 840px){
+  .menu1 .contain-box{
+    width: 560px;
+  }
+}
+@media screen and (min-width: 841px) and ( max-width: 1130px){
+  .menu1 .contain-box{
+    width: 840px;
+  }
+}
+@media screen and (min-width: 1131px) and ( max-width: 1360px){
+  .menu1 .contain-box{
+    width: 1130px;
   }
 }
