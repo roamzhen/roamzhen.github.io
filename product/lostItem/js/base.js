@@ -55,23 +55,31 @@ function submitLoading(obj){
 	var popWords = document.getElementById("pop-words");
 
 	var j=0;
+	
+	var loading = document.createElement("span");
+	loading.className = "word_loading";
+	loading.style.marginLeft =  obj.innerHTML.length * 9 + 2 +"px";
+	obj.appendChild(loading);
 
 	obj.timer = setInterval(function(){
-		obj.innerHTML += ".";
+		var wordLoading = obj.getElementsByTagName("span")[0];
+		wordLoading.innerHTML += ".";
+
 		i++;
 		if(i>3){
-			obj.innerHTML = obj.innerHTML.substring(0,obj.innerHTML.length-4);
+			wordLoading.innerHTML = "";
 			i=0;
 
-			if(j>5){
+			if(j>3){
 				clearInterval(obj.timer);
-				obj.timer=null;
+				obj.timer = null;
+				obj.removeChild(wordLoading);
 				showPop(2);
 				setTimeout("hidePop(2)",3000);
 			}
-		}
 
-		j++;
+			j++;
+		}
 
 	},300);
 

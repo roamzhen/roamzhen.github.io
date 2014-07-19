@@ -14,17 +14,19 @@ p{margin: 0;}
 .tab-button-wrap.right a{background-color: #3498db; margin: 0 10px 0 4px;}
 /* search */
 .search-wrap{ padding: 0 0 10px; background-color: #f2f2f2;}
-.search-input-wrap{ display: block; position: relative;  margin: 0 10px; border: 1px solid #d7d7d7; border-radius: 5px;background: url(../images/search-icon.png) no-repeat 8px; background-size: 18px; -webkit-background-size:18px; background-color: #fafafa; }
+.search-input-wrap{ display: block; position: relative; margin: 0 10px; border: 1px solid #d7d7d7; border-radius: 5px;background: url(../images/search-icon.png) no-repeat 8px; background-size: 18px; -webkit-background-size:18px; background-color: #fafafa; transition: margin 0.2s ease-in;}
 .search-clear{position: absolute; top: 0px; right: 0px; text-indent: -999px; width: 32px; height: 32px; background: url(../images/search-clear.png) no-repeat 6px 6px; background-size: 20px; display: none; z-index: 10;}
 .search-up{position: absolute; top: 0px; right: -50px; width: 50px; text-align: center; height: 34px; line-height: 34px; color: #0b61fe; font-size: 16px; text-decoration: none; display: none;}
-.search-input-wrap input{ display: block; padding: 9.5px 0 8.5px; margin-left: 30px; font-size: 14px; width: 80%; height: 15px; line-height: 15px; border: none; background-color: #fafafa; outline: none; z-index: 9;}
+.search-input-wrap-inner{margin:0 32px 0 30px;}
+.search-input-wrap input{ display: block; padding: 9.5px 0 8.5px; font-size: 14px; width: 100%; height: 15px; line-height: 15px; border: none; background-color: #fafafa; outline: none; z-index: 9;}
+/* end search */
 /* item */
 .item-wrap{ border-top: 1px solid #d7d7d7; border-left: none; border-right: none;}
 .list-item{  border-bottom: 1px solid #d7d7d7; background-color: #fafafa; position: relative; display: block; text-decoration: none; outline: none;}
 .list-item:active{background-color: #f0f0f0;}
 .list-item .left{width: 78px; height: 100%; position: absolute; left: 0; top: 0;}
 .list-item .center{ margin: 0 39px 0 78px;}
-.list-item .right{width: 39px; height: 100%; position: absolute; right: 0; top: 0; background: url(../images/item-right.png) no-repeat 10px 32px; background-size: 16px;}
+.list-item .right{width: 39px; height: 100%; position: absolute; right: 0; top: 0; background: url(../images/item-right.png) no-repeat 10px 50%; background-size: 16px;}
 
 .list-item .left .images-wrap{ width: 46px; height: 46px; margin: 16px; overflow: hidden;}
 .list-item .left .images-wrap .images-inner{ width: 160px; height: 160px; margin: -57px 0 0 -57px; text-align: center; display: inline-block; zoom:1; line-height: 160px; vertical-align: middle;}
@@ -50,14 +52,21 @@ p.input-words{ color: #3b4042;}
 input.input-right{ border: none; outline: none; margin: 0; padding: 0;}
 textarea.input-right{ height: 40px; line-height: 20px; border: none; outline: none; margin: 0; padding: 0;}
 /* btn box */
-.btn_box{ overflow: hidden; padding-bottom: 10px;}
-.edit {display: block;background-color: #2ecc71;height: 45px;margin: 20px 10px 0px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
-.delect {background-color: #e74c3c;display: block;height: 45px;margin: 10px 10px 20px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 45px;text-decoration: none;}
-.send {display: block;background-color: #2ecc71;height: 45px;margin: 20px 10px 0px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
-.delect_send {background-color: #bdc3c7;display: block;height: 45px;margin: 10px 10px 20px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 45px;text-decoration: none;}
-.save {display: block;background-color: #2ecc71;height: 45px;margin: 20px 10px 0px;border-radius: 4px;font-size: 18px;color: white;text-align: center;line-height: 45px;text-decoration: none;}
-.delect_save {background-color: #bdc3c7;display: block;height: 45px;margin: 10px 10px 20px;border-radius: 4px;font-size: 18px;color:white;text-align: center;line-height: 45px;text-decoration: none;}
+.btn_box{ overflow: hidden; padding-bottom: 10px; position: relative;}
+.btn_inner{position: relative; display: block; height: 45px; line-height: 45px; border-radius: 4px;font-size: 18px; text-decoration: none; text-align: center;}
+.edit {background-color: #2ecc71;margin: 20px 10px 0px;color: white;}
+.delect {background-color: #e74c3c;margin: 10px 10px 20px;color:white;}
+.send {background-color: #2ecc71;margin: 20px 10px 0px;color: white;}
+.delect_send {background-color: #bdc3c7;margin: 10px 10px 20px;color:white;}
+.save {background-color: #2ecc71;margin: 20px 10px 0px;color: white;}
+.delect_save {background-color: #bdc3c7;margin: 10px 10px 20px;color:white;}
 /* end deatil */
+
+/* submit loading */
+.word_loading{
+	position: absolute; left: 50%; top: 0;
+}
+/* end loading */
 
 /* overlay pop */
 #overlay{ position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); display: none;}
@@ -67,7 +76,7 @@ textarea.input-right{ height: 40px; line-height: 20px; border: none; outline: no
 #pop-message .title{ margin: 20px 0 15px; padding: 0; font-weight: bold; font-size: 18px; height: 30px; line-height: 30px; text-align: center;}
 #pop-message .detail{ margin: 0px 0 25px; padding: 0; font-size: 18px; line-height: 20px; height: 40px; text-align: center;}
 #pop-message .line{ display: block; border-bottom: 1px solid #e3e3e3;}
-#pop-message a{ display: block; margin:  0px 20px; height: 40px; line-height: 40px; border-radius: 5px; color: #fff; text-align: center; font-size: 18px; text-decoration: none;}
+#pop-message a{ display: block; margin:  0px 20px; height: 40px; line-height: 40px; border-radius: 5px; color: #fff; text-align: center; font-size: 18px; text-decoration: none; position: relative;}
 #pop-message .sure-btn{ background-color: #2ecc71; margin-top:20px;}
 #pop-message .cancel-btn{ background-color: #bdc3c7; margin-top: 10px;}
 #pop-status img{width: 80px; height: 80px; border: none; position: absolute; left: 35px; top: 20px;}

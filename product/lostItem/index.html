@@ -15,7 +15,11 @@
         <div class="tab-button-wrap right"><a href="index_list.html">我的发布</a></div>
     </div>
     <div class="search-wrap">
-        <div class="search-input-wrap"><input id="search-words" type="text" placeholder="输入关键字搜索失物" onFocus="searchFocus()" /><a class="search-clear" href="javascript:void(0)">清除</a><a class="search-up" href="javascript:void(0)">取消</a></div>
+        <div class="search-input-wrap">
+            <div class="search-input-wrap-inner">
+                <input id="search-words" type="text" placeholder="输入关键字搜索失物" onFocus="searchFocus()" />
+            </div>
+            <a class="search-clear" href="javascript:void(0)">清除</a><a class="search-up" href="javascript:void(0)">取消</a></div>
     </div>
     
     <div class="item-wrap">
@@ -124,8 +128,8 @@
     <h2 class="title">取消确认</h2>
     <p class="detail">确定放弃本次编辑吗?</p>
     <span class="line"></span>
-    <a class="sure-btn" href="javascript:void(0)">确定</a>
-    <a class="cancel-btn" href="javascript:void(0)">取消</a>
+    <a class="btn_inner sure-btn" href="javascript:void(0)">确定</a>
+    <a class="btn_inner cancel-btn" href="javascript:void(0)">取消</a>
 </div>
 <div id="pop-status">
     <img src="images/icon-true.png" />
@@ -160,7 +164,7 @@ function searchFocus(){
     var searchClear = GetClass("search-clear")[0];
     var searchUp = GetClass("search-up")[0];
 
-    searchWrap.style.width = "80%";
+    searchWrap.style.marginRight = "50px";
     searchClear.style.display = "block";
     searchUp.style.display = "block";
 }
@@ -169,7 +173,7 @@ function searchBlur(){
     var searchClear = GetClass("search-clear")[0];
     var searchUp = GetClass("search-up")[0];
 
-    searchWrap.style.width = "auto";
+    searchWrap.style.marginRight = "10px";
     searchClear.style.display = "none";
     searchUp.style.display = "none";
 }
