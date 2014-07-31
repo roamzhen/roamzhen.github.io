@@ -39,8 +39,9 @@ h2,h3,h4,h5,h6{ margin: 0}
 
 .intr span{color: #fff;padding: 0 15px 5px 10px;background-color: #000;}
 .intr span .school-href{text-decoration: none; font-style: italic; color: #fff; padding: 0 2px;}
-.intr span.word-changer{margin-left:1px; padding: 0 10px 5px; color: #a7f016;}
-.intr span.old{padding: 0px;}
+.intr span.word-changer{margin-left:1px; padding: 0 10px 5px;}
+.intr span.new{padding: 0px; color: #a7f016;}
+.intr span.old{padding: 0px; color: rgba(167,240,22,0.4);}
 
 @media screen (max-width: 640px) {
 

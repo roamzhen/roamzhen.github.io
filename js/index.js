@@ -1,6 +1,7 @@
 window.onload = function(){
   initMenuBtn();
   initStepBtn();
+  initWordChanger();
 }
 /* basic class method */
 function hasClass(obj, cls) {
@@ -79,9 +80,46 @@ function initMenuBtn(){
 
 /* word-changer */
 function initWordChanger(){
-  var wordChanger = document.getElementsByClassName("word-changer")[0];
-  var oldWord = wordChanger.getElementsByClassName("old")[0];
+  var newSpan = document.getElementsByClassName("new")[0];
+  var oldSpan = document.getElementsByClassName("old")[0];
 
+  var likeList = ["Javascript","Cook","Yummy Food"];
+
+  var backNumber = 0;
+
+  var wordChangerTimer = setInterval(function(){
+
+    var random = parseInt(Math.random()*(likeList.length));
+    if(random==backNumber)
+        while(random==backNumber){
+          random = parseInt(Math.random()*(likeList.length));
+        }
+    backNumber=random;
+
+    var newWord = likeList[random];
+    var oldWord = newSpan.innerHTML;
+
+    var newIndex = 0;
+    var oldIndex = 0;
+
+    for (var i = 0; i <= newWord.length; i++) {
+      setTimeout(function(){
+          newSpan.innerHTML = newWord.substr(0,newIndex);
+          newIndex++;
+      },i*50);
+
+    };
+
+    for (var j = 0; j <= oldWord.length; j++) {
+      setTimeout(function(){
+          oldSpan.innerHTML = oldWord.substr(oldIndex);
+          oldIndex++;
+      },j*50);
+
+    };
+
+
+  },2000);
 }
 /* end word-changer */
 
