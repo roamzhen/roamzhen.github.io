@@ -1,0 +1,47 @@
+html,body{ margin: 0; width: 100%; height: 100%; overflow-x: hidden; background-color: #000}
+h2,h3,h4,h5,h6{ margin: 0}
+
+.wrap{background-color: #fff;position: relative; left: 0;width: 100%; height: 100%;overflow-x: hidden;transition:left 0.4s,height 0.4s,margin 0.4s;}
+.wrap.scale{left: 200px;height: 90%;margin-top: 20px;}
+.inner-wrap{width: 100%; height: 1000px;padding-right: 50px;text-align: center;}
+.aside{position: fixed; left: -200px; top: 0px;width: 200px; height: 100%;transition:left 0.4s;background-color: #000;}
+.aside.active{left: 0px;}
+.aside .center-line{position: absolute; width: 1px; height: 80%;top: 10%; left: 40px; background-color: #fff;}
+.step-btn{position: absolute;width: 120px; height: 10%;font-family: "OswaldLight";text-decoration: none; text-align: center;}
+.step-btn span{vertical-align: middle; color: rgb(200,200,200);}
+.step-btn.active span{font-weight: bold; color: #fff;}
+.center-line .step-btn b{vertical-align: middle; display: inline-block; height: 100%; }
+
+.step-btn .step-poin-wrap{position: absolute; left: 0.5px; top: 50%;width: 12px; height: 12px;background-color: #000;margin: -6px 0 0 -6px;}
+.step-poin-wrap .step-poin{background-color: #fff; border-radius: 50%;position: absolute; top: 50%; left: 50%;width: 6px; height: 6px;margin: -3px 0 0 -3px;transition: width 0.2s,height 0.2s,margin 0.2s,box-shadow 0.2s;}
+.step-btn.active .step-poin-wrap .step-poin{width: 8px; height: 8px;margin: -4px 0 0 -4px;box-shadow: 0px 0px 4px 2px rgba(255,255,255,0.9);}
+.step-btn.step1{ top: 7%}
+.step-btn.step2{ top: 22%}
+.step-btn.step3{ top: 37%}
+.step-btn.step4{ top: 52%}
+.step-btn.step5{ top: 67%}
+.step-btn.step6{ top: 83%}
+
+.menu-btn{position: fixed; left: 10px; top: 0px; background-image: url(../images/menu_black.png); width: 40px; height: 40px; background-size: 70%; background-position: 50% 50%; background-repeat: no-repeat; transition: background-color 0.4s, background-image 0.4s,left 0.4s,top 0.2s,-webkit-transform 0.2s,transform 0.2s;}
+.menu-btn.active{left: 200px; top: 20px;transform: rotate(90deg);-webkit-transform: rotate(90deg);background-image: url(../images/menu_white.png);background-color: rgb(0,0,0);}
+
+@media screen (max-width: 640px) {
+  .menu-btn{ width: 30px; height: 30px}
+}
+
+.intr{padding-top: 50px;display: inline-block;text-align: left; margin: 0 20px;}
+.intr h2,.intr h3,.intr h4,.intr h5,.intr h6{font-family: "OswaldLight";}
+.intr h2{letter-spacing: -5px; line-height: 170px;font-size: 125px;}
+.intr h3{font-size: 36px; line-height: 54px;}
+.intr h4{font-size: 36px; line-height: 54px;}
+.intr h5{font-size: 24px; line-height: 39px; font-weight: 100;}
+.intr h6{font-size: 24px; line-height: 39px; font-weight: 100;}
+
+.intr span{color: #fff;padding: 0 15px 5px 10px;background-color: #000;}
+.intr span .school-href{text-decoration: none; font-style: italic; color: #fff; padding: 0 2px;}
+.intr span.word-changer{margin-left:1px; padding: 0 10px 5px; color: #a7f016;}
+.intr span.old{padding: 0px;}
+
+@media screen (max-width: 640px) {
+
+}
