@@ -106,7 +106,7 @@ function initWordChanger(){
       setTimeout(function(){
           newSpan.innerHTML = newWord.substr(0,newIndex);
           newIndex++;
-      },i*50);
+      },i*40);
 
     };
 
@@ -114,7 +114,7 @@ function initWordChanger(){
       setTimeout(function(){
           oldSpan.innerHTML = oldWord.substr(oldIndex);
           oldIndex++;
-      },j*50);
+      },j*40);
 
     };
 

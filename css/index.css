@@ -3,7 +3,7 @@ h2,h3,h4,h5,h6{ margin: 0}
 
 .wrap{background-color: #fff;position: relative; left: 0;width: 100%; height: 100%;overflow-x: hidden;transition:left 0.4s,height 0.4s,margin 0.4s;}
 .wrap.scale{left: 200px;height: 90%;margin-top: 20px;}
-.inner-wrap{width: 100%; height: 1000px;padding-right: 50px;text-align: center; overflow-x:hidden;}
+.inner-wrap{width: 100%; height: 1000px;padding-right: 50px;text-align: center;}
 .aside{position: fixed; left: -200px; top: 0px;width: 200px; height: 100%;transition:left 0.4s;background-color: #000;}
 .aside.active{left: 0px;}
 .aside .center-line{position: absolute; width: 1px; height: 80%;top: 10%; left: 40px; background-color: #fff;}
@@ -22,8 +22,15 @@ h2,h3,h4,h5,h6{ margin: 0}
 .step-btn.step5{ top: 67%}
 .step-btn.step6{ top: 83%}
 
-.menu-btn{position: fixed; left: 10px; top: 0px; background-image: url(../images/menu_black.png); width: 40px; height: 40px; background-size: 70%; background-position: 50% 50%; background-repeat: no-repeat; transition: background-color 0.4s, background-image 0.4s,left 0.4s,top 0.2s,-webkit-transform 0.2s,transform 0.2s;}
-.menu-btn.active{left: 200px; top: 20px;transform: rotate(90deg);-webkit-transform: rotate(90deg);background-image: url(../images/menu_white.png);background-color: rgb(0,0,0);}
+.menu-btn{position: fixed; left: 10px; top: 0px; background-image: url(../images/menu_black.png); width: 40px; height: 40px; background-size: 70%; background-position: 50% 50%; background-repeat: no-repeat; 
+  transition: background-color 0.4s, background-image 0.4s,left 0.4s,top 0.2s,transform 0.2s,-webkit-transform 0.2s;
+}
+.menu-btn.active{
+  left: 200px; top: 20px;
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  background-image: url(../images/menu_white.png);background-color: rgb(0,0,0);
+}
 
 @media screen (max-width: 640px) {
   .menu-btn{ width: 30px; height: 30px}
