@@ -1,9 +1,17 @@
 @font-face {
     font-family: 'OswaldLight';
     src: url('fonts/Oswald-Light-webfont.woff');
-
     font-weight: normal;
     font-style: normal;
+}
+@font-face {
+  font-family: 'OswaldBook';
+  src: url('fonts/oswald-fontfacekit/Oswald-Regular-webfont.eot');
+  src: url('fonts/oswald-fontfacekit/Oswald-Regular-webfontIe.eot') format('embedded-opentype'),
+   url('fonts/oswald-fontfacekit/Oswald-Regular-webfont.woff') format('woff'), 
+   url('fonts/oswald-fontfacekit/Oswald-Regular-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
     font-family: 'norwester';
@@ -11,13 +19,4 @@
 
     font-weight: normal;
     font-style: normal;
-}
-@font-face {
-  font-family: 'OswaldBook';
-  src: url('./oswald-fontfacekit/Oswald-Regular-webfont.eot');
-  src: url('./oswald-fontfacekit/Oswald-Regular-webfontIe.eot') format('embedded-opentype'),
-   url('./oswald-fontfacekit/Oswald-Regular-webfont.woff') format('woff'), 
-   url('./oswald-fontfacekit/Oswald-Regular-webfont.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
 }
