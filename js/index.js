@@ -83,7 +83,7 @@ function initWordChanger(){
   var newSpan = document.getElementsByClassName("new")[0];
   var oldSpan = document.getElementsByClassName("old")[0];
 
-  var likeList = ["Javascript","Cook","Yummy Food"];
+  var likeList = ["Javascript","HTML5","WebApp","Hybrid App","Programing","Cook","Yummy Food"];
 
   var backNumber = 0;
 
