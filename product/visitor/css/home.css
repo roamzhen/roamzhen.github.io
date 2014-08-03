@@ -1,0 +1,23 @@
+html,body{margin: 0; width: 100%; height: 100%; background-color: #f0f0f0; overflow: hidden;}
+
+#content-wrap{position: relative; left: 0; width: 100%; height: 100%; transition:left 0.4s,height 0.4s,margin 0.4s;}
+#content-wrap.scaleLeft{left: -100%;}
+#message-list{ position: absolute; left: 0;width: 70%; height: 100%; overflow-x: hidden;}
+.message-inner{width: 100%; padding-right: 40px;}
+
+.message-div{ padding: 5px 20px 10px;}
+.message-name{ font-size: 23px; color: #fff; font-family: Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;}
+.message-content{ margin: 0; font-size: 16px; line-height: 30px; color: #fff; font-family: Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;}
+
+.right-home{position: absolute; right: 0; top: 0; width: 30%; height: 100%;}
+
+.qrcode-wrap{ width: 100%; height: 500px; text-align: center;}
+.qrcode-wrap img{vertical-align: middle; display: inline-block; height: 240px; border:none;}
+.qrcode-wrap b{ vertical-align: middle; height: 100%; display: inline-block;}
+
+#canvas-btn{ position: absolute; right: 0; bottom: 0; width: 90px; height: 90px; background-image: url(../images/pen.png); background-position: 50% 50%; background-size: 30%;  background-repeat: no-repeat; background-color: #000; transition:right 0.4s,top 0.4s,background-color 0.4s;}
+#canvas-btn.active{right: -90px; }
+
+#canvasWrap{ z-index: 0; position: absolute; left: 110%; top: 0; width: 1030px; height: 100%; overflow-x: hidden; transition: left 0.4s;}
+#canvasWrap.active{ left: 120px;}
+#canvas{ position: absolute; width: 1000px; height: 1000px; border: 1px solid #000;}
