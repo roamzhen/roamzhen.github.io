@@ -1,0 +1,65 @@
+*{	margin:0; padding:0; }
+html , body { height:100%; width:100%; }
+canvas { display:block;}
+body{
+	background:#eee;
+	color:#000;
+	font-family:"Microsoft Yahei";
+	font-size:18px;
+}
+h1{
+	font-size:30px;
+}
+p{
+	margin:5px 20px;
+}
+a{
+	color:#111;
+	text-decoration:none;
+}
+a:hover{
+	text-decoration:none; color:#fff;
+}
+a.button{
+	background:#969696;
+	border-radius:5px;
+	display:block;
+	font-size:30px;
+	margin:10px auto;
+	padding:10px;
+}
+a.button:hover{
+	background:#b5b5b6;
+}
+#game{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	margin: 0 auto;
+}
+#gameCanvas{
+
+}
+#gameUI{
+	width: 100%;
+	height: 100%;
+	position:absolute;
+}
+#gameIntro, #gameComplete{
+	margin-top:100px;
+	padding:40px 0;
+	text-align:center;
+}
+#gameStats{
+	font-size:14px;
+	margin:20px 0;
+}
+#gameStats .gameReset{
+	padding: 3px 5px;
+	margin:20px 20px 0 0;
+	position:absolute;
+	right:0;
+	top:0;
+}
+
+.asside{display: none;}

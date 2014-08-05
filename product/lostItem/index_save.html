@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable =no">
+<title>我的发布</title>
+<link href="css/common.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="picture_box">
+	<div class="picture_wrap">
+		<div class="picture_inner">
+			<img src="images/pen2.jpg">
+	    </div>
+    </div>
+</div>
+<div class="description_box">
+		<div class="text_box">
+			<p class="first_line">物品名称：</p>
+			<input class="second_line input-right" id="name" value="MacBook Pro" />
+		</div>
+		<div class="text_box">
+			<p class="first_line">拾取地点：</p>
+			<input class="second_line input-right" value="第三教学楼" />
+		</div>
+		<div class="text_box">
+			<p class="first_line">联系人：</p>
+			<input class="second_line input-right" value="宣同学" />
+		</div>
+		<div class="text_box">
+			<p class="first_line">联系电话：</p>
+			<input class="second_line input-right" value="669733" />
+		</div>
+		<div class="text_box">
+			<p class="first_line">详情描述：</p>
+			<textarea class="second_line input-right" placeholder="外表白色，内含个人简历"></textarea>
+		</div>
+</div>
+<div class="btn_box">
+	<a class="btn_inner save" onclick="submitLoading(this)">保存编辑</a>
+	<a class="btn_inner delect_save" onclick="showPop(1)">取消</a>
+</div>
+
+<div id="overlay">
+	<div id="pop-message">
+	    <h2 class="title">取消确认</h2>
+	    <p class="detail">确定放弃本次编辑吗?</p>
+	    <span class="line"></span>
+	    <a class="sure-btn" href="index.html">确定</a>
+	    <a class="cancel-btn" onclick="hidePop(1)">取消</a>
+	</div>
+	<div id="pop-status">
+	    <img src="images/icon-true.png" />
+	    <p onclick="hidePop(2)">编辑成功</p>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	document.getElementById('name').focus();
+}
+</script>
+</html>
