@@ -87,3 +87,9 @@ div.content-wrap{ position: relative; padding: 10px 0 30px; margin: 0 20px;}
 .product-pic-inner{ width: 400px; height: 400px; margin: -120px 0 0 -120px; text-align: center; display: inline-block; zoom:1; line-height: 400px; vertical-align: middle;}
 .product-pic-inner img{vertical-align: middle; border: none; width: 160px;}
 
+.contact{text-align: center; font-family: "OswaldLight";}
+.contact h2{ font-size: 40px; margin: 0; letter-spacing: -1px; font-weight: bold; padding: 10px 0;}
+.contact p{ font-size: 16px; line-height: 30px; margin: 0px; padding: 15px 0;}
+.contact p span.big{ font-size: 26px; font-weight: bold;}
+.contact p a{text-decoration: none; color: #000; transition: color 0.2s ease-in;}
+.contact p a:hover{color: #aaa;}
