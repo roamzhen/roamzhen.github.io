@@ -170,7 +170,7 @@ var touchEvent = (function(){
 		oe = e;
 	}
 	function onMove(e){
-		event.preventDefault();
+		//event.preventDefault();
 
 		disY = e.pageY-oe.pageY;
 		//console.log(disY);
