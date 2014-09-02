@@ -1,3 +1,8 @@
+/* removePre() */
+function removePre(e) { 
+	e.preventDefault(); 
+}
+
 /* basic class method */
 function hasClass(obj, cls) {
     return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
@@ -14,6 +19,62 @@ function removeClass(obj, cls) {
     }
 }
 /* end basic class method */
+
+/* show and hide */
+function showPop(type){
+    var overlay = document.getElementById("overlay");
+    var popMessage = document.getElementById("pop-message");
+    var popStatus = document.getElementById("pop-status");
+
+    switch(type){
+        //message
+        case 1:
+            overlay.style.display = "block";
+            popMessage.style.display = "inline-block";
+            popStatus.style.display = "none";
+            break;
+        //status
+        case 2:
+            overlay.style.display = "block";
+            popMessage.style.display = "none";
+            popStatus.style.display = "block";
+            break;
+        default:
+            break;
+    }
+
+    document.body.addEventListener('touchmove', removePre, false);
+
+}
+
+function hidePop(type){
+    var overlay = document.getElementById("overlay");
+    var popMessage = document.getElementById("pop-message");
+    var popStatus = document.getElementById("pop-status");
+
+    overlay.style.display = "none";
+    popMessage.style.display = "none";
+
+    switch(type){
+        //message
+        case 1:
+            overlay.style.display = "none";
+            popMessage.style.display = "none";
+            break;
+        //status
+        case 2:
+            overlay.style.display = "none";
+            popStatus.style.display = "none";
+            break;
+        default:
+            break;
+    }
+
+    document.body.removeEventListener('touchmove', removePre, false);
+
+}
+
+/* end show and hide */
 
 
 //初始化全景及地图方法
@@ -91,6 +152,7 @@ function initPanorama(){
 var touchEvent = (function(){
 	var oe,disY;
 	var page=0;
+	var movePrevent;
 	var wrapWidth = window.innerWidth;
 	var wrapHeight = window.innerHeight;
 
@@ -108,12 +170,15 @@ var touchEvent = (function(){
 		oe = e;
 	}
 	function onMove(e){
+		event.preventDefault();
+
 		disY = e.pageY-oe.pageY;
 		//console.log(disY);
 		wrap.style["marginTop"] = (-wrapHeight*page+disY)+"px";
 		//setWebkitCSS3(wrap,"transform","translateY("+(-wrapHeight*page+disY)+"px)");
 	}
 	function onEnd(e){
+
 		if(disY>50){
 			if (--page<0) {page=0};
 		}
@@ -190,5 +255,70 @@ function initOnePage(){
 	};
 
 }
+
+/* search */
+function initSearch(){
+	var searchBtn = document.getElementById('login_submit');
+
+	searchBtn.onclick = function(){
+		showPop(1);
+	}
+
+	var studentChoose = document.getElementsByClassName("student-choose");
+
+	for (var i = studentChoose.length - 1; i >= 0; i--) {
+		studentChoose[i].onclick = function(){
+			var searchWrap = document.getElementsByClassName("search-wrap")[0];
+			var searchDetail = document.getElementsByClassName("search-detail")[0];
+
+			searchWrap.style['display'] = "none";
+			searchDetail.style['display'] = "block";
+			
+			initShushe();
+
+			hidePop(1);
+		}
+	};
+
+
+}
+
+function initShushe(){
+	//宿舍按钮监听事件
+	var shusheItem = document.getElementsByClassName("shushe-item");
+
+	for (var i = shusheItem.length - 1; i >= 0; i--) {
+		shusheItem[i].num=i;
+		shusheItem[i].onclick = function(){
+			if(!hasClass(this,"selected")){
+				for (var i = shusheItem.length - 1; i >= 0; i--) {
+					removeClass(shusheItem[i],"selected");
+					addClass(this,"selected");
+				};
+
+				switch(this.num){
+					case 0:
+						
+						break;
+					case 1:
+						
+						break;
+					case 2:
+						
+						break;
+					case 3:
+						
+						break;
+					case 4:
+
+						break;
+					default:
+						break;
+				}
+			}
+		}
+	}
+}
+/* end search */
 
 

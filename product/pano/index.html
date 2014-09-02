@@ -78,11 +78,83 @@
 
 		    <div class="login_btn"><a id="login_submit" href="javascript:void(0)">查询</a></div>
 		</div>
+		<div class="search-detail">
+			<div class="info-wrap">
+				<p>柯震东 (201401020304)</p>
+				<h2>五山9栋224</h2>
+				<p><span class="grey">室友: </span> 九把刀 柯景腾 沈佳宜</p>
+				<p><span class="grey">房型: </span> 4人间</p>
+			</div>
+			<div class="shushe-wrap">
+				<div id="shushe"></div>
+				<div class="shushe-select">
+
+					<div class="shushe-item selected">
+						<span class="cir-icon"></span>
+						<p>五山4人房</p>
+						<div class="pic-wrap">
+							<div class="pic-wrap-inner">
+								<img src="images/shushe.jpg" />
+							</div>
+						</div>
+					</div>
+					<div class="shushe-item">
+						<span class="cir-icon"></span>
+						<p>华山6人房</p>
+						<div class="pic-wrap">
+							<div class="pic-wrap-inner">
+								<img src="images/shushe.jpg" />
+							</div>
+						</div>
+					</div>
+					<div class="shushe-item">
+						<span class="cir-icon"></span>
+						<p>华山4人房</p>
+						<div class="pic-wrap">
+							<div class="pic-wrap-inner">
+								<img src="images/shushe.jpg" />
+							</div>
+						</div>
+					</div>
+					<div class="shushe-item">
+						<span class="cir-icon"></span>
+						<p>华山6人房</p>
+						<div class="pic-wrap">
+							<div class="pic-wrap-inner">
+								<img src="images/shushe.jpg" />
+							</div>
+						</div>
+					</div>
+					<div class="shushe-item">
+						<span class="cir-icon"></span>
+						<p>启林4人房</p>
+						<div class="pic-wrap">
+							<div class="pic-wrap-inner">
+								<img src="images/shushe.jpg" />
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
 		<p class="note">本服务由<span class="blue">校团委</span>和<span class="blue">卓效智慧校园</span>提供</p>
 	</section>
 
 </div>
 </div>
+
+<div id="overlay">
+	<div id="pop-message">
+	    <a class="student-choose" href="javascript:;"><span class="fl">陆仁甲</span><span class="fr">经济管理</span></a>
+		<a class="student-choose" href="javascript:;"><span class="fl">陆仁甲</span><span class="fr">软件工程</span></a>
+		<a class="student-choose" href="javascript:;"><span class="fl">陆仁甲</span><span class="fr">艺术设计</span></a>
+	</div><b></b>
+	<div id="pop-status">
+	    
+	</div>
+</div>
+
 
 </body>
 
@@ -99,6 +171,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 initPanorama();
 initOnePage();
+initSearch();
 
 </script>
 </html>

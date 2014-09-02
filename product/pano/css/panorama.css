@@ -1,5 +1,7 @@
 html,body{ margin: 0;  height: 100%; font-family: "Helvetica"; background-color: #f2f2f2;}
 h2,p{margin: 0;}
+.fl{float: left;}
+.fr{float: right;}
 
 .wrap{height: 100%; overflow: hidden;}
 .sec{height: 100%; position: relative; transition:-webkit-transform 300ms ease-out,margin 300ms ease-out; -webkit-transition:-webkit-transform 300ms ease-out,margin 300ms ease-out;}
@@ -27,14 +29,31 @@ h2,p{margin: 0;}
 .sec-1{}
 .sec-2{}
 
-/* login */
-
 .search-wrap{ padding-top:50px; text-align: center;}
 .search-wrap .text-img{ width: 80%;}
+
+.search-detail{ display: none; padding-top:50px;}
+.info-wrap{ padding: 15px 20px; margin:0 15px 15px;background-color:#fff; border:1px solid #e5e5e5;}
+.info-wrap p{ line-height: 150%; font-size: 14px; color: #555555;}
+.info-wrap p .grey{color: #b3b6b6;}
+.info-wrap h2{ padding: 5px 0; font-size: 36px; font-weight: normal; color: #474b4d;}
+
+.shushe-wrap{ height: 280px; margin: 0 15px; background-color:#fff; position: relative;}
+#shushe{ width: 100%; height: 100%;}
+.shushe-select{width: 100%; position: absolute; bottom: 0; left: 0; height: 80px; background-color: rgba(0,0,0,0.6);}
+.shushe-item{position: relative; float: left; width: 20%;}
+.cir-icon{ visibility: hidden; position: absolute; left: 50%; top: 4px; margin-left: -4px; width: 8px; height: 8px; border-radius: 50%; background-color: #ffcc00;}
+.shushe-item.selected .cir-icon{ visibility: visible;}
+.shushe-item p{ letter-spacing:0.5px; font-size: 9px; margin: 0; padding: 14px 0 6px; text-align: center; color: #ffffff;}
+.shushe-item.selected p{ color: #ffcc00;}
+.shushe-item .pic-wrap{ width: 40px; height: 40px; margin: 0 auto; border: none; position: relative; overflow: hidden;}
+.shushe-item .pic-wrap-inner{ margin: -115px 0 0 -130px;  width: 300px; height: 300px; line-height: 300px; text-align: center;}
+.shushe-item .pic-wrap-inner img{height: 40px;}
 
 .sec-2 .note{ width: 100%; font-size: 12px; color: #898989; position: absolute; bottom: 10px; text-align: center;}
 .note .blue{color: #249bf3;}
 
+/* login */
 select,input:focus{-webkit-tap-highlight-color:rgba(0,0,0,0);  -webkit-user-modify:read-write-plaintext-only; }
 .loginBox{margin:15px;background-color:#fff;border-radius:3px;border:1px solid #e5e5e5;}
 .login_username{border-bottom:1px solid #e5e5e5;overflow:hidden;}
@@ -46,4 +65,10 @@ select,input:focus{-webkit-tap-highlight-color:rgba(0,0,0,0);  -webkit-user-modi
 .login_btn{margin:0 15px 15px;}
 .login_btn a{background-color:#249bf3;border:none;font-size:20px;color:#fff;border-radius:3px;display:block;height:40px; line-height: 40px; text-align: center; width:100%; text-decoration: none;}
 
+/* overlay pop */
+#overlay{ position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); text-align: center; display: none;}
+#pop-message{ width: 90%; background-color: #fff; border-radius: 8px; display: none; overflow: hidden; vertical-align: middle;}
+#pop-status{ width: 150px; height: 150px; position: relative; top: 50%; margin: -75px auto 0 ; background-color: rgba(0,0,0,0.7); border-radius: 5px; display: none;}
+#overlay b{ display: inline-block; height: 100%; vertical-align: middle;}
 
+.student-choose{ display: block; color: #000; font-size: 16px; text-decoration: none; text-align: left; padding: 20px; border-bottom: 1px solid #e3e3e3; overflow: hidden;}
