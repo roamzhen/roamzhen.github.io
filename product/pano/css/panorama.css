@@ -1,0 +1,47 @@
+html,body{ margin: 0;  height: 100%; font-family: "Helvetica"; background-color: #f2f2f2;}
+h2,p{margin: 0;}
+
+.wrap{height: 100%; overflow: hidden;}
+.sec{height: 100%; position: relative; transition:-webkit-transform 300ms ease-out,margin 300ms ease-out; -webkit-transition:-webkit-transform 300ms ease-out,margin 300ms ease-out;}
+.sec section{ position: relative;}
+
+.panorama-wrap{height: 70%; position: relative; overflow: hidden;}
+.normal_map-wrap{ position: absolute; left: 5px; bottom: 5px; width: 30%; padding-bottom: 30%; overflow: hidden;}
+.select-wrap{height: 30%; background-color: #d6d8dd;}
+
+#panorama {height: 110%; overflow: hidden;}
+#normal_map { position: absolute; left: 0; top: 0; width: 100%; height:120%;overflow: hidden;}
+
+.select-item{width: 25%; float: left; position: relative;}
+.cir-icon{ visibility: hidden; position: absolute; left: 50%; top: 6px; margin-left: -4px; width: 8px; height: 8px; border-radius: 50%; background-color: #ffcc00;}
+.select-item.selected .cir-icon{ visibility: visible;}
+.select-item p{ letter-spacing:0.5px; font-size: 12px; margin: 0; padding: 20px 0 6px; text-align: center; color: #888888;}
+.select-item.selected p{ color: #ffcc00;}
+.pic-wrap{ width: 60px; height: 45px; margin: 0 auto; border: 2px solid #fff; border-radius: 2px; position: relative; overflow: hidden;}
+.pic-wrap-inner{ margin: -110px 0 0 -120px;  width: 300px; height: 300px; line-height: 300px; text-align: center;}
+.pic-wrap-inner img{width: 60px;}
+
+.sec-1 .scorll-hint{position: absolute; left: 50%; width: 30px; margin-left: -15px; bottom: 5px; border: none;}
+.sec-2 .scorll-hint{position: absolute; left: 50%; width: 30px; margin-left: -15px; top: 5px; border: none;}
+
+.sec-1{}
+.sec-2{}
+
+/* login */
+.sec-2 .text-title{font-size:18px;color:#434343;padding-top:50px;text-align:center;}
+.sec-2 .text-hint{font-size:12px;color:#aaaaaa;text-align:center;margin-top:6px;}
+.sec-2 .note{ width: 100%; font-size: 12px; color: #898989; position: absolute; bottom: 10px; text-align: center;}
+.note .blue{color: #249bf3;}
+
+select,input:focus{-webkit-tap-highlight-color:rgba(0,0,0,0);  -webkit-user-modify:read-write-plaintext-only; }
+.loginBox{margin:15px;background-color:#fff;border-radius:3px;border:1px solid #e5e5e5;}
+.login_username,.login_schoolNumber{border-bottom:1px solid #e5e5e5;overflow:hidden;}
+.loginBox label{float:left;font-size:15px;color:#535353;margin-left:15px;width:67px;height:39px;line-height:39px;display:block;}
+.input_div{margin-left:85px;height:39px;}
+.input_div input{font-size:15px;width:100%;height:100%;border:none;outline:none;-webkit-box-shadow: 0 0 0px 1000px white inset;margin:0px;padding:0px;-webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;}
+.login_usertype .input_div:after{content:'';display:block;position:absolute;right:10px;top:16px;background:url(../images/arrow_down.png) no-repeat 0 0;background-size:11px 7px;width:11px;height:7px;}
+.login_btn{margin:0 15px 15px;}
+.login_btn a{background-color:#249bf3;border:none;font-size:20px;color:#fff;border-radius:3px;display:block;height:40px; line-height: 40px; text-align: center; width:100%; text-decoration: none;}
+
+
