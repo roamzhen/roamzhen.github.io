@@ -37,13 +37,13 @@ function showPop(type){
         case 2:
             overlay.style.display = "block";
             popMessage.style.display = "none";
-            popStatus.style.display = "block";
+            popStatus.style.display = "inline-block";
             break;
         default:
             break;
     }
 
-    document.body.addEventListener('touchmove', removePre, false);
+    document.getElementsByClassName("wrap")[0].addEventListener('touchmove', removePre, false);
 
 }
 
@@ -70,11 +70,28 @@ function hidePop(type){
             break;
     }
 
-    document.body.removeEventListener('touchmove', removePre, false);
+    document.getElementsByClassName("wrap")[0].removeEventListener('touchmove', removePre, false);
 
 }
 
 /* end show and hide */
+
+/* ajax */
+function ajaxLoadingInfo(url,fun){
+    var xmlhttp = new XMLHttpRequest();
+    
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            fun(xmlhttp.responseText)
+        }
+    }
+
+    xmlhttp.open("GET",url,true);
+    xmlhttp.send();
+
+}
 
 
 //初始化全景及地图方法
@@ -258,32 +275,83 @@ function initOnePage(){
 
 /* search */
 function initSearch(){
+	var searchInput = document.getElementById("login_user");
 	var searchBtn = document.getElementById('login_submit');
 
 	searchBtn.onclick = function(){
-		showPop(1);
+		if(searchInput.value===""){
+			alert("请输入姓名!");
+			return;
+		}
+
+
+		ajaxLoadingInfo("js/info.json?name="+searchInput.value,searchSuccess);
+		showPop(2);
 	}
 
-	var studentChoose = document.getElementsByClassName("student-choose");
+	function searchSuccess(text){
+		var resJson = JSON.parse(text);
+		hidePop(2);
 
-	for (var i = studentChoose.length - 1; i >= 0; i--) {
-		studentChoose[i].onclick = function(){
-			var searchWrap = document.getElementsByClassName("search-wrap")[0];
-			var searchDetail = document.getElementsByClassName("search-detail")[0];
-
-			searchWrap.style['display'] = "none";
-			searchDetail.style['display'] = "block";
-			
-			initShushe();
-
-			hidePop(1);
+		if(resJson.length===0){
+			alert("找不到此用户.");
+			return;
 		}
-	};
 
+		var  popMessage = document.getElementById("pop-message");
+
+		document.documentElement.removeEventListener("touchmove",removePre, false);
+
+		popMessage.innerHTML = "";
+		for(var i =0; i< resJson.length;i++){
+			popMessage.innerHTML += "<a class='student-choose' href='javascript:;'><span class='fl'>"+resJson[i].name+"</span><span class='fr'>"+resJson[i].major+"</span></a>"; 
+		}
+
+		var studentChoose = document.getElementsByClassName("student-choose");
+
+		for (var i = 0; i < studentChoose.length; i++) {
+			studentChoose[i].num= i;
+
+			studentChoose[i].onclick = function(){
+				initShushe(resJson,this.num);
+
+				document.documentElement.addEventListener("touchmove",removePre, false);
+
+				hidePop(1);
+			}
+		};
+
+		showPop(1);
+
+
+	}
 
 }
 
-function initShushe(){
+function initShushe(json,num){
+	var searchWrap = document.getElementsByClassName("search-wrap")[0];
+	var searchDetail = document.getElementsByClassName("search-detail")[0];
+
+	searchWrap.style['display'] = "none";
+	searchDetail.style['display'] = "block";
+
+	var infoName = document.getElementById("info-name"),
+	    infoNumber = document.getElementById("info-number"),
+		infoShushe = document.getElementById("info-shushe"),
+		infoMember = document.getElementById("info-member"),
+	    infoType = document.getElementById("info-type");
+	
+	var roomie = "";
+	for(var i=0; i<json[num].roomie.length;i++){
+		roomie+=" "+json[num].roomie[i].name;
+	}
+
+    infoName.innerHTML = json[num].name;
+	infoNumber.innerHTML = json[num].studentid;
+	infoShushe.innerHTML = json[num].area+json[num].building+"栋"+json[num].roomnumber;
+	infoMember.innerHTML = roomie;
+	infoType.innerHTML = json[num].roomsize+"人间";
+
 	//宿舍按钮监听事件
 	var shusheItem = document.getElementsByClassName("shushe-item");
 

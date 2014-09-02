@@ -71,7 +71,7 @@
 			<img class="text-img" src="images/text-img.png" />
 			<div class="loginBox">
 		        <div class="login_username">
-		            <label for="">姓名</label>
+		            <label for="login_user">姓名</label>
 		            <div class="input_div"><input type="text" placeholder="请输入姓名" name="user" id="login_user"></div>
 		        </div>
 		    </div>
@@ -80,10 +80,10 @@
 		</div>
 		<div class="search-detail">
 			<div class="info-wrap">
-				<p>柯震东 (201401020304)</p>
-				<h2>五山9栋224</h2>
-				<p><span class="grey">室友: </span> 九把刀 柯景腾 沈佳宜</p>
-				<p><span class="grey">房型: </span> 4人间</p>
+				<p><span id="info-name"></span> (<span id="info-number"></span>)</p>
+				<h2 id="info-shushe"></h2>
+				<p><span class="grey">室友:</span><span id="info-member"></span></p>
+				<p><span class="grey">房型:</span><span id="info-type"></span></p>
 			</div>
 			<div class="shushe-wrap">
 				<div id="shushe"></div>
@@ -146,12 +146,9 @@
 
 <div id="overlay">
 	<div id="pop-message">
-	    <a class="student-choose" href="javascript:;"><span class="fl">陆仁甲</span><span class="fr">经济管理</span></a>
-		<a class="student-choose" href="javascript:;"><span class="fl">陆仁甲</span><span class="fr">软件工程</span></a>
-		<a class="student-choose" href="javascript:;"><span class="fl">陆仁甲</span><span class="fr">艺术设计</span></a>
 	</div><b></b>
 	<div id="pop-status">
-	    
+	    <p>正在载入...</p>
 	</div>
 </div>
 
@@ -161,7 +158,7 @@
 <script type="text/javascript" src="js/panorama.js"></script>
 <script type="text/javascript">
 //防止屏幕拖动
-document.documentElement.addEventListener('touchmove', function (e) { e.preventDefault(); });
+document.documentElement.addEventListener('touchmove', removePre);
 
 
 document.addEventListener('DOMContentLoaded', function () {

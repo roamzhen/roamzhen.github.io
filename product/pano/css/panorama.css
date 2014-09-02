@@ -26,19 +26,17 @@ h2,p{margin: 0;}
 .sec-1 .scorll-hint{position: absolute; left: 50%; width: 30px; margin-left: -15px; bottom: 5px; border: none;}
 .sec-2 .scorll-hint{position: absolute; left: 50%; width: 30px; margin-left: -15px; top: 5px; border: none;}
 
-.sec-1{}
-.sec-2{}
-
 .search-wrap{ padding-top:50px; text-align: center;}
 .search-wrap .text-img{ width: 80%;}
 
 .search-detail{ display: none; height: 80%; padding-top:50px;}
 .info-wrap{ padding: 15px 20px; margin:0 15px 15px;background-color:#fff; border:1px solid #e5e5e5;}
 .info-wrap p{ line-height: 150%; font-size: 14px; color: #555555;}
-.info-wrap p .grey{color: #b3b6b6;}
-.info-wrap h2{ padding: 5px 0; font-size: 36px; font-weight: normal; color: #474b4d;}
+.info-wrap p .grey{color: #b3b6b6; display: inline-block; width: 20%; vertical-align: top;}
+#info-member,#info-type{ display: inline-block; width: 80%;}
+.info-wrap h2{ padding: 5px 0; font-size: 25px; font-weight: bold; color: #474b4d;}
 
-.shushe-wrap{ height: 60%; max-height: 280px; margin: 0 15px; background-color:#fff; position: relative;}
+.shushe-wrap{ height: 55%; max-height: 280px; margin: 0 15px; background-color:#fff; position: relative;}
 #shushe{ width: 100%; height: 100%;}
 .shushe-select{width: 100%; position: absolute; bottom: 0; left: 0; height: 80px; background-color: rgba(0,0,0,0.6);}
 .shushe-item{position: relative; float: left; width: 20%;}
@@ -67,8 +65,9 @@ select,input:focus{-webkit-tap-highlight-color:rgba(0,0,0,0);  -webkit-user-modi
 
 /* overlay pop */
 #overlay{ position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); text-align: center; display: none;}
-#pop-message{ width: 90%; background-color: #fff; border-radius: 8px; display: none; overflow: hidden; vertical-align: middle;}
-#pop-status{ width: 150px; height: 150px; position: relative; top: 50%; margin: -75px auto 0 ; background-color: rgba(0,0,0,0.7); border-radius: 5px; display: none;}
+#pop-message{ width: 90%; max-height: 80%; background-color: #fff; border-radius: 8px; display: none; vertical-align: middle; overflow: scroll;}
+#pop-status{ width: 150px; height: 150px; line-height: 150px; text-align: center; background-color: rgba(0,0,0,0.7); border-radius: 5px; display: none;}
 #overlay b{ display: inline-block; height: 100%; vertical-align: middle;}
 
 .student-choose{ display: block; color: #000; font-size: 16px; text-decoration: none; text-align: left; padding: 20px; border-bottom: 1px solid #e3e3e3; overflow: hidden;}
+#pop-status p{ font-size: 20px; color: #fff;}
