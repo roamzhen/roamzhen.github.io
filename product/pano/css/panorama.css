@@ -5,7 +5,7 @@ h2,p{margin: 0;}
 
 .wrap{height: 100%; overflow: hidden;}
 .sec{height: 100%; position: relative; transition:-webkit-transform 300ms ease-out,margin 300ms ease-out; -webkit-transition:-webkit-transform 300ms ease-out,margin 300ms ease-out;}
-.sec section{ position: relative;}
+.sec section{ position: relative; overflow: hidden;}
 
 .panorama-wrap{height: 70%; position: relative; overflow: hidden;}
 .normal_map-wrap{ position: absolute; left: 5px; bottom: 5px; width: 30%; padding-bottom: 30%; overflow: hidden;}
@@ -32,7 +32,8 @@ h2,p{margin: 0;}
 .search-wrap{ padding-top:50px; text-align: center;}
 .search-wrap .text-img{ width: 80%;}
 
-.search-detail{ display: none; padding-top:50px;}
+.search-detail{ display: none; height: 80%; overflow-x: hidden; margin-top:50px;}
+.search-detail-inner{ overflow: scroll;}
 .info-wrap{ padding: 15px 20px; margin:0 15px 15px;background-color:#fff; border:1px solid #e5e5e5;}
 .info-wrap p{ line-height: 150%; font-size: 14px; color: #555555;}
 .info-wrap p .grey{color: #b3b6b6;}
