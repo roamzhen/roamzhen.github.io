@@ -110,8 +110,8 @@ var touchEvent = (function(){
 	function onMove(e){
 		disY = e.pageY-oe.pageY;
 		//console.log(disY);
-		//wrap.style["marginTop"] = (-wrapHeight*page+disY)+"px";
-		setWebkitCSS3(wrap,"transform","translateY("+disY+"px)");
+		wrap.style["marginTop"] = (-wrapHeight*page+disY)+"px";
+		//setWebkitCSS3(wrap,"transform","translateY("+(-wrapHeight*page+disY)+"px)");
 	}
 	function onEnd(e){
 		if(disY>50){
@@ -125,7 +125,6 @@ var touchEvent = (function(){
 	}
 
 	function setPage(){
-		setWebkitCSS3(wrap,"transform","translateY(0px)");
 		wrap.style["marginTop"] = (-wrapHeight*page)+"px";
 		//setWebkitCSS3(wrap,"transform","translateY("+(-wrapHeight*page)+"px)");
 	}
