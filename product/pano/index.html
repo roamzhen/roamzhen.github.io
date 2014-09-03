@@ -6,13 +6,15 @@
   <title>微信全景游华农</title>
   <link href="css/panorama.css" type="text/css" rel="stylesheet" />
   <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=HbZoaz5dRQ0QoPPMcBavn7ei"></script>
+  <script id="threeJs" src=""></script>
+  <script id="render" src=""></script>
 </head>
 
 <body>
 
 <div class="wrap">
 <div class="sec">
-	<section class="sec-1">
+	<section class="sec-item sec-1">
 		<div class="panorama-wrap">
 			<div id="panorama"></div>
 			
@@ -65,7 +67,7 @@
 
 		</div>
 	</section>
-	<section class="sec-2 sec-touchable">
+	<section class="sec-item sec-2 sec-touchable">
 		<img class="scorll-hint" src="images/icon-top.png"></img>
 		<div class="search-wrap">
 			<img class="text-img" src="images/text-img.png" />
@@ -84,23 +86,17 @@
 				<h2 id="info-shushe"></h2>
 				<p><span class="grey">室友:</span><span id="info-member"></span></p>
 				<p><span class="grey">房型:</span><span id="info-type"></span></p>
+				<a href="javasript:;" id="login_out_btn">返回</a>
 			</div>
 			<div class="shushe-wrap">
-				<div id="shushe"></div>
+				<div id="shushe">
+					
+				</div>
 				<div class="shushe-select">
 
-					<div class="shushe-item selected">
-						<span class="cir-icon"></span>
-						<p>五山4人房</p>
-						<div class="pic-wrap">
-							<div class="pic-wrap-inner">
-								<img src="images/shushe.jpg" />
-							</div>
-						</div>
-					</div>
 					<div class="shushe-item">
 						<span class="cir-icon"></span>
-						<p>华山6人房</p>
+						<p>五山4人房</p>
 						<div class="pic-wrap">
 							<div class="pic-wrap-inner">
 								<img src="images/shushe.jpg" />
@@ -134,6 +130,15 @@
 							</div>
 						</div>
 					</div>
+					<div class="shushe-item">
+						<span class="cir-icon"></span>
+						<p>启林6人房</p>
+						<div class="pic-wrap">
+							<div class="pic-wrap-inner">
+								<img src="images/shushe.jpg" />
+							</div>
+						</div>
+					</div>
 
 				</div>
 			</div>
@@ -142,6 +147,7 @@
 	</section>
 
 </div>
+
 </div>
 
 <div id="overlay">
@@ -165,6 +171,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	document.documentElement.style.height = window.innerHeight + 'px';
 });
+
 
 initPanorama();
 initOnePage();
