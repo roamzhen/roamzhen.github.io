@@ -1,4 +1,4 @@
-html,body{ margin: 0; height: 100%; font-family: "Helvetica"; background-color: #031646;}
+html,body{ margin: 0; height: 100%; font-family: "Helvetica";  background: url("../images/game1-bg.jpg") repeat-y; background-size: 100%;}
 p,h2{ margin: 0;}
 
 body>section{ height: 100%; overflow: hidden; position: relative;}
@@ -48,4 +48,12 @@ body>section{ height: 100%; overflow: hidden; position: relative;}
 
 #gameTimer{position: fixed; right: 5%; top: 3%; font-size: 30px; color: #fff; font-family: "DS-Digital"; display: none;}
 
-.aside{display: none;}
+#overlayGame1{display: none; width: 100%; height: 100%; position: fixed; left: 0; top: 0; background-color: rgba(255,255,255,0.8); text-align: center; }
+#overlayGame1 .popMessage{ display: inline-block; width: 90%; background-color: #031646; border-radius: 5px; vertical-align: middle; overflow: hidden;}
+#overlayGame1 .message-text{ color: #fff; font-size: 20px; padding: 20px 10px;}
+#game1TimeText{ color: #031646; font-size: 22px; padding: 2px 4px; margin: 0 5px; background-color: #fff; font-family: "DS-Digital";}
+#overlayGame1 .dev-line{ height: 1px; background: #324269;}
+#overlayGame1 .next-btn{ display: block; margin: 20px; padding: 10px 0; background: #fff; text-decoration: none; color: #031646; } 
+#overlayGame1 b{ display: inline-block; height: 100%; vertical-align: middle;}
+
+

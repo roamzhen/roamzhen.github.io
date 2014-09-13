@@ -21,6 +21,8 @@ var game2 = document.getElementById("game2");
 var game3 = document.getElementById("game3");
 var gameTimer = document.getElementById("gameTimer");
 
+var overlayGame1 = document.getElementById("overlayGame1");
+
 var gameTime = 0;
 
 /* mini touchEvent by Roam */
@@ -324,7 +326,6 @@ var fnGame1 = (function(){
 			},500);
 			
 			faceSrc.push(num);
-			console.log(faceSrc);
 			
 			if(faceSrc.length!=12){
 				var newNum = getNewNumber();
@@ -377,10 +378,26 @@ var fnGame1 = (function(){
 			game1Time++;
 			gameTimer.innerText = game1Time;
 		},1000);
+		
 	}
 	
 	function finishGame(){
 		clearInterval(game1Timer);
+		
+		gameTimer.style['display']=null;
+		
+		gameTime+=game1Time;
+		
+		document.getElementById("game1TimeText").innerHTML = game1Time;
+		
+		overlayGame1.style['display']= "block";
+		
+		var nextBtn = overlayGame1.getElementsByClassName("next-btn")[0];
+		nextBtn.onclick = function(){
+			overlayGame1.style['display']= null;
+			game1.style['display'] = "none";
+			game2.style['display'] = "block";
+		}
 		
 	}
 	
@@ -400,8 +417,23 @@ var fnGame1 = (function(){
 	
 }());
 
+/* fnGame2 */
+var fnGame2 = (function(){
+	
+
+	function initGame(){
+		
+	}
+	
+	return {
+		"init": initGame
+	}
+	
+}());
+
 window.onload = function(){
 	
+	//game1.style['display']="none";
 	game2.style['display']="none";
 	game3.style['display']="none";
 
