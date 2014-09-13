@@ -19,6 +19,7 @@ function removeClass(obj, cls) {
 var game1 = document.getElementById("game1");
 var game2 = document.getElementById("game2");
 var game3 = document.getElementById("game3");
+var gameTimer = document.getElementById("gameTimer");
 
 var gameTime = 0;
 
@@ -248,6 +249,8 @@ var touchEvent = (function(){
 /* fnGame1 */
 var fnGame1 = (function(){
 	var playing = false;
+	var game1Time = 0;
+	var game1Timer;
 	
 	var faceSrc= new Array();
 	
@@ -263,6 +266,8 @@ var fnGame1 = (function(){
 	
 	var sec2 = secItem[1];
 	var itemList = sec2.getElementsByClassName("choose-item");
+	
+	faceImg.src = "images/step1/mini/mini-face"+getNewNumber()+".jpg";
 
 	for (var i = secItem.length - 1; i >= 0; i--) {
 		secItem[i].style['width'] = wrapWidth+"px";
@@ -326,11 +331,11 @@ var fnGame1 = (function(){
 				
 				faceImg.src = "images/step1/mini/mini-face"+newNum+".jpg";
 			}else{
-				
+				finishGame();
 			}
 			
 		}else{
-			gameTime += 5;
+			game1Time += 5;
 		}
 	}
 	
@@ -365,6 +370,17 @@ var fnGame1 = (function(){
 	}
 	
 	function initGame(){
+		gameTimer.style["display"]="block";
+		
+		//game1Timer
+		game1Timer = setInterval(function(){
+			game1Time++;
+			gameTimer.innerText = game1Time;
+		},1000);
+	}
+	
+	function finishGame(){
+		clearInterval(game1Timer);
 		
 	}
 	

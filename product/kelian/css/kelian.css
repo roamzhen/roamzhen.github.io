@@ -46,4 +46,6 @@ body>section{ height: 100%; overflow: hidden; position: relative;}
 	100%{ opacity: 0;}
 }
 
+#gameTimer{position: fixed; right: 5%; top: 3%; font-size: 30px; color: #fff; font-family: "DS-Digital"; display: none;}
+
 .aside{display: none;}
