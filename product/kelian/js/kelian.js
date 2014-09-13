@@ -62,7 +62,7 @@ var touchEvent = (function(){
 		// 起始点，页面位置
 		startX = e.pageX;
 
-		setWebkitCSS3(picSlider,"transform","translateX("+(-wrapWidth*curPageX)+"px)");
+		//setWebkitCSS3(picSlider,"transform","translateX("+(-wrapWidth*curPageX)+"px)");
 	}
 	function onMoveX(e){
 		event.stopPropagation();
