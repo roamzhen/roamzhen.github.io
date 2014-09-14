@@ -123,8 +123,6 @@ var touchEvent = (function(){
 		if (newPage > imgList.length - 1) {
 			newPage = imgList.length - 1;
 		}
-		
-		console.log(newPage);
 
 		curPageX = newPage;
 		var newMargin = curPageX * (-wrapWidth);
@@ -336,7 +334,7 @@ var fnGame1 = (function(){
 			}
 			
 		}else{
-			game1Time += 5;
+			game1Time += 10;
 		}
 	}
 	
@@ -521,6 +519,8 @@ var fnGame2 = (function(){
 		
 		var nextBtn = overlayGame2.getElementsByClassName("next-btn")[0];
 		nextBtn.onclick = function(){
+			fnGame3.init();
+			
 			overlayGame2.style['display']= null;
 			game2.style['display'] = "none";
 			game3.style['display'] = "block";
@@ -535,14 +535,395 @@ var fnGame2 = (function(){
 
 // fnGame3
 var fnGame3 = (function(){
+	var itemTimeFlag = true;
+	
+	var game3Time = 0;
+	var game3Timer;
+	var itemTimer;
+	
+	var mario1 = document.getElementById("mario1"),
+		mario2 = document.getElementById("mario2"),
+		mario3 = document.getElementById("mario3"),
+		marioJump = document.getElementById("marioJump"),
+		itemQ1 = document.getElementById("item-q-block1"),
+		itemQ2 = document.getElementById("item-q-block2"),
+		itemQ3 = document.getElementById("item-q-block3"),
+		itemQN = document.getElementById("item-q-blockN"),
+		itemB = document.getElementById("item-brick"),
+		shroom = document.getElementById("shroom"),
+		marioBg = document.getElementById("mario-bg");
+	
+	var game3Title = document.getElementById("game3-title");
+	
+	var canvasWrap = game3.getElementsByClassName("canvas-wrap")[0];
+	var canvas = document.getElementById("mar-canvas");
+	
+	var wrapWidth = canvasWrap.offsetWidth;
+	var wrapHeight = canvasWrap.offsetHeight;
+	
+	canvas.width = wrapWidth;
+	canvas.height = wrapHeight;
+	
+	var context = canvas.getContext("2d");
+	
+	var Player = function(){
+		this.width = 48;
+		this.height = 48;
+		this.x = wrapWidth/2-this.width/2;
+		this.y = wrapHeight-this.height-23;
+		this.vX = 0;
+		this.vY = 0;
+		this.aX = 0;
+		this.aY = 0;
+		this.running = true;
+		this.step = 1;
+		this.jumpping = false;
+		this.goaled = false;
+	};
+	
+	var player = new Player();
+	
+	var Item = function(x,y,type){
+		this.x = x;
+		this.y = y;
+		this.vX = -12;
+		this.vY = 0;
+		this.aY = 0;
+		this.type = type;
+		this.flag = true;
+		this.step = 0;
+		
+		if(this.type==0){
+			this.width = 24;
+			this.height = 48;
+		}else if(this.type==1){
+			this.width = 48;
+			this.height = 48;
+			
+		}
+		
+	}
+	var itemTop = wrapHeight-player.height-23-100;
+	
+	var itemList = new Array();
+	
+	var Shroom = function(x,y){
+		this.x = x;
+		this.y = y;
+		this.width = 48;
+		this.height = 48;
+		this.vX = -3;
+		this.vY = -8;
+	}
+	var shroomList = new Array();
+	
+	var goalList = [];
+	
+	var goalSrc = [
+				"ERP沙盘大赛",
+				"“赢在广州”创业大赛",
+				"挑战杯",
+				"丁颖杯",
+				"ACM程序设计竞赛",
+				"空间信息技术大赛",
+				"大学生电子设计竞赛",
+				"大学生方程式汽车大赛",
+				"机械创新设计大赛",
+				"三维数字化设计大赛",
+				"数学建模竞赛", 
+				"“起航计划”",
+				"兽医技能大赛",
+				"生物化学实验技能大赛",
+				"桥梁设计大赛",
+				"电子商务营销大赛"		
+			];
+	
+	var bg = {
+		"x" : 0,
+		"y" : wrapHeight-198
+	}
+	
+	function getGoalNumber(){
+		var num = 0;
+		var flag=true;
+		
+		while(flag){
+			flag=false;
+			num = Math.floor(0+Math.random()*16);
+			
+			for(var i=0; i<goalList.length;i++){
+				if(num==goalList[i]){
+					flag=true;
+				}
+			}
+		}
+		
+		return num;
+	}
+	
+	function dataReNew(){
+		bg.x-=12;
+		if(bg.x<(wrapWidth-2800)){
+			bg.x=0;
+		}
+		
+		for(var i = 0; i<itemList.length;i++){
+			// watchless and pop
+			if(itemList[i].x<0-itemList[i].width*2){
+				itemList.splice(i,1);
+				i--;
+				continue;
+			}
+			
+			if(itemList[i].flag&&itemList[i].x+48<player.x){
+				itemList[i].flag = false;
+			}
+			
+			itemList[i].x += itemList[i].vX;
+			
+		}
+		
+		if(player.jumpping){
+			for(var i=0;i<itemList.length;i++){
+				if(itemList[i].flag&&player.x>=itemList[i].x&&player.y<itemTop+itemList[i].height){
+					player.vY = 0;
+					player.y = itemTop+itemList[i].height;
+					
+					if(itemList[i].type==1){
+						
+						var showNum =getGoalNumber();
+						goalList.push(showNum);
+						
+						if(goalList.length==16){
+							finishGame();
+						}
+						
+						shroomList.push(new Shroom(itemList[i].x,itemList[i].y));
+						
+						game3Title.innerText = goalSrc[showNum];
+							
+						player.goaled = true;
+						
+						var thatItem = itemList[i];
+						thatItem.timer = setInterval(function(){
+							thatItem.step++;
+							
+							if(thatItem.step==5)
+								clearInterval(thatItem.timer);
+						},33);
+						
+					}else if(itemList[i].type==0){
+						var thatItem = itemList[i];
+						
+						thatItem.vY=-10;
+						thatItem.aY=5;
+						thatItem.timer = setInterval(function(){
+							thatItem.y+=thatItem.vY;
+							thatItem.vY+=thatItem.aY;
+							
+							if(thatItem.y>=itemTop){
+								thatItem.y = itemTop;
+								thatItem.vY= 0;
+								thatItem.aY= 0;
+								clearInterval(thatItem.timer);
+							}
+						},33);
+					}
+				}else{
+					if(itemList[i].flag&&player.x+player.width>itemList[i].x&&player.y<itemTop+itemList[i].height){
+						player.x = itemList[i].x -player.width;
+						player.vX=-20;
+					}else
+						player.vX=0;
+				}
+				
+				
+			}
+			
+			player.vY+=player.aY;
+			player.y += player.vY;
+			
+			player.x += player.vX;
+			
+			if(player.y>=wrapHeight-player.height-23){
+				player.y = wrapHeight-player.height-23;
+				player.vY=0;
+				player.aY=0;
+				player.running = true;
+				player.jumpping = false;
+				
+				if(!player.goaled){
+					game3Time+=5;
+				}
+				player.goaled = false;
+			}
+			
+			
+		}
+		
+		for(var i = 0; i<shroomList.length;i++){		
+			if(shroomList[i].y+shroomList[i].height<=0){
+				shroomList.splice(i,1);
+				i--;
+				continue;
+			}
+			
+			shroomList[i].x+=shroomList[i].vX;
+			shroomList[i].y+=shroomList[i].vY;
+			
+		}
+		
+	}
+	
+	function animation(){
+		context.clearRect(0,0,wrapWidth,wrapHeight);
+		
+		// 1. draw bg
+		context.save();
+		context.translate(bg.x,bg.y);
+		context.drawImage(marioBg,0,0);
+		context.restore();
+		
+		// 2. draw player
+		context.save();
+		context.translate(player.x,player.y);
+		
+		// run
+		if(player.running){
+			if(player.x<=wrapWidth/2-player.width/2){
+				player.aX = 2;
+				player.vX+= player.aX;
+				player.x += player.vX;
+			}else{
+				player.vX =0;
+				player.x = wrapWidth/2-player.width/2;
+			}
+			
+			if(player.step>=0&&player.step<=3)
+				context.drawImage(mario1,0,0);
+			else if(player.step>3&&player.step<=6)
+				context.drawImage(mario2,0,0);
+			else if(player.step>9)
+				context.drawImage(mario3,0,0);
+	
+			if(++player.step===6){
+				player.step=1;
+			}
+		// jump
+		}else if(player.jumpping){
+			context.drawImage(marioJump,0,0);
+		}
+		context.restore();
+		
+		// 3. draw Shroom
+		for(var i = 0; i<shroomList.length;i++){		
+			context.save();
+			context.translate(shroomList[i].x,shroomList[i].y);
+			
+			context.drawImage(shroom,0,0);
+			
+			context.restore();
+		}
+		
+		// 4. draw item
+		for(var i = 0; i<itemList.length;i++){
+			
+			context.save();
+			context.translate(itemList[i].x,itemList[i].y);
+			
+			if(itemList[i].type==0){
+				context.drawImage(itemB,0,0);
+				context.drawImage(itemB,itemList[i].width,0);
+			}else if(itemList[i].type==1){
+				if(itemList[i].step==0)
+					context.drawImage(itemQ1,0,0);
+				else if(itemList[i].step>=1&&itemList[i].step<=2)
+					context.drawImage(itemQ2,0,0);
+				else if(itemList[i].step>2&&itemList[i].step<=4)
+					context.drawImage(itemQ3,0,0);
+				else if(itemList[i].step>4)
+					context.drawImage(itemQN,0,0);
+			}
+			
+			context.restore();
+		}
+		
+		
+	}
+	
+	function fnItemTimer(){
+		if(itemTimeFlag){
+			var randomLength =Math.floor(1+Math.random()*2);
+			for(var i=0; i<randomLength;i++){
+				var randomType = Math.floor(Math.random()*2);
+			
+				itemList.push(new Item(wrapWidth+i*48,itemTop,randomType));
+			}
+			
+			var randomTime = Math.floor(1+Math.random()*4)*500;
+			setTimeout(fnItemTimer,randomTime);
+		}
+	}
+	
+	function initGame(){
+		gameTimer.style['display']= "block";
+		
+		game3Timer = setInterval(function(){
+			gameTimer.innerText = game3Time;
+		},33);
+		
+		animationTimer = setInterval(function(){
+			dataReNew();
+			animation();
+		},33);
+		
+		var randomTime = Math.floor(Math.random()*4)*500;
+		setTimeout(fnItemTimer,randomTime);
+		
+		canvasWrap.onclick  =function(){
+			if(!player.jumpping){
+				player.running = false;
+				player.jumpping = true;
+				player.vY = -55;
+				player.aY = 10;
+			}
+		}
+	}
+	
+	function finishGame(){
+		clearInterval(animationTimer);
+		clearInterval(game3Timer);
+		itemTimeFlag =false;
+		
+		gameTimer.style['display']=null;
+		
+		gameTime+=game3Time;
+		
+		document.getElementById("game3TimeText").innerHTML = game3Time;
+		document.getElementById("gameAllTimeText").innerHTML = gameTime;
+		
+		overlayGame3.style['display']= "block";
+		
+		var nextBtn = overlayGame3.getElementsByClassName("next-btn")[0];
+		nextBtn.onclick = function(){
+			
+			overlayGame3.style['display']= null;
+			game3.style['display'] = "none";
+		}
+	}
+	
+	return {
+		"init": initGame
+	}
 	
 }());
 
 window.onload = function(){
+	fnGame3.init();
 	
-	//game1.style['display']="none";
+	game1.style['display']="none";
 	game2.style['display']="none";
-	game3.style['display']="none";
+	//game3.style['display']="none";
 
 }
 

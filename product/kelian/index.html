@@ -37,8 +37,8 @@
 					<span class="face-question">我是什么带盐人?</span><b></b>
 				</div>
 				<div class="face-choose-wrap">
-					<a href="javascript:;" class="choose-item item1"><span>运营部</span><b></b></a>
-					<a href="javascript:;" class="choose-item item2"><span>市场部</span><b></b></a>
+					<a href="javascript:;" class="choose-item item1"><span>市场部</span><b></b></a>
+					<a href="javascript:;" class="choose-item item2"><span>运营部</span><b></b></a>
 					<a href="javascript:;" class="choose-item item3"><span>策划部</span><b></b></a>
 					<a href="javascript:;" class="choose-item item4"><span>财务部</span><b></b></a>
 					<a href="javascript:;" class="choose-item item5"><span>宣传部</span><b></b></a>
@@ -61,7 +61,12 @@
 		<p id="game2-title"></p>
 	</section>
 	
-	<section id="game3"></section>
+	<section id="game3">
+		<div class="canvas-wrap">
+			<canvas id="mar-canvas"></canvas>
+		</div><b></b>
+		<p id="game3-title">华农活动展示区域</p>
+	</section>
 	
 	<span id="gameTimer"></span>
 	
@@ -84,6 +89,34 @@
 			<a class="next-btn" href="javascript:;">点击进入下一关</a>
 			
 		</div><b></b>
+	</div>
+	
+	<div id="overlayGame3">
+		<div class="popMessage">
+			<p class="message-text">
+				本关卡用时<span id="game3TimeText"></span>秒
+			</p>
+			<p class="message-text">
+				全游戏用时<span id="gameAllTimeText"></span>秒
+			</p>
+			<div class="dev-line"></div>
+			<a class="next-btn" href="javascript:;">点击在线提交报名表</a>
+			
+		</div><b></b>
+	</div>
+	
+	<div class="aside">
+		<img id="mario1" src="images/step3/mario_small_run_right_01.png"/>
+		<img id="mario2" src="images/step3/mario_small_run_right_02.png"/>
+		<img id="mario3" src="images/step3/mario_small_run_right_03.png"/>
+		<img id="marioJump" src="images/step3/mario_small_jump_right.png" />
+		<img id="item-q-block1" src="images/step3/q-block_01.png" />
+		<img id="item-q-block2" src="images/step3/q-block_02.png" />
+		<img id="item-q-block3" src="images/step3/q-block_03.png" />
+		<img id="item-q-blockN" src="images/step3/q-block_inert.png" />
+		<img id="item-brick" src="images/step3/bg_brick_platform.jpg" />
+		<img id="shroom" src="images/step3/shroom_bigger.png" />
+		<img id="mario-bg" src="images/step3/game-bg.png"/>
 	</div>
 </body>
 
