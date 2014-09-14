@@ -46,6 +46,13 @@ body>section{ height: 100%; overflow: hidden; position: relative;}
 	100%{ opacity: 0;}
 }
 
+#game2{text-align: center; position: relative;}
+#game2 .different-wrap{ display: inline-block; width: 85%; border: 1px solid rgb(221,221,221); vertical-align: middle;}
+#game2 b{display: inline-block; height: 100%; vertical-align: middle;}
+.different-wrap .different-item{ display: inline-block; width: 50%; padding-bottom: 50%; position: relative;}
+.different-item img{position: absolute; left: 0; top: 0; width: 100%;}
+#game2-title{ position: absolute; top: 5%; padding: 4% 20%; width: 60%; text-align: center; background-color: #324269; color: #fff; font-size: 18px;}
+
 #gameTimer{position: fixed; right: 5%; top: 3%; font-size: 30px; color: #fff; font-family: "DS-Digital"; display: none;}
 
 #overlayGame1{display: none; width: 100%; height: 100%; position: fixed; left: 0; top: 0; background-color: rgba(255,255,255,0.8); text-align: center; }
@@ -55,5 +62,13 @@ body>section{ height: 100%; overflow: hidden; position: relative;}
 #overlayGame1 .dev-line{ height: 1px; background: #324269;}
 #overlayGame1 .next-btn{ display: block; margin: 20px; padding: 10px 0; background: #fff; text-decoration: none; color: #031646; } 
 #overlayGame1 b{ display: inline-block; height: 100%; vertical-align: middle;}
+
+#overlayGame2{display: none; width: 100%; height: 100%; position: fixed; left: 0; top: 0; background-color: rgba(255,255,255,0.8); text-align: center; }
+#overlayGame2 .popMessage{ display: inline-block; width: 90%; background-color: #031646; border-radius: 5px; vertical-align: middle; overflow: hidden;}
+#overlayGame2 .message-text{ color: #fff; font-size: 20px; padding: 20px 10px;}
+#game2TimeText{ color: #031646; font-size: 22px; padding: 2px 4px; margin: 0 5px; background-color: #fff; font-family: "DS-Digital";}
+#overlayGame2 .dev-line{ height: 1px; background: #324269;}
+#overlayGame2 .next-btn{ display: block; margin: 20px; padding: 10px 0; background: #fff; text-decoration: none; color: #031646; } 
+#overlayGame2 b{ display: inline-block; height: 100%; vertical-align: middle;}
 
 

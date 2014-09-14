@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, imum-scale=1.0;"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0"/>
   <title>科联</title>
 </head>
 <link href="css/fontface.css" type="text/css" rel="stylesheet" />
@@ -54,7 +54,12 @@
 		</div>
 	</section>
 	
-	<section id="game2"></section>
+	<section id="game2">
+		<div class="different-wrap">
+			<div class="different-item"><img class="different-img"  /></div><div class="different-item"><img class="different-img"  /></div><div class="different-item"><img class="different-img"  /></div><div class="different-item"><img class="different-img"  /></div>
+		</div><b></b>
+		<p id="game2-title"></p>
+	</section>
 	
 	<section id="game3"></section>
 	
@@ -63,7 +68,17 @@
 	<div id="overlayGame1">
 		<div class="popMessage">
 			<p class="message-text">
-				本关卡用时<span id="game1TimeText">123</span>秒
+				本关卡用时<span id="game1TimeText"></span>秒
+			</p>
+			<div class="dev-line"></div>
+			<a class="next-btn" href="javascript:;">点击进入下一关</a>
+			
+		</div><b></b>
+	</div>
+	<div id="overlayGame2">
+		<div class="popMessage">
+			<p class="message-text">
+				本关卡用时<span id="game2TimeText"></span>秒
 			</p>
 			<div class="dev-line"></div>
 			<a class="next-btn" href="javascript:;">点击进入下一关</a>

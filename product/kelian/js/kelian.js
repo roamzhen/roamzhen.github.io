@@ -352,7 +352,7 @@ var fnGame1 = (function(){
 	}
 	
 	function getNewNumber(){
-		var num = -1;
+		var num = 0;
 		var flag=true;
 		
 		while(flag){
@@ -394,6 +394,8 @@ var fnGame1 = (function(){
 		
 		var nextBtn = overlayGame1.getElementsByClassName("next-btn")[0];
 		nextBtn.onclick = function(){
+			fnGame2.init();
+			
 			overlayGame1.style['display']= null;
 			game1.style['display'] = "none";
 			game2.style['display'] = "block";
@@ -419,15 +421,120 @@ var fnGame1 = (function(){
 
 /* fnGame2 */
 var fnGame2 = (function(){
+	var game2Time=0;
+	var game2Timer;
 	
+	var differentImg = game2.getElementsByClassName("different-img");
+	var game2Title = document.getElementById("game2-title");	
+	
+	var nameList = ["8090粤商见面会",
+					"创龙电子创始人朱雅在介绍长距离RFID2",
+					"创新创业论坛",
+					"创新梦工厂答辩会",
+					"大学生科技创业墙",
+					"青年创业集市",
+					"省委副书记马兴瑞考察神农田园团队",
+					"挑战杯创青春创业大赛",
+					"在校生企业富维网络招聘实习生",
+					"自制方程式赛车"
+					];
+	
+	var srcList = [];
+	
+	for(var i=0;i<differentImg.length;i++){
+		differentImg[i].onclick = function(){
+			if(this.goal){
+				addImgToList();
+			}else{
+				game2Time+=5;
+			}
+		}
+	}
+	
+	function addImgToList(){
+		if(srcList.length!=10){
+			var randomImg = Math.floor(Math.random()*4);
+			
+			var randomList = getListNum();
+			
+			srcList.push(randomList);
+			
+			game2Title.innerText = nameList[randomList-1];
+			
+			for(var i=0;i<differentImg.length;i++){
+				if(randomImg===i){
+					differentImg[i].goal=true;
+					differentImg[i].src="images/step2/group"+randomList+"D.jpg";
+				}else{
+					differentImg[i].goal=false;
+					differentImg[i].src="images/step2/group"+randomList+".jpg";
+				}
+			}
+		}else{
+			finishGame();
+		}
+	}
+	
+	function getListNum(){
+		var num = 0;
+		var flag=true;
+		
+		while(flag){
+			flag=false;
+			num = Math.floor(1+Math.random()*10);
+			
+			for(var i=0; i<srcList.length;i++){
+				if(num==srcList[i]){
+					flag=true;
+				}
+			}
+		}
+		
+		return num;
+		
+	}
 
 	function initGame(){
+		addImgToList();
 		
+		gameTimer.innerText = "";
+		gameTimer.style["display"]="block";
+		
+		//game1Timer
+		game2Timer = setInterval(function(){
+			game2Time++;
+			gameTimer.innerText = game2Time;
+		},1000);
+		
+	}
+	
+	function finishGame(){
+		clearInterval(game2Timer);
+		
+		gameTimer.style['display']=null;
+		
+		gameTime+=game2Time;
+		
+		document.getElementById("game2TimeText").innerHTML = game2Time;
+		
+		overlayGame2.style['display']= "block";
+		
+		var nextBtn = overlayGame2.getElementsByClassName("next-btn")[0];
+		nextBtn.onclick = function(){
+			overlayGame2.style['display']= null;
+			game2.style['display'] = "none";
+			game3.style['display'] = "block";
+		}
 	}
 	
 	return {
 		"init": initGame
 	}
+	
+}());
+
+// fnGame3
+var fnGame3 = (function(){
 	
 }());
 
