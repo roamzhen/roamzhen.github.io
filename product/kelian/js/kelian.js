@@ -661,7 +661,7 @@ var fnGame3 = (function(){
 		this.width = 48;
 		this.height = 48;
 		this.vX = -3;
-		this.vY = -8;
+		this.vY = -12;
 	}
 	var shroomList = new Array();
 	
@@ -967,10 +967,11 @@ var fnGame3 = (function(){
 }());
 
 window.onload = function(){
+	fnGame3.init();
 	
-	//game1.style['display']="none";
+	game1.style['display']="none";
 	game2.style['display']="none";
-	game3.style['display']="none";
+	//game3.style['display']="none";
 
 }
 
