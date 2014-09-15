@@ -65,7 +65,7 @@ var touchEvent = (function(){
 		// 起始点，页面位置
 		startX = e.pageX;
 
-		//setWebkitCSS3(picSlider,"transform","translateX("+(-wrapWidth*curPageX)+"px)");
+		setWebkitCSS3(picSlider,"transform","translateX("+(-wrapWidth*curPageX)+"px)");
 	}
 	function onMoveX(e){
 		event.stopPropagation();
@@ -74,10 +74,28 @@ var touchEvent = (function(){
 			event.preventDefault();
 			return false;
 		}
-
+		
+		/*
 		if (scrollPrevent == false && e.pageX != startX) {
 			disX = e.pageX-startX;
 			setWebkitCSS3(picSlider,"transform","translateX("+(-wrapWidth*curPageX+disX)+"px)");
+		}
+		*/
+		
+		if (scrollPrevent == false) {
+			// 抬起点，页面位置
+			endX = e.pageX;
+			
+			// swip 事件默认大于10px才会触发，小于这个就将页面归回
+			if (Math.abs(endX - startX) <= 10) {
+				animatePageX(curPageX);
+			} else {
+				if (endX > startX) {
+					prevPageX();
+				} else {
+					nextPageX();
+				}
+			}
 		}
 	}
 	function onEndX(e){
@@ -89,7 +107,7 @@ var touchEvent = (function(){
 		}
 
 		touchDown = false;
-
+		/*
 		if (scrollPrevent == false) {
 			// 抬起点，页面位置
 			endX = e.pageX;
@@ -105,6 +123,7 @@ var touchEvent = (function(){
 				}
 			}
 		}
+		*/
 
 	}
 
@@ -159,10 +178,27 @@ var touchEvent = (function(){
 			event.preventDefault();
 			return false;
 		}
-
+		/*
 		if (scrollPrevent == false && e.pageY != startY) {
 			disY = e.pageY-startY;
 			setWebkitCSS3(wrap,"transform","translateY("+(-wrapHeight*curPageY+disY)+"px)");
+		}
+		*/
+		
+		if (scrollPrevent == false) {
+			// 抬起点，页面位置
+			endY = e.pageY;
+			
+			// swip 事件默认大于10px才会触发，小于这个就将页面归回
+			if (Math.abs(endY - startY) <= 10) {
+				animatePageY(curPageY);
+			} else {
+				if (endY > startY) {
+					prevPageY();
+				} else {
+					nextPageY();
+				}
+			}
 		}
 	}
 	function onEndY(e){
@@ -174,7 +210,8 @@ var touchEvent = (function(){
 		}
 
 		touchDown = false;
-
+	
+		/*
 		if (scrollPrevent == false) {
 			// 抬起点，页面位置
 			endY = e.pageY;
@@ -190,6 +227,7 @@ var touchEvent = (function(){
 				}
 			}
 		}
+		*/
 
 	}
 
@@ -881,14 +919,14 @@ var fnGame3 = (function(){
 		var randomTime = Math.floor(Math.random()*4)*500;
 		setTimeout(fnItemTimer,randomTime);
 		
-		canvasWrap.onclick  =function(){
+		canvasWrap.addEventListener("touchstart",function(){
 			if(!player.jumpping){
 				player.running = false;
 				player.jumpping = true;
 				player.vY = -55;
 				player.aY = 10;
 			}
-		}
+		});
 	}
 	
 	function finishGame(){
@@ -920,10 +958,11 @@ var fnGame3 = (function(){
 }());
 
 window.onload = function(){
+	fnGame3.init();
 	
-	//game1.style['display']="none";
+	game1.style['display']="none";
 	game2.style['display']="none";
-	game3.style['display']="none";
+	//game3.style['display']="none";
 
 }
 

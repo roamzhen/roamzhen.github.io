@@ -119,6 +119,15 @@
 		<img id="mario-bg" src="images/step3/game-bg.png"/>
 	</div>
 </body>
+<script>
+/* removePre() */
+function removePre(e) { 
+	e.preventDefault(); 
+}
+
+//防止屏幕拖动
+document.documentElement.addEventListener('touchmove', removePre);
+</script>
 
 <script type="text/javascript" src="js/kelian.js"></script>
 

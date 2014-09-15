@@ -8,13 +8,13 @@ body>section{ height: 100%; overflow: hidden; position: relative;}
 .sec1 #pic-slider{ max-height: 90%; overflow: hidden; transition:-webkit-transform 300ms ease-out,margin 300ms ease-out; -webkit-transition:-webkit-transform 300ms ease-out,margin 300ms ease-out;}
 .sec1 #pic-slider img{ float: left;}
 .scorll-hint{cursor: pointer;}
-.sec1 .scorll-hint{position: absolute; left: 50%; width: 30px; margin-left: -15px; bottom: 30px; border: none;
+.sec1 .scorll-hint{position: absolute; left: 50%; width: 30px; margin-left: -15px; top:90%; border: none;
 -webkit-animation: hintAnimationBottom .5s ease-in-out infinite;}
-.sec1 .scorll-hint-words{ position: absolute; left: 50%; text-align: center; width: 300px; margin-left: -150px; bottom: 12px; font-size: 16px; color: #fff;}
+.sec1 .scorll-hint-words{ position: absolute; left: 50%; text-align: center; width: 300px; margin-left: -150px; top: 95%; font-size: 16px; color: #fff;}
 
 @-webkit-keyframes hintAnimationBottom{
-	0%{bottom: 30px; opacity: 1;}
-	100%{bottom: 45px; opacity: 0;}
+	0%{top:90%; opacity: 1;}
+	100%{top: 88%; opacity: 0;}
 }
 
 .sec2 .face-wrap{ padding-top: 6%; height: 30%; text-align: center;}
