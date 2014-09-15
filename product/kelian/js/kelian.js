@@ -535,6 +535,7 @@ var fnGame2 = (function(){
 
 // fnGame3
 var fnGame3 = (function(){
+	var speed = 50;
 	var itemTimeFlag = true;
 	
 	var game3Time = 0;
@@ -870,12 +871,12 @@ var fnGame3 = (function(){
 		
 		game3Timer = setInterval(function(){
 			gameTimer.innerText = game3Time;
-		},33);
+		},speed);
 		
 		animationTimer = setInterval(function(){
 			dataReNew();
 			animation();
-		},33);
+		},speed);
 		
 		var randomTime = Math.floor(Math.random()*4)*500;
 		setTimeout(fnItemTimer,randomTime);

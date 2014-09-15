@@ -54,9 +54,8 @@ body>section{ height: 100%; overflow: hidden; position: relative;}
 #game2-title{ position: absolute; top: 5%; padding: 4% 20%; width: 60%; text-align: center; background-color: #324269; color: #fff; font-size: 18px;}
 
 #game3{ text-align: center;}
-#game3 .canvas-wrap{ display: inline-block; width: 100%; padding-bottom: 100%; vertical-align: middle; background-color: rgb(58, 188, 254); position: relative;}
-#mar-canvas{ width: 100%; height: 100%;}
-#game3 b{display: inline-block; height: 100%; vertical-align: middle;}
+#game3 .canvas-wrap{ height: 90%; background-color: rgb(58, 188, 254); position: relative;}
+#mar-canvas{display: block;}
 #game3-title{ position: absolute; top: 5%; padding: 4% 20%; width: 60%; text-align: center; background-color: #324269; color: #fff; font-size: 18px;}
 
 #gameTimer{position: fixed; right: 5%; top: 3%; font-size: 30px; color: #fff; font-family: "DS-Digital"; display: none;}
