@@ -582,7 +582,7 @@ var fnGame2 = (function(){
 
 // fnGame3
 var fnGame3 = (function(){
-	var speed = 40;
+	var speed = 50;
 	var itemTimeFlag = true;
 	
 	var game3Time = 0;
@@ -967,11 +967,10 @@ var fnGame3 = (function(){
 }());
 
 window.onload = function(){
-	fnGame3.init();
 	
-	game1.style['display']="none";
+	//game1.style['display']="none";
 	game2.style['display']="none";
-	//game3.style['display']="none";
+	game3.style['display']="none";
 
 }
 
