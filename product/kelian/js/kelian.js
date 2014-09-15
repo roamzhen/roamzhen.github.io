@@ -535,7 +535,7 @@ var fnGame2 = (function(){
 
 // fnGame3
 var fnGame3 = (function(){
-	var speed = 50;
+	var speed = 60;
 	var itemTimeFlag = true;
 	
 	var game3Time = 0;
@@ -587,7 +587,7 @@ var fnGame3 = (function(){
 	var Item = function(x,y,type){
 		this.x = x;
 		this.y = y;
-		this.vX = -12;
+		this.vX = -20;
 		this.vY = 0;
 		this.aY = 0;
 		this.type = type;
@@ -663,7 +663,7 @@ var fnGame3 = (function(){
 	}
 	
 	function dataReNew(){
-		bg.x-=12;
+		bg.x-=20;
 		if(bg.x<(wrapWidth-2800)){
 			bg.x=0;
 		}
@@ -861,7 +861,7 @@ var fnGame3 = (function(){
 				itemList.push(new Item(wrapWidth+i*48,itemTop,randomType));
 			}
 			
-			var randomTime = Math.floor(1+Math.random()*4)*500;
+			var randomTime = Math.floor(1.5+Math.random()*3)*500;
 			setTimeout(fnItemTimer,randomTime);
 		}
 	}
