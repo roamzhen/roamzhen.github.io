@@ -27,6 +27,8 @@ var gameTime = 0;
 
 /* mini touchEvent by Roam */
 var touchEvent = (function(){
+	var userAgentInfo = navigator.userAgent;
+	
 	var startX = 0,
 		startY = 0;
 	var curPageX=0,
@@ -75,28 +77,30 @@ var touchEvent = (function(){
 			return false;
 		}
 		
-		/*
-		if (scrollPrevent == false && e.pageX != startX) {
-			disX = e.pageX-startX;
-			setWebkitCSS3(picSlider,"transform","translateX("+(-wrapWidth*curPageX+disX)+"px)");
-		}
-		*/
-		
-		if (scrollPrevent == false) {
-			// 抬起点，页面位置
-			endX = e.pageX;
-			
-			// swip 事件默认大于10px才会触发，小于这个就将页面归回
-			if (Math.abs(endX - startX) <= 10) {
-				animatePageX(curPageX);
-			} else {
-				if (endX > startX) {
-					prevPageX();
+		if(userAgentInfo.indexOf("iPhone") > 0){
+			if (scrollPrevent == false && e.pageX != startX) {
+				disX = e.pageX-startX;
+				setWebkitCSS3(picSlider,"transform","translateX("+(-wrapWidth*curPageX+disX)+"px)");
+			}
+		}else{
+			if (scrollPrevent == false) {
+				// 抬起点，页面位置
+				endX = e.pageX;
+				
+				// swip 事件默认大于10px才会触发，小于这个就将页面归回
+				if (Math.abs(endX - startX) <= 10) {
+					animatePageX(curPageX);
 				} else {
-					nextPageX();
+					if (endX > startX) {
+						prevPageX();
+					} else {
+						nextPageX();
+					}
 				}
 			}
+			
 		}
+		
 	}
 	function onEndX(e){
 		event.stopPropagation();
@@ -107,23 +111,25 @@ var touchEvent = (function(){
 		}
 
 		touchDown = false;
-		/*
-		if (scrollPrevent == false) {
-			// 抬起点，页面位置
-			endX = e.pageX;
+		
+		if(userAgentInfo.indexOf("iPhone") > 0){
 			
-			// swip 事件默认大于50px才会触发，小于这个就将页面归回
-			if (Math.abs(endX - startX) <= 50) {
-				animatePageX(curPageX);
-			} else {
-				if (endX > startX) {
-					prevPageX();
+			if (scrollPrevent == false) {
+				// 抬起点，页面位置
+				endX = e.pageX;
+				
+				// swip 事件默认大于50px才会触发，小于这个就将页面归回
+				if (Math.abs(endX - startX) <= 50) {
+					animatePageX(curPageX);
 				} else {
-					nextPageX();
+					if (endX > startX) {
+						prevPageX();
+					} else {
+						nextPageX();
+					}
 				}
 			}
 		}
-		*/
 
 	}
 
@@ -178,28 +184,31 @@ var touchEvent = (function(){
 			event.preventDefault();
 			return false;
 		}
-		/*
-		if (scrollPrevent == false && e.pageY != startY) {
-			disY = e.pageY-startY;
-			setWebkitCSS3(wrap,"transform","translateY("+(-wrapHeight*curPageY+disY)+"px)");
-		}
-		*/
 		
-		if (scrollPrevent == false) {
-			// 抬起点，页面位置
-			endY = e.pageY;
-			
-			// swip 事件默认大于10px才会触发，小于这个就将页面归回
-			if (Math.abs(endY - startY) <= 10) {
-				animatePageY(curPageY);
-			} else {
-				if (endY > startY) {
-					prevPageY();
+		if(userAgentInfo.indexOf("iPhone") > 0){
+			if (scrollPrevent == false && e.pageY != startY) {
+				disY = e.pageY-startY;
+				setWebkitCSS3(wrap,"transform","translateY("+(-wrapHeight*curPageY+disY)+"px)");
+			}
+		}else{
+			if (scrollPrevent == false) {
+				// 抬起点，页面位置
+				endY = e.pageY;
+				
+				// swip 事件默认大于10px才会触发，小于这个就将页面归回
+				if (Math.abs(endY - startY) <= 10) {
+					animatePageY(curPageY);
 				} else {
-					nextPageY();
+					if (endY > startY) {
+						prevPageY();
+					} else {
+						nextPageY();
+					}
 				}
 			}
 		}
+		
+		
 	}
 	function onEndY(e){
 		event.stopPropagation();
@@ -211,23 +220,23 @@ var touchEvent = (function(){
 
 		touchDown = false;
 	
-		/*
-		if (scrollPrevent == false) {
-			// 抬起点，页面位置
-			endY = e.pageY;
-			
-			// swip 事件默认大于50px才会触发，小于这个就将页面归回
-			if (Math.abs(endY - startY) <= 50) {
-				animatePageY(curPageY);
-			} else {
-				if (endY > startY) {
-					prevPageY();
+		if(userAgentInfo.indexOf("iPhone") > 0){
+			if (scrollPrevent == false) {
+				// 抬起点，页面位置
+				endY = e.pageY;
+				
+				// swip 事件默认大于50px才会触发，小于这个就将页面归回
+				if (Math.abs(endY - startY) <= 50) {
+					animatePageY(curPageY);
 				} else {
-					nextPageY();
+					if (endY > startY) {
+						prevPageY();
+					} else {
+						nextPageY();
+					}
 				}
 			}
 		}
-		*/
 
 	}
 
@@ -573,7 +582,7 @@ var fnGame2 = (function(){
 
 // fnGame3
 var fnGame3 = (function(){
-	var speed = 60;
+	var speed = 40;
 	var itemTimeFlag = true;
 	
 	var game3Time = 0;
