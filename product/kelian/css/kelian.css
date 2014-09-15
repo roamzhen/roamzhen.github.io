@@ -5,7 +5,7 @@ body>section{ height: 100%; overflow: hidden; position: relative;}
 
 .sec-wrap{ height: 100%; transition:-webkit-transform 300ms ease-out,margin 300ms ease-out; -webkit-transition:-webkit-transform 300ms ease-out,margin 300ms ease-out;}
 .sec-wrap .sec1,.sec-wrap .sec2{ height: 100%; background: url("../images/game1-bg.jpg") repeat-y; background-size: 100%;}
-.sec1 #pic-slider{ max-height: 90%; overflow: hidden; transition:-webkit-transform 300ms ease-out,margin 300ms ease-out; -webkit-transition:-webkit-transform 300ms ease-out,margin 300ms ease-out;}
+.sec1 #pic-slider{ max-height: 85%; overflow: hidden; transition:-webkit-transform 300ms ease-out,margin 300ms ease-out; -webkit-transition:-webkit-transform 300ms ease-out,margin 300ms ease-out;}
 .sec1 #pic-slider img{ float: left;}
 .scorll-hint{cursor: pointer;}
 .sec1 .scorll-hint{position: absolute; left: 50%; width: 30px; margin-left: -15px; top:90%; border: none;
