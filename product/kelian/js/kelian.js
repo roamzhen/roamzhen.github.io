@@ -306,6 +306,7 @@ var fnGame1 = (function(){
 	
 	var wrap = game1.getElementsByClassName("sec-wrap")[0];
 	var picSlider = document.getElementById("pic-slider");
+	var sec1Rest = wrap.getElementsByClassName("sec1-rest")[0];
 	var imgList = picSlider.getElementsByTagName("img");
 	var faceImg = document.getElementById("face-img");
 
@@ -339,15 +340,27 @@ var fnGame1 = (function(){
 	}
 	
 	//wrap Listener
-	wrap.addEventListener("touchstart",function(e){
+	sec1Rest.addEventListener("touchstart",function(e){
 		touchEvent.onStartY(e.changedTouches[0]);
 	});
 
-	wrap.addEventListener("touchmove",function(e){
+	sec1Rest.addEventListener("touchmove",function(e){
 		touchEvent.onMoveY(e.changedTouches[0]);
 	});
 
-	wrap.addEventListener("touchend",function(e){
+	sec1Rest.addEventListener("touchend",function(e){
+		touchEvent.onEndY(e.changedTouches[0]);
+	});
+	
+	sec2.addEventListener("touchstart",function(e){
+		touchEvent.onStartY(e.changedTouches[0]);
+	});
+
+	sec2.addEventListener("touchmove",function(e){
+		touchEvent.onMoveY(e.changedTouches[0]);
+	});
+
+	sec2.addEventListener("touchend",function(e){
 		touchEvent.onEndY(e.changedTouches[0]);
 	});
 	
