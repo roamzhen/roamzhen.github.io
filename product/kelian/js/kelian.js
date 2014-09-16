@@ -56,7 +56,7 @@ var touchEvent = (function(){
 
 	/* start X */
 	function onStartX(e){
-		event.stopPropagation();
+		//event.stopPropagation();
 		
 		
 		if (movePrevent == true) {
@@ -71,7 +71,7 @@ var touchEvent = (function(){
 		//setWebkitCSS3(picSlider,"transform","translateX("+(-wrapWidth*curPageX)+"px)");
 	}
 	function onMoveX(e){
-		event.stopPropagation();
+		//event.stopPropagation();
 		
 		if (movePrevent == true || touchDown != true) {
 			event.preventDefault();
@@ -104,7 +104,7 @@ var touchEvent = (function(){
 		
 	}
 	function onEndX(e){
-		event.stopPropagation();
+		//event.stopPropagation();
 		
 		if (movePrevent == true) {
 			event.preventDefault();
