@@ -1001,7 +1001,7 @@ function checkImages(){
 	
 		loadingPage.style['display']="none";
 	}
-	document.getElementsByClassName("loading_center_inner")[0].style["backgroundColor"] = "rgb("+(45+i)+","+(111+i)+","+(163+i)+")";
+	document.getElementsByClassName("loading_center_inner")[0].style["backgroundColor"] = "rgb("+(45+present)+","+(111+present)+","+(163+present)+")";
 	document.getElementsByClassName("loading_center_inner")[0].style["width"] = present + "%";
 }
 
