@@ -90,5 +90,5 @@ body>section{ height: 100%; overflow: hidden; position: relative;}
 /* 全局loading */
 .loading_page{background-color:rgba(255,255,255,.95); background-image: url(../images/kelian-icon.png); background-position: center 40%; background-repeat: no-repeat; width:100%;position:fixed;top:0;bottom:0;z-index:999;}
 .loading_center{height: 20px; width: 70%; border-radius: 5px; position:absolute;top:40%; margin-top: 60px; left:15%;}
-.loading_center_inner{ height: 100%; width: 0%; background-color: #3170a5;}
-.loading_center_inner{transition: width .2s ease-in-out; -webkit-transition: width .2s ease-in-out; }
+.loading_center_inner{ height: 100%; width: 0%; background-color: #2d6fa3;}
+.loading_center_inner{transition: width .2s ease-in-out,background-color .2s ease-in-out; -webkit-transition: width .2s ease-in-out ,background-color .2s ease-in-out; }

@@ -996,12 +996,18 @@ function checkImages(){
 	
 	var present = Math.floor(getedImagesNumber/imageGetList.length*100);
 	
+	if(present==50){
+		document.getElementsByClassName("loading_center_inner")[0].style["backgroundColor"] = "#408fae";
+	}else if(present==80){
+		document.getElementsByClassName("loading_center_inner")[0].style["backgroundColor"] = "#67bab2";		
+	}
+	
+	
 	if(present==100){
 		var loadingPage = document.getElementsByClassName("loading_page")[0];
 	
 		loadingPage.style['display']="none";
 	}
-	document.getElementsByClassName("loading_center_inner")[0].style["backgroundColor"] = "rgb("+(45+present)+","+(111+present)+","+(163+present)+")";
 	document.getElementsByClassName("loading_center_inner")[0].style["width"] = present + "%";
 }
 
