@@ -19,6 +19,7 @@ function removeClass(obj, cls) {
 var game1 = document.getElementById("game1");
 var game2 = document.getElementById("game2");
 var game3 = document.getElementById("game3");
+var baoming = document.getElementById("baoming");
 var gameTimer = document.getElementById("gameTimer");
 
 var contentWrap = (function(){
@@ -973,6 +974,8 @@ var fnGame3 = (function(){
 			
 			overlayGame3.style['display']= null;
 			game3.style['display'] = "none";
+			
+			baoming.style['display'] = null;
 		}
 	}
 	
@@ -991,6 +994,7 @@ window.onload = function(){
 	//game1.style['display']="none";
 	game2.style['display']="none";
 	game3.style['display']="none";
+	baoming.style['display'] = "none";
 
 	initEachPop();
 }

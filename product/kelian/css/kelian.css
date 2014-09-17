@@ -1,5 +1,6 @@
 html,body{ margin: 0; height: 100%; font-family: "Helvetica";  background: url("../images/game1-bg.jpg") repeat-y; background-size: 100%;}
 p,h2{ margin: 0;}
+span.red{color: #e72c18;  vertical-align: -5px;}
 
 /* 全局loading */
 .loading_page{background-color:rgba(255,255,255,.95); background-image: url(../images/kelian-icon.png); background-position: center 40%; background-repeat: no-repeat; width:100%;position:fixed;top:0;bottom:0;z-index:999;}
@@ -64,6 +65,14 @@ body>section{ height: 100%; overflow: hidden; position: relative;}
 #game3 .canvas-wrap{ height: 90%; background-color: rgb(58, 188, 254); position: relative;}
 #mar-canvas{display: block;}
 #game3-title{ position: absolute; top: 5%; padding: 6% 10%; width: 80%; text-align: center; background-color: #324269; color: #fff; font-size: 24px;}
+
+#baoming{ overflow: scroll;}
+.scroll-content{ padding-bottom: 30px;}
+.scroll-content .title{ text-align: center; color: #041648; background-color: #fff; font-size: 22px; padding: 20px 20px;}
+.scroll-content .question-title{color: #fff; font-size: 18px; margin: 10px 20px 5px;}
+.scroll-content .input-wrap{ margin:  0 20px 20px;}
+.input-wrap input{ line-height: 200%; text-indent: 10px; font-size: 18px; width: 98%; outline: none; }
+#baoming-sure-btn{ display: block; padding: 10px 0; margin: 20px 20px 10px; background-color: #2D6FA3; color: #fff; text-align: center; text-decoration: none; outline: none;}
 
 #gameTimer{position: fixed; right: 5%; top: 3%; font-size: 30px; color: #fff; font-family: "DS-Digital"; display: none;}
 
