@@ -1,0 +1,109 @@
+html,body{ margin: 0; height: 100%; font-family: "Helvetica";  background: url("../images/game1-bg.jpg") repeat-y; background-size: 100%;}
+p,h2{ margin: 0;}
+span.red{color: #e72c18;  vertical-align: -5px;}
+
+/* 全局loading */
+.loading_page{background-color:rgba(255,255,255,.95); background-image: url(../images/kelian-icon.png); background-position: center 40%; background-repeat: no-repeat; width:100%;position:fixed;top:0;bottom:0;z-index:999;}
+.loading_center{height: 20px; width: 70%; border-radius: 5px; position:absolute;top:40%; margin-top: 60px; left:15%;}
+.loading_center_inner{ height: 100%; width: 0%; background-color: #2d6fa3;}
+.loading_center_inner{transition: width .2s ease-in-out,background-color .2s ease-in-out; -webkit-transition: width .2s ease-in-out ,background-color .2s ease-in-out; }
+
+body>section{ height: 100%; overflow: hidden; position: relative;}
+
+.sec-wrap{ height: 100%; transition:-webkit-transform 300ms ease-out,margin 300ms ease-out; -webkit-transition:-webkit-transform 300ms ease-out,margin 300ms ease-out;}
+.sec-wrap .sec1,.sec-wrap .sec2{ height: 100%; background: url("../images/game1-bg.jpg") repeat-y; background-size: 100%;}
+.sec1 #pic-slider{ max-height: 85%; overflow: hidden; transition:-webkit-transform 300ms ease-out,margin 300ms ease-out; -webkit-transition:-webkit-transform 300ms ease-out,margin 300ms ease-out;}
+.sec1 #pic-slider img{ float: left;}
+.sec1 .sec1-rest{ position: absolute; top:85%; left: 0; width: 100%; height: 15%;}
+.scorll-hint{cursor: pointer;}
+.sec1 .scorll-hint{position: absolute; left: 50%; width: 30px; margin-left: -15px; bottom: 30px; border: none;
+-webkit-animation: hintAnimationBottom .5s ease-in-out infinite;}
+.sec1 .scorll-hint-words{ position: absolute; left: 50%; text-align: center; width: 300px; margin-left: -150px; bottom: 10px; font-size: 16px; color: #fff;}
+
+@-webkit-keyframes hintAnimationBottom{
+	0%{bottom:30px; opacity: 1;}
+	100%{bottom: 45px; opacity: 0;}
+}
+
+.sec2 .face-wrap{ padding-top: 6%; height: 30%; text-align: center;}
+.face-wrap #face-img{ height:100%; border: 1px solid #324269;}
+.sec2 .face-question-wrap{ margin-top: 6%; height: 8%; text-align: center; background-color: #324269;}
+.face-question-wrap .face-question{ display: inline-block; color: #fff; font-size: 18px; vertical-align: middle;}
+.face-question-wrap b{display: inline-block; height: 100%; vertical-align: middle;}
+
+.sec2 .face-choose-wrap{height: 45%; margin-top: 5%; overflow: hidden;}
+.face-choose-wrap .choose-item{ float: left; width: 50%; height: 16%; text-decoration: none; text-align: center;}
+.face-choose-wrap .choose-item.anHide{-webkit-animation: btnHide .5s ease-in-out;}
+.choose-item span{ display: inline-block; font-size: 16px; color: #fff; vertical-align: middle;}
+.choose-item b{display: inline-block; height: 100%; vertical-align: middle;}
+.choose-item.item1{background-color: rgb(104,63,37);}
+.choose-item.item2{background-color: rgb(207,129,60);}
+.choose-item.item3{background-color: rgb(232,203,75);}
+.choose-item.item4{background-color: rgb(140,158,79);}
+.choose-item.item5{background-color: rgb(64,110,140);}
+.choose-item.item6{background-color: rgb(185,42,86);}
+.choose-item.item7{background-color: rgb(185,42,86);}
+.choose-item.item8{background-color: rgb(64,110,140);}
+.choose-item.item9{background-color: rgb(140,158,79);}
+.choose-item.item10{background-color: rgb(232,203,75);}
+.choose-item.item11{background-color: rgb(207,129,60);}
+.choose-item.item12{background-color: rgb(104,63,37);}
+
+@-webkit-keyframes btnHide{
+	0%{ opacity: 1;}
+	100%{ opacity: 0;}
+}
+
+#game2{text-align: center; position: relative;}
+#game2 .different-wrap{ display: inline-block; width: 85%; border: 1px solid rgb(221,221,221); vertical-align: middle;}
+#game2 b{display: inline-block; height: 100%; vertical-align: middle;}
+.different-wrap .different-item{ display: inline-block; width: 50%; padding-bottom: 50%; position: relative;}
+.different-item img{position: absolute; left: 0; top: 0; width: 100%;}
+#game2-title{ position: absolute; top: 5%; padding: 4% 20%; width: 60%; text-align: center; background-color: #324269; color: #fff; font-size: 18px;}
+
+#game3{ text-align: center;}
+#game3 .canvas-wrap{ height: 90%; background-color: rgb(58, 188, 254); position: relative;}
+#mar-canvas{display: block;}
+#game3-title{ position: absolute; top: 5%; padding: 6% 10%; width: 80%; text-align: center; background-color: #324269; color: #fff; font-size: 24px;}
+
+#baoming{ overflow: scroll;}
+.scroll-content{ padding-bottom: 30px;}
+.scroll-content .title{ text-align: center; color: #041648; background-color: #fff; font-size: 22px; padding: 20px 20px;}
+.scroll-content .question-title{color: #fff; font-size: 18px; margin: 10px 20px 5px;}
+.scroll-content .input-wrap{ margin:  0 20px 20px;}
+.input-wrap input{ line-height: 200%; text-indent: 10px; font-size: 18px; width: 98%; outline: none; }
+#baoming-sure-btn{ display: block; padding: 10px 0; margin: 20px 20px 10px; background-color: #2D6FA3; color: #fff; text-align: center; text-decoration: none; outline: none;}
+
+#gameTimer{position: fixed; right: 5%; top: 3%; font-size: 30px; color: #fff; font-family: "DS-Digital"; display: none;}
+
+#overlayGame1{display: none; width: 100%; height: 100%; position: fixed; left: 0; top: 0; background-color: rgba(255,255,255,0.8); text-align: center; }
+#overlayGame1 .popMessage{ display: inline-block; width: 90%; background-color: #031646; border-radius: 5px; vertical-align: middle; overflow: hidden;}
+#overlayGame1 .message-text{ color: #fff; font-size: 20px; padding: 20px 10px;}
+#game1TimeText{ color: #031646; font-size: 22px; padding: 2px 4px; margin: 0 5px; background-color: #fff; font-family: "DS-Digital";}
+#overlayGame1 .dev-line{ height: 1px; background: #324269;}
+#overlayGame1 .next-btn{ display: block; margin: 20px; padding: 10px 0; background: #fff; text-decoration: none; color: #031646; } 
+#overlayGame1 b{ display: inline-block; height: 100%; vertical-align: middle;}
+
+#overlayGame2{display: none; width: 100%; height: 100%; position: fixed; left: 0; top: 0; background-color: rgba(255,255,255,0.8); text-align: center; }
+#overlayGame2 .popMessage{ display: inline-block; width: 90%; background-color: #031646; border-radius: 5px; vertical-align: middle; overflow: hidden;}
+#overlayGame2 .message-text{ color: #fff; font-size: 20px; padding: 20px 10px;}
+#game2TimeText{ color: #031646; font-size: 22px; padding: 2px 4px; margin: 0 5px; background-color: #fff; font-family: "DS-Digital";}
+#overlayGame2 .dev-line{ height: 1px; background: #324269;}
+#overlayGame2 .next-btn{ display: block; margin: 20px; padding: 10px 0; background: #fff; text-decoration: none; color: #031646; } 
+#overlayGame2 b{ display: inline-block; height: 100%; vertical-align: middle;}
+
+#overlayGame3{display: none; width: 100%; height: 100%; position: fixed; left: 0; top: 0; background-color: rgba(255,255,255,0.8); text-align: center; }
+#overlayGame3 .popMessage{ display: inline-block; width: 90%; background-color: #031646; border-radius: 5px; vertical-align: middle; overflow: hidden;}
+#overlayGame3 .message-text{ color: #fff; font-size: 20px; padding: 20px 10px;}
+#game3TimeText{ color: #031646; font-size: 22px; padding: 2px 4px; margin: 0 5px; background-color: #fff; font-family: "DS-Digital";}
+#gameAllTimeText{ color: #031646; font-size: 22px; padding: 2px 4px; margin: 0 5px; background-color: #fff; font-family: "DS-Digital";}
+#overlayGame3 .dev-line{ height: 1px; background: #324269;}
+#overlayGame3 .next-btn{ display: block; margin: 20px; padding: 10px 0; background: #fff; text-decoration: none; color: #031646; } 
+#overlayGame3 b{ display: inline-block; height: 100%; vertical-align: middle;}
+
+.aside{display: none;}
+
+.game-hint{position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(3,22,70,0.8);  background-repeat: no-repeat; background-position: 50% 50%; }
+.game-hint1{background-image: url(../images/game-hint1.png);}
+.game-hint2{background-image: url(../images/game-hint2.png);}
+.game-hint3{background-image: url(../images/game-hint3.png);}
