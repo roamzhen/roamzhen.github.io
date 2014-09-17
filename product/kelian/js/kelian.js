@@ -991,10 +991,10 @@ var fnGame3 = (function(){
 }());
 
 window.onload = function(){	
-	game1.style['display']="none";
+	//game1.style['display']="none";
 	game2.style['display']="none";
 	game3.style['display']="none";
-	//baoming.style['display'] = "none";
+	baoming.style['display'] = "none";
 
 	initEachPop();
 }
