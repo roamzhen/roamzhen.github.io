@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>全景树木</title>
+  <link href="css/panoTree.css" type="text/css" rel="stylesheet" />
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=bqrBwGSqxQ6HULhXQdUXh8aq"></script>
+</head>
+
+<body>
+	<div id="panoramaTree"></div>
+	<div class="bottom-wrap">
+		<div class="map-wrap">
+			<div id="pano_map"></div>
+		</div>
+		<div class="choice-wrap">
+			<a id="choice-left" href="javascript:;"><span class="l-arrow"></span></a>
+			<div class="choice-list-wrap">
+				<div id="choice-list">
+					
+				</div>
+			</div>
+			<a id="choice-right" href="javascript:;"><span class="r-arrow"></span></a>
+		</div>
+	</div>
+	
+	<div id="pop-info-wrap">
+		<span id="pop-title"></span><br />
+		<span id="pop-content"></span><br />
+		<a id="pop-more" href="javascript:;" target="_blank">点击了解详细信息</a>
+	</div>
+	
+	<div id="pop-icon"></div>
+
+</body>
+
+<script type="text/javascript" src="js/panoTree.js"></script>
+
+</html>
