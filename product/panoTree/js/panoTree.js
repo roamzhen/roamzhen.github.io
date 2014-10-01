@@ -15,11 +15,6 @@ function removeClass(obj, cls) {
 }
 /* end basic class method */
 
-var $ = function(query){
-	return document.querySelectorAll(query);
-}
-
-
 var showFlag = true,
 	hideFlag = false;
 
@@ -154,7 +149,7 @@ function initPanorama(){
 		
 		for(var i=0;i<appendedList.length;i++){
 			if(getDis(pos,treeList[i].pos)>nearDis){
-				var choiceListItems = $("choice-item");
+				var choiceListItems = choiceList.getElementsByClassName("choice-item");
 				var removeDom = "";
 				for(var j =0;j<choiceListItems.length;j++){
 					if(choiceListItems[j].getAttribute("id")==appendedList[i])
@@ -203,7 +198,7 @@ function initPanorama(){
 		
 		
 		dom.onclick = function(){
-			var choiceListItems = $("choice-item");
+			var choiceListItems = choiceList.getElementsByClassName("choice-item");
 			
 			for(var i=0;i<choiceListItems.length;i++){
 				removeClass(choiceListItems[i],"actived");
