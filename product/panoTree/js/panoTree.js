@@ -104,6 +104,21 @@ var treeList = [
 			"heading": 56,
 			"pitch": 14
 		}
+	},
+	{
+		"id": 6,
+		"name": "黄葛榕",
+		"content": "Ps.网站无收录",
+		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
+		"miniPic":"images/tree/huanggerong.jpg",
+		"pos":{
+			"lng": 113.361316,
+			"lat": 23.16035
+		},
+		"pov":{
+			"heading": 170,
+			"pitch": 2
+		}
 	}
 ];
 
