@@ -46,7 +46,7 @@ var treeList = [
 		}
 	},
 	{
-		"id": 3,
+		"id": 2,
 		"name": "糖胶树",
 		"content": "主要分布: 巢湖路、图书馆北侧、华山学生宿舍区、六一区研究生宿舍区。",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=226",
@@ -58,6 +58,51 @@ var treeList = [
 		"pov":{
 			"heading": 273,
 			"pitch": 4
+		}
+	},
+	{
+		"id": 3,
+		"name": "黄葛榕",
+		"content": "用途:宜作园景树、庭园树、行道树。也是紫胶虫寄主树种，可供紫胶生产之用。",
+		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
+		"miniPic":"images/tree/huanggerong.jpg",
+		"pos":{
+			"lng": 113.359714,
+			"lat": 23.160472
+		},
+		"pov":{
+			"heading": 15,
+			"pitch": 5
+		}
+	},
+	{
+		"id": 4,
+		"name": "王棕",
+		"content": "Ps.网站无收录",
+		"href": "javascript:;",
+		"miniPic":"images/tree/wangzhong.jpg",
+		"pos":{
+			"lng": 113.359229,
+			"lat": 23.160924
+		},
+		"pov":{
+			"heading": 86,
+			"pitch": 24
+		}
+	},
+	{
+		"id": 5,
+		"name": "荔枝",
+		"content": "主要分布:校园常见。综合行政楼西侧15棵百年古荔为从化校友会捐赠。",
+		"href": "http://xy.scau.edu.cn/tree/go.asp?id=172",
+		"miniPic":"images/tree/lizhi.jpg",
+		"pos":{
+			"lng": 113.359231,
+			"lat": 23.161507
+		},
+		"pov":{
+			"heading": 56,
+			"pitch": 14
 		}
 	}
 ];
@@ -103,6 +148,13 @@ function initPanorama(){
 	map.centerAndZoom(initPlace, 18);
 	map.addTileLayer(new BMap.PanoramaCoverageLayer());
 	
+	for(var i=0;i<treeList.length;i++){
+		var tmpMarker=new BMap.Marker(new BMap.Point(treeList[i].pos.lng,treeList[i].pos.lat));
+		var tmpIcon = new BMap.Icon("images/pano-tree.png", new BMap.Size(20,20));
+		tmpMarker.setIcon(tmpIcon);
+		map.addOverlay(tmpMarker);
+	}
+	
 	var marker=new BMap.Marker(initPlace);
 	marker.enableDragging();
 	map.addOverlay(marker);  
@@ -110,6 +162,15 @@ function initPanorama(){
 	marker.addEventListener('dragend',function(e){
 		panorama.setPosition(e.point); //拖动marker后，全景图位置也随着改变
 	});
+	
+	var getInfoBtn = document.getElementById("get-info");
+	
+	getInfoBtn.onclick = function(){
+		var words = "pov.lng:"+panorama.getPosition().lng+"  pov.lat:"+panorama.getPosition().lat+
+					"  pos.heading:"+Math.floor(panorama.getPov().heading)+"  pos.pitch:"+Math.floor(panorama.getPov().pitch);
+		
+		alert(words);
+	}
 	
 // pano inner function
 	function panoramaCallBack(e){ //事件回调函数
@@ -213,14 +274,32 @@ function initPanorama(){
 			
 			showPopInfo(obj);
 			
+			
 			if(panorama.getPosition().lng == obj.pos.lng && panorama.getPosition().lat == obj.pos.lat){
 				panorama.setPov({heading: obj.pov.heading, pitch: obj.pov.pitch});
 				
 			}else{
 				panorama.setPosition(new BMap.Point(obj.pos.lng,obj.pos.lat));
+				
+				/*
+				var pov = panorama.getPov();
+				var changeH = obj.pov.heading-pov.heading;
+				var changeP = obj.pov.pitch-pov.pitch;
+				var tmpChangeAnimation = setInterval(function(){
+					var pov = panorama.getPov();
+					console.log(Math.abs(pov.heading-obj.pov.heading)+" "+Math.abs(pov.pitch-obj.pov.pitch));
+					if(Math.abs(pov.heading-obj.pov.heading)>1&&Math.abs(pov.pitch-obj.pov.pitch)>1){
+						panorama.setPov({heading:pov.heading+changeH/8,pitch:pov.pitch+changeP/8});
+					}else{
+						clearInterval(tmpChangeAnimation);
+					}
+				},33);
+				*/
+				
 				setTimeout(function(){
 					panorama.setPov({heading: obj.pov.heading, pitch: obj.pov.pitch});
-				},600);
+				},800);
+				
 			}
 			
 		}
