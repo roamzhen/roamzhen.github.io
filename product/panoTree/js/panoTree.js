@@ -184,20 +184,6 @@ var treeList = [
 	},
 	{
 		"id": 11,
-		"name": "王棕2",
-		"href": "javascript:;",
-		"miniPic":"images/tree/wangzhong.jpg",
-		"pos":{
-			"lng": 113.359210,
-			"lat": 23.160990
-		},
-		"pov":{
-			"heading": 213,
-			"pitch": 7
-		}
-	},
-	{
-		"id": 12,
 		"name": "洋紫荆",
 		"href": "javascript:;",
 		"miniPic":"images/tree/yangzijing.jpg",
@@ -211,7 +197,7 @@ var treeList = [
 		}
 	},
 	{
-		"id": 13,
+		"id": 12,
 		"name": "塞楝2",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=114",
 		"miniPic":"images/tree/tangjiaoshu.jpg",
@@ -225,7 +211,7 @@ var treeList = [
 		}
 	},
 	{
-		"id": 14,
+		"id": 13,
 		"name": "塞楝3",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=114",
 		"miniPic":"images/tree/tangjiaoshu.jpg",
@@ -239,7 +225,7 @@ var treeList = [
 		}
 	},
 	{
-		"id": 15,
+		"id": 14,
 		"name": "黄槿",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=114",
 		"miniPic":"images/tree/huangjing.jpg",
@@ -253,7 +239,7 @@ var treeList = [
 		}
 	},
 	{
-		"id": 16,
+		"id": 15,
 		"name": "人面子2",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=109",
 		"miniPic":"images/tree/renmainzi.jpg",
@@ -281,7 +267,7 @@ function initPanorama(){
 	var targetlat;
 	
 	//初始属性
-	var initPlace = new BMap.Point(113.361166,23.162498);
+	var initPlace = new BMap.Point(113.361203,23.162477);
 	var initHead = {heading: 278.945082, pitch: -4.07999};
 	
 	//全景图展示
@@ -341,7 +327,7 @@ function initPanorama(){
 		
 		if (e.type == 'onpov_changed') { 
 				
-			if(nowList.length==0){
+			if(nowList.length==0&&hideFlag){
 				hideFlag = false;
 				hidePopInfo();
 			}
@@ -381,9 +367,9 @@ function initPanorama(){
 				if(treeList[appendedList[i]].pos.lng==pos.lng&&treeList[appendedList[i]].pos.lat==pos.lat){
 					nowList.push(treeList[appendedList[i]]);
 				}
-			}			
+			}
 			
-			if(nowList.length==0){
+			if(nowList.length==0&&hideFlag){
 				hideFlag = false;
 				hidePopInfo();
 			}
