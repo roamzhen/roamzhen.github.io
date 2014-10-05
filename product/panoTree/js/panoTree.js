@@ -120,8 +120,6 @@ var appendedList = new Array();
 //初始化全景及地图方法
 function initPanorama(){
 	
-	var targetHeading;
-	var targetPitch;
 	var targetlng;
 	var targetlat;
 	
@@ -188,16 +186,18 @@ function initPanorama(){
 			
 			for(var i=0;i<appendedList.length;i++){
 				if(treeList[appendedList[i]].pos.lng==pos.lng&&treeList[appendedList[i]].pos.lat==pos.lat){
-					if(targetHeading!=null&&targetPitch!=null&&targetlng==pos.lng&&targetlat==pos.lat){
-						if(Math.abs(Math.floor(targetHeading-pov.heading))>10&&hideFlag){
-							hideFlag = false;
-							hidePopInfo();
-						}
-						if(Math.abs(Math.floor(targetHeading-pov.heading))<6&&showFlag){
-							showFlag = false;
-							showPopInfo();
-						}
+					var targetHeading = treeList[appendedList[i]].pov.heading;
+					var targetPitch = treeList[appendedList[i]].pov.pitch;
+					
+					if(Math.abs(Math.floor(targetHeading-pov.heading))>10&&hideFlag){
+						hideFlag = false;
+						hidePopInfo();
 					}
+					if(Math.abs(Math.floor(targetHeading-pov.heading))<6&&showFlag){
+						showFlag = false;
+						showPopInfo(treeList[appendedList[i]]);
+					}
+					
 				}
 			}
 			
@@ -289,8 +289,6 @@ function initPanorama(){
 			
 			addClass(this,"actived");
 			
-			targetHeading = obj.pov.heading;
-			targetPitch = obj.pov.pitch;
 			targetlng = obj.pos.lng;
 			targetlat = obj.pos.lat;
 			
@@ -334,15 +332,6 @@ function initPanorama(){
 		if(obj!=undefined){
 			popMore.innerText = obj.name;
 			popMore.href = obj.href;
-			
-			popInfoWrap.style['display']= "block";
-			popIcon.style['display']="block";
-			
-			setTimeout(function(){
-				popInfoWrap.style['opacity']=1;
-				popIcon.style['opacity']=1;
-			},500);
-		}else{
 			
 			popInfoWrap.style['display']= "block";
 			popIcon.style['display']="block";
