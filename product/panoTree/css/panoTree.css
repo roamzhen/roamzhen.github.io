@@ -37,7 +37,9 @@ body{position: relative;}
 #pop-icon{ display: none; opacity: 0; position: absolute; top: 60%; left: 50%; width: 20px; height: 20px; margin-left: -10px; background-image: url(../images/pano-tree.png);
 	transition: opacity .5s ease-in-out; -webkit-transition: opacity .5s ease-in-out;}
 
-#get-info{ position: absolute; right: 10px; bottom: 200px;  display: block; font-size: 14px; padding: 10px 20px; color: #fff; background-color: rgba(27,181,24,0.8); cursor: pointer;
+#get-info{ position: absolute; right: 0px; bottom: 115px;  display: block; font-size: 14px; padding: 10px 20px; color: #fff; background-color: rgba(27,181,24,0.8); cursor: pointer;
 	transition: background-color .3s ease-in-out; -webkit-transition: background-color .3s ease-in-out;}
 #get-info:hover{background-color: rgba(33,244,28,0.8);}
+#info-icon{ position: absolute; top: 60%; left: 50%; width: 20px; height: 20px; margin-left: -10px;}
+#info-icon img{width: 100%;}
 

@@ -47,9 +47,9 @@ var treeList = [
 	},
 	{
 		"id": 2,
-		"name": "糖胶树",
+		"name": "塞楝",
 		"content": "主要分布: 巢湖路、图书馆北侧、华山学生宿舍区、六一区研究生宿舍区。",
-		"href": "http://xy.scau.edu.cn/tree/go.asp?id=226",
+		"href": "http://xy.scau.edu.cn/tree/go.asp?id=114",
 		"miniPic":"images/tree/tangjiaoshu.jpg",
 		"pos":{
 			"lng": 113.361096,
@@ -108,16 +108,16 @@ var treeList = [
 	{
 		"id": 6,
 		"name": "黄葛榕",
-		"content": "Ps.网站无收录",
+		"content": "用途:宜作园景树、庭园树、行道树。也是紫胶虫寄主树种，可供紫胶生产之用。",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
-		"miniPic":"images/tree/huanggerong.jpg",
+		"miniPic":"images/tree/huanggerong2.jpg",
 		"pos":{
 			"lng": 113.361316,
 			"lat": 23.16035
 		},
 		"pov":{
-			"heading": 170,
-			"pitch": 2
+			"heading": 174,
+			"pitch": 1
 		}
 	}
 ];
