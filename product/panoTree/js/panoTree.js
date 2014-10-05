@@ -29,7 +29,6 @@ var popIcon = document.getElementById("pop-icon");
 
 var treeList = [
 	{
-		"id": 0,
 		"name": "人面子",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=109",
 		"miniPic":"images/tree/renmainzi.jpg",
@@ -43,7 +42,6 @@ var treeList = [
 		}
 	},
 	{
-		"id": 1,
 		"name": "塞楝",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=114",
 		"miniPic":"images/tree/tangjiaoshu.jpg",
@@ -57,7 +55,6 @@ var treeList = [
 		}
 	},
 	{
-		"id": 2,
 		"name": "黄葛榕",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
 		"miniPic":"images/tree/huanggerong.jpg",
@@ -71,7 +68,6 @@ var treeList = [
 		}
 	},
 	{
-		"id": 3,
 		"name": "王棕",
 		"href": "javascript:;",
 		"miniPic":"images/tree/wangzhong.jpg",
@@ -85,7 +81,6 @@ var treeList = [
 		}
 	},
 	{
-		"id": 4,
 		"name": "荔枝",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=172",
 		"miniPic":"images/tree/lizhi.jpg",
@@ -99,7 +94,6 @@ var treeList = [
 		}
 	},
 	{
-		"id": 5,
 		"name": "黄葛榕2",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
 		"miniPic":"images/tree/huanggerong2.jpg",
@@ -113,7 +107,6 @@ var treeList = [
 		}
 	},
 	{
-		"id": 6,
 		"name": "黄葛榕3",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
 		"miniPic":"images/tree/huanggerong2.jpg",
@@ -127,7 +120,6 @@ var treeList = [
 		}
 	},
 	{
-		"id": 7,
 		"name": "黄葛榕4",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
 		"miniPic":"images/tree/huanggerong2.jpg",
@@ -141,7 +133,6 @@ var treeList = [
 		}
 	},
 	{
-		"id": 8,
 		"name": "黄葛榕5",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
 		"miniPic":"images/tree/huanggerong2.jpg",
@@ -155,7 +146,6 @@ var treeList = [
 		}
 	},
 	{
-		"id": 9,
 		"name": "黄葛榕6",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
 		"miniPic":"images/tree/huanggerong2.jpg",
@@ -169,7 +159,6 @@ var treeList = [
 		}
 	},
 	{
-		"id": 10,
 		"name": "黄葛榕7",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
 		"miniPic":"images/tree/huanggerong2.jpg",
@@ -183,7 +172,6 @@ var treeList = [
 		}
 	},
 	{
-		"id": 11,
 		"name": "洋紫荆",
 		"href": "javascript:;",
 		"miniPic":"images/tree/yangzijing.jpg",
@@ -197,7 +185,6 @@ var treeList = [
 		}
 	},
 	{
-		"id": 12,
 		"name": "塞楝2",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=114",
 		"miniPic":"images/tree/tangjiaoshu.jpg",
@@ -211,7 +198,6 @@ var treeList = [
 		}
 	},
 	{
-		"id": 13,
 		"name": "塞楝3",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=114",
 		"miniPic":"images/tree/tangjiaoshu.jpg",
@@ -225,7 +211,6 @@ var treeList = [
 		}
 	},
 	{
-		"id": 14,
 		"name": "黄槿",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=114",
 		"miniPic":"images/tree/huangjing.jpg",
@@ -239,7 +224,6 @@ var treeList = [
 		}
 	},
 	{
-		"id": 15,
 		"name": "人面子2",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=109",
 		"miniPic":"images/tree/renmainzi.jpg",
@@ -404,13 +388,13 @@ function initPanorama(){
 			if(dis<nearDis){
 				var flag = true;
 				for(var j=0;j<appendedList.length;j++){
-					if(treeList[i].id==appendedList[j])
+					if(i==appendedList[j])
 						flag = false;
 				}
 				if(flag){
-					choiceList.appendChild(getChoice(treeList[i]));
+					choiceList.appendChild(getChoice(treeList[i],i));
 					
-					appendedList.push(treeList[i].id);
+					appendedList.push(i);
 				}
 			}
 		}
@@ -425,12 +409,12 @@ function initPanorama(){
 		
 	}
 	
-	function getChoice(obj){
+	function getChoice(obj,id){
 		var dom = document.createElement("div");
 		dom.className = "choice-item";
 		dom.innerHTML = "<img class='inner-img' src='"+obj.miniPic+"' />"+
 		"<span class='choice-item-title'>"+obj.name+"</span>";
-		dom.setAttribute("id",obj.id);
+		dom.setAttribute("id",id);
 		
 		
 		dom.onclick = function(){
