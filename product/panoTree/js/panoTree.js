@@ -19,7 +19,7 @@ var showFlag = true,
 	hideFlag = false;
 
 (function(){
-var nearDis = 40;
+var nearDis = 20;
 
 var choiceList = document.getElementById("choice-list");
 
@@ -100,7 +100,7 @@ var treeList = [
 	},
 	{
 		"id": 5,
-		"name": "黄葛榕",
+		"name": "黄葛榕2",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
 		"miniPic":"images/tree/huanggerong2.jpg",
 		"pos":{
@@ -111,7 +111,162 @@ var treeList = [
 			"heading": 174,
 			"pitch": 1
 		}
+	},
+	{
+		"id": 6,
+		"name": "黄葛榕3",
+		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
+		"miniPic":"images/tree/huanggerong2.jpg",
+		"pos":{
+			"lng": 113.361046,
+			"lat": 23.160305
+		},
+		"pov":{
+			"heading": 337,
+			"pitch": -6
+		}
+	},
+	{
+		"id": 7,
+		"name": "黄葛榕4",
+		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
+		"miniPic":"images/tree/huanggerong2.jpg",
+		"pos":{
+			"lng": 113.360339,
+			"lat": 23.160303
+		},
+		"pov":{
+			"heading": 62,
+			"pitch": 8
+		}
+	},
+	{
+		"id": 8,
+		"name": "黄葛榕5",
+		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
+		"miniPic":"images/tree/huanggerong2.jpg",
+		"pos":{
+			"lng": 113.360430,
+			"lat": 23.160289
+		},
+		"pov":{
+			"heading": 200,
+			"pitch": 9
+		}
+	},
+	{
+		"id": 9,
+		"name": "黄葛榕6",
+		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
+		"miniPic":"images/tree/huanggerong2.jpg",
+		"pos":{
+			"lng": 113.359890,
+			"lat": 23.160404
+		},
+		"pov":{
+			"heading": 320,
+			"pitch": 5
+		}
+	},
+	{
+		"id": 10,
+		"name": "黄葛榕7",
+		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
+		"miniPic":"images/tree/huanggerong2.jpg",
+		"pos":{
+			"lng": 113.359344,
+			"lat": 23.160638
+		},
+		"pov":{
+			"heading": 214,
+			"pitch": 5
+		}
+	},
+	{
+		"id": 11,
+		"name": "王棕2",
+		"href": "javascript:;",
+		"miniPic":"images/tree/wangzhong.jpg",
+		"pos":{
+			"lng": 113.359210,
+			"lat": 23.160990
+		},
+		"pov":{
+			"heading": 215,
+			"pitch": 7
+		}
+	},
+	{
+		"id": 12,
+		"name": "洋紫荆",
+		"href": "javascript:;",
+		"miniPic":"images/tree/yangzijing.jpg",
+		"pos":{
+			"lng": 113.359271,
+			"lat": 23.160667
+		},
+		"pov":{
+			"heading": 203,
+			"pitch": 7
+		}
+	},
+	{
+		"id": 13,
+		"name": "塞楝2",
+		"href": "http://xy.scau.edu.cn/tree/go.asp?id=114",
+		"miniPic":"images/tree/tangjiaoshu.jpg",
+		"pos":{
+			"lng": 113.361166,
+			"lat": 23.162498
+		},
+		"pov":{
+			"heading": 323,
+			"pitch": 10
+		}
+	},
+	{
+		"id": 14,
+		"name": "塞楝3",
+		"href": "http://xy.scau.edu.cn/tree/go.asp?id=114",
+		"miniPic":"images/tree/tangjiaoshu.jpg",
+		"pos":{
+			"lng": 113.361166,
+			"lat": 23.162498
+		},
+		"pov":{
+			"heading": 7,
+			"pitch": 11
+		}
+	},
+	{
+		"id": 15,
+		"name": "黄槿",
+		"href": "http://xy.scau.edu.cn/tree/go.asp?id=114",
+		"miniPic":"images/tree/huangjing.jpg",
+		"pos":{
+			"lng": 113.361166,
+			"lat": 23.162498
+		},
+		"pov":{
+			"heading": 44,
+			"pitch": 6
+		}
+	},
+	{
+		"id": 16,
+		"name": "人面子2",
+		"href": "http://xy.scau.edu.cn/tree/go.asp?id=109",
+		"miniPic":"images/tree/renmainzi.jpg",
+		"pos":{
+			"lng": 113.361166,
+			"lat": 23.162498
+		},
+		"pov":{
+			"heading": 122,
+			"pitch": 5
+		}
 	}
+	
 ];
 
 var appendedList = new Array();
@@ -187,7 +342,6 @@ function initPanorama(){
 			for(var i=0;i<appendedList.length;i++){
 				if(treeList[appendedList[i]].pos.lng==pos.lng&&treeList[appendedList[i]].pos.lat==pos.lat){
 					var targetHeading = treeList[appendedList[i]].pov.heading;
-					var targetPitch = treeList[appendedList[i]].pov.pitch;
 					
 					if(Math.abs(Math.floor(targetHeading-pov.heading))>10&&hideFlag){
 						hideFlag = false;
