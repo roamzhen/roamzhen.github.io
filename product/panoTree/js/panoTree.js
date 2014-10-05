@@ -192,7 +192,7 @@ var treeList = [
 			"lat": 23.160990
 		},
 		"pov":{
-			"heading": 215,
+			"heading": 213,
 			"pitch": 7
 		}
 	},
@@ -271,6 +271,8 @@ var treeList = [
 
 var appendedList = new Array();
 
+var nowList = new Array();
+
 
 //初始化全景及地图方法
 function initPanorama(){
@@ -338,22 +340,25 @@ function initPanorama(){
 		var pov = panorama.getPov();
 		
 		if (e.type == 'onpov_changed') { 
-			
-			for(var i=0;i<appendedList.length;i++){
-				if(treeList[appendedList[i]].pos.lng==pos.lng&&treeList[appendedList[i]].pos.lat==pos.lat){
-					var targetHeading = treeList[appendedList[i]].pov.heading;
-					
-					if(Math.abs(Math.floor(targetHeading-pov.heading))>10&&hideFlag){
-						hideFlag = false;
-						hidePopInfo();
-					}
-					if(Math.abs(Math.floor(targetHeading-pov.heading))<6&&showFlag){
-						showFlag = false;
-						showPopInfo(treeList[appendedList[i]]);
-					}
-					
-				}
+				
+			if(nowList.length==0){
+				hideFlag = false;
+				hidePopInfo();
 			}
+			for(var i=0;i<nowList.length;i++){
+				var targetHeading = nowList[i].pov.heading;
+				
+				if(Math.abs(Math.floor(targetHeading-pov.heading))>10&&hideFlag){
+					hideFlag = false;
+					hidePopInfo();
+				}
+				if(Math.abs(Math.floor(targetHeading-pov.heading))<6&&showFlag){
+					showFlag = false;
+					showPopInfo(nowList[i]);
+				}
+				
+			}
+				
 			
 			/*
 			if(targetHeading!=null&&targetPitch!=null&&targetlng==pos.lng&&targetlat==pos.lat){
@@ -371,7 +376,15 @@ function initPanorama(){
 		}
 		else if (e.type=='onposition_changed') {
 			
-			if(targetlng!=pos.lng&&targetlat!=pos.lat&&hideFlag){
+			nowList.splice(0,nowList.length);
+			for(var i=0;i<appendedList.length;i++){
+				if(treeList[appendedList[i]].pos.lng==pos.lng&&treeList[appendedList[i]].pos.lat==pos.lat){
+					nowList.push(treeList[appendedList[i]]);
+				}
+			}			
+			
+			if(nowList.length==0){
+				hideFlag = false;
 				hidePopInfo();
 			}
 			
