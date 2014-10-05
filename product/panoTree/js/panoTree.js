@@ -24,16 +24,13 @@ var nearDis = 40;
 var choiceList = document.getElementById("choice-list");
 
 var popInfoWrap = document.getElementById("pop-info-wrap");
-var popTitle = document.getElementById("pop-title");
-var popContent = document.getElementById("pop-content");
 var popMore = document.getElementById("pop-more");
 var popIcon = document.getElementById("pop-icon");
 
 var treeList = [
 	{
-		"id": 1,
+		"id": 0,
 		"name": "人面子",
-		"content": "主要分布: 校园常见，集中分布在三角市黄河路两侧、嵩山住宅区。",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=109",
 		"miniPic":"images/tree/renmainzi.jpg",
 		"pos":{
@@ -46,9 +43,8 @@ var treeList = [
 		}
 	},
 	{
-		"id": 2,
+		"id": 1,
 		"name": "塞楝",
-		"content": "主要分布: 巢湖路、图书馆北侧、华山学生宿舍区、六一区研究生宿舍区。",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=114",
 		"miniPic":"images/tree/tangjiaoshu.jpg",
 		"pos":{
@@ -61,9 +57,8 @@ var treeList = [
 		}
 	},
 	{
-		"id": 3,
+		"id": 2,
 		"name": "黄葛榕",
-		"content": "用途:宜作园景树、庭园树、行道树。也是紫胶虫寄主树种，可供紫胶生产之用。",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
 		"miniPic":"images/tree/huanggerong.jpg",
 		"pos":{
@@ -76,9 +71,8 @@ var treeList = [
 		}
 	},
 	{
-		"id": 4,
+		"id": 3,
 		"name": "王棕",
-		"content": "Ps.网站无收录",
 		"href": "javascript:;",
 		"miniPic":"images/tree/wangzhong.jpg",
 		"pos":{
@@ -91,9 +85,8 @@ var treeList = [
 		}
 	},
 	{
-		"id": 5,
+		"id": 4,
 		"name": "荔枝",
-		"content": "主要分布:校园常见。综合行政楼西侧15棵百年古荔为从化校友会捐赠。",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=172",
 		"miniPic":"images/tree/lizhi.jpg",
 		"pos":{
@@ -106,9 +99,8 @@ var treeList = [
 		}
 	},
 	{
-		"id": 6,
+		"id": 5,
 		"name": "黄葛榕",
-		"content": "用途:宜作园景树、庭园树、行道树。也是紫胶虫寄主树种，可供紫胶生产之用。",
 		"href": "http://xy.scau.edu.cn/tree/go.asp?id=81",
 		"miniPic":"images/tree/huanggerong2.jpg",
 		"pos":{
@@ -193,8 +185,23 @@ function initPanorama(){
 		var pov = panorama.getPov();
 		
 		if (e.type == 'onpov_changed') { 
-			//console.log("heading: " + pov.heading+" pitch:"+pov.pitch);
 			
+			for(var i=0;i<appendedList.length;i++){
+				if(treeList[appendedList[i]].pos.lng==pos.lng&&treeList[appendedList[i]].pos.lat==pos.lat){
+					if(targetHeading!=null&&targetPitch!=null&&targetlng==pos.lng&&targetlat==pos.lat){
+						if(Math.abs(Math.floor(targetHeading-pov.heading))>10&&hideFlag){
+							hideFlag = false;
+							hidePopInfo();
+						}
+						if(Math.abs(Math.floor(targetHeading-pov.heading))<6&&showFlag){
+							showFlag = false;
+							showPopInfo();
+						}
+					}
+				}
+			}
+			
+			/*
 			if(targetHeading!=null&&targetPitch!=null&&targetlng==pos.lng&&targetlat==pos.lat){
 				if(Math.abs(Math.floor(targetHeading-pov.heading))>10&&hideFlag){
 					hideFlag = false;
@@ -205,10 +212,10 @@ function initPanorama(){
 					showPopInfo();
 				}
 			}
+			*/
 			
 		}
 		else if (e.type=='onposition_changed') {
-			console.log("lng: " + pos.lng+" lat:"+pos.lat);
 			
 			if(targetlng!=pos.lng&&targetlat!=pos.lat&&hideFlag){
 				hidePopInfo();
@@ -302,7 +309,6 @@ function initPanorama(){
 				var changeP = obj.pov.pitch-pov.pitch;
 				var tmpChangeAnimation = setInterval(function(){
 					var pov = panorama.getPov();
-					console.log(Math.abs(pov.heading-obj.pov.heading)+" "+Math.abs(pov.pitch-obj.pov.pitch));
 					if(Math.abs(pov.heading-obj.pov.heading)>1&&Math.abs(pov.pitch-obj.pov.pitch)>1){
 						panorama.setPov({heading:pov.heading+changeH/8,pitch:pov.pitch+changeP/8});
 					}else{
@@ -326,8 +332,7 @@ function initPanorama(){
 	function showPopInfo(obj){
 		
 		if(obj!=undefined){
-			popTitle.innerText = obj.name;
-			popContent.innerText = obj.content;
+			popMore.innerText = obj.name;
 			popMore.href = obj.href;
 			
 			popInfoWrap.style['display']= "block";

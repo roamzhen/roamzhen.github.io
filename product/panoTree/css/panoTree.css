@@ -18,7 +18,7 @@ body{position: relative;}
 #choice-right:hover .r-arrow{background-position: -16px 0;}
 
 .choice-list-wrap{margin: 5px 30px; height: 100%; position: relative; overflow: hidden; }
-#choice-list{ position: absolute; left: 0; top: 0; width: 100%;}
+#choice-list{ position: absolute; left: 0; top: 0; min-width: 1024px; width: 100%;}
 .choice-item{ width: 190px; height: 100px; border: 1px #000 solid; position: relative; overflow: hidden; float: left; margin: 0 3px; cursor: pointer;}
 .choice-item:hover{ border-color: rgba(93,252,31,0.5);}
 .choice-item .inner-img{ width: 100%; height: 100%;}
@@ -26,11 +26,9 @@ body{position: relative;}
 .choice-item.actived:hover{ width: 184px; height: 94px; border: 4px solid rgba(93,252,31,0.5);}
 .choice-item-title{ position: absolute; bottom: 0; left: 0; padding: 4px 20px; background-color: rgba(93,252,31,0.5); color: #fff; font-size: 14px; line-height: 120%;}
 
-#pop-info-wrap{display: none; opacity: 0; position: absolute; right: 20px; top: 20px; width: 200px;
+#pop-info-wrap{display: none; opacity: 0; position: absolute; left: 50%; top: 50%; width: 200px; margin-left: -100px;
 	transition: opacity .5s ease-in-out; -webkit-transition: opacity .5s ease-in-out;}
-#pop-title,#pop-content{display: inline-block; font-size: 14px; margin: 10px 0; padding: 10px 15px; color: #fff; background-color: rgba(27,181,24,0.8);}
-#pop-title{padding: 10px 20px;}
-#pop-more{ display: block; font-size: 14px; text-align: center; margin: 10px 0; padding: 10px 0; color: #fff; background-color: rgba(27,181,24,0.8);  text-decoration: none;
+#pop-more{ display: block; font-size: 16px; text-align: center; margin: 10px 0; padding: 8px 0; color: #fff; background-color: rgba(27,181,24,0.8);  text-decoration: none;
 	transition: background-color .3s ease-in-out; -webkit-transition: background-color .3s ease-in-out; }
 #pop-more:hover{background-color: rgba(33,244,28,0.8);}
 
