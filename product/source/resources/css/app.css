@@ -1,0 +1,14 @@
+
+.app-window{
+	position: absolute;
+	left: 0; right: 0; top: 0; bottom: 90px;
+	opacity: 0; background: rgba(255,255,255,.8);
+	display: none;
+	
+	transition: opacity .4s ease-in-out;
+	-webkit-transition: opacity .4s ease-in-out;
+}
+
+.app-window.show{
+	opacity: 1;
+}

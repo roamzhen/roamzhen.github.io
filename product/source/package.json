@@ -1,0 +1,9 @@
+{
+  "name": "OS of Javascript",
+  "window" :{
+  	"width" : 800,
+  	"height" : 600,
+  	"toolbar" : false
+  },
+  "main" : "view/index.html"
+}
