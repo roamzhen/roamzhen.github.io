@@ -10,8 +10,6 @@ var app = (function(){
 		this.started = true;
 		this.opacity = 1;		
 		
-		root.appendChild(this.template());
-		
 	}
 	
 	AppObj.prototype = {
@@ -21,7 +19,6 @@ var app = (function(){
 			
 			dom.innerHTML = "";
 		
-			
 			this.node = dom;
 			
 			return dom 
@@ -53,31 +50,26 @@ var app = (function(){
 	
 	
 	
-	function loadApp(appInfo){
-		openning = true;
-		
-		for(var i=0; i<process.getLength();i++){
+	function addApp(appObj){
 			
-		}
-		var appObj = new AppObj(appInfo);
-		
+		root.appendChild(appObj.template());
+			
 		appObj.show();
-		
-		process.enProcess(appObj);
-		
-		setTimeout(function(){
-			app.changeOpenning();
-		},300);
 		
 	}
 	
 	function openApp(appInfo){
-		if(!openning)
-			loadApp(appInfo);
+		if(!openning){
+			openning = true;
+			var appObj = new AppObj(appInfo);
+			
+			process.enProcess(appObj);
+		}
 	}
 	
 	return {
 		open : openApp,
+		add : addApp,
 		changeOpenning : function(){
 			openning = false;
 		}

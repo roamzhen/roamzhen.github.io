@@ -33,7 +33,6 @@
 	position: relative;
 	margin-top: 30px;
 	padding: 0 10px;
-	height: calc(100% - 150px);
 	overflow: hidden;
 }
 .m-slide{
@@ -98,6 +97,7 @@
 }
 
 .g-list-bar{
+	position: absolute; left: 0; right: 0; bottom: 90px;
 	line-height: 30px;
 }
 .g-list-bar-icon{
@@ -112,8 +112,9 @@
 }
 
 .g-footer{
-	position: relative;
+	position: absolute;
 	background-color: rgba(77,214,255,.95);
+	left: 0; right: 0; bottom: 0;
 	height: 90px;
 }
 
@@ -138,5 +139,40 @@
 .u-home-btn-cover.show{
 	opacity: 1;
 }
+
+.g-process-management{
+	position: absolute; 
+	top: 0; left: 0; right: 0; bottom: 0;
+	background-image: url(../images/appBg.jpg);
+	background-size: 100%;
+	z-index: 1000;
+	display: none;
+	opacity: 0;
+}
+
+.u-process-list{
+	display: block;
+	position: relative;
+	height: 100%;
+	padding: 0 10px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+.u-process-item{
+	overflow: hidden;
+	position: relative;
+	line-height: 90px;
+	margin: 10px 0;
+}
+.g-process-item-icon{
+	position: absolute;
+	left: 20px;
+	top: 15px;
+	height: 60px;
+}
+.g-process-item-name{
+	margin-left: 120px; font-size: 16px;
+}
+
 
 

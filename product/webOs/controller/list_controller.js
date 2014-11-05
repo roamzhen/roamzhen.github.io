@@ -1,6 +1,10 @@
 var listMenu = (function(){
 	var appList = $(".g-list");
 	
+	//init appList Height
+	appList.style['height'] = (document.body.offsetHeight - 150) + "px";
+	
+	
 	var appListWidth = appList.offsetWidth,
 		appListHeight = appList.offsetHeight,
 		appItemWidth,appItemHeight;
@@ -278,6 +282,8 @@ var listMenu = (function(){
 	
 	
 	function reinit(){
+		appList.style['height'] = (document.body.offsetHeight - 150) + "px";
+		
 		appList.innerHTML = "";
 		
 		appListWidth = appList.offsetWidth;

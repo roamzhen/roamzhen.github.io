@@ -8,19 +8,40 @@ var os = (function(){
 		homeBtn = $(".u-home-btn"),
 		homeBtnCover = homeBtn.querySelector(".u-home-btn-cover");
 
+	var hasTadFirst = false,
+		hasTadSecond = false;
+	
 	function initOs(){
 		$$.bind(homeBtn,TAD,homeBtnHandler);
 		
 	}
 	
+	/* home btn */
 	function homeBtnHandler(e){
-		homeBtnCover.addClass("show");
-		setTimeout(function(){
-			if(process.getLength()!==0){
-				process.processes[process.getLength()-1].hide();
-			}
-			homeBtnCover.removeClass("show");
-		},300);
+		
+		if(!hasTadFirst){
+			homeBtnCover.addClass("show");
+			hasTadFirst = true;
+			
+			setTimeout(function(){
+				if(!os.getHomeBtnSecond()){
+					if(process.getLength()!==0){
+						process.hide();
+					}
+				}
+				homeBtnCover.removeClass("show");
+				os.changeHomeBtnFirst();
+			},300);
+		}else if(!hasTadSecond){
+			hasTadSecond = true;
+			
+			process.processManagement();
+			
+			setTimeout(function(){
+				os.changeHomeBtnSecond();
+			},300);
+		}
+		
 	}
 	
 
@@ -32,7 +53,16 @@ var os = (function(){
 	
 	return {
 		start: startOs,
-		init: initOs
+		init: initOs,
+		changeHomeBtnFirst : function(){
+			hasTadFirst = false;
+		},
+		getHomeBtnSecond : function(){
+			return hasTadSecond;
+		},
+		changeHomeBtnSecond : function(){
+			hasTadSecond = false;
+		}
 	}
 }());
 
