@@ -3,7 +3,7 @@ var savedApp = [
 		appId : 3,
 		name : "豆瓣FM",
 		iconurl : "../resources/images/doubanFm.png",
-		templateId : "template-doubanFm"
+		templateId : "template-doubanFm",
 	},
 	{
 		appId : 4,
