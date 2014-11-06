@@ -17,6 +17,7 @@ var os = (function(){
 	
 	/* home btn */
 	function homeBtnHandler(e){
+		event.preventDefault();
 		
 		if(!hasTadFirst){
 			homeBtnCover.addClass("show");
@@ -73,7 +74,7 @@ window.onresize = function(){
 $$.ready(function(){
 	setTimeout(os.start,1000);
 	
-	//$$.bind(document.body,"touchMove",removePre);
+	$$.bind($(".main-screen"),"touchMove",removePre);
 	
 });
 

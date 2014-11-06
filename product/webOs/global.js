@@ -4,24 +4,28 @@ var savedApp = [
 		name : "豆瓣FM",
 		iconurl : "../resources/images/doubanFm.png",
 		templateId : "template-doubanFm",
+		callback : doubanFmCallback
 	},
 	{
 		appId : 4,
 		name : "Code Editor",
 		iconurl : "../resources/images/codeEditor.png",
-		templateId : "template-codeEditor"
+		templateId : "template-codeEditor",
+		callback : codeEditorCallback
 	},
 	{
 		appId : 1,
 		name : "File System",
 		iconurl : "../resources/images/fileSystem.png",
-		templateId : "template-fileSystem"
+		templateId : "template-fileSystem",
+		callback : fileSystemCallback
 	},
 	{
 		appId : 2,
 		name : "Process Viewer",
 		iconurl : "../resources/images/process.png",
-		templateId : "template-process"
+		templateId : "template-process",
+		callback : processCallback
 	}
 ];		
 

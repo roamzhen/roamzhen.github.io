@@ -53,6 +53,8 @@ var app = (function(){
 	function addApp(appObj){
 			
 		root.appendChild(appObj.template(appObj));
+		
+		appObj.appInfo.callback();
 			
 		appObj.show();
 		
