@@ -5,6 +5,9 @@
 	opacity: 0; 
 	display: none;
 	
+	overflow-x: hidden;
+	overflow-y: scroll;
+	
 	transition: opacity .4s ease-in-out;
 	-webkit-transition: opacity .4s ease-in-out;
 }
