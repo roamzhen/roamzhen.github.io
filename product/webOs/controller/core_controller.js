@@ -1,5 +1,4 @@
 
-
 var os = (function(){
 
 	var loadingScreen = $(".loading-screen"),
@@ -70,4 +69,12 @@ window.onresize = function(){
 	listMenu.reinit();
 }
 
-setTimeout(os.start,1000);
+
+$$.ready(function(){
+	setTimeout(os.start,1000);
+	
+	$$.bind(document.body,"touchMove",removePre);
+	
+});
+
+

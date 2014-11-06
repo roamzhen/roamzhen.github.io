@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,minimum-scale=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,minimum-scale=1,minimal-ui"/>
   <title>OS of javascript</title>
 </head>
 <link href="../resources/css/fontface.css" type="text/css" rel="stylesheet" />
@@ -39,12 +39,34 @@
 
 </section>
 
+<script type="text/template" id="template-doubanFm">
+	<style type="text/css">
+		#doubaniframe{width: 100%; height: 100%; opacity: 0.5;}
+	</style>
+	<iframe id="doubaniframe" src="http://www.douban.fm"></iframe>
+	
+</script>
+<script type="text/template" id="template-codeEditor">
+	<style type="text/css">
+		.g-code-editor-wrap{width: 100%; height: 100%; background-color: rgba(0,0,0,.5);}
+	</style>
+	<div class="g-code-editor-wrap"></div>
+</script>
+<script type="text/template" id="template-fileSystem">
+	
+</script>
+<script type="text/template" id="template-process">
+	
+</script>
+
 <script type="text/javascript" src="../resources/js/util.js"></script>
 <script type="text/javascript" src="../global.js"></script>
 <script type="text/javascript" src="../controller/process_controller.js"></script>
 <script type="text/javascript" src="../controller/app_controller.js"></script>
 <script type="text/javascript" src="../controller/list_controller.js"></script>
 <script type="text/javascript" src="../controller/core_controller.js"></script>
+
+
 
 </body>
 

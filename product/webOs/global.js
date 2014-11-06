@@ -2,22 +2,26 @@ var savedApp = [
 	{
 		appId : 3,
 		name : "豆瓣FM",
-		iconurl : "../resources/images/doubanFm.png"
+		iconurl : "../resources/images/doubanFm.png",
+		templateId : "template-doubanFm"
 	},
 	{
 		appId : 4,
 		name : "Code Editor",
-		iconurl : "../resources/images/codeEditor.png"
+		iconurl : "../resources/images/codeEditor.png",
+		templateId : "template-codeEditor"
 	},
 	{
 		appId : 1,
 		name : "File System",
-		iconurl : "../resources/images/fileSystem.png"
+		iconurl : "../resources/images/fileSystem.png",
+		templateId : "template-fileSystem"
 	},
 	{
 		appId : 2,
 		name : "Process Viewer",
-		iconurl : "../resources/images/process.png"
+		iconurl : "../resources/images/process.png",
+		templateId : "template-process"
 	}
 ];		
 

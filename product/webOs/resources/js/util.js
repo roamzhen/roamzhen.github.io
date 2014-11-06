@@ -1,3 +1,6 @@
+/* removePre() */
+function removePre(e) { e.preventDefault(); }
+
 // dom manipulation
 HTMLElement.prototype.addClass = function (classNames) {
   this.className += ' ' + classNames
@@ -111,7 +114,7 @@ var $$ = (function () {
       var _dom = init(dom);
       for (var i = 0; i < _dom.length; i++) {
         _dom[i].addEventListener(event, function (e) {
-          e.preventDefault();
+          //e.preventDefault();
           handler(e);
         }, false);
       }
@@ -121,7 +124,23 @@ var $$ = (function () {
       for (var i = 0; i < _dom.length; i++) {
         _dom[i].removeEventListener(event);
       }
-    }
+    },
+    ready : function(fn){
+		if(document.addEventListener){//兼容非IE
+			document.addEventListener("DOMContentLoaded",function(){
+				//注销事件，避免反复触发
+				document.removeEventListener("DOMContentLoaded",arguments.callee,false);
+				fn();//调用参数函数
+			},false);
+		}else if(document.attachEvent){//兼容IE
+			document.attachEvent("onreadystatechange",function(){
+				if(document.readyState==="complete"){
+					document.detachEvent("onreadystatechange",arguments.callee);
+					fn();
+				}
+			});
+		}
+	}
   }
 
 })();

@@ -7,17 +7,17 @@ var app = (function(){
 	
 	var AppObj = function(appInfo){
 		this.appInfo = appInfo;
-		this.started = true;
-		this.opacity = 1;		
+		this.opacity = 1;	
+		this.node = null;
 		
 	}
 	
 	AppObj.prototype = {
-		template: function(){
+		template: function(appObj){
 			var dom  = document.createElement("div");
 			dom.className = "app-window";
 			
-			dom.innerHTML = "";
+			dom.innerHTML = document.getElementById(appObj.appInfo.templateId).innerHTML;
 		
 			this.node = dom;
 			
@@ -52,7 +52,7 @@ var app = (function(){
 	
 	function addApp(appObj){
 			
-		root.appendChild(appObj.template());
+		root.appendChild(appObj.template(appObj));
 			
 		appObj.show();
 		
