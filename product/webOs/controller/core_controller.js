@@ -73,7 +73,7 @@ window.onresize = function(){
 $$.ready(function(){
 	setTimeout(os.start,1000);
 	
-	$$.bind(document.body,"touchMove",removePre);
+	//$$.bind(document.body,"touchMove",removePre);
 	
 });
 
