@@ -148,15 +148,14 @@
 	z-index: 3000;
 	display: none;
 	opacity: 0;
+	overflow-x: hidden;
+	overflow-y: scroll;
 }
 
 .u-process-list{
 	display: block;
 	position: relative;
-	height: 90%;
 	padding: 0 10px;
-	overflow-x: hidden;
-	overflow-y: scroll;
 }
 .u-process-item{
 	overflow: hidden;
