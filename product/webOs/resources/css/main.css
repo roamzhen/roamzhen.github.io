@@ -45,7 +45,7 @@
 	float: left;
 	cursor: pointer;
 	position: relative;
-	margin: 2% 2% calc(2% + 20px);
+	margin: 5px 2% 25px;
 	width: 21%; height: 0;
 	padding-bottom: 21%;
 }
@@ -113,9 +113,12 @@
 
 .g-footer{
 	position: absolute;
-	background-color: rgba(77,214,255,.95);
+	background-color: rgba(244,244,244,.5);
 	left: 0; right: 0; bottom: 0;
 	height: 90px;
+	
+	border-top-left-radius: -10px;
+	border-top-right-radius: -10px;
 }
 
 .u-home-btn{
@@ -141,7 +144,8 @@
 }
 
 .g-process-management{
-	position: absolute; 
+	position: absolute;
+	padding-top: 30px;
 	top: 0; left: 0; right: 0; bottom: 0;
 	background-image: url(../images/appBg.jpg);
 	background-size: 100%;
@@ -164,7 +168,7 @@
 	line-height: 90px;
 	height: 90px;
 	word-break: break-all;
-	margin: 10px 0;
+	margin-bottom:10px;
 }
 .g-process-item-icon{
 	position: absolute;

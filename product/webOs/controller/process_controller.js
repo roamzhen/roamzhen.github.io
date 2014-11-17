@@ -1,5 +1,5 @@
 
-var Process = (function(){
+var process = (function(){
 	
 	var root = $(".main-screen");
 	var processManager = $(".g-process-management");
@@ -7,6 +7,20 @@ var Process = (function(){
 	
 	function Process(){
 		this.processes = new Array();	
+	}
+	
+	function processItemTemplate(obj){
+		var processObj = {};
+		
+		var processPcb = {
+			state :"running",
+			
+		};
+		
+		processObj.pcb = processPcb;
+		processObj.sourceApp = obj;
+		
+		return processObj;
 	}
 	
 	Process.prototype.getLength = function(){
@@ -21,15 +35,8 @@ var Process = (function(){
 	}
 	
 	Process.prototype.create = function(obj){
-		var processObj = {};
 		
-		var processPcb = {
-			state :"running",
-			
-		};
-		
-		processObj.pcb = processPcb;
-		processObj.sourceApp = obj;
+		var processObj = processItemTemplate(obj);
 		
 		this.processes.push(processObj);
 		
@@ -141,9 +148,9 @@ var Process = (function(){
 						"<p class='g-process-item-name'>"+processObj.sourceApp.appInfo.name+"</p>"+
 						"<div class='g-process-item-status "+status+"'></div>";
 		
-		$$.bind(dom,"touchstart",processItemTouchEvent.handler);
-		$$.bind(dom,"touchmove",processItemTouchEvent.handler);
-		$$.bind(dom,"touchend",processItemTouchEvent.handler);
+		dom.addEventListener("touchstart",processItemTouchEvent.handler);
+		dom.addEventListener("touchmove",processItemTouchEvent.handler);
+		dom.addEventListener("touchend",processItemTouchEvent.handler);
 		
 		return dom;
 	}
@@ -176,6 +183,8 @@ var Process = (function(){
 						
 						break;
 					case "touchmove":
+						if(Math.abs(lastX - fromX)>15)
+							event.preventDefault();
 						lastX = e.touches[0].clientX;
 						setPosition(targetNode,lastX-fromX);
 						
@@ -247,7 +256,6 @@ var Process = (function(){
 		node.style[TRANSITION]= 'none';
 	}
 	
-	return Process;
+	return new Process();
 }());
 
-var process = new Process();

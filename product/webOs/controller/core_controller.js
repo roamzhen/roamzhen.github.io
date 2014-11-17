@@ -72,10 +72,15 @@ window.onresize = function(){
 
 
 $$.ready(function(){
-	setTimeout(os.start,1000);
 	
-	$$.bind($(".main-screen"),"touchMove",removePre);
+	$$.bind(document.documentElement,"touchMove",removePre);
 	
 });
+
+window.onload = function(){
+	
+	setTimeout(os.start,1000);
+	
+}
 
 

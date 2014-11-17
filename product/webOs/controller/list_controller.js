@@ -2,7 +2,7 @@ var listMenu = (function(){
 	var appList = $(".g-list");
 	
 	//init appList Height
-	appList.style['height'] = (document.body.offsetHeight - 150) + "px";
+	appList.style['height'] = (document.body.offsetHeight - 140) + "px";
 	
 	
 	var appListWidth = appList.offsetWidth,
@@ -11,7 +11,7 @@ var listMenu = (function(){
 	
 	if(document.body.offsetWidth<=480){
 		appItemWidth = appListWidth /4,
-		appItemHeight = appItemWidth + 20;
+		appItemHeight = appListWidth * 21 / 100 + 30;
 	}else{
 		appItemWidth = 140;
 		appItemHeight = 170;
@@ -289,12 +289,10 @@ var listMenu = (function(){
 		appListWidth = appList.offsetWidth;
 		appListHeight = appList.offsetHeight;
 	
-		if(config.isMobile){
+	
+		if(document.body.offsetWidth<=480){
 			appItemWidth = appListWidth /4,
-			appItemHeight = appItemWidth + 20;
-		}else if(document.body.offsetWidth<=480){
-			appItemWidth = appListWidth /4,
-			appItemHeight = appItemWidth + 20;
+			appItemHeight = appListWidth * 21 / 100 + 30;
 		}else{
 			appItemWidth = 140;
 			appItemHeight = 170;

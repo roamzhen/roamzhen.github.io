@@ -114,7 +114,7 @@ var $$ = (function () {
       var _dom = init(dom);
       for (var i = 0; i < _dom.length; i++) {
         _dom[i].addEventListener(event, function (e) {
-          //e.preventDefault();
+          e.preventDefault();
           handler(e);
         }, false);
       }
