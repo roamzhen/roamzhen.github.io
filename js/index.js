@@ -3,6 +3,8 @@ window.onload = function(){
   initStepBtn();
   initWordChanger();
   productClass.productSlider();
+
+  localStorage.removeItem("editjson");
 }
 /* basic class method */
 function hasClass(obj, cls) {
