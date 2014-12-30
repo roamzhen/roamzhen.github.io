@@ -4,7 +4,8 @@ window.onload = function(){
   initWordChanger();
   productClass.productSlider();
 
-  localStorage.removeItem("editjson");
+
+  localStorage.clear();
 }
 /* basic class method */
 function hasClass(obj, cls) {
