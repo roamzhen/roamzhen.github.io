@@ -40,7 +40,7 @@ MParallex.prototype._bindDom = function(){
     tmpObj.hideTop = tmpObj.offsetTop - this.screenHeight + tmpObj.clientHeight;
 
     if(tmpObj.animation)
-      tmpObj.dom.style.cssText = "transform:translate3d(" + tmpObj.animation.from + "px,0,0);";
+      tmpObj.dom.style.cssText = "-webkit-transform:translate3d(" + tmpObj.animation.from + "px,0,0);";
 
   }
 
@@ -88,10 +88,10 @@ function scrollCheck(){
     if(tmpObj.animation && this.scrollTop >= tmpObj.showTop){
       var dis = (this.scrollTop - tmpObj.showTop)*((tmpObj.animation.step)?(tmpObj.animation.step):(1));
 
-      tmpObj.dom.style.cssText = "transform:translate3d(" + (tmpObj.animation.from - dis) + "px,0,0)";
+      tmpObj.dom.style.cssText = "-webkit-transform:translate3d(" + (tmpObj.animation.from - dis) + "px,0,0)";
 
       if(tmpObj.animation.to >= (tmpObj.animation.from - dis)){
-        tmpObj.dom.style.cssText = "transform:translate3d(" + tmpObj.animation.to + "px,0,0)";
+        tmpObj.dom.style.cssText = "-webkit-transform:translate3d(" + tmpObj.animation.to + "px,0,0)";
       }
     }
 
