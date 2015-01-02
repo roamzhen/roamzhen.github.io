@@ -66,7 +66,7 @@ MParallex.prototype._bindScroll = function(){
   this.scrollTimer = setInterval(function(){
     if(that.touched)
       scrollCheck.call(that);
-  },20);
+  },40);
   
   document.body.addEventListener("touchmove",function(){
     that.touched = true;
