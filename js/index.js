@@ -1,3 +1,8 @@
+(function(){
+
+  
+})();
+
 window.onload = function(){
   initMenuBtn();
   initStepBtn();
