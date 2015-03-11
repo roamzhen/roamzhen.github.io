@@ -1,11 +1,11 @@
 html,body{ margin: 0; width: 100%; height: 100%; overflow-x: hidden; background-color: #000}
 h2,h3,h4,h5,h6{ margin: 0}
 
-.wrap{background-color: #fff;position: relative; left: 0;width: 100%; height: 100%;overflow-x: hidden;transition:left 0.4s,height 0.4s,margin 0.4s;}
-.wrap.scale{left: 200px;height: 90%;margin-top: 20px;}
+.wrap{background-color: #fff;position: relative; left: 0;width: 100%; height: 100%;overflow-x: hidden;transition: all 0.4s;}
+.wrap.scale{ transform: translate3d(200px,0,0) scale(1,0.9); -webkit-transform: translate3d(200px,0,0) scale(1,0.9);}
 .inner-wrap{width: 100%; padding-top: 40px; padding-right: 50px;}
-.aside{position: fixed; left: -200px; top: 0px;width: 200px; height: 100%;transition:left 0.4s;background-color: #000;}
-.aside.active{left: 0px;}
+.aside{position: absolute; left: 0; top: 0; transform: translate3d(-200px,0,0); -webkit-transform: translate3d(-200px,0,0);width: 200px; height: 100%;transition:all 0.4s;background-color: #000;}
+.aside.active{transform: translate3d(0,0,0); -webkit-transform: translate3d(0,0,0);}
 .aside .center-line{position: absolute; width: 1px; height: 80%;top: 10%; left: 40px; background-color: #fff;}
 .step-btn{position: absolute;width: 120px; height: 10%;font-family: "OswaldLight";text-decoration: none; text-align: center;}
 .step-btn span{vertical-align: middle; color: rgb(200,200,200);}
@@ -24,11 +24,14 @@ h2,h3,h4,h5,h6{ margin: 0}
 
 
 
-.menu-btn{position: fixed; left: 10px; top: 0px; background-image: url(../images/menu_black.png); width: 40px; height: 40px; background-size: 70%; background-position: 50% 50%; background-repeat: no-repeat; 
-  transition: background-color 0.4s, background-image 0.4s,left 0.4s,top 0.2s,transform 0.2s,-webkit-transform 0.2s;
+.menu-btn{position: absolute; left: 10px; top: 0px; background-image: url(../images/menu_black.png); width: 40px; height: 40px; background-size: 70%; background-position: 50% 50%; background-repeat: no-repeat; 
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transition: background-color 0.4s, background-image 0.4s,left 0.4s,top 0.4s,transform 0.2s,-webkit-transform 0.2s;
+  -webkit-transition: background-color 0.4s, background-image 0.4s,left 0.4s,top 0.4s,transform 0.2s,-webkit-transform 0.2s;
 }
 .menu-btn.active{
-  left: 200px; top: 20px;
+  left: 200px; top: 5%;
   transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   background-image: url(../images/menu_white.png);background-color: rgb(0,0,0);
@@ -82,7 +85,7 @@ div.content-wrap{ position: relative; padding: 10px 0 30px; margin: 0 20px;}
 
 .product-con{ float: left; padding-top: 60px;}
 .product-item{ display: block; position: relative; width: 246px; height: 180px; border: 2px solid #000; margin: 0px 10px 120px; text-decoration: none;}
-.product-title{ position: absolute; width: 250px; line-height: 26px; height: 52px; text-align: center; top: 190px; left: 0; color: #000; font-size: 20px; font-family: "OswaldLight";}
+.product-title{ position: absolute; width: 250px; line-height: 26px; text-align: center; top: 190px; left: 0; color: #000; font-size: 20px; font-family: "OswaldLight";}
 .product-pic-wrap{width: 160px; height: 160px; position: absolute; left: 45px; top: 10px; overflow: hidden;}
 .product-pic-inner{ width: 400px; height: 400px; margin: -120px 0 0 -120px; text-align: center; display: inline-block; zoom:1; line-height: 400px; vertical-align: middle;}
 .product-pic-inner img{vertical-align: middle; border: none; width: 160px;}

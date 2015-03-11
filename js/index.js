@@ -1,87 +1,123 @@
 (function(){
 
-  
-})();
+var 
+  wrap = $(".wrap"),
+  aside = $(".aside"),
+  menuBtn = $(".menu-btn");
 
-window.onload = function(){
-  initMenuBtn();
-  initStepBtn();
-  initWordChanger();
-  productClass.productSlider();
+var tad = (IsPC())?("click"):("touchstart");
 
+var myPage = {
+  init : function(){
+    initMenuBtn();
+    initWordChanger();
 
-  localStorage.clear();
+    stopWindowDrag();
+
+    myPage._initStep();
+    myPage._initProduct();
+  },
+  _initStep: function(){
+    initStepBtn();
+  },
+  _initProduct : function(){
+    productClass.init();
+  }
 }
-/* basic class method */
-function hasClass(obj, cls) {
-    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
-}
 
-function addClass(obj, cls) {
-    if (!this.hasClass(obj, cls)) obj.className += " " + cls;
-}
-
-function removeClass(obj, cls) {
-    if (hasClass(obj, cls)) {
-        var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
-        obj.className = obj.className.replace(reg, '');
-    }
-}
-/* end basic class method */
 
 /* step-btn */
 function initStepBtn(){
-  var stepBtnList = document.getElementsByClassName("step-btn");
 
-  for (var i = stepBtnList.length - 1; i >= 0; i--) {
-    stepBtnList[i].onclick = function(){
+  var 
+    helloTop = $(".hello")[0].offsetTop,
+    intrTop = $(".intr")[0].offsetTop,
+    productTop = $(".product")[0].offsetTop,
+    contactTop = 1965;
+
+  var scrollList = [helloTop,intrTop,productTop,contactTop,contactTop,contactTop];
+
+  console.log(scrollList);
+
+  var stepBtnList = $(".step-btn");
+
+
+  stepBtnList.each(function(i){
+    this.num = i;
+
+    $(this).on(tad,function(){
       for (var j = stepBtnList.length - 1; j >= 0; j--) {
-        removeClass(stepBtnList[j],"active");
+        stepBtnList.removeClass("active");
       };
-      addClass(this,"active");
+      $(this).addClass("active");
+
+      wrap[0].scrollTop = scrollList[this.num];
+    });
+  });
+
+  wrap.on("scroll",function(){
+    var nowTop = wrap[0].scrollTop;
+    if(nowTop <= helloTop){
+      
+      stepBtnList.removeClass("active");
+      $(stepBtnList[0]).addClass("active");
+
+    }else{
+
+      if(nowTop <= intrTop){
+        stepBtnList.removeClass("active");
+        $(stepBtnList[1]).addClass("active");
+      }else{
+
+        if(nowTop <= productTop){
+          stepBtnList.removeClass("active");
+          $(stepBtnList[2]).addClass("active");
+        }else{
+          stepBtnList.removeClass("active");
+          $(stepBtnList[3]).addClass("active");
+          $(stepBtnList[4]).addClass("active");
+          $(stepBtnList[5]).addClass("active");
+
+        }
+      }
+
     }
-  };
+
+  });
 }
 
 /* end step-btn */
 
 /* menuBtn */
 function initMenuBtn(){
-  var menuBtn = document.getElementsByClassName("menu-btn")[0];
 
-  menuBtn.cliked = false;
-  menuBtn.onclick = function(){
+  menuBtn[0].cliked = false;
+  menuBtn.click(function(){
     if(this.clicked){
       menuHide();
     }else{
       menuShow();
     }
-    menuBtn.clicked = !menuBtn.clicked;
-  }
+    this.clicked = !this.clicked;
+  });
 
   function menuShow(){
-    var wrap = document.getElementsByClassName("wrap")[0];
-    var aside = document.getElementsByClassName("aside")[0];
-    var menuBtn = document.getElementsByClassName("menu-btn")[0];
 
     if(wrap!=null&&aside!=null&&menuBtn!=null)
     {
-      addClass(menuBtn,"active");
-      addClass(aside,"active");
-      addClass(wrap,"scale");
+      menuBtn.addClass("active");
+      aside.addClass("active");
+      wrap.addClass("scale");
     }
   }
   function menuHide(){
-    var wrap = document.getElementsByClassName("wrap")[0];
-    var aside = document.getElementsByClassName("aside")[0];
-    var menuBtn = document.getElementsByClassName("menu-btn")[0];
 
     if(wrap!=null&&aside!=null&&menuBtn!=null)
     {
 
-      removeClass(menuBtn,"active");
-      removeClass(aside,"active");
-      removeClass(wrap,"scale");
+      menuBtn.removeClass("active");
+      aside.removeClass("active");
+      wrap.removeClass("scale");
     }
   }
 }
@@ -89,10 +125,10 @@ function initMenuBtn(){
 
 /* word-changer */
 function initWordChanger(){
-  var newSpan = document.getElementsByClassName("new")[0];
-  var oldSpan = document.getElementsByClassName("old")[0];
+  var newSpan = $(".new")[0];
+  var oldSpan = $(".old")[0];
 
-  var likeList = ["Javascript","HTML5","WebApp","Hybrid App","Programing","Cook","Yummy Food"];
+  var likeList = ["Javascript","HTML5","WebApp","Hybrid App","Programing","Cook","Yummy Food","Web Components","React"];
 
   var backNumber = 0;
 
@@ -135,6 +171,11 @@ function initWordChanger(){
 //productSlider Class
 var productClass = (function(){
 
+  var 
+    product = $("#product")[0],
+    arrow_left = $("#arrow_left"),
+    arrow_right = $("#arrow_right");
+
   var product_left=0;
   var product_location=0;
 
@@ -142,15 +183,10 @@ var productClass = (function(){
 
   var product_dev = Math.min(parseInt(cWidth / 270),3);
 
-  var product_number = Math.ceil(document.getElementsByClassName("product-con").length/product_dev);
+  var product_number = Math.ceil($(".product-con").length/product_dev);
   var product_item_width = 270 * product_dev;
 
-  function productSlider(){
-    cWidth = document.body.clientWidth;
-
-    var product = document.getElementById("product");
-    var arrow_left = document.getElementById("arrow_left");
-    var arrow_right = document.getElementById("arrow_right");
+  function init(){
 
     product_dev = Math.min(parseInt(cWidth / 270),3);
 
@@ -159,12 +195,12 @@ var productClass = (function(){
 
     product.style.width = product_number*product_item_width +"px";
 
-    arrow_left.onclick = function(){
+    arrow_left.on(tad,function(){
       cWidth = document.body.clientWidth;
 
       product_dev = Math.min(parseInt(cWidth / 270),3);
 
-      product_number = Math.ceil(document.getElementsByClassName("product-con").length/product_dev);
+      product_number = Math.ceil($(".product-con").length/product_dev);
       product_item_width = 270 * product_dev;
 
       product.style.width = product_number*product_item_width +"px";
@@ -173,14 +209,14 @@ var productClass = (function(){
         product_left = product_location;
         productionAnimate(product,(-product_item_width));
       }
-    }
+    });
 
-    arrow_right.onclick = function(){
+    arrow_right.on(tad,function(){
       cWidth = document.body.clientWidth;
 
       product_dev = Math.min(parseInt(cWidth / 270),3);
 
-      product_number = Math.ceil(document.getElementsByClassName("product-con").length/product_dev);
+      product_number = Math.ceil($(".product-con").length/product_dev);
       product_item_width = 270 * product_dev;
 
       product.style.width = product_number*product_item_width +"px";
@@ -189,7 +225,7 @@ var productClass = (function(){
         product_left = product_location;
         productionAnimate(product,product_item_width);
       }
-    }
+    });
 
 
   }
@@ -201,12 +237,12 @@ var productClass = (function(){
 
     obj.timer=setInterval(function(){
       product_left+=(product_location - product_left)/4;
-      obj.style.left=(-product_left)+"px";
+      obj.style.webkitTransform= "translate3d("+(-product_left)+"px,0,0)";
 
       if(product_left<=1){
         product_left = 0;
         product_location = 0;
-        obj.style.left = "0px";
+        obj.style.webkitTransform = "translate3d(0,0,0)";
         clearInterval(obj.timer);
       }
       if(product_left>(product_number-1)*product_item_width){
@@ -218,7 +254,7 @@ var productClass = (function(){
 
       if(Math.abs(product_left-product_location)<=1){
         product_left = product_location;
-        obj.style.left = (-product_left)+"px";
+        obj.style.webkitTransform = "translate3d("+ (-product_left)+"px,0,0)";
         clearInterval(obj.timer);
       }
 
@@ -226,7 +262,58 @@ var productClass = (function(){
   }
 
   return{
-      productSlider:productSlider
+      init : init
     }
 }())
-//productSlider class end
+
+/* my change of default prototype */
+function stopWindowDrag(){
+
+  var selScrollable = '.scrollable';
+  // Uses document because document will be topmost level in bubbling
+  $(document).on('touchmove',function(e){
+    e.preventDefault();
+  });
+  // Uses body because jQuery on events are called off of the element they are
+  // added to, so bubbling would not work if we used document instead.
+  $('body').on('touchstart', selScrollable, function(e) {
+    if (e.currentTarget.scrollTop === 0) {
+      e.currentTarget.scrollTop = 1;
+    } else if (e.currentTarget.scrollHeight === e.currentTarget.scrollTop + e.currentTarget.offsetHeight) {
+      e.currentTarget.scrollTop -= 1;
+    }
+  });
+  // Stops preventDefault from being called on document if it sees a scrollable div
+  $('body').on('touchmove', selScrollable, function(e) {
+    e.stopPropagation();
+  });
+  $('body').on('touchmove', selScrollable, function(e) {
+    // Only block default if internal div contents are large enough to scroll
+    // Warning: scrollHeight support is not universal. (http://stackoverflow.com/a/15033226/40352)
+    if($(this)[0].scrollHeight > $(this).height()) {
+        e.stopPropagation();
+    }
+
+  });
+}
+
+function IsPC() {
+  var userAgentInfo = navigator.userAgent;
+  var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+  var flag = true;
+  for (var v = 0; v < Agents.length; v++) {
+    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+      flag = false;
+      break;
+    }
+  }
+  return flag;
+}
+
+window.myPage = myPage;
+
+})();
+
+window.onload = function(){
+  myPage.init();
+}
