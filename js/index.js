@@ -32,13 +32,12 @@ function initStepBtn(){
   var 
     helloTop = $(".hello")[0].offsetTop + $(".hello")[0].offsetHeight/2,
     intrTop = $(".intr")[0].offsetTop + $(".intr")[0].offsetHeight/2,
-    productTop = $(".product")[0].offsetTop + $(".product")[0].offsetHeight/4,
+    productTop = $(".product")[0].offsetTop + 300,
     contactTop = productTop + $(".product")[0].offsetHeight/2;
 
   var scrollList = [helloTop,intrTop,productTop,contactTop,contactTop,contactTop];
 
   var stepBtnList = $(".step-btn");
-
 
   stepBtnList.each(function(i){
     this.num = i;
