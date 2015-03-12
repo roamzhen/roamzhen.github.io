@@ -89,7 +89,7 @@ function initStepBtn(){
 /* menuBtn */
 function initMenuBtn(){
 
-  menuBtn[0].cliked = false;
+  menuBtn[0].clicked = false;
   menuBtn.on(tad,function(){
     if(this.clicked){
       menuHide();
