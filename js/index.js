@@ -14,21 +14,6 @@ var myPage = {
 
     stopWindowDrag();
 
-    $(document).on("touchmove",function(e){
-      console.log("document");
-    });
-
-    $('html').on("touchmove",function(e){
-      e.preventDefault();
-      console.log("html");
-    });
-
-    $('body').on("touchmove",function(e){
-      
-      console.log("body");
-    });
-
-
     myPage._initStep();
     myPage._initProduct();
   },
