@@ -12,24 +12,7 @@ var myPage = {
     initMenuBtn();
     initWordChanger();
 
-    //stopWindowDrag();
-
-    $(document).on("touchmove",function(e){
-      console.log("document");
-    });
-
-    $('html').on("touchmove",function(e){
-      console.log("html");
-    });
-
-    $('body').on("touchmove",function(e){
-      
-      console.log("body");
-    });
-
-    $('.intr').on("touchmove",function(e){
-      //e.stopPropagation();
-    });
+    stopWindowDrag();
 
     myPage._initStep();
     myPage._initProduct();
@@ -49,7 +32,7 @@ function initStepBtn(){
   var 
     helloTop = $(".hello")[0].offsetTop + $(".hello")[0].offsetHeight/2,
     intrTop = $(".intr")[0].offsetTop + $(".intr")[0].offsetHeight/2,
-    productTop = $(".product")[0].offsetTop + $(".product")[0].offsetHeight/2,
+    productTop = $(".product")[0].offsetTop + $(".product")[0].offsetHeight/4,
     contactTop = productTop + $(".product")[0].offsetHeight/2;
 
   var scrollList = [helloTop,intrTop,productTop,contactTop,contactTop,contactTop];
