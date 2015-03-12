@@ -30,9 +30,9 @@ var myPage = {
 function initStepBtn(){
 
   var 
-    helloTop = $(".hello")[0].offsetTop,
-    intrTop = $(".intr")[0].offsetTop,
-    productTop = $(".product")[0].offsetTop,
+    helloTop = $(".hello")[0].offsetTop + $(".hello")[0].offsetHeight/2,
+    intrTop = $(".intr")[0].offsetTop + $(".intr")[0].offsetHeight/2,
+    productTop = $(".product")[0].offsetTop + $(".product")[0].offsetHeight/2,
     contactTop = productTop + $(".product")[0].offsetHeight;
 
   var scrollList = [helloTop,intrTop,productTop,contactTop,contactTop,contactTop];
