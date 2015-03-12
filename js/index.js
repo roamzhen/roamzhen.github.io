@@ -33,11 +33,9 @@ function initStepBtn(){
     helloTop = $(".hello")[0].offsetTop,
     intrTop = $(".intr")[0].offsetTop,
     productTop = $(".product")[0].offsetTop,
-    contactTop = 1965;
+    contactTop = productTop + $(".product")[0].offsetHeight;
 
   var scrollList = [helloTop,intrTop,productTop,contactTop,contactTop,contactTop];
-
-  console.log(scrollList);
 
   var stepBtnList = $(".step-btn");
 
@@ -92,7 +90,7 @@ function initStepBtn(){
 function initMenuBtn(){
 
   menuBtn[0].cliked = false;
-  menuBtn.click(function(){
+  menuBtn.on(tad,function(){
     if(this.clicked){
       menuHide();
     }else{
