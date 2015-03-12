@@ -12,7 +12,24 @@ var myPage = {
     initMenuBtn();
     initWordChanger();
 
-    stopWindowDrag();
+    //stopWindowDrag();
+
+    $(document).on("touchmove",function(e){
+      console.log("document");
+    });
+
+    $('html').on("touchmove",function(e){
+      console.log("html");
+    });
+
+    $('body').on("touchmove",function(e){
+      
+      console.log("body");
+    });
+
+    $('.intr').on("touchmove",function(e){
+      //e.stopPropagation();
+    });
 
     myPage._initStep();
     myPage._initProduct();
