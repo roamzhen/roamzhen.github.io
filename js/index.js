@@ -14,6 +14,21 @@ var myPage = {
 
     stopWindowDrag();
 
+    $(document).on("touchmove",function(e){
+      console.log("document");
+    });
+
+    $('html').on("touchmove",function(e){
+      e.preventDefault();
+      console.log("html");
+    });
+
+    $('body').on("touchmove",function(e){
+      
+      console.log("body");
+    });
+
+
     myPage._initStep();
     myPage._initProduct();
   },
@@ -33,7 +48,7 @@ function initStepBtn(){
     helloTop = $(".hello")[0].offsetTop + $(".hello")[0].offsetHeight/2,
     intrTop = $(".intr")[0].offsetTop + $(".intr")[0].offsetHeight/2,
     productTop = $(".product")[0].offsetTop + $(".product")[0].offsetHeight/2,
-    contactTop = productTop + $(".product")[0].offsetHeight;
+    contactTop = productTop + $(".product")[0].offsetHeight/2;
 
   var scrollList = [helloTop,intrTop,productTop,contactTop,contactTop,contactTop];
 
@@ -280,10 +295,6 @@ function stopWindowDrag(){
     } else if (e.currentTarget.scrollHeight === e.currentTarget.scrollTop + e.currentTarget.offsetHeight) {
       e.currentTarget.scrollTop -= 1;
     }
-  });
-  // Stops preventDefault from being called on document if it sees a scrollable div
-  $('body').on('touchmove', selScrollable, function(e) {
-    e.stopPropagation();
   });
   $('body').on('touchmove', selScrollable, function(e) {
     // Only block default if internal div contents are large enough to scroll
