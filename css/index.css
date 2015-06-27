@@ -1,7 +1,7 @@
-html,body{ margin: 0; width: 100%; height: 100%; overflow-x: hidden; background-color: #000}
+html,body{ margin: 0; width: 100%; height: 100%; overflow-x: hidden;}
 h2,h3,h4,h5,h6{ margin: 0}
 
-.wrap{background-color: #000;position: relative; left: 0;width: 100%; height: 100%;overflow-x: hidden;transition: all 0.4s;}
+.wrap{position: relative; left: 0;width: 100%; height: 100%;overflow-x: hidden;transition: all 0.4s;}
 .wrap.scale{ transform: translate3d(200px,0,0) scale(1,0.9); -webkit-transform: translate3d(200px,0,0) scale(1,0.9);}
 .inner-wrap{width: 100%; padding-top: 40px; padding-right: 50px;}
 .aside{position: absolute; left: 0; top: 0; transform: translate3d(-200px,0,0); -webkit-transform: translate3d(-200px,0,0);width: 200px; height: 100%;transition:all 0.4s;background-color: #000;}
