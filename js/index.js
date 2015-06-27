@@ -310,3 +310,4 @@ window.myPage = myPage;
 window.onload = function(){
   myPage.init();
 }
+

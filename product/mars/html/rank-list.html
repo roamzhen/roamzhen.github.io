@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-use-rem="">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+    <meta name="description" content="description"/>
+    <meta name="keywords" content="a,b"/>
+    <title>排行页面</title>
+    <link rel="stylesheet" href="../css/style.css"/>
+  </head>
+  <body ontouchstart="" class="rank-list-page">
+    <div class="p-wrap">
+      <div class="loading-wrap"></div>
+      <div class="p-rank">
+        <div class="p-rank-top">
+          <div class="fitter gray"></div>
+        </div>
+        <div class="p-rank-list-wrap">
+          <div class="p-rank-list"></div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/zepto.js"></script>
+    <script src="../js/zepto-touch.js"></script>
+    <script src="../js/grid.js"></script>
+    <script>
+      var rank_list = $('.p-rank-list');
+      
+      $.get('../js/activity-json.json',function(data){
+      
+      
+      
+        for(var i=10,j=1; i>1;i--,j++){
+          var tmpclass = "";
+      
+          if(j==1){
+            tmpclass = "rank-num-1";
+          }
+          if(j==2){
+            tmpclass = "rank-num-2";
+          }
+          if(j==3){
+            tmpclass = "rank-num-3";
+          }
+      
+          var tmpstr = 
+            "<div class='rank-item'>" +
+      
+              "<div class='avatar-ico'>" +
+                "<img class='avatar-inner' src='"+ "../img/talakepng.jpg" +"' />" +
+              "</div>"+
+      
+              "<div class='rank-name'>"+ "Roam" + "</div>"+
+      
+              "<div class='process-bar-wrap'>"+
+                "<div class='process-bar'>" +
+                "<div class='process-long' style='width:"+ i*10 +"%;' ></div>"+
+              "</div></div>"+
+      
+              "<div class='rank-hour'>" + 2 + "小时</div>" +
+      
+              "<div class='rank-box'>"+
+                "<div class='rank-num "+ tmpclass + "'>"+             
+                "</div>"+
+              "</div>"+
+              "<p class='rank-txt'>"+j+"</p>"+
+      
+            "</div>";
+          rank_list.html(rank_list.html()+ tmpstr);
+        }
+      
+        $('.p-rank-list').addClass('show');
+        $('.loading-wrap').addClass("loaded");
+      
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+   "title":"南山大清洁",
+    "desc":"这是一个很有意义的活动，在腾讯大厦附近的广场做清洁",
+    "img":"../img/share-bg3.jpg",
+    "startTime":"9",
+    "endTime":"18",
+    "position": "深南大道",
+    "signPosition": {
+      "lat":"113.362303",
+      "lon":"23.163577"
+    }
+}

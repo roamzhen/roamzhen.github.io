@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-use-rem="">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+    <meta name="description" content="description"/>
+    <meta name="keywords" content="a,b"/>
+    <title>我的成绩</title>
+    <link rel="stylesheet" href="../css/style.css"/>
+  </head>
+  <body ontouchstart="">
+    <div class="p-wrap">
+      <div class="loading-wrap"></div>
+      <div class="share-page data-tpl">
+        <div class="fitter gray"></div>
+        <div class="share-wrap">
+          <div class="share-wrap-inner">
+            <p class="work-time"><span id="work_hour">0</span>:00</p>
+            <p class="work-tites">谢谢你的付出 <span id="user_name"></span></p><span class="dis-span">@</span>
+            <p class="work-event"><span class="underline" id="event_name"></span>！</p>
+            <div class="join-btn">立即加入<span class="big red">爱芬环保</span></div>
+          </div>
+        </div>
+        <p id="change-words" class="bottom-hint"> </p>
+      </div>
+    </div>
+    <script src="../js/zepto.js"></script>
+    <script src="../js/zepto-touch.js"></script>
+    <script src="../js/grid.js"></script>
+    <script src="../js/animations.js"></script>
+    <script>
+      (function(){
+        var
+          user_name = $('#user_name'),
+          event_name = $('#event_name'),
+          work_hour = $('#work_hour'),
+          words_group = ["“一分耕耘，一分收获”","“赠人玫瑰，手有余香”","“世界上能为别人减轻负担的都不是庸庸碌碌之徒”"];
+      
+        $.get('../js/page.json',function(data){
+          user_name.html(data.user_name);
+          event_name.html(data.event_name);
+          work_hour.data("animation",data.work_hour);
+      
+          $('.share-wrap-inner').addClass("show");
+          $('.loading-wrap').addClass("loaded");
+          $('.bottom-hint').addClass("show");
+      
+          //数字动画
+          setTimeout(function() {
+            var animationFrame = new AnimationFrame();
+            animationFrame.dataAnimation($(".data-tpl"));
+          }, 600);
+      
+        });
+      
+        $(".share-page").addClass("pic"+ ( parseInt(Math.random()*3) + 1));
+        $("#change-words").html(words_group[parseInt(Math.random()*words_group.length)]);
+      
+      }());
+    </script>
+  </body>
+</html>
