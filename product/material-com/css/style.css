@@ -1,0 +1,292 @@
+@charset "utf-8";
+html,body{
+    height: 100%;
+}
+body,html,h1,h2,h3,h4,h5,h6,p{
+    margin: 0;
+    padding: 0;
+    font-weight: normal; 
+}
+html{
+   user-select: none;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0); 
+}
+body{
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.42; 
+}
+a{
+    -webkit-tap-highlight-color:rgba(0,0,0,0); 
+    text-decoration: none;
+    color: #7483af;
+    background: transparent;
+    &:focus {
+       outline: thin dotted;
+    }
+    &:active,
+    &:hover{
+        outline: 0;
+    }
+    
+}
+
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-size: 100%;
+}
+
+b,strong{
+    font-weight: bold;
+}
+
+hr{
+    box-sizing:content-box;
+    height: 0;
+}
+
+img{
+    border: 0;
+    outline: none;
+}
+ul,ol,li{
+    margin:0;
+    padding: 0;
+    list-style: none;
+}
+
+button,
+input,
+select,
+textarea{
+    font-family: inherit;
+    font-size: 100%;
+    margin-right: 0;
+    text-transform: none;
+    border: 0;
+    background: 0 0;
+    -webkit-appearance: none;
+    outline: 0;
+}
+  
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+/* reset default cursor for disabled elements */
+button[disabled],
+html input[disabled]{
+    cursor: default;
+}
+
+input[type="search"]{
+    -webkit-appearance:textfield;
+    box-sizing:content-box;
+}
+
+textarea{
+    vertical-align: top;
+    overflow: auto;
+    resize:none;
+}
+
+/* reomve most spacing between table cells */
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+cite{
+    font-style: normal;
+}
+
+svg:not(:root){
+    overflow: hidden;
+}
+
+/*
+* Now
+* It is
+* my Turn
+*/
+body {
+	background-color: #eee;
+	padding-top: 1px;
+	box-sizing: border-box;
+}
+
+.mat-wrap {
+	position: relative;
+	margin: auto;
+	margin-top: 64px;
+	width: 100%;
+	max-width: 320px;
+	background-color: white;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	border-radius: 2px;
+	overflow: hidden;
+}
+
+.mat-header {
+	height: 200px;
+	background-position: center center;
+	background-size: auto 100%;
+	position: relative;
+}
+
+@media (max-width: 480px) {
+	.mat-wrap {
+		margin-top: 0;
+		height: 100%;
+	}
+}
+
+.login-btn {
+	display: none;
+	position: absolute;
+	bottom: 0;
+	right: 20px;
+	padding: 0 10px;
+	margin-bottom: -25px;
+	line-height: 50px;
+	color: #fff;
+	background-color: #00BCD4;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	border-radius: 2px;
+}
+.login-btn:hover,.login-btn:active {
+	background-color: #00dcf8;
+}
+
+.header-1 {
+	background-image: url(../img/material-top-1.jpg);
+}
+
+.mat-indent {
+	z-index: 100;
+	padding: 16px 20px 30px;
+}
+
+.mat-title {
+	font-size: 1.5em;
+	color: #00BCD4;
+	font-weight: lighter;
+}
+
+.mat-paper-input {
+	max-width: 20em;
+	width: auto;
+	position: relative;
+	padding: 0.75em 0;
+}
+
+.mat-input {
+	width: 100%;
+	font-size: 1.2em;
+}
+
+.underline {
+	position: relative;
+	height: 0px;
+	overflow: visible;
+}
+
+.underline-inner {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 1px;
+}
+.unfocused-underline {
+	background-color: #757575;
+}
+.focused-underline {
+	height: 2px;
+	-webkit-transform-origin: 172.5px 50% 0px;
+	-webkit-transform: scale3d(0,1,1);
+	transform: scale3d(0,1,1);
+	background-color: #4059a9;
+	-webkit-transition: -webkit-transform 0.25s;
+	transition: transform 0.25s;
+}
+
+.focus .focused-underline {
+	-webkit-transform: none;
+	transform: none;
+}
+
+.register-btn-wrap {
+	margin: 20px auto 10px;
+	text-align: center;
+}
+.register-btn {
+	display: inline-block;	
+}
+.register-btn:hover, .register-btn:active {
+	color: #00BCD4;
+}
+
+.sina-wrap {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.8);
+	overflow: scroll;
+	opacity: 0;
+	transition: all 0.5s;
+}
+
+.sina-wrap.show {
+	top: 0;
+	opacity: 1;
+}
+
+.apply-act-section {
+	box-shadow: 1px 1px 8px rgba(0,0,0,0.2);
+	margin: 1em;
+	background-color: #fff;
+	color: #8d8d8d;
+	padding: 1em;
+	position: relative;
+
+}
+.act-title {
+	color: rgb(247,134,0);
+	font-size: 1.4em;
+	margin: 0 0.6em 0.6em;
+}
+.border-bottom {
+	margin: 0 0.6em;
+	height: 1px;
+	background-color: rgb(228,228,228);
+}
+.words {
+	margin: 0.6em;
+	overflow: hidden;
+}
+
+
+

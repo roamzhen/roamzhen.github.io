@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-use-rem="">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+    <meta name="description" content="description"/>
+    <meta name="keywords" content="a,b"/>
+    <title>home page</title>
+    <script src="../js/grid.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="share-wrap">
+        <div class="share-hint"></div>
+      </div>
+      <div class="p-thanks">
+        <div class="child-face"></div>
+        <div class="thanks-words">
+          <div class="user-info-wrap"><span class="user-head"></span>
+            <div class="user-name">roamye哥哥</div>
+          </div>
+        </div>
+        <div class="bottom-contenter">
+          <p class="hint-words">您是第<span class='white'>305959</span>位送出爱心包裹的人</p>
+          <div class="btn-wrap">
+            <div class="thanks-btn share-to-friend">分享给朋友们</div>
+            <div class="thanks-btn donate-with-friend">和朋友一起捐</div>
+            <div class="thanks-btn see-our-story">查看我们的故事</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../js/zepto.min.js"></script>
+  <script>
+    var share_wrap = $('.share-wrap');
+    
+    $('.share-to-friend').on('touchstart',function(e){
+      share_wrap.css('display','block');
+    });
+    $('.donate-with-friend').on('touchstart',function(e){
+      share_wrap.css('display','block');
+    });
+    $('.see-our-story').on('touchstart',function(e){
+      location.href = "index.html";
+    });
+    
+    share_wrap.on('touchstart',function(e){
+        share_wrap.css('display','none');
+    });
+  </script>
+</html>
