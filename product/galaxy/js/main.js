@@ -141,7 +141,7 @@ var sourceArr = [
 new mo.Loader(sourceArr,{
     onLoading : function(count,total){
         console.log('onloading:single loaded:',arguments);
-        loading_number.html(count/total*100);
+        loading_number.html(parseInt(count/total*100));
     },
     onComplete : function(time){
         console.log('oncomplete:all source loaded:',arguments);
