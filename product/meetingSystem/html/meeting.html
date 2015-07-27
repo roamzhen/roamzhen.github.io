@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-use-rem="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="description" content="description">
+    <meta name="keywords" content="a,b">
+    <title>home page</title>
+    <link rel="stylesheet" href="../css/material.min.css">
+    <script src="../js/material.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title--><span class="mdl-layout-title">CoolMeeting</span>
+      </div>
+      <!-- Tabs-->
+      <div class="mdl-layout__tab-bar mdl-js-ripple-effect"><a href="#scroll-tab-1" class="mdl-layout__tab is-active">添加会议室</a><a href="#scroll-tab-2" class="mdl-layout__tab">会议室列表</a><a href="#scroll-tab-3" class="mdl-layout__tab">会议预定</a><a href="#scroll-tab-4" class="mdl-layout__tab">会议列表</a><a href="#scroll-tab-5" class="mdl-layout__tab">修改会议信息</a></div>
+    </header>
+    <div class="mdl-layout__drawer m-layout__drawer">
+      <div class="layer-header">
+        <div class="head-wrap"><img src="../img/wechat-6.jpg" class="head-img"/></div>
+        <div class="user-info-wrap">
+          <div class="user-name">Roam</div>
+          <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon user-more-btn"><i class="material-icons">arrow_drop_down</i></button>
+          <ul for="accbtn" class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect">
+            <li disabled="" class="mdl-menu__item">管理员</li>
+            <li class="mdl-menu__item">用户登出123</li>
+          </ul>
+        </div>
+      </div>
+      <nav class="mdl-navigation"><a href="meeting.html" class="mdl-navigation__link">会议信息管理</a><a href="device.html" class="mdl-navigation__link">设备信息管理</a><a href="companyee.html" class="mdl-navigation__link">用户管理</a><a href="add.html" class="mdl-navigation__link">添加功能</a><a href="self.html" class="mdl-navigation__link">个人信息浏览</a></nav>
+    </div>
+    <main class="mdl-layout__content">
+      <section id="scroll-tab-1" class="mdl-layout__tab-panel is-active">
+        <div class="page-content">
+          <!-- Your content goes here-->
+          <div class="add-wrap">
+            <div class="card-header">
+              <p class="card-title">添加会议室</p>
+            </div>
+            <form action="#" class="form-padding">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-me">
+                <input id="meetingroom_name" type="text" class="mdl-textfield__input">
+                <label for="meetingroom_name" class="mdl-textfield__label">会议室名称</label>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-me">
+                <input id="meetingroom_number" type="text" class="mdl-textfield__input">
+                <label for="meetingroom_number" class="mdl-textfield__label">会议室门牌号</label>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-me">
+                <input id="meetingroom_contain_sum" type="text" pattern="[0-9]*" class="mdl-textfield__input">
+                <label for="meetingroom_contain_sum" class="mdl-textfield__label">会议室容纳容量(人)</label><span class="mdl-textfield__error">请输入数字!</span>
+              </div>
+              <div class="textarea-wrap textfield-me">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textarea-me">
+                  <textarea id="meetingroom_remark" type="text" rows="3" class="mdl-textfield__input"></textarea>
+                  <label for="meetingroom_remark" class="mdl-textfield__label">会议室备注(少于200字)</label>
+                </div>
+              </div>
+              <div class="btn-wrap-right">
+                <button id="meeting_submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent meeting-submit">提交添加会议室</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section id="scroll-tab-2" class="mdl-layout__tab-panel">
+        <div class="page-content">
+          <!-- Your content goes here-->
+          <div class="meeting-list">
+            <div class="card-item">
+              <div class="card-header">
+                <p class="card-title">第二会议室</p>
+              </div>
+              <div class="card-content"><span class="card-info-item">门牌号: 405</span><span class="card-info-item">容量: 10人</span><span class="card-info-item">状态: 启用</span></div>
+              <div class="btn-wrap-right">
+                <button id="meeting_change_submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent meeting-submit">预约会议</button>
+                <button id="meeting_change_submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent meeting-submit">取消会议</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="scroll-tab-3" class="mdl-layout__tab-panel">
+        <div class="page-content">
+          <!-- Your content goes here-->
+          <div class="add-wrap">
+            <div class="card-header">
+              <p class="card-title">预约会议</p>
+            </div>
+            <form action="#" class="form-padding">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-me">
+                <input id="meeting_name" type="text" class="mdl-textfield__input">
+                <label for="meeting_name" class="mdl-textfield__label">会议主题</label>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-me">
+                <input id="meeting_start" type="text" class="mdl-textfield__input">
+                <label for="meeting_start" class="mdl-textfield__label">会议开始时间</label>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-me">
+                <input id="meeting_end" type="text" class="mdl-textfield__input">
+                <label for="meeting_end" class="mdl-textfield__label">会议结束时间</label>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-me">
+                <input id="meeting_contain_sum" type="text" pattern="[0-9]*" class="mdl-textfield__input">
+                <label for="meeting_contain_sum" class="mdl-textfield__label">预计参会人数(人)</label><span class="mdl-textfield__error">请输入数字!</span>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-me">
+                <input id="meeting_attend_man" type="text" class="mdl-textfield__input">
+                <label for="meeting_attend_man" class="mdl-textfield__label">预计参会人员</label>
+              </div>
+              <div class="textarea-wrap textfield-me">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textarea-me">
+                  <textarea id="meeting_remark" type="text" rows="3" class="mdl-textfield__input"></textarea>
+                  <label for="meeting_remark" class="mdl-textfield__label">会议主要内容</label>
+                </div>
+              </div>
+              <div class="btn-wrap-right">
+                <button id="meeting_submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent meeting-submit">提交添加申请</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section id="scroll-tab-4" class="mdl-layout__tab-panel">
+        <div class="page-content">
+          <!-- Your content goes here-->
+          <div class="meeting-list">
+            <div class="card-item">
+              <div class="card-header">
+                <p class="card-title">手机QQ第二次改版会议</p>
+              </div>
+              <div class="card-content"><span class="card-info-item">会议说明: 手Q第二次各小组联合会议</span></div>
+              <div class="btn-wrap-right">
+                <button id="meeting_change_submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent meeting-submit">修改会议</button>
+                <button id="meeting_change_submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent meeting-submit">删除会议</button>
+              </div>
+            </div>
+            <div class="card-item">
+              <div class="card-header">
+                <p class="card-title">QQ健康v2联调会议</p>
+              </div>
+              <div class="card-content"><span class="card-info-item">会议说明: QQ健康各小组联合会议</span></div>
+              <div class="btn-wrap-right">
+                <button id="meeting_change_submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent meeting-submit">修改会议</button>
+                <button id="meeting_change_submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent meeting-submit">删除会议</button>
+              </div>
+            </div>
+            <div class="card-item">
+              <div class="card-header">
+                <p class="card-title">QQ音乐新版本会议</p>
+              </div>
+              <div class="card-content"><span class="card-info-item">会议说明: QQ音乐各小组联合会议</span></div>
+              <div class="btn-wrap-right">
+                <button id="meeting_change_submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent meeting-submit">修改会议</button>
+                <button id="meeting_change_submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent meeting-submit">删除会议</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="scroll-tab-5" class="mdl-layout__tab-panel">
+        <div class="page-content">
+          <!-- Your content goes here-->
+          <div class="add-wrap">
+            <div class="card-header">
+              <p class="card-title">修改会议信息</p>
+            </div>
+            <form action="#" class="form-padding">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-me">
+                <input id="meeting_change_name" type="text" class="mdl-textfield__input">
+                <label for="meeting_change_name" class="mdl-textfield__label">会议主题</label>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-me">
+                <input id="meeting_change_start" type="text" class="mdl-textfield__input">
+                <label for="meeting_change_start" class="mdl-textfield__label">会议开始时间</label>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-me">
+                <input id="meeting_change_end" type="text" class="mdl-textfield__input">
+                <label for="meeting_change_end" class="mdl-textfield__label">会议结束时间</label>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-me">
+                <input id="meeting_change_contain_sum" type="text" pattern="[0-9]*" class="mdl-textfield__input">
+                <label for="meeting_change_contain_sum" class="mdl-textfield__label">预计参会人数(人)</label><span class="mdl-textfield__error">请输入数字!</span>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-me">
+                <input id="meeting_change_attend_man" type="text" class="mdl-textfield__input">
+                <label for="meeting_change_attend_man" class="mdl-textfield__label">预计参会人员</label>
+              </div>
+              <div class="textarea-wrap textfield-me">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textarea-me">
+                  <textarea id="meeting_change_remark" type="text" rows="3" class="mdl-textfield__input"></textarea>
+                  <label for="meeting_change_remark" class="mdl-textfield__label">会议主要内容</label>
+                </div>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield-me">
+                <input id="meeting_change_status" type="text" class="mdl-textfield__input">
+                <label for="meeting_change_status" class="mdl-textfield__label">审批状态</label>
+              </div>
+              <div class="textarea-wrap textfield-me">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textarea-me">
+                  <textarea id="meeting_change_idea" type="text" rows="3" class="mdl-textfield__input"></textarea>
+                  <label for="meeting_change_idea" class="mdl-textfield__label">审批意见</label>
+                </div>
+              </div>
+              <div class="btn-wrap-right">
+                <button id="meeting_change_submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent meeting-submit">提交修改申请</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="../js/zepto.js"></script>
+</html>
