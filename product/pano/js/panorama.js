@@ -447,7 +447,7 @@ function initSearch(){
 		}
 
 
-		ajaxLoadingInfo("info.json");
+		ajaxLoadingInfo("./js/info.json");
 		showLoading();
 	}
 
