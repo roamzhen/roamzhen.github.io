@@ -20,55 +20,113 @@ function removeClass(obj, cls) {
 }
 /* end basic class method */
 
+/* idPc */
+function IsPC() {
+	var userAgentInfo = navigator.userAgent;
+	var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+	var flag = true;
+	for (var v = 0; v < Agents.length; v++) {
+		if (userAgentInfo.indexOf(Agents[v]) > 0) {
+			flag = false;
+			break;
+		}
+	}
+	return flag;
+}
+/* end idPc */
+
 /* show and hide */
-function showPop(type){
+function showPop(){
     var overlay = document.getElementById("overlay");
     var popMessage = document.getElementById("pop-message");
-    var popStatus = document.getElementById("pop-status");
 
-    switch(type){
-        //message
-        case 1:
-            overlay.style.display = "block";
-            popMessage.style.display = "inline-block";
-            popStatus.style.display = "none";
-            break;
-        //status
-        case 2:
-            overlay.style.display = "block";
-            popMessage.style.display = "none";
-            popStatus.style.display = "inline-block";
-            break;
-        default:
-            break;
+    overlay.style.display = "block";
+    popMessage.style.display = "inline-block";
+
+    document.getElementsByClassName("wrap")[0].addEventListener('touchmove', removePre, false);
+
+}
+
+function hidePop(){
+    var overlay = document.getElementById("overlay");
+    var popMessage = document.getElementById("pop-message");
+
+    overlay.style.display = "none";
+    popMessage.style.display = "none";
+
+    document.getElementsByClassName("wrap")[0].removeEventListener('touchmove', removePre, false);
+
+}
+
+function showLoading(){
+	var loadingPage = document.getElementsByClassName("loading_page")[0];
+
+	loadingPage.style['display'] = "block";
+
+    document.getElementsByClassName("wrap")[0].addEventListener('touchmove', removePre, false);
+
+}
+
+function hideLoading(){
+	var loadingPage = document.getElementsByClassName("loading_page")[0];
+
+	loadingPage.style['display'] = null;
+
+    document.getElementsByClassName("wrap")[0].addEventListener('touchmove', removePre, false);
+
+}
+
+function showMeassage(str){
+	var fakeJson = {
+		fake : "yes",
+		fakeMessage : str
+	}
+
+	var searchDetail = document.getElementsByClassName("search-detail")[0];
+
+	addClass(searchDetail,"visitor");
+
+	initShushe(fakeJson,0);
+
+
+	/*
+    var overlayMessage = document.getElementById("overlayMessage");
+
+    overlayMessage.getElementsByClassName("detail")[0].innerHTML = str;
+
+    overlayMessage.style['display'] = "block";
+
+    document.getElementsByClassName("wrap")[0].addEventListener('touchmove', removePre, false);
+	*/
+}
+
+/*
+function hideMessage(){	
+    var overlayMessage = document.getElementById("overlayMessage");
+
+    overlayMessage.style['display']=null;
+
+    document.getElementsByClassName("wrap")[0].removeEventListener('touchmove', removePre, false);
+}
+*/
+
+function showQrcode(){
+	var overlayMessage = document.getElementById("overlayMessage");
+
+    overlayMessage.style['display'] = "block";
+
+    overlayMessage.onclick = function(){
+    	hideQrcode();
     }
 
     document.getElementsByClassName("wrap")[0].addEventListener('touchmove', removePre, false);
 
 }
 
-function hidePop(type){
-    var overlay = document.getElementById("overlay");
-    var popMessage = document.getElementById("pop-message");
-    var popStatus = document.getElementById("pop-status");
+function hideQrcode(){
+	var overlayMessage = document.getElementById("overlayMessage");
 
-    overlay.style.display = "none";
-    popMessage.style.display = "none";
-
-    switch(type){
-        //message
-        case 1:
-            overlay.style.display = "none";
-            popMessage.style.display = "none";
-            break;
-        //status
-        case 2:
-            overlay.style.display = "none";
-            popStatus.style.display = "none";
-            break;
-        default:
-            break;
-    }
+    overlayMessage.style['display']=null;
 
     document.getElementsByClassName("wrap")[0].removeEventListener('touchmove', removePre, false);
 
@@ -191,8 +249,8 @@ var touchEvent = (function(){
 	var scrollPrevent = false,
 		movePrevent = false,
 		touchDown = false;
-	var wrapWidth = window.innerWidth;
-	var wrapHeight = window.innerHeight;
+	var wrapWidth = document.getElementsByClassName("wrap")[0].offsetWidth;
+	var wrapHeight = document.getElementsByClassName("wrap")[0].offsetHeight;
 
 	var wrap = document.getElementsByClassName("sec")[0];
 
@@ -204,6 +262,20 @@ var touchEvent = (function(){
 
 	};
 	
+	//top bottom btn
+	var bottomBtn = document.getElementById("bottom-btn");
+	var topBtn = document.getElementById("top-btn");
+
+	topBtn.style['display']="none";
+
+	bottomBtn.onclick = function(){
+		nextPage();
+	}
+
+	topBtn.onclick = function(){
+		prevPage();
+	}
+
 	function onStart(e){
 		if (movePrevent == true) {
 			event.preventDefault();
@@ -259,12 +331,20 @@ var touchEvent = (function(){
 	}
 
 	function prevPage() {
+		if(bottomBtn.style['display']==="none")
+			bottomBtn.style['display']=null;
+		topBtn.style['display']= "none";
+
 		var newPage = curPage - 1;
 		animatePage(newPage);
 
 	}
 
 	function nextPage() {
+		if(topBtn.style['display']==="none")
+			topBtn.style['display']=null;
+		bottomBtn.style['display']= "none";
+
 		var newPage = curPage + 1;
 		animatePage(newPage);
 	}
@@ -362,21 +442,21 @@ function initSearch(){
 
 	searchBtn.onclick = function(){
 		if(searchInput.value===""){
-			alert("请输入姓名!");
+			showMeassage("请输入姓名");
 			return;
 		}
 
 
-		ajaxLoadingInfo("js/info.json?name="+searchInput.value,searchSuccess);
-		showPop(2);
+		ajaxLoadingInfo("info.json");
+		showLoading();
 	}
 
 	function searchSuccess(text){
 		var resJson = JSON.parse(text);
-		hidePop(2);
+		hideLoading();
 
 		if(resJson.length===0){
-			alert("找不到此用户.");
+			showMeassage("没有找到该新生的相关信息");
 			return;
 		}
 
@@ -407,11 +487,11 @@ function initSearch(){
 
 				document.documentElement.addEventListener("touchmove",removePre, false);
 
-				hidePop(1);
+				hidePop();
 			}
 		};
 
-		showPop(1);
+		showPop();
 
 
 	}
@@ -431,16 +511,36 @@ function initShushe(json,num){
 		infoMember = document.getElementById("info-member"),
 	    infoType = document.getElementById("info-type");
 	
-	var roomie = "";
-	for(var i=0; i<json[num].roomie.length;i++){
-		roomie+=" "+json[num].roomie[i].name;
-	}
+	if(json.fake===undefined){
+		var roomie = "";
+		for(var i=0; i<json[num].roomie.length;i++){
+			roomie+="<span class='roomer'>"+json[num].roomie[i].name +"</span>";
+		}
 
-    infoName.innerHTML = json[num].name;
-	infoNumber.innerHTML = json[num].studentid;
-	infoShushe.innerHTML = json[num].area+json[num].building+"栋"+json[num].roomnumber;
-	infoMember.innerHTML = roomie;
-	infoType.innerHTML = json[num].roomsize+"人间";
+	    infoName.innerHTML = json[num].name;
+		infoNumber.innerHTML = json[num].studentid;
+		infoShushe.innerHTML = json[num].area+json[num].building+"栋"+json[num].roomnumber;
+		infoMember.innerHTML = roomie;
+		infoType.innerHTML = json[num].roomsize+"人间";
+
+		//定义读取房间类型
+		var numberOfShushe=0;
+		if(parseInt(json[num].roomsize)===4){
+			if(json[num].area.substr(0,2)==="启林"){
+				numberOfShushe = 1;
+			}else if(json[num].area.substr(0,2)==="华山"){
+				numberOfShushe = 3;
+			}
+
+		}else if(parseInt(json[num].roomsize)===6){
+			numberOfShushe = 2;
+		}
+
+	}else{
+		infoShushe.innerHTML = json.fakeMessage;
+
+		var numberOfShushe = 0;
+	}
 
 	//重新查询按钮
 	var login_out_btn = document.getElementById("login_out_btn");
@@ -448,25 +548,11 @@ function initShushe(json,num){
 	login_out_btn.onclick = function(){
 		searchWrap.style['display'] = "block";
 		searchDetail.style['display'] = "none";
+
+		removeClass(searchDetail,"visitor");
 	}
 
 	//初始化宿舍全景
-	var numberOfShushe=0;
-	if(parseInt(json[num].roomsize)===4){
-		if(json[num].area.substr(0,2)==="启林"){
-			numberOfShushe = 3;
-		}else if(json[num].area.substr(0,2)==="华山"){
-			numberOfShushe = 1;
-		}
-
-	}else if(parseInt(json[num].roomsize)===6){
-		if(json[num].area.substr(0,2)==="华山"){
-			numberOfShushe = 2;
-		}else{
-			numberOfShushe = 4;
-		}
-	}
-
 	var shusheItem = document.getElementsByClassName("shushe-item");
 
 	for (var i = shusheItem.length - 1; i >= 0; i--) {
@@ -636,6 +722,7 @@ var shusheObj = (function(){
 	}
 
 	function initPanoramaShushe(num){
+
 		console.log(num);
 		var shushe = document.getElementById("shushe");
 
@@ -786,6 +873,7 @@ var shusheObj = (function(){
 
 		}
 	}
+
 
 	return {
 		"loadPanoramaShushe": loadPanoramaShushe

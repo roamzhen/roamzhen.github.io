@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="description" content="全景游华农，暴走校园不是梦。校区宿舍室友，一按全都有">
   <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no, maximum-scale=1, minimum-scale=1"/>
   <title>微信全景游华农</title>
   <link href="css/panorama.css" type="text/css" rel="stylesheet" />
@@ -28,7 +29,7 @@
 		<div class="select-wrap">
 			<div class="select-item selected">
 				<span class="cir-icon"></span>
-				<p>华农大正门</p>
+				<p>华农大南门</p>
 				<div class="pic-wrap">
 					<div class="pic-wrap-inner">
 						<img src="images/zhengmeng.jpg" />
@@ -62,13 +63,14 @@
 					</div>
 				</div>
 			</div>
-
-			<img class="scorll-hint" src="images/icon-bottom.png"></img>
+			
+			<span class="scorll-hint-words">新生查宿舍</span>
+			<img class="scorll-hint" id="bottom-btn" src="images/icon-bottom.png"></img>
 
 		</div>
 	</section>
 	<section class="sec-item sec-2 sec-touchable">
-		<img class="scorll-hint" src="images/icon-top.png"></img>
+		<img class="scorll-hint" id="top-btn" src="images/icon-top.png"></img>
 		<div class="search-wrap">
 			<img class="text-img" src="images/text-img.png" />
 			<div class="loginBox">
@@ -86,7 +88,7 @@
 				<h2 id="info-shushe"></h2>
 				<p><span class="grey">室友:</span><span id="info-member"></span></p>
 				<p><span class="grey">房型:</span><span id="info-type"></span></p>
-				<a href="javasript:;" id="login_out_btn">返回</a>
+				<a href="javascript:;" id="login_out_btn">返回</a>
 			</div>
 			<div class="shushe-wrap">
 				<div id="shushe">
@@ -96,28 +98,10 @@
 
 					<div class="shushe-item">
 						<span class="cir-icon"></span>
-						<p>五山4人房</p>
+						<p>泰山4人间</p>
 						<div class="pic-wrap">
 							<div class="pic-wrap-inner">
-								<img src="images/shushe.jpg" />
-							</div>
-						</div>
-					</div>
-					<div class="shushe-item">
-						<span class="cir-icon"></span>
-						<p>华山4人房</p>
-						<div class="pic-wrap">
-							<div class="pic-wrap-inner">
-								<img src="images/shushe.jpg" />
-							</div>
-						</div>
-					</div>
-					<div class="shushe-item">
-						<span class="cir-icon"></span>
-						<p>华山6人房</p>
-						<div class="pic-wrap">
-							<div class="pic-wrap-inner">
-								<img src="images/shushe.jpg" />
+								<img src="images/wushan4.jpg" />
 							</div>
 						</div>
 					</div>
@@ -126,7 +110,7 @@
 						<p>启林4人房</p>
 						<div class="pic-wrap">
 							<div class="pic-wrap-inner">
-								<img src="images/shushe.jpg" />
+								<img src="images/qilin4.jpg" />
 							</div>
 						</div>
 					</div>
@@ -135,7 +119,16 @@
 						<p>启林6人房</p>
 						<div class="pic-wrap">
 							<div class="pic-wrap-inner">
-								<img src="images/shushe.jpg" />
+								<img src="images/qilin6.jpg" />
+							</div>
+						</div>
+					</div>
+					<div class="shushe-item">
+						<span class="cir-icon"></span>
+						<p>华山4人间</p>
+						<div class="pic-wrap">
+							<div class="pic-wrap-inner">
+								<img src="images/huashang4.jpg" />
 							</div>
 						</div>
 					</div>
@@ -143,8 +136,10 @@
 				</div>
 			</div>
 		</div>
-		<p class="note">本服务由<span class="blue">校团委</span>和<span class="blue">卓效智慧校园</span>提供</p>
+		<p class="note">本服务由<span class="tunwei">校团委</span>和<a id="comBtn" class="blue" href="http://mp.weixin.qq.com/s?__biz=MjM5MTM3NTM1OQ==&mid=203131012&idx=1&sn=e5141b1c66c867821ffb7c1c0f92671d#rd">卓效智慧校园</a>提供</p>
 	</section>
+
+	<a style="position:fixed;top:5px;right:5px;font-size:12px;padding:6px 10px;border-radius: 2px;color: rgba(255,255,255,.8);background-color: #249bf3; text-decoration: none;" href="http://mp.weixin.qq.com/s?__biz=MjM5MTM3NTM1OQ==&mid=203131012&idx=1&sn=e5141b1c66c867821ffb7c1c0f92671d#rd">关注智慧校园</a >
 
 </div>
 
@@ -153,16 +148,24 @@
 <div id="overlay">
 	<div id="pop-message">
 	</div><b></b>
-	<div id="pop-status">
-	    <p>正在载入...</p>
-	</div>
 </div>
 
+<div class="loading_page"><div class="loading_center"></div></div>
+
+
+<div id="overlayMessage">
+	<img id="messageMessage" src="images/qrcode.jpg"/><b></b>
+</div>
 
 </body>
 
 <script type="text/javascript" src="js/panorama.js"></script>
 <script type="text/javascript">
+/* removePre() */
+function removePre(e) { 
+	e.preventDefault(); 
+}
+
 //防止屏幕拖动
 document.documentElement.addEventListener('touchmove', removePre);
 
@@ -170,12 +173,15 @@ document.documentElement.addEventListener('touchmove', removePre);
 document.addEventListener('DOMContentLoaded', function () {
 
 	document.documentElement.style.height = window.innerHeight + 'px';
+
 });
 
 
-initPanorama();
 initOnePage();
 initSearch();
+initPanorama();
 
 </script>
+<script type="text/javascript" src="js/share.js"></script>
+
 </html>
