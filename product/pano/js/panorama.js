@@ -500,160 +500,128 @@ var shusheObj = (function(){
 	var sidesList = [
 		[
 		  {
-		    url: 'images/panorama/wushan4/right.jpg',
+		    url: 'images/panorama/wushannew/right.jpg',
 		    position: [ -512, 0, 0 ],
 		    rotation: [ 0, Math.PI / 2, 0 ]
 		  },
 		  {
-		    url: 'images/panorama/wushan4/left.jpg',
+		    url: 'images/panorama/wushannew/left.jpg',
 		    position: [ 512, 0, 0 ],
 		    rotation: [ 0, -Math.PI / 2, 0 ]
 		  },
 		  {
-		    url: 'images/panorama/wushan4/top.jpg',
+		    url: 'images/panorama/wushannew/top.jpg',
 		    position: [ 0,  512, 0 ],
 		    rotation: [ Math.PI / 2, 0, Math.PI ]
 		  },
 		  {
-		    url: 'images/panorama/wushan4/bottom.jpg',
+		    url: 'images/panorama/wushannew/bottom.jpg',
 		    position: [ 0, -512, 0 ],
 		    rotation: [ - Math.PI / 2, 0, Math.PI ]
 		  },
 		  {
-		    url: 'images/panorama/wushan4/front.jpg',
+		    url: 'images/panorama/wushannew/front.jpg',
 		    position: [ 0, 0,  512 ],
 		    rotation: [ 0, Math.PI, 0 ]
 		  },
 		  {
-		    url: 'images/panorama/wushan4/back.jpg',
+		    url: 'images/panorama/wushannew/back.jpg',
 		    position: [ 0, 0, -512 ],
 		    rotation: [ 0, 0, 0 ]
 		  }
 		],
 		[
 		  {
-		    url: 'images/panorama/huashang4/right.jpg',
+		    url: 'images/panorama/qilin4/right.jpg',
 		    position: [ -512, 0, 0 ],
 		    rotation: [ 0, Math.PI / 2, 0 ]
 		  },
 		  {
-		    url: 'images/panorama/huashang4/left.jpg',
+		    url: 'images/panorama/qilin4/left.jpg',
 		    position: [ 512, 0, 0 ],
 		    rotation: [ 0, -Math.PI / 2, 0 ]
 		  },
 		  {
-		    url: 'images/panorama/huashang4/top.jpg',
+		    url: 'images/panorama/qilin4/top.jpg',
 		    position: [ 0,  512, 0 ],
 		    rotation: [ Math.PI / 2, 0, Math.PI ]
 		  },
 		  {
-		    url: 'images/panorama/huashang4/bottom.jpg',
+		    url: 'images/panorama/qilin4/bottom.jpg',
 		    position: [ 0, -512, 0 ],
 		    rotation: [ - Math.PI / 2, 0, Math.PI ]
 		  },
 		  {
-		    url: 'images/panorama/huashang4/front.jpg',
+		    url: 'images/panorama/qilin4/front.jpg',
 		    position: [ 0, 0,  512 ],
 		    rotation: [ 0, Math.PI, 0 ]
 		  },
 		  {
-		    url: 'images/panorama/huashang4/back.jpg',
+		    url: 'images/panorama/qilin4/back.jpg',
 		    position: [ 0, 0, -512 ],
 		    rotation: [ 0, 0, 0 ]
 		  }
 		],
 		[
 		  {
-		    url: 'images/panorama/huashang6/right.jpg',
+		    url: 'images/panorama/qilin6/right.jpg',
 		    position: [ -512, 0, 0 ],
 		    rotation: [ 0, Math.PI / 2, 0 ]
 		  },
 		  {
-		    url: 'images/panorama/huashang6/left.jpg',
+		    url: 'images/panorama/qilin6/left.jpg',
 		    position: [ 512, 0, 0 ],
 		    rotation: [ 0, -Math.PI / 2, 0 ]
 		  },
 		  {
-		    url: 'images/panorama/huashang6/top.jpg',
+		    url: 'images/panorama/qilin6/top.jpg',
 		    position: [ 0,  512, 0 ],
 		    rotation: [ Math.PI / 2, 0, Math.PI ]
 		  },
 		  {
-		    url: 'images/panorama/huashang6/bottom.jpg',
+		    url: 'images/panorama/qilin6/bottom.jpg',
 		    position: [ 0, -512, 0 ],
 		    rotation: [ - Math.PI / 2, 0, Math.PI ]
 		  },
 		  {
-		    url: 'images/panorama/huashang6/front.jpg',
+		    url: 'images/panorama/qilin6/front.jpg',
 		    position: [ 0, 0,  512 ],
 		    rotation: [ 0, Math.PI, 0 ]
 		  },
 		  {
-		    url: 'images/panorama/huashang6/back.jpg',
+		    url: 'images/panorama/qilin6/back.jpg',
 		    position: [ 0, 0, -512 ],
 		    rotation: [ 0, 0, 0 ]
 		  }
 		],
 		[
 		  {
-		    url: 'images/panorama/qiling4/right.jpg',
+		    url: 'images/panorama/huashan4/right.jpg',
 		    position: [ -512, 0, 0 ],
 		    rotation: [ 0, Math.PI / 2, 0 ]
 		  },
 		  {
-		    url: 'images/panorama/qiling4/left.jpg',
+		    url: 'images/panorama/huashan4/left.jpg',
 		    position: [ 512, 0, 0 ],
 		    rotation: [ 0, -Math.PI / 2, 0 ]
 		  },
 		  {
-		    url: 'images/panorama/qiling4/top.jpg',
+		    url: 'images/panorama/huashan4/top.jpg',
 		    position: [ 0,  512, 0 ],
 		    rotation: [ Math.PI / 2, 0, Math.PI ]
 		  },
 		  {
-		    url: 'images/panorama/qiling4/bottom.jpg',
+		    url: 'images/panorama/huashan4/bottom.jpg',
 		    position: [ 0, -512, 0 ],
 		    rotation: [ - Math.PI / 2, 0, Math.PI ]
 		  },
 		  {
-		    url: 'images/panorama/qiling4/front.jpg',
+		    url: 'images/panorama/huashan4/front.jpg',
 		    position: [ 0, 0,  512 ],
 		    rotation: [ 0, Math.PI, 0 ]
 		  },
 		  {
-		    url: 'images/panorama/qiling4/back.jpg',
-		    position: [ 0, 0, -512 ],
-		    rotation: [ 0, 0, 0 ]
-		  }
-		],
-		[
-		  {
-		    url: 'images/panorama/qiling6/right.jpg',
-		    position: [ -512, 0, 0 ],
-		    rotation: [ 0, Math.PI / 2, 0 ]
-		  },
-		  {
-		    url: 'images/panorama/qiling6/left.jpg',
-		    position: [ 512, 0, 0 ],
-		    rotation: [ 0, -Math.PI / 2, 0 ]
-		  },
-		  {
-		    url: 'images/panorama/qiling6/top.jpg',
-		    position: [ 0,  512, 0 ],
-		    rotation: [ Math.PI / 2, 0, Math.PI ]
-		  },
-		  {
-		    url: 'images/panorama/qiling6/bottom.jpg',
-		    position: [ 0, -512, 0 ],
-		    rotation: [ - Math.PI / 2, 0, Math.PI ]
-		  },
-		  {
-		    url: 'images/panorama/qiling6/front.jpg',
-		    position: [ 0, 0,  512 ],
-		    rotation: [ 0, Math.PI, 0 ]
-		  },
-		  {
-		    url: 'images/panorama/qiling6/back.jpg',
+		    url: 'images/panorama/huashan4/back.jpg',
 		    position: [ 0, 0, -512 ],
 		    rotation: [ 0, 0, 0 ]
 		  }
