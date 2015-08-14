@@ -13,7 +13,7 @@
       <div class="loading-wrap"></div>
       <div class="check-act">
         <div class="map-head">爱芬环保</div>
-        <div class="map-location">南山深南大道10000</div>
+        <div class="map-location">???</div>
         <div class="map-wrap">
           <div id="normal_map" class="normal_map"></div>
         </div>
@@ -28,28 +28,116 @@
       $('.check-act').addClass("show");
       $('.loading-wrap').addClass("loaded");
     </script>
-    <script src="http://api.map.baidu.com/api?v=2.0&amp;ak=bqrBwGSqxQ6HULhXQdUXh8aq"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=ahjZL6YcpCxIQhnOSNSXKpHP"></script>
+    <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
     <script>
       //地图展示
       var i_l = 113.361203,
           i_r = 23.162477,
           t_l = 0,
-          t_r = 0;
+          t_r = 0,
+          location_name = "";
       
       var check_btn = $(".check-btn");
+      
+      //坐标转换完之后的回调函数
+      var translateCallback = function (point){
+      
+          i_l = point.lng;
+          i_r = point.lat; 
+          getInfo();
+      }
+      
+      //加入定位系统
+      var dealGeolocation={
+        locationError: function(error){
+          switch(error.code) {
+            case error.TIMEOUT:
+                console.log("A timeout occured! Please try again!");
+                break;
+            case error.POSITION_UNAVAILABLE:
+                console.log('We can\'t detect your location. Sorry!');
+                break;
+            case error.PERMISSION_DENIED:
+                console.log('Please allow geolocation access for this to work.');
+                break;
+            case error.UNKNOWN_ERROR:
+                console.log('An unknown error occured!');
+                break;
+          }
+        },
+        locationSuccess: function(position){
+          var coords = position.coords;
+          var gpsPoint = new BMap.Point(position.coords.longitude,position.coords.latitude);
+          BMap.Convertor.translate(gpsPoint,0,translateCallback);
+        }
+      }
+      if (navigator.geolocation){
+          navigator.geolocation.getCurrentPosition(dealGeolocation.locationSuccess,dealGeolocation.locationError,{
+              // 指示浏览器获取高精度的位置，默认为false
+              enableHighAcuracy: true,
+              // 指定获取地理位置的超时时间，默认不限时，单位为毫秒
+              timeout: 5000,
+              // 最长有效期，在重复获取地理位置时，此参数指定多久再次获取位置。
+              maximumAge: 3000
+          });
+      }else{
+          alert("Your browser does not support Geolocation!");
+      }
+      
+      function getInfo () {
       
       $.get('../js/activity-json.json',function(data){
           t_l = Number(data.signPosition.lat);
           t_r = Number(data.signPosition.lon);
           
-          var disX = Math.abs(i_l - t_l)*10000;
-          var disY = Math.abs(i_r - t_r)*10000;
+          var canClick = true;
+          var qd_ed = false;
+      
+          var disX = Math.abs(i_l - t_l)*100000;
+          var disY = Math.abs(i_r - t_r)*100000;
           
-          var distance = Math.floor(disX*disX+ disY*disY);
+          var distance = Math.floor(Math.sqrt(disX*disX + disY*disY));
           $("#map_distance").html(distance);
-          if( distance < 500){
+          $(".map-location").html(data.position);
+      
+          var now = new Date();
+      
+          if( distance  < 500){
               check_btn.html("点击签到");
               check_btn.addClass("allow");
+      
+              check_btn.click(function(){
+      
+                  if(canClick){
+      
+                      if(qd_ed){
+      
+                          check_btn.html("请稍候...");
+      
+                          canClick = false;
+      
+                          $.get('../js/activity-json.json',function(data){
+                              check_btn.html("活动结束~");
+                              check_btn.removeClass("allow");
+      
+                              location.href = "share-page.html";
+                          });
+      
+                      }else {
+                          check_btn.html("请稍候...");
+      
+                          canClick = false;
+      
+                          $.get('../js/activity-json.json',function(data){
+                              check_btn.html("签到成功,活动结束后再点哟～");
+                              canClick = true;
+                              qd_ed = true;
+                          });
+                      }
+                  }
+      
+              });
           }else{
               check_btn.html("请进入目的地500米内签到")
           }
@@ -75,9 +163,9 @@
           tmpMarker.setIcon(tmpIcon);
           map.addOverlay(tmpMarker);
       
-      
-      
       });
+      
+      }
     </script>
   </body>
 </html>

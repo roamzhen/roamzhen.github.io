@@ -28,18 +28,20 @@
       
       $.get('../js/activity-json.json',function(data){
       
+        var list_length = data.list.length;
+        var biggest = Number(data.list[0].totalhour);
       
       
-        for(var i=10,j=1; i>1;i--,j++){
+        for(var j=0; j<list_length;j++){
           var tmpclass = "";
       
-          if(j==1){
+          if(j==0){
             tmpclass = "rank-num-1";
           }
-          if(j==2){
+          if(j==1){
             tmpclass = "rank-num-2";
           }
-          if(j==3){
+          if(j==2){
             tmpclass = "rank-num-3";
           }
       
@@ -47,23 +49,23 @@
             "<div class='rank-item'>" +
       
               "<div class='avatar-ico'>" +
-                "<img class='avatar-inner' src='"+ "../img/talakepng.jpg" +"' />" +
+                "<img class='avatar-inner' src='"+ data.list[j].avatar +"' />" +
               "</div>"+
       
-              "<div class='rank-name'>"+ "Roam" + "</div>"+
+              "<div class='rank-name'>"+ data.list[j].name + "</div>"+
       
               "<div class='process-bar-wrap'>"+
                 "<div class='process-bar'>" +
-                "<div class='process-long' style='width:"+ i*10 +"%;' ></div>"+
+                "<div class='process-long' style='width:"+ Math.floor(Number(data.list[j].totalhour)/biggest*100) +"%;' ></div>"+
               "</div></div>"+
       
-              "<div class='rank-hour'>" + 2 + "小时</div>" +
+              "<div class='rank-hour'>" + data.list[j].totalhour + "小时</div>" +
       
               "<div class='rank-box'>"+
                 "<div class='rank-num "+ tmpclass + "'>"+             
                 "</div>"+
               "</div>"+
-              "<p class='rank-txt'>"+j+"</p>"+
+              "<p class='rank-txt'>"+(j+1)+"</p>"+
       
             "</div>";
           rank_list.html(rank_list.html()+ tmpstr);

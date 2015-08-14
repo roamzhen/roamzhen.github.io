@@ -1,12 +1,56 @@
 {
-   "title":"南山大清洁",
-    "desc":"这是一个很有意义的活动，在腾讯大厦附近的广场做清洁",
+   "title":"南山清理活动",
+    "desc":"在腾讯大厦附近的广场做清理杂物，翻修",
     "img":"../img/share-bg3.jpg",
-    "startTime":"9",
+    "startTime":"13",
     "endTime":"18",
-    "position": "深南大道",
+    "position": "深南大道腾讯大厦广场",
     "signPosition": {
-      "lat":"113.362303",
-      "lon":"23.163577"
-    }
+      "lat":"113.94108",
+      "lon":"22.546092"
+
+    },
+    "list": [
+      {
+        "name": "蜡笔小新",
+        "avatar": "../img/wechat-1.jpg",
+        "totalhour": "214"
+      },
+      {
+        "name": "小智是笨蛋",
+        "avatar": "../img/wechat-2.jpg",
+        "totalhour": "166"
+      },
+      {
+        "name": "Roam",
+        "avatar": "../img/wechat-3.jpg",
+        "totalhour": "120"
+      },
+      {
+        "name": "[笑脸]哈哈哈",
+        "avatar": "../img/wechat-4.jpg",
+        "totalhour": "80"
+      },
+      {
+        "name": "Selly",
+        "avatar": "../img/wechat-5.jpg",
+        "totalhour": "78"
+      },
+      {
+        "name": "男高的日常",
+        "avatar": "../img/wechat-6.jpg",
+        "totalhour": "32"
+      },
+      {
+        "name": "今天天气真好",
+        "avatar": "../img/wechat-7.jpg",
+        "totalhour": "16"
+      },
+      {
+        "name": "哇哈哈哈",
+        "avatar": "../img/wechat-8.jpg",
+        "totalhour": "8"
+      }
+
+    ]
 }

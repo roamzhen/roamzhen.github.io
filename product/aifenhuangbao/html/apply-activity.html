@@ -51,8 +51,10 @@
           load_more_man = $("#load_more_man"),
           more_man_list = $(".more-man-list"),
           img = $("#img"),
-          man_item_length = 0;
+          man_item_length = 0,
+          e_id = querystring("event_id");
       
+        console.log(e_id);
       $.get('../js/activity-json.json',function(data){
         var e_t = Number(data.endTime),
             s_t = Number(data.startTime)
@@ -68,15 +70,15 @@
         end_time.html(e_t);
         whole_time.html(dis_time);
         work_location.html(data.position);
-        attend_number.html("23");
+        attend_number.html("8");
       
-        for(var i=0; i<23;i++){
+        for(var i=0; i<data.list.length;i++){
           var tmpstr = 
             "<div class='man-item'>"+
               "<div class='man-face'>"+
-                "<img src='"+ "../img/talakepng.jpg" + "' />"+
+                "<img src='"+ data.list[i].avatar + "' />"+
               "</div>"+
-              "<span class='man-name'>"+ "Roam" + "</span>"+
+              "<span class='man-name'>"+ data.list[i].name + "</span>"+
             "</div>";
           more_man_list.html(more_man_list.html()+tmpstr);
           man_item_length++;
@@ -96,6 +98,13 @@
           more_man_list[0].style.height = 1.4*Math.floor((man_item_length-1)/4+1) + "rem";
         },30);
       });
+      
+      function querystring(key) {
+         var re=new RegExp('(?:\\?|&)'+key+'=(.*?)(?=&|$)','gi');
+         var r=[], m;
+         while ((m=re.exec(document.location.search)) != null) r[r.length]=m[1];
+         return r[0];
+      }
     </script>
   </body>
 </html>
