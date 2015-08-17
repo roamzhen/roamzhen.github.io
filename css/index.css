@@ -1,9 +1,9 @@
-html,body{ margin: 0; width: 100%; height: 100%; overflow-x: hidden;}
+html,body{ margin: 0; width: 100%; height: 100%; overflow-x: hidden; background-color: #000;}
 h2,h3,h4,h5,h6{ margin: 0}
 
 .wrap{position: relative; left: 0;width: 100%; height: 100%;overflow-x: hidden;transition: all 0.4s;}
 .wrap.scale{ transform: translate3d(200px,0,0) scale(1,0.9); -webkit-transform: translate3d(200px,0,0) scale(1,0.9);}
-.inner-wrap{width: 100%; padding-top: 40px; padding-right: 50px;}
+.inner-wrap{width: 100%; padding-top: 40px; padding-right: 50px; background-color: #fff;}
 .aside{position: absolute; left: 0; top: 0; transform: translate3d(-200px,0,0); -webkit-transform: translate3d(-200px,0,0);width: 200px; height: 100%;transition:all 0.4s;background-color: #000;}
 .aside.active{transform: translate3d(0,0,0); -webkit-transform: translate3d(0,0,0);}
 .aside .center-line{position: absolute; width: 1px; height: 80%;top: 10%; left: 40px; background-color: #fff;}
