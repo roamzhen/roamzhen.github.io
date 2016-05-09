@@ -94,7 +94,7 @@ btnVideo.addEventListener("touchstart",function(){
       if(videoIndex1.ended) {
         showXiao();
 
-        videoIndex2.load();
+        videoIndex2.currentTime = 0;
         videoIndex2.classList.remove('hide');
 
         videoIndex2.play();
@@ -110,7 +110,7 @@ btnVideo.addEventListener("touchstart",function(){
       if(videoIndex2.ended){
         showYou();
 
-        videoIndex1.load();
+        videoIndex1.currentTime =0;
         videoIndex2.classList.add('hide');
 
         videoIndex1.play();
