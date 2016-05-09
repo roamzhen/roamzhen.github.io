@@ -82,6 +82,21 @@ submitYou.addEventListener('click',function(){
   },600);
 });
 
+videoIndex1.addEventListener('ended',function(){
+  videoIndex2.load();
+  videoIndex2.classList.remove('hide');
+  videoIndex1.classList.add('hide');
+
+  showYou();
+});
+videoIndex2.addEventListener('ended',function(){
+  videoIndex1.load();
+  videoIndex1.classList.remove('hide');
+  videoIndex2.classList.add('hide');
+
+  showXiao();
+});
+
 var video_sequence = true;
 var video_running = false;
 var xiao_running = false;
@@ -92,32 +107,22 @@ btnVideo.addEventListener("touchstart",function(){
     if(video_sequence) {
 
       if(videoIndex1.ended) {
-        showXiao();
-
-        videoIndex2.currentTime = 0;
-        videoIndex2.classList.remove('hide');
 
         videoIndex2.play();
 
         video_sequence = false;
       }else{
-        showYou();
         videoIndex1.play();
       }
 
     }else{
 
       if(videoIndex2.ended){
-        showYou();
-
-        videoIndex1.currentTime =0;
-        videoIndex2.classList.add('hide');
 
         videoIndex1.play();
 
         video_sequence = true;
       }else {
-        showXiao();
         videoIndex2.play();
       }
 
@@ -145,6 +150,9 @@ cameraBtn.addEventListener("touchstart",function(){
 });
 
 function showXiao() {
+  btnVideo.classList.remove("show-you");
+  btnVideo.classList.add("show-xiao");
+  /*
   if(!xiao_running) {
     xiao_running = true;
 
@@ -155,9 +163,13 @@ function showXiao() {
       xiao_running = false;
     },2500);
   }
+  */
 }
 
 function showYou() {
+  btnVideo.classList.remove("show-xiao");
+  btnVideo.classList.add("show-you");
+  /*
   if(!you_running) {
     you_running = true;
 
@@ -167,6 +179,7 @@ function showYou() {
       you_running = false;
     },4500);
   }
+  */
 }
 
 }());
