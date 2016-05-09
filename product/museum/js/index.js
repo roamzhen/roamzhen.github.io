@@ -82,17 +82,6 @@ submitYou.addEventListener('click',function(){
   },600);
 });
 
-videoIndex1.addEventListener('ended',function(){
-  videoIndex2.load();
-  videoIndex2.classList.remove('hide');
-  videoIndex1.classList.add('hide');
-});
-videoIndex2.addEventListener('ended',function(){
-  videoIndex1.load();
-  videoIndex1.classList.remove('hide');
-  videoIndex2.classList.add('hide');
-});
-
 var video_sequence = true;
 var video_running = false;
 var xiao_running = false;
@@ -104,6 +93,9 @@ btnVideo.addEventListener("touchstart",function(){
 
       if(videoIndex1.ended) {
         showXiao();
+
+        videoIndex2.load();
+        videoIndex2.classList.remove('hide');
 
         videoIndex2.play();
 
@@ -117,6 +109,9 @@ btnVideo.addEventListener("touchstart",function(){
 
       if(videoIndex2.ended){
         showYou();
+
+        videoIndex1.load();
+        videoIndex2.classList.add('hide');
 
         videoIndex1.play();
 
