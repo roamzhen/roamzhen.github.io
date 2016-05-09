@@ -63,6 +63,7 @@
         max-height: 388px;
       
         -webkit-transform: translate(-50%, -50%);
+        -webkit-transition: opacity 0.5s;
       }
       .egg {
         position: absolute;
@@ -145,7 +146,7 @@
   </head>
   <body>
     <div class="wrapper">
-      <div class="product-wrapper">
+      <div class="content-wrapper">
         <div class="video-wrap">
           <video id="videoIndex1" preload="auto" src="../video/front.mp4" webkit-playsinline="webkit-playsinline" poster="../img/front.jpg"></video>
           <video id="videoIndex2" preload="auto" src="../video/back.mp4" webkit-playsinline="webkit-playsinline" poster="../img/back.jpg" class="hide"></video>
@@ -173,16 +174,32 @@
       </div>
       <div class="photo-mask"></div>
       <div class="loading-wrapper">
-        <div class="loading-title"></div>
+        <div class="naming-wrap">
+          <div class="naming-target"><img src="../img/front.jpg" class="target-img"/></div>
+          <div class="naming-content">
+            <div class="naming-words1"></div>
+            <div class="naming-words2"></div>
+            <div class="naming-words3"></div>
+            <div class="input-wrap input-1">
+              <input id="name-target" class="naming-input"/>
+              <div id="submit-target" class="naming-submit"></div>
+            </div>
+            <div class="input-wrap input-2">
+              <input id="name-you" class="naming-input"/>
+              <div id="submit-you" class="naming-submit"></div>
+            </div>
+          </div>
+        </div>
         <div class="egg-wrap">
           <div class="shadow"></div>
           <div class="egg"></div>
           <div class="icon-shaking-rt"></div>
           <div class="icon-shaking-lb"></div>
           <div class="loading-words-wrap">
-            <div class="loading-words"></div><span class="loading-percent"> </span>
+            <div class="loading-words"></div><span class="loading-percent"></span>
           </div>
         </div>
+        <div class="loading-title"></div>
       </div>
     </div>
   </body>

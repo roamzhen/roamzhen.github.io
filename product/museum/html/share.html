@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-use-rem="">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+    <meta name="description" content="description"/>
+    <meta name="keywords" content="a,b"/>
+    <title>羽翼～</title>
+    <script src="../js/grid.js"></script>
+    <style type="text/css">
+      html, body {
+        margin: 0;
+      }
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-image: url(../img/background.jpg);
+        background-size: cover;
+      }
+      .wrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+      }
+      .picture-wrap {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50px;
+        margin: auto;
+        width: 296px;
+        height: 296px;
+        border: 2px solid #7d5b36;
+      }
+      .picture-wrap:after {
+        content: '';
+        position: absolute;
+        left: 7px;
+        right: 7px;
+        bottom: -9px;
+        height: 3px;
+        background-color: #7d5b36;
+      }
+      .picture-bg {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        margin: auto;
+        width: 276px;
+        height: 276px;
+        background-color: rgba(0,0,0,0.2);
+      }
+      .picture-img {
+        padding-top: 12px;
+        width: 100%;
+      }
+      .picture-words {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 14px;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        font-size: 16px;
+        color: #613d0a;
+      }
+      .btn-wrap {
+        position: absolute;
+        bottom: 64px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 280px;
+        height: 38px;
+      }
+      .save-btn {
+        width: 117px;
+        height: 100%;
+        float: left;
+        background-image: url(../img/save-btn.png);
+        background-size: cover;
+      }
+      .save-btn:hover {
+        background-image: url(../img/save-btn-on.png);
+      }
+      
+      .share-btn {
+        width: 117px;
+        height: 100%;
+        float: right;
+        background-image: url(../img/share-btn.png);
+        background-size: cover;
+      }
+      .share-btn:hover {
+        background-image: url(../img/share-btn-on.png);
+      }
+      
+      
+      
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="picture-wrap">
+        <div class="picture-bg"><img src="../img/egg-brid.png" class="picture-img"/>
+          <p class="picture-words">小明的［贝贝］</p>
+        </div>
+      </div>
+      <div class="btn-wrap">
+        <div class="save-btn"></div>
+        <div class="share-btn"></div>
+      </div>
+    </div>
+  </body>
+  <script></script>
+  
+  
+</html>
