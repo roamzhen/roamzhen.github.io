@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-use-rem="">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+    <meta name="description" content="description"/>
+    <meta name="keywords" content="a,b"/>
+    <title>清除宠物</title>
+    <style type="text/css">
+      html, body {
+        margin: 0;
+      }
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-image: url(http://museum-10040623.file.myqcloud.com/img/background.jpg);
+        background-size: cover;
+      }
+      
+      .center {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper"><span class="center">已经清除所有宠物</span></div>
+  </body>
+  <script>
+    localStorage.removeItem('nameYou1');
+    localStorage.removeItem('nameTarget1');
+    localStorage.removeItem('nameYou2');
+    localStorage.removeItem('nameTarget2');
+    localStorage.removeItem('nameYou3');
+    localStorage.removeItem('nameTarget3');
+    localStorage.removeItem('nameYou4');
+    localStorage.removeItem('nameTarget4');
+    localStorage.removeItem('nameYou5');
+    localStorage.removeItem('nameTarget5');
+  </script>
+</html>
