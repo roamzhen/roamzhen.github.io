@@ -31,18 +31,39 @@ var
   $step3Controller = $(query('.step3-controller')),
   $step4Controller = $(query('.step4-controller'));
 
-videoIndex1.addEventListener('canplay', function(){
+var 
+  playFlag1 = false,
+  playFlag2 = false,
+  playFlag3 = false,
+  animating = false;
 
+videoIndex1.load();
+videoIndex2.load();
+videoIndex3.load();
+
+videoIndex1.addEventListener('canplay', function(){
+  playFlag1 = true;
 });
+videoIndex2.addEventListener('canplay', function(){
+  playFlag2 = true;
+});
+videoIndex3.addEventListener('canplay', function(){
+  playFlag3 = true;
+});
+
 
 videoIndex1.addEventListener('ended', function(){
   $step1Controller.removeClass('show');
   $step2Controller.addClass('show');
+
+  animating = false;
 });
 
 videoIndex2.addEventListener('ended', function(){
   $step2Controller.removeClass('show');
   $step3Controller.addClass('show');
+
+  animating = false;
 });
 videoIndex3.addEventListener('ended', function(){
   $step3Controller.removeClass('show');
@@ -51,23 +72,29 @@ videoIndex3.addEventListener('ended', function(){
 
 
 $step1Controller.on('touchstart', function(){
-  $step1Controller.addClass('animating');
-  setTimeout(function(){ videoIndex1.play()}, 500);
+  if(playFlag1 && playFlag2 && playFlag3 && !animating){
+    $step1Controller.addClass('animating');
+    setTimeout(function(){ videoIndex1.play()}, 500);
+  }
 });
 $step2Controller.on('touchstart', function(){
-  $step2Controller.addClass('animating');
-  $videoBox1.removeClass('show');
-  $videoBox2.addClass('show');
+  if(!animating){  
+    $step2Controller.addClass('animating');
+    $videoBox1.removeClass('show');
+    $videoBox2.addClass('show');
 
-  setTimeout(function(){ videoIndex2.play()}, 500);
+    setTimeout(function(){ videoIndex2.play()}, 500);
+  }
 });
 
 $step3Controller.on('touchstart', function(){
-  $step3Controller.addClass('animating');
-  $videoBox2.removeClass('show');
-  $videoBox3.addClass('show');
+  if(!animating){
+    $step3Controller.addClass('animating');
+    $videoBox2.removeClass('show');
+    $videoBox3.addClass('show');
 
-  setTimeout(function(){ videoIndex3.play()}, 500);
+    setTimeout(function(){ videoIndex3.play()}, 500);
+  }
 });
 
 
