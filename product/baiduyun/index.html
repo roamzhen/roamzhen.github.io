@@ -6,22 +6,124 @@
     <meta name="description" content="description"/>
     <meta name="keywords" content="a,b"/>
     <title>百度云</title>
-    <script src="../js/grid.js">     </script>
+    <script src="http://baiduyun-10040623.file.myqcloud.com/js/grid.js"> </script>
+    <script src="http://baiduyun-10040623.file.myqcloud.com/js/preload.js">   </script>
     <style type="text/css">
       html,body {
         background-color: #000103;
         height: 100%;
+        position: relative;
+      }
+      
+      .loading-wrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000103;
+        z-index: 999;
+        -webkit-transition: opacity 0.6s;
+      }
+      .loading-bg {
+        position: absolute;
+        left: 0;
+        top: 35%;
+        width: 100%;
+        height: 0.92rem;
+        background-image: url(http://baiduyun-10040623.file.myqcloud.com/img/loading_bg.jpg);
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+      
+      .loading-lt {
+        position: absolute;
+        left: 50%;
+        top: 0.1rem;
+        width: 3rem;
+        height: 1.08rem;
+        margin-left: -1.5rem;
+        background-image: url(http://baiduyun-10040623.file.myqcloud.com/img/light_large.png);
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        -webkit-animation: light-shape 1.4s infinite;
+      }
+      .loading-lb {
+        position: absolute;
+        left: 50%;
+        bottom: -0.5rem;
+        width: 3rem;
+        height: 1.08rem;
+        margin-left: -1.5rem;
+        background-image: url(http://baiduyun-10040623.file.myqcloud.com/img/light_large.png);
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        -webkit-animation: light-shape 1.4s infinite;
+      }
+      
+      .loading-process-wrap {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%,-50%);
+      }
+      
+      .loading-process {
+        border: 1px solid #008888;
+        border-radius: 5px;
+        padding: 2px;
+        width: 3.5rem;
+      }
+      .loading-process-inner {
+        background-color: #00ffff;
+        height: 3px;
+        border-radius: 5px;
+        width: 0%;
+        -webkit-transition: width 0.5s;
+      }
+      
+      .loading-words {
+        color: #fff;
+        font-size: 0.26rem;
+        text-align: center;
+        margin-top: 0.2rem;
+      }
+      
+      @-webkit-keyframes light-shape {
+        0% {
+          opacity: 0.4;
+        }
+        25% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.6;
+        }
+        75% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.4;
+        }
       }
       
     </style>
-    <link rel="stylesheet" href="../css/style.css"/>
-    <link rel="stylesheet" href="../css/swiper.min.css"/>
+    <link rel="stylesheet" href="http://baiduyun-10040623.file.myqcloud.com/css/style.css"/>
+    <link rel="stylesheet" href="http://baiduyun-10040623.file.myqcloud.com/css/swiper.min.css"/>
   </head>
-  <script src="../js/zepto.min.js"></script>
-  <script src="../js/preload.js"></script>
-  <script src="../js/swiper.min.js"></script>
-  <script src="../js/gesture.min.js"></script>
   <body>
+    <div class="loading-wrapper">
+      <div class="loading-bg">
+        <div class="loading-lt"></div>
+        <div class="loading-lb"></div>
+      </div>
+      <div class="loading-process-wrap">
+        <div class="loading-process">
+          <div class="loading-process-inner"></div>
+        </div>
+        <p class="loading-words">正在破解密码http://baiduyun-10040623.file.myqcloud.comhttp://baiduyun-10040623.file.myqcloud.comhttp://baiduyun-10040623.file.myqcloud.com</p>
+      </div>
+    </div>
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide current">
@@ -52,16 +154,16 @@
           <div class="content-wrap">
             <ul class="btn-list">
               <li class="current">
-                <div data-words="" class="solu-life"></div>
+                <div data-words="" class="big solu-life"></div>
               </li>
               <li>
-                <div class="solu-date"></div>
+                <div class="big solu-date"></div>
               </li>
               <li>
-                <div class="solu-number"></div>
+                <div class="big solu-number"></div>
               </li>
               <li>
-                <div class="solu-air"></div>
+                <div class="big solu-air"></div>
               </li>
             </ul>
             <ul class="words-list">
@@ -195,6 +297,98 @@
       </div>
     </div>
   </body>
-  <script></script>
-  <script src="../js/staic-index.js"></script>
+  <script>
+    var
+      loadingWrap = document.querySelector('.loading-wrapper'),
+      loadingPrecent = document.querySelector('.loading-process-inner');
+    var imgLocation = 'http://baiduyun-10040623.file.myqcloud.com';
+    
+    var sourceArr = [
+      imgLocation + '/img/bar_top.png',
+      imgLocation + '/img/bd_bml.png',
+      imgLocation + '/img/bd_bmr.png',
+      imgLocation + '/img/bd_bs.png',
+      imgLocation + '/img/bd_ela.png',
+      imgLocation + '/img/bd_ka.png',
+      imgLocation + '/img/bd_pad.png',
+      imgLocation + '/img/bd_palo.png',
+      imgLocation + '/img/bd_pl.png',
+      imgLocation + '/img/bd_rz.png',
+      imgLocation + '/img/bd_title.png',
+      imgLocation + '/img/bg.jpg',
+      imgLocation + '/img/content_bottom.png',
+      imgLocation + '/img/content_top.png',
+      imgLocation + '/img/cover_line_s.png',
+      imgLocation + '/img/current_tag.png',
+      imgLocation + '/img/kf_arrow.png',
+      imgLocation + '/img/kf_change.png',
+      imgLocation + '/img/kf_data.png',
+      imgLocation + '/img/kf_fenxi.png',
+      imgLocation + '/img/kf_save.png',
+      imgLocation + '/img/kf_search.png',
+      imgLocation + '/img/kf_solu.png',
+      imgLocation + '/img/kf_title.png',
+      imgLocation + '/img/kf_zn.png',
+      imgLocation + '/img/light_large.png',
+      imgLocation + '/img/light_small.png',
+      imgLocation + '/img/loading_bg.jpg',
+      imgLocation + '/img/logo_baiduyun_b.png',
+      imgLocation + '/img/logo_baiduyun.png',
+      imgLocation + '/img/p2_bd.png',
+      imgLocation + '/img/p2_center.png',
+      imgLocation + '/img/p2_kf.png',
+      imgLocation + '/img/p2_light_l.png',
+      imgLocation + '/img/p2_light_r.png',
+      imgLocation + '/img/p2_solu.png',
+      imgLocation + '/img/p2_tiansuang.png',
+      imgLocation + '/img/p2_words.png',
+      imgLocation + '/img/p2_zn.png',
+      imgLocation + '/img/qrcode.png',
+      imgLocation + '/img/solu_air.png',
+      imgLocation + '/img/solu_date.png',
+      imgLocation + '/img/solu_life.png',
+      imgLocation + '/img/solu_number.png',
+      imgLocation + '/img/solu_title.png',
+      imgLocation + '/img/words_baiduyun.png',
+      imgLocation + '/img/words_wrap_bottom.png',
+      imgLocation + '/img/words_wrap_top.png',
+      imgLocation + '/img/zn_bfr.png',
+      imgLocation + '/img/zn_ocr.png',
+      imgLocation + '/img/zn_title.png',
+      imgLocation + '/img/zn_yy.png'
+    ];
+    
+    
+     var imageLoad = new Preload.imageLoad({ //可单独使用imageLoad，var imageLoad = new imageLoad()
+        isDebug: false,
+        sources: {
+            imgs: {
+                source: sourceArr,
+                callback: function() {
+                    console.log("图片完成");
+                }
+            },
+        },
+        loadingOverTime: 3,
+        loadingOverTimeCB: function() {
+          console.log('资源加载超时');
+        },
+        progress: function(completedCount, total) {
+          loadingPrecent.style.width = parseInt((Math.max((completedCount-5),0)/total)*100)+"%";
+        },
+        completeLoad: function() {
+          loadingPrecent.style.width='100%';
+          
+          loadingWrap.style.opacity = '0';
+          
+          setTimeout(function(){
+            loadingWrap.style.display = 'none';
+          },600);
+        }
+    });
+  </script>
+  <script src="http://baiduyun-10040623.file.myqcloud.com/js/zepto.min.js"></script>
+  <script src="http://baiduyun-10040623.file.myqcloud.com/js/swiper.min.js"></script>
+  <script src="http://baiduyun-10040623.file.myqcloud.com/js/gesture.min.js"></script>
+  <script src="http://baiduyun-10040623.file.myqcloud.com/js/staic-index.js"></script>
 </html>
