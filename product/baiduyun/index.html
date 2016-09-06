@@ -6,8 +6,8 @@
     <meta name="description" content="description"/>
     <meta name="keywords" content="a,b"/>
     <title>百度云</title>
-    <script src="http://baiduyun-10040623.file.myqcloud.com/js/grid.js"> </script>
-    <script src="http://baiduyun-10040623.file.myqcloud.com/js/preload.js">   </script>
+    <script src="http://baiduyun-10040623.file.myqcloud.com//js/grid.js"> </script>
+    <script src="http://baiduyun-10040623.file.myqcloud.com//js/preload.js">   </script>
     <style type="text/css">
       html,body {
         background-color: #000103;
@@ -31,7 +31,7 @@
         top: 35%;
         width: 100%;
         height: 0.92rem;
-        background-image: url(http://baiduyun-10040623.file.myqcloud.com/img/loading_bg.jpg);
+        background-image: url(http://baiduyun-10040623.file.myqcloud.com//img/loading_bg.jpg);
         background-repeat: no-repeat;
         background-size: 100% auto;
       }
@@ -43,7 +43,7 @@
         width: 3rem;
         height: 1.08rem;
         margin-left: -1.5rem;
-        background-image: url(http://baiduyun-10040623.file.myqcloud.com/img/light_large.png);
+        background-image: url(http://baiduyun-10040623.file.myqcloud.com//img/light_large.png);
         background-repeat: no-repeat;
         background-size: 100% auto;
         -webkit-animation: light-shape 1.4s infinite;
@@ -55,7 +55,7 @@
         width: 3rem;
         height: 1.08rem;
         margin-left: -1.5rem;
-        background-image: url(http://baiduyun-10040623.file.myqcloud.com/img/light_large.png);
+        background-image: url(http://baiduyun-10040623.file.myqcloud.com//img/light_large.png);
         background-repeat: no-repeat;
         background-size: 100% auto;
         -webkit-animation: light-shape 1.4s infinite;
@@ -108,8 +108,8 @@
       }
       
     </style>
-    <link rel="stylesheet" href="http://baiduyun-10040623.file.myqcloud.com/css/style.css"/>
-    <link rel="stylesheet" href="http://baiduyun-10040623.file.myqcloud.com/css/swiper.min.css"/>
+    <link rel="stylesheet" href="http://baiduyun-10040623.file.myqcloud.com//css/style.css"/>
+    <link rel="stylesheet" href="http://baiduyun-10040623.file.myqcloud.com//css/swiper.min.css"/>
   </head>
   <body>
     <div class="loading-wrapper">
@@ -126,12 +126,19 @@
     </div>
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide current">
+        <div class="swiper-slide page-video">
           <div class="bar-top"></div>
+          <div class="video-box video-box1 show">
+            <video id="videoIndex1" preload="auto" webkit-playsinline="true" x-webkit-airplay="true">
+              <source src="http://baiduyun-10040623.file.myqcloud.com//video/page1_1.mp4" type="video/mp4"/>
+            </video>
+            <div class="bg-poster"><img src="http://baiduyun-10040623.file.myqcloud.com//img/page1_bg.jpg"/></div>
+          </div>
           <div class="logo-baiduyun"></div>
           <div class="bar-bottom"></div>
         </div>
         <div class="swiper-slide page-p2">
+          <div class="bg-star"></div>
           <div class="bar-top"></div>
           <div class="logo-tiansuang"></div>
           <div class="p2-center">
@@ -149,21 +156,30 @@
           <div class="bar-bottom"></div>
         </div>
         <div class="swiper-slide page-solu">
+          <div class="bg-star"></div>
           <div class="bar-top"></div>
           <div class="page-title"></div>
           <div class="content-wrap">
             <ul class="btn-list">
               <li class="current">
-                <div data-words="" class="big solu-life"></div>
+                <div data-words="" class="big solu-life">
+                  <div class="gif"></div>
+                </div>
               </li>
               <li>
-                <div class="big solu-date"></div>
+                <div class="big solu-date">
+                  <div class="gif"></div>
+                </div>
               </li>
               <li>
-                <div class="big solu-number"></div>
+                <div class="big solu-number">
+                  <div class="gif"></div>
+                </div>
               </li>
               <li>
-                <div class="big solu-air"></div>
+                <div class="big solu-air">
+                  <div class="gif"></div>
+                </div>
               </li>
             </ul>
             <ul class="words-list">
@@ -177,6 +193,7 @@
           <div class="bar-bottom"></div>
         </div>
         <div class="swiper-slide page-bd">
+          <div class="bg-star"></div>
           <div class="scrolling">
             <div class="bar-top"></div>
             <div class="page-title"></div>
@@ -184,13 +201,19 @@
               <div class="bd-1">
                 <ul class="btn-list">
                   <li class="current">
-                    <div class="bd-bmr"></div>
+                    <div class="bd-bmr">
+                      <div class="gif"></div>
+                    </div>
                   </li>
                   <li>
-                    <div class="bd-bml"></div>
+                    <div class="bd-bml">
+                      <div class="gif"></div>
+                    </div>
                   </li>
                   <li>
-                    <div class="bd-palo"></div>
+                    <div class="bd-palo">
+                      <div class="gif"></div>
+                    </div>
                   </li>
                 </ul>
                 <ul class="words-list">
@@ -202,13 +225,19 @@
               <div class="bd-2">
                 <ul class="btn-list">
                   <li class="current">
-                    <div class="bd-pad"></div>
+                    <div class="bd-pad">
+                      <div class="gif"></div>
+                    </div>
                   </li>
                   <li>
-                    <div class="bd-ela"></div>
+                    <div class="bd-ela">
+                      <div class="gif"></div>
+                    </div>
                   </li>
                   <li>
-                    <div class="bd-bs"></div>
+                    <div class="bd-bs">
+                      <div class="gif"></div>
+                    </div>
                   </li>
                 </ul>
                 <ul class="words-list">
@@ -220,13 +249,19 @@
               <div class="bd-3">
                 <ul class="btn-list">
                   <li class="current">
-                    <div class="bd-pl"></div>
+                    <div class="bd-pl">
+                      <div class="gif"></div>
+                    </div>
                   </li>
                   <li>
-                    <div class="bd-rz"></div>
+                    <div class="bd-rz">
+                      <div class="gif"></div>
+                    </div>
                   </li>
                   <li>
-                    <div class="bd-ka"></div>
+                    <div class="bd-ka">
+                      <div class="gif"></div>
+                    </div>
                   </li>
                 </ul>
                 <ul class="words-list">
@@ -241,18 +276,25 @@
           </div>
         </div>
         <div class="swiper-slide page-zn">
+          <div class="bg-star"></div>
           <div class="bar-top"></div>
           <div class="page-title"></div>
           <div class="content-wrap">
             <ul class="btn-list">
               <li class="current">
-                <div class="zn-bfr"></div>
+                <div class="zn-bfr">
+                  <div class="gif"></div>
+                </div>
               </li>
               <li>
-                <div class="zn-ocr"></div>
+                <div class="zn-ocr">
+                  <div class="gif"></div>
+                </div>
               </li>
               <li>
-                <div class="zn-yy"></div>
+                <div class="zn-yy">
+                  <div class="gif"></div>
+                </div>
               </li>
             </ul>
             <ul class="words-list">
@@ -265,6 +307,7 @@
           <div class="bar-bottom"></div>
         </div>
         <div class="swiper-slide page-kf">
+          <div class="bg-star"></div>
           <div class="scrolling">
             <div class="bar-top"></div>
             <div class="page-title"></div>
@@ -298,12 +341,50 @@
     </div>
   </body>
   <script>
+    var query = function(selector){
+      return document.querySelector(selector);
+    };
+    var browser={
+      versions:function(){
+        var u = navigator.userAgent, app = navigator.appVersion;
+        return {
+          webKit: u.indexOf('AppleWebKit') > -1, 
+          ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), 
+          android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, 
+          weixin: u.indexOf('MicroMessenger') > -1, 
+          txnews: u.indexOf('qqnews') > -1,
+          sinawb: u.indexOf('weibo') > -1,
+          mqq   : u.indexOf('QQ') > -1
+        };
+      }(),
+      language:(navigator.browserLanguage || navigator.language).toLowerCase()
+    };
+    var
+      videoIndex1 = document.getElementById("videoIndex1"),
+      videoBox1Post = query('.video-box1 .bg-poster');
+      
     var
       loadingWrap = document.querySelector('.loading-wrapper'),
       loadingPrecent = document.querySelector('.loading-process-inner');
-    var imgLocation = 'http://baiduyun-10040623.file.myqcloud.com';
+    var imgLocation = 'http://baiduyun-10040623.file.myqcloud.com/';
     
     var sourceArr = [
+      imgLocation + '/img/bd_bml_inner.png',
+      imgLocation + '/img/bd_bmr_inner.png',
+      imgLocation + '/img/bd_bs_inner.png',
+      imgLocation + '/img/bd_ela_inner.png',
+      imgLocation + '/img/bd_ka_inner.png',
+      imgLocation + '/img/bd_pad_inner.png',
+      imgLocation + '/img/bd_palo_inner.png',
+      imgLocation + '/img/bd_pl_inner.png',
+      imgLocation + '/img/bd_rz_inner.png',
+      imgLocation + '/img/solu_air_inner.png',
+      imgLocation + '/img/solu_date_inner.png',
+      imgLocation + '/img/solu_life_inner.png',
+      imgLocation + '/img/solu_number_inner.png',
+      imgLocation + '/img/zn_bfr_inner.png',
+      imgLocation + '/img/zn_ocr_inner.png',
+      imgLocation + '/img/zn_yy_inner.png',
       imgLocation + '/img/bar_top.png',
       imgLocation + '/img/bd_bml.png',
       imgLocation + '/img/bd_bmr.png',
@@ -383,12 +464,28 @@
           
           setTimeout(function(){
             loadingWrap.style.display = 'none';
+            videoIndex1.play();
           },600);
         }
     });
+    
+    //ios android 视频处理
+    if(browser.versions.ios){
+      videoBox1Post.style.display = 'none';
+      
+      videoIndex1.load();
+    }
+    if(browser.versions.android) {
+      videoIndex1.addEventListener('timeupdate', function() {
+          videoBox1Post.classList.add('hide');
+      });
+      videoIndex1.addEventListener('play', function() {
+        videoIndex1.style.display= 'block';
+      });
+    }
   </script>
-  <script src="http://baiduyun-10040623.file.myqcloud.com/js/zepto.min.js"></script>
-  <script src="http://baiduyun-10040623.file.myqcloud.com/js/swiper.min.js"></script>
-  <script src="http://baiduyun-10040623.file.myqcloud.com/js/gesture.min.js"></script>
-  <script src="http://baiduyun-10040623.file.myqcloud.com/js/staic-index.js"></script>
+  <script src="http://baiduyun-10040623.file.myqcloud.com//js/zepto.min.js"></script>
+  <script src="http://baiduyun-10040623.file.myqcloud.com//js/swiper.min.js"></script>
+  <script src="http://baiduyun-10040623.file.myqcloud.com//js/gesture.min.js"></script>
+  <script src="http://baiduyun-10040623.file.myqcloud.com//js/staic-index.js"></script>
 </html>
