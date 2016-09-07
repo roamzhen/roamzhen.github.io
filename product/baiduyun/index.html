@@ -113,7 +113,6 @@
       
     </style>
     <link rel="stylesheet" href="http://baiduyun-10040623.file.myqcloud.com/css/style.css"/>
-    <link rel="stylesheet" href="http://baiduyun-10040623.file.myqcloud.com/css/swiper.min.css"/>
   </head>
   <body>
     <div class="loading-wrapper">
@@ -125,16 +124,15 @@
         <div class="loading-process">
           <div class="loading-process-inner"></div>
         </div>
-        <p class="loading-words">正在破解密码......</p>
+        <p class="loading-words">正在破解密码...</p>
       </div>
     </div>
     <div class="aside music-wrap">
-      <audio src="http://baiduyun-10040623.file.myqcloud.com/voice/page1_music.mp3" preload="auto" class="voice-p1"></audio>
       <audio src="http://baiduyun-10040623.file.myqcloud.com/voice/bg_music.mp3" preload="auto" loop="loop" class="voice-bg"></audio>
     </div>
     <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide page-video">
+      <ul class="swiper-wrapper">
+        <li class="swiper-slide page-video">
           <div class="bar-top"></div>
           <div class="video-box video-box1 show">
             <video id="videoIndex1" preload="auto" webkit-playsinline="true" x-webkit-airplay="true">
@@ -144,8 +142,8 @@
           </div>
           <div class="logo-baiduyun"></div>
           <div class="bar-bottom"></div>
-        </div>
-        <div class="swiper-slide page-p2">
+        </li>
+        <li class="swiper-slide page-p2">
           <div class="bg-star"></div>
           <div class="bar-top"></div>
           <div class="logo-tiansuang"></div>
@@ -162,8 +160,8 @@
           <div class="p2-words"></div>
           <div class="logo-baiduyun"></div>
           <div class="bar-bottom"></div>
-        </div>
-        <div class="swiper-slide page-solu">
+        </li>
+        <li class="swiper-slide page-solu">
           <div class="bg-star"></div>
           <div class="bar-top"></div>
           <div class="page-title"></div>
@@ -199,8 +197,8 @@
           </div>
           <div class="logo-baiduyun"></div>
           <div class="bar-bottom"></div>
-        </div>
-        <div class="swiper-slide page-bd">
+        </li>
+        <li class="swiper-slide page-bd">
           <div class="bg-star"></div>
           <div class="scrolling">
             <div class="bar-top"></div>
@@ -282,8 +280,8 @@
             <div class="logo-baiduyun"></div>
             <div class="bar-bottom"></div>
           </div>
-        </div>
-        <div class="swiper-slide page-zn">
+        </li>
+        <li class="swiper-slide page-zn">
           <div class="bg-star"></div>
           <div class="bar-top"></div>
           <div class="page-title"></div>
@@ -313,8 +311,8 @@
           </div>
           <div class="logo-baiduyun"></div>
           <div class="bar-bottom"></div>
-        </div>
-        <div class="swiper-slide page-kf">
+        </li>
+        <li class="swiper-slide page-kf">
           <div class="bg-star"></div>
           <div class="scrolling">
             <div class="bar-top"></div>
@@ -338,14 +336,14 @@
             <div class="logo-baiduyun"></div>
             <div class="bar-bottom"></div>
           </div>
-        </div>
-        <div class="swiper-slide page-last">
+        </li>
+        <li class="swiper-slide page-last">
           <div class="bar-top"></div>
           <div class="logo-baiduyun-b"></div>
           <div class="qrcode"></div>
           <div class="bar-bottom"></div>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
   </body>
   <script>
@@ -370,7 +368,6 @@
     var
       videoIndex1 = document.getElementById("videoIndex1"),
       videoBox1Post = query('.video-box1 .bg-poster');
-    var voiceP1 = query('.voice-p1');
     var voiceBg = query('.voice-bg');
     
     var
@@ -475,7 +472,6 @@
           setTimeout(function(){
             loadingWrap.style.display = 'none';
             videoIndex1.play();
-            voiceP1.play();
           },600);
         }
     });
