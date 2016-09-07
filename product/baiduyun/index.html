@@ -6,8 +6,8 @@
     <meta name="description" content="description"/>
     <meta name="keywords" content="a,b"/>
     <title>百度云</title>
-    <script src="http://baiduyun-10040623.file.myqcloud.com//js/grid.js"> </script>
-    <script src="http://baiduyun-10040623.file.myqcloud.com//js/preload.js">   </script>
+    <script src="http://baiduyun-10040623.file.myqcloud.com/js/grid.js"> </script>
+    <script src="http://baiduyun-10040623.file.myqcloud.com/js/preload.js">   </script>
     <style type="text/css">
       html,body {
         background-color: #000103;
@@ -31,7 +31,7 @@
         top: 35%;
         width: 100%;
         height: 0.92rem;
-        background-image: url(http://baiduyun-10040623.file.myqcloud.com//img/loading_bg.jpg);
+        background-image: url(http://baiduyun-10040623.file.myqcloud.com/img/loading_bg.jpg);
         background-repeat: no-repeat;
         background-size: 100% auto;
       }
@@ -43,7 +43,7 @@
         width: 3rem;
         height: 1.08rem;
         margin-left: -1.5rem;
-        background-image: url(http://baiduyun-10040623.file.myqcloud.com//img/light_large.png);
+        background-image: url(http://baiduyun-10040623.file.myqcloud.com/img/light_large.png);
         background-repeat: no-repeat;
         background-size: 100% auto;
         -webkit-animation: light-shape 1.4s infinite;
@@ -55,7 +55,7 @@
         width: 3rem;
         height: 1.08rem;
         margin-left: -1.5rem;
-        background-image: url(http://baiduyun-10040623.file.myqcloud.com//img/light_large.png);
+        background-image: url(http://baiduyun-10040623.file.myqcloud.com/img/light_large.png);
         background-repeat: no-repeat;
         background-size: 100% auto;
         -webkit-animation: light-shape 1.4s infinite;
@@ -107,9 +107,13 @@
         }
       }
       
+      .aside {
+        display: none;
+      }
+      
     </style>
-    <link rel="stylesheet" href="http://baiduyun-10040623.file.myqcloud.com//css/style.css"/>
-    <link rel="stylesheet" href="http://baiduyun-10040623.file.myqcloud.com//css/swiper.min.css"/>
+    <link rel="stylesheet" href="http://baiduyun-10040623.file.myqcloud.com/css/style.css"/>
+    <link rel="stylesheet" href="http://baiduyun-10040623.file.myqcloud.com/css/swiper.min.css"/>
   </head>
   <body>
     <div class="loading-wrapper">
@@ -124,15 +128,19 @@
         <p class="loading-words">正在破解密码......</p>
       </div>
     </div>
+    <div class="aside music-wrap">
+      <audio src="http://baiduyun-10040623.file.myqcloud.com/voice/page1_music.mp3" preload="auto" class="voice-p1"></audio>
+      <audio src="http://baiduyun-10040623.file.myqcloud.com/voice/bg_music.mp3" preload="auto" loop="loop" class="voice-bg"></audio>
+    </div>
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide page-video">
           <div class="bar-top"></div>
           <div class="video-box video-box1 show">
             <video id="videoIndex1" preload="auto" webkit-playsinline="true" x-webkit-airplay="true">
-              <source src="http://baiduyun-10040623.file.myqcloud.com//video/page1_1.mp4" type="video/mp4"/>
+              <source src="http://baiduyun-10040623.file.myqcloud.com/video/page1_1.mp4" type="video/mp4"/>
             </video>
-            <div class="bg-poster"><img src="http://baiduyun-10040623.file.myqcloud.com//img/page1_bg.jpg"/></div>
+            <div class="bg-poster"><img src="http://baiduyun-10040623.file.myqcloud.com/img/page1_bg.jpg"/></div>
           </div>
           <div class="logo-baiduyun"></div>
           <div class="bar-bottom"></div>
@@ -362,11 +370,13 @@
     var
       videoIndex1 = document.getElementById("videoIndex1"),
       videoBox1Post = query('.video-box1 .bg-poster');
-      
+    var voiceP1 = query('.voice-p1');
+    var voiceBg = query('.voice-bg');
+    
     var
       loadingWrap = document.querySelector('.loading-wrapper'),
       loadingPrecent = document.querySelector('.loading-process-inner');
-    var imgLocation = 'http://baiduyun-10040623.file.myqcloud.com/';
+    var imgLocation = 'http://baiduyun-10040623.file.myqcloud.com';
     
     var sourceArr = [
       imgLocation + '/img/bd_bml_inner.png',
@@ -465,6 +475,7 @@
           setTimeout(function(){
             loadingWrap.style.display = 'none';
             videoIndex1.play();
+            voiceP1.play();
           },600);
         }
     });
@@ -484,8 +495,8 @@
       });
     }
   </script>
-  <script src="http://baiduyun-10040623.file.myqcloud.com//js/zepto.min.js"></script>
-  <script src="http://baiduyun-10040623.file.myqcloud.com//js/swiper.min.js"></script>
-  <script src="http://baiduyun-10040623.file.myqcloud.com//js/gesture.min.js"></script>
-  <script src="http://baiduyun-10040623.file.myqcloud.com//js/staic-index.js"></script>
+  <script src="http://baiduyun-10040623.file.myqcloud.com/js/zepto.min.js"></script>
+  <script src="http://baiduyun-10040623.file.myqcloud.com/js/slide.min.js"></script>
+  <script src="http://baiduyun-10040623.file.myqcloud.com/js/gesture.min.js"></script>
+  <script src="http://baiduyun-10040623.file.myqcloud.com/js/staic-index.js"></script>
 </html>
