@@ -48,9 +48,6 @@
     var canvasInput = document.getElementById('compare');
     var canvasOverlay = document.getElementById('overlay');
 
-    videoInput.width = screenWidth;
-    videoInput.height = screenHeight;
-
     var webrtc = webrtc;
     webrtc.init(videoInput, canvasInput, {
       "video": {
@@ -66,9 +63,6 @@
     window.resize = function() {
       screenWidth = window.screen.availWidth;
       screenHeight = window.screen.availHeight;
-
-      videoInput.width = screenWidth;
-      videoInput.height = screenHeight;
 
       webrtc.init(videoInput, canvasInput, {
         "video": {
