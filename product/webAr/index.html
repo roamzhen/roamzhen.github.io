@@ -52,35 +52,16 @@
 
     var videoCamars = [];
 
-    webrtc.getAllAudioVideoDevices( function (devices) {
-      videoCamars = devices.videoInputDevices;
-
-      webrtc.init(videoInput, canvasInput, {
-        "video": {
-          "mandatory": {
-           "minWidth": screenWidth,
-           "maxWidth": screenWidth,
-           "minHeight": screenHeight,
-           "maxHeight": screenHeight,
-          }
+    webrtc.init(videoInput, canvasInput, {
+      "video": {
+        "mandatory": {
+         "minWidth": screenWidth,
+         "maxWidth": screenWidth,
+         "minHeight": screenHeight,
+         "maxHeight": screenHeight,
         }
-      });
-
-    }, function(){
-      alert('getAllAudioVideoDevices fail!');
-
-      webrtc.init(videoInput, canvasInput, {
-        "video": {
-          "mandatory": {
-           "minWidth": screenWidth,
-           "maxWidth": screenWidth,
-           "minHeight": screenHeight,
-           "maxHeight": screenHeight,
-          }
-        }
-      });
+      }
     });
-
 
     window.onorientationchange = function() {
       screenWidth = window.screen.availWidth;

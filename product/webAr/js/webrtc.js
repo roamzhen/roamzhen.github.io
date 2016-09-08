@@ -32,7 +32,9 @@
     }
   }
 
-  webrtc.init = function (vid, canvas, option) {
+
+
+  webrtc.init = function (video, canvas, option) {
     if(webrtc.useable) {
       var videoSelector = (option) ? (option) : ({video: true});
       if (window.navigator.appVersion.match(/Chrome\/(.*?) /)) {
@@ -42,124 +44,52 @@
         }
       };
 
-      navigator.getUserMedia(videoSelector, function( stream ) {
-        if (vid.mozCaptureStream) {
-          vid.mozSrcObject = stream;
-        } else {
-          vid.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
-        }
-        vid.play();
-      }, function() {
-        alert('init fail');
-      });
-
-    }
-  }
-
-  webrtc.getAllAudioVideoDevices =  function (successCallback, failureCallback) {
-    if (!navigator.enumerateDevices && window.MediaStreamTrack && window.MediaStreamTrack.getSources) {
-        navigator.enumerateDevices = window.MediaStreamTrack.getSources.bind(window.MediaStreamTrack);
-    }
-
-    if (!navigator.enumerateDevices && navigator.mediaDevices.enumerateDevices) {
-        navigator.enumerateDevices = navigator.mediaDevices.enumerateDevices.bind(navigator);
-    }
-
-    if (!navigator.enumerateDevices) {
-        failureCallback(null, 'Neither navigator.mediaDevices.enumerateDevices NOR MediaStreamTrack.getSources are available.');
-
-        return;
-    }
-
-    var allMdiaDevices = [];
-    var allAudioDevices = [];
-    var allVideoDevices = [];
-
-    var audioInputDevices = [];
-    var audioOutputDevices = [];
-    var videoInputDevices = [];
-    var videoOutputDevices = [];
-
-    navigator.enumerateDevices(function(devices) {
-      devices.forEach(function(_device) {
-        var device = {};
-        for (var d in _device) {
-            device[d] = _device[d];
+      // if many sources try to get the environemt-facing camera
+      var go = function(video_source_id){
+        var options = option;
+        if (video_source_id) {
+          options['video']['optional'] = [{ facingMode: "environment" }, {sourceId: video_source_id}];
         }
 
-        // make sure that we are not fetching duplicate devics
-        var skip;
-        allMdiaDevices.forEach(function(d) {
-            if (d.id === device.id) {
-                skip = true;
-            }
-        });
+        navigator.getUserMedia(options, function( stream ) {
+          video.setAttribute('width', '100%');  
+          video.setAttribute('height', '100%');
+          video.style.height = '100%';
+          video.style.width = '100%'; 
 
-        if (skip) {
-            return;
-        }
+          if (video.mozCaptureStream) {
+            video.mozSrcObject = stream;
+          } else {
+            video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
+          }
+          vid.play();
 
-        // if it is MediaStreamTrack.getSources
-        if (device.kind === 'audio') {
-            device.kind = 'audioinput';
-        }
-
-        if (device.kind === 'video') {
-            device.kind = 'videoinput';
-        }
-
-        if (!device.deviceId) {
-            device.deviceId = device.id;
-        }
-
-        if (!device.id) {
-            device.id = device.deviceId;
-        }
-
-        if (!device.label) {
-            device.label = 'Please invoke getUserMedia once.';
-        }
-
-        if (device.kind === 'audioinput' || device.kind === 'audio') {
-            audioInputDevices.push(device);
-        }
-
-        if (device.kind === 'audiooutput') {
-            audioOutputDevices.push(device);
-        }
-
-        if (device.kind === 'videoinput' || device.kind === 'video') {
-            videoInputDevices.push(device);
-        }
-
-        if (device.kind.indexOf('audio') !== -1) {
-            allAudioDevices.push(device);
-        }
-
-        if (device.kind.indexOf('video') !== -1) {
-            allVideoDevices.push(device);
-        }
-
-        // there is no 'videoouput' in the spec.
-        // so videoOutputDevices will always be [empty]
-
-        allMdiaDevices.push(device);
-      });
-
-      alert(successCallback);
-
-      if (successCallback) {
-        successCallback({
-          allMdiaDevices: allMdiaDevices,
-          allVideoDevices: allVideoDevices,
-          allAudioDevices: allAudioDevices,
-          videoInputDevices: videoInputDevices,
-          audioInputDevices: audioInputDevices,
-          audioOutputDevices: audioOutputDevices
+        }, function() {
+          alert('init fail');
         });
       }
-    });
+
+      if (window.MediaStreamTrack && window.MediaStreamTrack.getSources) {
+        MediaStreamTrack.getSources(function(source_infos) {
+          var selected_source = null;
+          for (var i = 0; i != source_infos.length; ++i) {
+            var source_info = source_infos[i];
+            if (source_info.kind === 'video') {
+              if (!selected_source || (source_info.facing && source_info.facing == "environment")) {
+                selected_source = source_info.id;
+              }
+            }
+          }
+          go(selected_source);
+        });
+      }
+      else {
+        go();
+      }
+
+    }
   }
+
 
 
   return webrtc;
