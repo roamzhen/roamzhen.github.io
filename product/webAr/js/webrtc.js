@@ -70,6 +70,8 @@
         return;
     }
 
+    alert('inside');
+
     var allMdiaDevices = [];
     var allAudioDevices = [];
     var allVideoDevices = [];
