@@ -52,7 +52,7 @@
           video.style.height = '100%';
           video.style.width = '100%'; 
 
-          console.log(cameras);
+          alert(cameras);
 
           document.querySelector('.btn-change-camare').addEventListener('touchstart', function(e) {
             alert("first:" + actId);
@@ -60,6 +60,8 @@
               var actCamare =  null;
               for(var i=0; i<cameras.length; i++) {
                 if (cameras[i]['id'] === actId){
+                  alert("sec:" + cameras[i-1]['id']);
+                  alert("thr:" + cameras[i+1]['id']);
 
                   if(i != camera.length-1) {
                     actId = cameras[i-1]['id'];
@@ -69,7 +71,6 @@
                     go(actId);
                   }
 
-                  alert("sec:" + actId);
 
                 }
               }
