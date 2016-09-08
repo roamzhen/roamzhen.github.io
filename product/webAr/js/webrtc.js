@@ -57,7 +57,6 @@
   }
 
   webrtc.getAllAudioVideoDevices =  function (successCallback, failureCallback) {
-     alert('meet');
     if (!navigator.enumerateDevices && window.MediaStreamTrack && window.MediaStreamTrack.getSources) {
         navigator.enumerateDevices = window.MediaStreamTrack.getSources.bind(window.MediaStreamTrack);
     }
@@ -65,6 +64,7 @@
     if (!navigator.enumerateDevices && navigator.mediaDevices.enumerateDevices) {
         navigator.enumerateDevices = navigator.mediaDevices.enumerateDevices.bind(navigator);
     }
+    alert('meet');
 
     if (!navigator.enumerateDevices) {
         failureCallback(null, 'Neither navigator.mediaDevices.enumerateDevices NOR MediaStreamTrack.getSources are available.');
