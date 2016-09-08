@@ -31,13 +31,11 @@
     <style></style>
   </head>
   <body>
-  <canvas id="compare" width="320" height="500"></canvas>
-  <video id="vid" autoplay loop  style="display:none"></video>
-  <canvas id="overlay" width="320" height="240"></canvas>
-  <aside style="display: none;">
-    <img id="wiggt" src="../img/4.png">
-  </aside>
-  <script type="text/javascript" src="js/headtrackr.js"></script>
+    <canvas id="compare" width="320" height="500"></canvas>
+    <video id="vid" autoplay loop ></video>
+    <canvas id="overlay" width="320" height="240"></canvas>
+    
+  <script type="text/javascript" src="js/webrtc.js"></script>
   <script type="text/javascript">
     var screenWidth = window.screen.availWidth;
     var screenHeight = window.screen.availHeight;
@@ -59,23 +57,18 @@
     canvasOverlay.width = screenWidth;
     canvasOverlay.height = screenHeight;
 
-    var htracker = new headtrackr.Tracker();
-    htracker.init(videoInput, canvasInput);
-    htracker.start();
-
-    document.addEventListener("facetrackingEvent", function( event ) {
-      // clear canvas
-      overlayContext.clearRect(0,0,screenWidth,screenHeight);
-      // once we have stable tracking, draw rectangle
-      if (event.detection == "CS") {
-        overlayContext.translate(event.x, event.y)
-          overlayContext.rotate(event.angle-(Math.PI/2));
-          overlayContext.strokeStyle = "#00CC00";
-          overlayContext.strokeRect((-(event.width/2)) >> 0, (-(event.height/2)) >> 0, event.width, event.height);
-          overlayContext.rotate((Math.PI/2)-event.angle);
-          overlayContext.translate(-event.x, -event.y);
+    var webrtc = webrtc;
+    webrtc.init(videoInput, canvasInput, {
+      "video": {
+        "mandatory": {
+         "minWidth": screenWidth,
+         "maxWidth": screenWidth,
+         "minHeight": screenHeight,
+         "maxHeight": screenHeight,
+        }
       }
     });
+
   </script>
   </body>
   </html>
