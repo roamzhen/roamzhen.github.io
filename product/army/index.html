@@ -13,293 +13,512 @@
         height: 100%;
       }
       
+      .loading-wrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        z-index: 999;
+        -webkit-transition: opacity 0.6s;
+      }
+      
+      .loading-process-wrap {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%,-50%);
+      }
+      .loading-percent {
+        font-size: 0.3rem;
+      }
+      
     </style>
     <link rel="stylesheet" href="http://army-10040623.file.myqcloud.com/css/style.css"/>
+    <script src="http://army-10040623.file.myqcloud.com/js/zepto.min.js"></script>
+    <script src="http://army-10040623.file.myqcloud.com/js/preload.js"></script>
   </head>
-  <script src="http://army-10040623.file.myqcloud.com/js/zepto.min.js"></script>
-  <script src="http://army-10040623.file.myqcloud.com/js/preload.js"></script>
-  <script src="http://army-10040623.file.myqcloud.com/js/gesture.min.js"></script>
   <body>
+    <div class="loading-wrapper">
+      <div class="loading-process-wrap">
+        <div class="loading-percent">0%</div>
+      </div>
+    </div>
     <div class="wrapper">
       <div class="scroller">
-        <div class="step1 animated">
-          <div class="p-item p1-1">
-            <div class="w-item w1-1"></div>
-            <div class="a-item a1-1"></div>
-          </div>
-          <div class="p-item p1-2">
-            <div class="w-item w1-2"></div>
-          </div>
-          <div class="p-item p1-3">
-            <div class="w-item w1-3"></div>
-          </div>
-        </div>
-        <div class="step2">
-          <div class="p-item p2-1">
-            <div class="w-item w2-1-1"></div>
-            <div class="w-item w2-1-2"></div>
-            <div class="a-item a2-1"></div>
-          </div>
-        </div>
-        <div class="step3">
-          <div class="p-item p2-2 zIndex-b">
-            <div class="w-item w2-2-1"></div>
-            <div class="w-item w2-2-2"></div>
-            <div class="w-item w2-2-3"></div>
-            <div class="a-item a2-2-1"></div>
-            <div class="a-item a2-2-2"></div>
-            <div class="a-item a2-2-3"></div>
-            <div class="a-item a2-2-4"></div>
-          </div>
-          <div class="p-pair zIndex-s">
-            <div class="p-item left p2-3">
-              <div class="w-item w2-3-1"></div>
+        <div class="part part1">
+          <div class="step1">
+            <div class="p-item p1-1">
+              <div class="w-item w1-1"></div>
+              <div class="a-item a1-1"></div>
             </div>
-            <div class="p-item left p2-4"></div>
-          </div>
-        </div>
-        <div class="step4">
-          <div class="p-item p3-1">
-            <div class="w-item w3-1"></div>
-          </div>
-        </div>
-        <div class="step5">
-          <div class="p-pair">
-            <div class="p-item left p3-2">
-              <div class="w-item w3-2"></div>
+            <div class="p-item p1-2">
+              <div class="w-item w1-2"></div>
             </div>
-            <div class="p-item left p3-3">
-              <div class="w-item w3-3"></div>
+            <div class="p-item p1-3">
+              <div class="w-item w1-3"></div>
+            </div>
+          </div>
+          <div class="step2">
+            <div class="p-item p2-1">
+              <div class="w-item w2-1-1"></div>
+              <div class="w-item w2-1-2"></div>
+              <div class="a-item a2-1"></div>
             </div>
           </div>
         </div>
-        <div class="step6">
-          <div class="p-pair">
-            <div class="p-item left p4-1">
-              <div class="w-item w4-1"></div>
+        <div class="part part2">
+          <div class="step3">
+            <div class="p-item p2-2 zIndex-b">
+              <div class="w-item w2-2-1"></div>
+              <div class="w-item w2-2-2"></div>
+              <div class="w-item w2-2-3"></div>
+              <div class="a-item a2-2-1"></div>
+              <div class="a-item a2-2-2"></div>
+              <div class="a-item a2-2-3"></div>
+              <div class="a-item a2-2-4"></div>
             </div>
-            <div class="p-item left p4-2">
-              <div class="w-item w4-2"></div>
-            </div>
-            <div class="p-item left p4-3">
-              <div class="w-item w4-3"></div>
-            </div>
-          </div>
-        </div>
-        <div class="step7">
-          <div class="p-item p4-4">
-            <div class="w-item w4-4"></div>
-          </div>
-        </div>
-        <div class="step8">
-          <div class="p-pair">
-            <div class="p-item left p4-5">
-              <div class="w-item w4-5"></div>
-            </div>
-            <div class="p-item left p4-6">
-              <div class="w-item w4-6-1"></div>
-              <div class="w-item w4-6-2"></div>
+            <div class="p-pair zIndex-s">
+              <div class="p-item left p2-3">
+                <div class="w-item w2-3-1"></div>
+              </div>
+              <div class="p-item left p2-4"></div>
             </div>
           </div>
-        </div>
-        <div class="step9">
-          <div class="p-item p5-1">
-            <div class="w-item w5-1"></div>
-          </div>
-        </div>
-        <div class="step10">
-          <div class="p-pair margin2">
-            <div class="p-item left p5-2">
-              <div class="w-item w5-2"></div>
-            </div>
-            <div class="p-item left p5-3">
-              <div class="w-item w5-3"></div>
-              <div class="a-item a5-3"></div>
-            </div>
-            <div class="p-item p5-4">
-              <div class="w-item w5-4"></div>
+          <div class="step4">
+            <div class="p-item p3-1">
+              <div class="w-item w3-1"></div>
             </div>
           </div>
-        </div>
-        <div class="step11">
-          <div class="p-item p5-5">
-            <div class="w-item w5-5"></div>
-          </div>
-        </div>
-        <div class="step12">
-          <div class="p-item p6-1">
-            <div class="w-item w6-1-1"></div>
-            <div class="w-item w6-1-2"></div>
-          </div>
-        </div>
-        <div class="step13">
-          <div class="p-item p6-2">
-            <div class="w-item w6-2"></div>
-          </div>
-          <div class="p-item p6-3">
-            <div class="w-item w6-3-1"></div>
-            <div class="w-item w6-3-2"></div>
-          </div>
-        </div>
-        <div class="step14"> 
-          <div class="p-item p7-1">
-            <div class="w-item w7-1"></div>
-          </div>
-        </div>
-        <div class="step15">
-          <div class="p-pair">
-            <div class="p-item left p7-3">
-              <div class="w-item w7-3"></div>
+          <div class="step5">
+            <div class="p-pair">
+              <div class="p-item left p3-2">
+                <div class="w-item w3-2"></div>
+              </div>
+              <div class="p-item left p3-3">
+                <div class="w-item w3-3"></div>
+              </div>
             </div>
-            <div class="p-item left p7-2">
-              <div class="w-item w7-2"></div>
+          </div>
+          <div class="step6">
+            <div class="p-pair">
+              <div class="p-item left p4-1">
+                <div class="w-item w4-1"></div>
+              </div>
+              <div class="p-item left p4-2">
+                <div class="w-item w4-2"></div>
+              </div>
+              <div class="p-item left p4-3">
+                <div class="w-item w4-3"></div>
+              </div>
+            </div>
+          </div>
+          <div class="step7">
+            <div class="p-item p4-4">
+              <div class="w-item w4-4"></div>
+            </div>
+          </div>
+          <div class="step8">
+            <div class="p-pair">
+              <div class="p-item left p4-5">
+                <div class="w-item w4-5"></div>
+              </div>
+              <div class="p-item left p4-6">
+                <div class="w-item w4-6-1"></div>
+                <div class="w-item w4-6-2"></div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="step16">
-          <div class="p-item p7-4">
-            <div class="w-item w7-4-1"></div>
-            <div class="w-item w7-4-2"></div>
-          </div>
-        </div>
-        <div class="step17">
-          <div class="p-item p7-5">
-            <div class="w-item w7-5"></div>
-          </div>
-        </div>
-        <div class="step18">
-          <div class="p-item p8-1">
-            <div class="w-item w8-1-1"></div>
-            <div class="w-item w8-1-2"></div>
-          </div>
-        </div>
-        <div class="step19">
-          <div class="p-item p8-2">
-            <div class="w-item w8-2"></div>
-          </div>
-        </div>
-        <div class="step20">
-          <div class="p-item p8-3">
-            <div class="w-item w8-3-1"></div>
-            <div class="w-item w8-3-2"></div>
-          </div>
-        </div>
-        <div class="step21">
-          <div class="p-item p9-2">
-            <div class="w-item w9-2-1"></div>
-            <div class="w-item w9-2-2"></div>
-            <div class="a-item a9-2-1"></div>
-            <div class="a-item a9-2-2"></div>
-          </div>
-        </div>
-        <div class="step22">
-          <div class="p-pair">
-            <div class="p-item left p9-3">
-              <div class="w-item w9-3"></div>
+        <div class="part part3">
+          <div class="step9">
+            <div class="p-item p5-1">
+              <div class="w-item w5-1"></div>
             </div>
-            <div class="p-item left p9-4">
-              <div class="w-item w9-4"></div>
+          </div>
+          <div class="step10">
+            <div class="p-pair margin2">
+              <div class="p-item left p5-2">
+                <div class="w-item w5-2"></div>
+              </div>
+              <div class="p-item left p5-3">
+                <div class="w-item w5-3"></div>
+                <div class="a-item a5-3"></div>
+              </div>
+              <div class="p-item p5-4">
+                <div class="w-item w5-4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="step11">
+            <div class="p-item p5-5">
+              <div class="w-item w5-5"></div>
+            </div>
+          </div>
+          <div class="step12">
+            <div class="p-item p6-1">
+              <div class="w-item w6-1-1"></div>
+              <div class="w-item w6-1-2"></div>
             </div>
           </div>
         </div>
-        <div class="step23">
-          <div class="p-item p10-1">
-            <div class="w-item w10-1-1"></div>
-            <div class="w-item w10-1-2"></div>
+        <div class="part part4">
+          <div class="step13">
+            <div class="p-item p6-2">
+              <div class="w-item w6-2"></div>
+            </div>
+            <div class="p-item p6-3">
+              <div class="w-item w6-3-1"></div>
+              <div class="w-item w6-3-2"></div>
+            </div>
           </div>
-        </div>
-        <div class="step24">
-          <div class="p-item p10-2"></div>
-        </div>
-        <div class="step25">
-          <div class="p-item p10-3">
-            <div class="w-item w10-3-1"></div>
-            <div class="w-item w10-3-2"></div>
+          <div class="step14"> 
+            <div class="p-item p7-1">
+              <div class="w-item w7-1"></div>
+            </div>
           </div>
-        </div>
-        <div class="step26">
-          <div class="p-item p11-1">
-            <div class="w-item w11-1"></div>
+          <div class="step15">
+            <div class="p-pair">
+              <div class="p-item left p7-3">
+                <div class="w-item w7-3"></div>
+              </div>
+              <div class="p-item left p7-2">
+                <div class="w-item w7-2"></div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="step27">
-          <div class="p-pair">
-            <div class="p-item left p11-2">
-              <div class="w-item w11-2-1"></div>
-              <div class="w-item w11-2-2"></div>
+          <div class="step16">
+            <div class="p-item p7-4">
+              <div class="w-item w7-4-1"></div>
+              <div class="w-item w7-4-2"></div>
+            </div>
+          </div>
+          <div class="step17">
+            <div class="p-item p7-5">
+              <div class="w-item w7-5"></div>
+            </div>
+          </div>
+          <div class="step18">
+            <div class="p-item p8-1">
+              <div class="w-item w8-1-1"></div>
+              <div class="w-item w8-1-2"></div>
             </div>
           </div>
         </div>
-        <div class="step28">
-          <div class="p-item p11-4">
-            <div class="w-item w11-4"></div>
+        <div class="part part5">
+          <div class="step19">
+            <div class="p-item p8-2">
+              <div class="w-item w8-2"></div>
+            </div>
+          </div>
+          <div class="step20">
+            <div class="p-item p8-3">
+              <div class="w-item w8-3-1"></div>
+              <div class="w-item w8-3-2"></div>
+            </div>
+          </div>
+          <div class="step21">
+            <div class="p-item p9-2">
+              <div class="w-item w9-2-1"></div>
+              <div class="w-item w9-2-2"></div>
+              <div class="a-item a9-2-1"></div>
+              <div class="a-item a9-2-2"></div>
+            </div>
+          </div>
+          <div class="step22">
+            <div class="p-pair">
+              <div class="p-item left p9-3">
+                <div class="w-item w9-3"></div>
+              </div>
+              <div class="p-item left p9-4">
+                <div class="w-item w9-4"></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="step29">
-          <div class="p-item p12-1">
-            <div class="w-item w12-1-1"></div>
-            <div class="w-item w12-1-2"></div>
-            <div class="a-item a12-1"></div>
+        <div class="part part6">
+          <div class="step23">
+            <div class="p-item p10-1">
+              <div class="w-item w10-1-1"></div>
+              <div class="w-item w10-1-2"></div>
+            </div>
+          </div>
+          <div class="step24">
+            <div class="p-item p10-2"></div>
+          </div>
+          <div class="step25">
+            <div class="p-item p10-3">
+              <div class="w-item w10-3-1"></div>
+            </div>
+          </div>
+          <div class="step26">
+            <div class="p-item p11-1">
+              <div class="w-item w11-1"></div>
+            </div>
+          </div>
+          <div class="step27">
+            <div class="p-pair">
+              <div class="p-item left p11-2">
+                <div class="w-item w11-2-1"></div>
+                <div class="w-item w11-2-2"></div>
+              </div>
+            </div>
+          </div>
+          <div class="step28">
+            <div class="p-item p11-4">
+              <div class="w-item w11-4"></div>
+            </div>
           </div>
         </div>
-        <div class="step30">
-          <div class="p-item p12-2">
-            <div class="w-item w12-2"></div>
-            <div class="a-item a12-2-1"></div>
-            <div class="a-item a12-2-2"></div>
-            <div class="a-item a12-2-3"></div>
+        <div class="part part7"> 
+          <div class="step29">
+            <div class="p-item p12-1">
+              <div class="w-item w12-1-1"></div>
+              <div class="w-item w12-1-2"></div>
+              <div class="a-item a12-1"></div>
+            </div>
           </div>
-          <div class="p-item p12-3">
-            <div class="w-item w12-3"></div>
+          <div class="step30">
+            <div class="p-item p12-2">
+              <div class="w-item w12-2"></div>
+              <div class="a-item a12-2-1"></div>
+              <div class="a-item a12-2-2"></div>
+              <div class="a-item a12-2-3"></div>
+            </div>
+            <div class="p-item p12-3">
+              <div class="w-item w12-3"></div>
+            </div>
           </div>
-        </div>
-        <div class="step31">
-          <div class="p-item p13-1">
-            <div class="w-item w13-1-1"></div>
-            <div class="w-item w13-1-2"></div>
+          <div class="step31">
+            <div class="p-item p13-1">
+              <div class="w-item w13-1-1"></div>
+              <div class="w-item w13-1-2"></div>
+            </div>
+            <div class="p-item p13-2">
+              <div class="w-item w13-2"></div>
+            </div>
           </div>
-          <div class="p-item p13-2">
-            <div class="w-item w13-2"></div>
+          <div class="step32">
+            <div class="p-item p13-3">
+              <div class="w-item w13-3-1"></div>
+              <div class="w-item w13-3-2"></div>
+              <div class="a-item a13-3"></div>
+            </div>
           </div>
-        </div>
-        <div class="step32">
-          <div class="p-item p13-3">
-            <div class="w-item w13-3-1"></div>
-            <div class="w-item w13-3-2"></div>
-            <div class="a-item a13-3"></div>
+          <div class="step33">
+            <div class="p-item p14-1">
+              <div class="w-item w14-1-1"></div>
+              <div class="w-item w14-1-2"></div>
+            </div>
+            <div class="p-item p14-2">
+              <div class="w-item w14-2-1"></div>
+              <div class="w-item w14-2-2"></div>
+              <div class="a-item a14-2"></div>
+            </div>
           </div>
-        </div>
-        <div class="step33">
-          <div class="p-item p14-1">
-            <div class="w-item w14-1-1"></div>
-            <div class="w-item w14-1-2"></div>
+          <div class="step34">
+            <div class="p-item p14-3">
+              <div class="w-item w14-3-1"></div>
+              <div class="w-item w14-3-2"></div>
+            </div>
           </div>
-          <div class="p-item p14-2">
-            <div class="w-item w14-2-1"></div>
-            <div class="w-item w14-2-2"></div>
-            <div class="a-item a14-2"></div>
+          <div class="step35">
+            <div class="p-item p15-1">
+              <div class="w-item w15-1-1"></div>
+              <div class="w-item w15-1-2"></div>
+            </div>
           </div>
-        </div>
-        <div class="step34">
-          <div class="p-item p14-3">
-            <div class="w-item w14-3-1"></div>
-            <div class="w-item w14-3-2"></div>
-          </div>
-        </div>
-        <div class="step35">
-          <div class="p-item p15-1">
-            <div class="w-item w15-1-1"></div>
-            <div class="w-item w15-1-2"></div>
-          </div>
-        </div>
-        <div class="step36">
-          <div class="p-item p15-2">
-            <div class="w-item w15-2"></div>
+          <div class="step36">
+            <div class="p-item p15-2">
+              <div class="w-item w15-2"></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </body>
-  <script></script>
+  <script>
+    var
+      loadingWrap = document.querySelector('.loading-wrapper'),
+      loadingPercent = document.querySelector('.loading-percent');
+    var imgLocation = 'http://army-10040623.file.myqcloud.com';
+    
+    var sourceArr = [
+      imgLocation + '/img/p1_1.png',
+      imgLocation + '/img/p1_2.png',
+      imgLocation + '/img/p1_3.png',
+      imgLocation + '/img/p2_1.png',
+      imgLocation + '/img/p2_2.png',
+      imgLocation + '/img/p2_3.png',
+      imgLocation + '/img/p2_4.png',
+      imgLocation + '/img/p3_1.png',
+      imgLocation + '/img/p3_2.png',
+      imgLocation + '/img/p3_3.png',
+      imgLocation + '/img/p4_1.png',
+      imgLocation + '/img/p4_2.png',
+      imgLocation + '/img/p4_3.png',
+      imgLocation + '/img/p4_4.png',
+      imgLocation + '/img/p4_5.png',
+      imgLocation + '/img/p4_6.png',
+      imgLocation + '/img/p5_1.png',
+      imgLocation + '/img/p5_2.png',
+      imgLocation + '/img/p5_3.png',
+      imgLocation + '/img/p5_4.png',
+      imgLocation + '/img/p5_5.png',
+      imgLocation + '/img/p6_1.png',
+      imgLocation + '/img/p6_2.png',
+      imgLocation + '/img/p6_3.png',
+      imgLocation + '/img/p7_1.png',
+      imgLocation + '/img/p7_2.png',
+      imgLocation + '/img/p7_3.png',
+      imgLocation + '/img/p7_4.png',
+      imgLocation + '/img/p7_5.png',
+      imgLocation + '/img/p8_1.png',
+      imgLocation + '/img/p8_2.png',
+      imgLocation + '/img/p8_3.png',
+      imgLocation + '/img/p9_2.png',
+      imgLocation + '/img/p9_3.png',
+      imgLocation + '/img/p9_4.png',
+      imgLocation + '/img/p10_1.png',
+      imgLocation + '/img/p10_2.png',
+      imgLocation + '/img/p10_3.png',
+      imgLocation + '/img/p11_1.png',
+      imgLocation + '/img/p11_2.png',
+      imgLocation + '/img/p11_4.png',
+      imgLocation + '/img/p12_1.png',
+      imgLocation + '/img/p12_2.png',
+      imgLocation + '/img/p12_3.png',
+      imgLocation + '/img/p13_1.png',
+      imgLocation + '/img/p13_2.png',
+      imgLocation + '/img/p13_3.png',
+      imgLocation + '/img/p14_1.png',
+      imgLocation + '/img/p14_2.png',
+      imgLocation + '/img/p14_3.png',
+      imgLocation + '/img/p15_1.png',
+      imgLocation + '/img/p15_2.png',
+      imgLocation + '/aimg/a1_1.png',
+      imgLocation + '/aimg/a2_1.png',
+      imgLocation + '/aimg/a2_2_1.png',
+      imgLocation + '/aimg/a2_2_2.png',
+      imgLocation + '/aimg/a2_2_3.png',
+      imgLocation + '/aimg/a2_2_4.png',
+      imgLocation + '/aimg/a5_3.png',
+      imgLocation + '/aimg/a9_2_1.png',
+      imgLocation + '/aimg/a9_2_2.png',
+      imgLocation + '/aimg/a12_1.png',
+      imgLocation + '/aimg/a12_2_1.png',
+      imgLocation + '/aimg/a12_2_2.png',
+      imgLocation + '/aimg/a12_2_3.png',
+      imgLocation + '/aimg/a13_3.png',
+      imgLocation + '/aimg/a14_2.png',
+      imgLocation + '/aimg/w1_1.png',
+      imgLocation + '/aimg/w1_2.png',
+      imgLocation + '/aimg/w1_3.png',
+      imgLocation + '/aimg/w2_1_1.png',
+      imgLocation + '/aimg/w2_1_2.png',
+      imgLocation + '/aimg/w2_2_1.png',
+      imgLocation + '/aimg/w2_2_2.png',
+      imgLocation + '/aimg/w2_2_3.png',
+      imgLocation + '/aimg/w2_3_1.png',
+      imgLocation + '/aimg/w3_1.png',
+      imgLocation + '/aimg/w3_2.png',
+      imgLocation + '/aimg/w3_3.png',
+      imgLocation + '/aimg/w4_1.png',
+      imgLocation + '/aimg/w4_2.png',
+      imgLocation + '/aimg/w4_3.png',
+      imgLocation + '/aimg/w4_4_1.png',
+      imgLocation + '/aimg/w4_4_2.png',
+      imgLocation + '/aimg/w4_4.png',
+      imgLocation + '/aimg/w4_5.png',
+      imgLocation + '/aimg/w4_6_1.png',
+      imgLocation + '/aimg/w4_6_2.png',
+      imgLocation + '/aimg/w5_1_1.png',
+      imgLocation + '/aimg/w5_1_2.png',
+      imgLocation + '/aimg/w5_1_3.png',
+      imgLocation + '/aimg/w5_1.png',
+      imgLocation + '/aimg/w5_2.png',
+      imgLocation + '/aimg/w5_3.png',
+      imgLocation + '/aimg/w5_4.png',
+      imgLocation + '/aimg/w5_5.png',
+      imgLocation + '/aimg/w6_1_1.png',
+      imgLocation + '/aimg/w6_1_2.png',
+      imgLocation + '/aimg/w6_2.png',
+      imgLocation + '/aimg/w6_3_1.png',
+      imgLocation + '/aimg/w6_3_2.png',
+      imgLocation + '/aimg/w6_3.png',
+      imgLocation + '/aimg/w7_1.png',
+      imgLocation + '/aimg/w7_2.png',
+      imgLocation + '/aimg/w7_3.png',
+      imgLocation + '/aimg/w7_4_1.png',
+      imgLocation + '/aimg/w7_4_2.png',
+      imgLocation + '/aimg/w7_4.png',
+      imgLocation + '/aimg/w7_5.png',
+      imgLocation + '/aimg/w8_1_1.png',
+      imgLocation + '/aimg/w8_1_2.png',
+      imgLocation + '/aimg/w8_2.png',
+      imgLocation + '/aimg/w8_3_1.png',
+      imgLocation + '/aimg/w8_3_2.png',
+      imgLocation + '/aimg/w9_2_1.png',
+      imgLocation + '/aimg/w9_2_2.png',
+      imgLocation + '/aimg/w9_3.png',
+      imgLocation + '/aimg/w9_4.png',
+      imgLocation + '/aimg/w10_1_1.png',
+      imgLocation + '/aimg/w10_1_2.png',
+      imgLocation + '/aimg/w10_3_1.png',
+      imgLocation + '/aimg/w11_1.png',
+      imgLocation + '/aimg/w11_2_1.png',
+      imgLocation + '/aimg/w11_2_2.png',
+      imgLocation + '/aimg/w11_4.png',
+      imgLocation + '/aimg/w12_1_1.png',
+      imgLocation + '/aimg/w12_1_2.png',
+      imgLocation + '/aimg/w12_2.png',
+      imgLocation + '/aimg/w12_3.png',
+      imgLocation + '/aimg/w13_1_1.png',
+      imgLocation + '/aimg/w13_1_2.png',
+      imgLocation + '/aimg/w13_2.png',
+      imgLocation + '/aimg/w13_3_1.png',
+      imgLocation + '/aimg/w13_3_2.png',
+      imgLocation + '/aimg/w14_1_1.png',
+      imgLocation + '/aimg/w14_1_2.png',
+      imgLocation + '/aimg/w14_2_1.png',
+      imgLocation + '/aimg/w14_2_2.png',
+      imgLocation + '/aimg/w14_3_1.png',
+      imgLocation + '/aimg/w14_3_2.png',
+      imgLocation + '/aimg/w15_1_1.png',
+      imgLocation + '/aimg/w15_1_2.png',
+      imgLocation + '/aimg/w15_2.png',
+    ];
+    
+     var imageLoad = new Preload.imageLoad({ //可单独使用imageLoad，var imageLoad = new imageLoad()
+        isDebug: false,
+        sources: {
+            imgs: {
+                source: sourceArr,
+                callback: function() {
+                    console.log("图片完成");
+                }
+            },
+        },
+        loadingOverTime: 3,
+        loadingOverTimeCB: function() {
+          console.log('资源加载超时');
+        },
+        progress: function(completedCount, total) {
+          loadingPercent.innerHTML = parseInt((Math.max((completedCount-5),0)/total)*100)+"%";
+        },
+        completeLoad: function() {
+          loadingPercent.style.width='100%';
+          
+          loadingWrap.style.opacity = '0';
+          
+          setTimeout(function(){
+            loadingWrap.style.display = 'none';
+            $('.step1').addClass('animated');
+          },600);
+        }
+    });
+  </script>
+  <script src="http://army-10040623.file.myqcloud.com/js/gesture.min.js"></script>
   <script src="http://army-10040623.file.myqcloud.com/js/staic-index.js"></script>
 </html>
