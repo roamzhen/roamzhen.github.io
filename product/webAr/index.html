@@ -55,7 +55,6 @@
     webrtc.getAllAudioVideoDevices( function (devices) {
       videoCamars = devices.videoInputDevices;
 
-      alert(videoCamars.length);
       webrtc.init(videoInput, canvasInput, {
         "video": {
           "mandatory": {
@@ -68,7 +67,18 @@
       });
 
     }, function(){
-      console.log('getAllAudioVideoDevices fail');
+      alert('getAllAudioVideoDevices fail!');
+
+      webrtc.init(videoInput, canvasInput, {
+        "video": {
+          "mandatory": {
+           "minWidth": screenWidth,
+           "maxWidth": screenWidth,
+           "minHeight": screenHeight,
+           "maxHeight": screenHeight,
+          }
+        }
+      });
     });
 
 
