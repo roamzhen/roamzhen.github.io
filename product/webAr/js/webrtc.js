@@ -67,9 +67,11 @@
 
     if (!navigator.enumerateDevices) {
         failureCallback(null, 'Neither navigator.mediaDevices.enumerateDevices NOR MediaStreamTrack.getSources are available.');
-        alert('fail');
+
         return;
     }
+
+    alert('inside');
 
 
     var allMdiaDevices = [];
