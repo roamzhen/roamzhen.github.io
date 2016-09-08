@@ -60,7 +60,7 @@
                 if (cameras[i]['id'] === actId){
                   alert("sec:" + cameras[i-1]['id']);
 
-                  if(i != camera.length-1) {
+                  if(i === camera.length-1) {
                     actId = cameras[i-1]['id'];
                     alert(actId);
                     go(actId);
