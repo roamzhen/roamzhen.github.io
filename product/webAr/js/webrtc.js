@@ -12,7 +12,9 @@
   * webRtc wrapper
   *
   */
-  var webrtc = {};
+  var webrtc = function(){
+    
+  };
 
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
   window.URL = window.URL || window.webkitURL || window.msURL || window.mozURL;
@@ -32,9 +34,11 @@
     }
   }
 
+  webrtc.prototype.delete = function() {
 
+  }
 
-  webrtc.init = function (video, canvas, option) {
+  webrtc.prototype.init = function (video, canvas, option) {
     if(webrtc.useable) {
       var cameras = [];
       var actId = null;
@@ -53,10 +57,6 @@
             });
           }
           window.stream = stream;
-          video.setAttribute('width', '100%');  
-          video.setAttribute('height', '100%');
-          video.style.height = '100%';
-          video.style.width = '100%'; 
 
           if (video.mozCaptureStream) {
             video.mozSrcObject = stream;

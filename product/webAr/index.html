@@ -60,7 +60,7 @@
     var videoInput = document.getElementById('vid');
     var canvasInput = document.getElementById('compare');
 
-    var webrtc = webrtc;
+    var webrtc = new webrtc();
 
     webrtc.init(videoInput, canvasInput, {
       "video": {
@@ -76,6 +76,8 @@
     window.onorientationchange = function() {
       screenWidth = window.screen.availWidth;
       screenHeight = window.screen.availHeight;
+
+      alert(screenWidth,screenHeight);
 
       webrtc.init(videoInput, canvasInput, options);
     };
