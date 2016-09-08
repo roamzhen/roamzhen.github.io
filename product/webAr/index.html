@@ -66,6 +66,7 @@
     window.onorientationchange = function() {
       screenWidth = window.screen.availWidth;
       screenHeight = window.screen.availHeight;
+      alert('onorientationchange');
 
       videoInput.width = screenWidth;
       videoInput.height = screenHeight;
@@ -80,8 +81,29 @@
           }
         }
       });
-
     };
+
+    MediaStreamTrack.getSources(function (media_sources) {
+      for (var i = 0; i < media_sources.length; i++) {
+        var media_source = media_sources[i];
+        var constraints = {};
+
+        // if video device
+        if (media_source.kind == 'video') {
+            constraints.video = {
+                optional: [{
+                    sourceId: media_source.id
+                }]
+            };
+        }
+
+
+        // invoke getUserMedia to capture this device
+        navigator.webkitGetUserMedia(constraints, function (stream) {
+            alert(stream.id, stream);
+        }, console.error);
+      }
+    });
 
   </script>
   </body>
