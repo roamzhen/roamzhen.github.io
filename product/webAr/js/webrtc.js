@@ -71,9 +71,6 @@
         return;
     }
 
-    alert('inside');
-
-
     var allMdiaDevices = [];
     var allAudioDevices = [];
     var allVideoDevices = [];
@@ -148,6 +145,8 @@
 
         allMdiaDevices.push(device);
       });
+
+      alert(successCallback);
 
       if (successCallback) {
         successCallback({
