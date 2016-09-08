@@ -55,7 +55,7 @@
           alert(cameras);
 
           document.querySelector('.btn-change-camare').addEventListener('touchstart', function(e) {
-            alert("first:" + actId);
+            alert("first:" + cameras.length);
             if(cameras.length >= 2){
               var actCamare =  null;
               for(var i=0; i<cameras.length; i++) {
