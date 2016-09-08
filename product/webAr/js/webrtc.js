@@ -64,10 +64,10 @@
     if (!navigator.enumerateDevices && navigator.mediaDevices.enumerateDevices) {
         navigator.enumerateDevices = navigator.mediaDevices.enumerateDevices.bind(navigator);
     }
-    alert('meet');
 
     if (!navigator.enumerateDevices) {
         failureCallback(null, 'Neither navigator.mediaDevices.enumerateDevices NOR MediaStreamTrack.getSources are available.');
+        alert('fail');
         return;
     }
 
