@@ -49,21 +49,32 @@
     var canvasOverlay = document.getElementById('overlay');
 
     var webrtc = webrtc;
-    webrtc.init(videoInput, canvasInput, {
-      "video": {
-        "mandatory": {
-         "minWidth": screenWidth,
-         "maxWidth": screenWidth,
-         "minHeight": screenHeight,
-         "maxHeight": screenHeight,
+
+    var videoCamars = [];
+
+    webrtc.getAllAudioVideoDevices( function (devices) {
+      videoCamars = devices.videoInputDevices;
+
+      alert(videoCamars.length);
+      webrtc.init(videoInput, canvasInput, {
+        "video": {
+          "mandatory": {
+           "minWidth": screenWidth,
+           "maxWidth": screenWidth,
+           "minHeight": screenHeight,
+           "maxHeight": screenHeight,
+          }
         }
-      }
+      });
+
+    }, function(){
+      console.log('getAllAudioVideoDevices fail');
     });
+
 
     window.onorientationchange = function() {
       screenWidth = window.screen.availWidth;
       screenHeight = window.screen.availHeight;
-      alert('onorientationchange');
 
       webrtc.init(videoInput, canvasInput, {
         "video": {
@@ -77,27 +88,6 @@
       });
     };
 
-    MediaStreamTrack.getSources(function (media_sources) {
-      for (var i = 0; i < media_sources.length; i++) {
-        var media_source = media_sources[i];
-        var constraints = {};
-
-        // if video device
-        if (media_source.kind == 'video') {
-            constraints.video = {
-                optional: [{
-                    sourceId: media_source.id
-                }]
-            };
-        }
-
-
-        // invoke getUserMedia to capture this device
-        navigator.webkitGetUserMedia(constraints, function (stream) {
-            alert(stream.id, stream);
-        }, console.error);
-      }
-    });
 
   </script>
   </body>
