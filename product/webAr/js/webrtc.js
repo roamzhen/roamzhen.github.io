@@ -57,6 +57,7 @@
   }
 
   webrtc.getAllAudioVideoDevices =  function (successCallback, failureCallback) {
+     alert('meet');
     if (!navigator.enumerateDevices && window.MediaStreamTrack && window.MediaStreamTrack.getSources) {
         navigator.enumerateDevices = window.MediaStreamTrack.getSources.bind(window.MediaStreamTrack);
     }
@@ -70,7 +71,6 @@
         return;
     }
 
-    alert('inside');
 
     var allMdiaDevices = [];
     var allAudioDevices = [];
