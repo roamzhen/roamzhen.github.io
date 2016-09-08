@@ -49,25 +49,24 @@
         navigator.getUserMedia(options, function( stream ) {
           video.setAttribute('width', '100%');  
           video.setAttribute('height', '100%');
-          video.style.height = '100%';
+          video.style.height = '1 00%';
           video.style.width = '100%'; 
 
-          alert(cameras);
 
           document.querySelector('.btn-change-camare').addEventListener('touchstart', function(e) {
-            alert("first:" + cameras.length);
             if(cameras.length >= 2){
               var actCamare =  null;
               for(var i=0; i<cameras.length; i++) {
                 if (cameras[i]['id'] === actId){
                   alert("sec:" + cameras[i-1]['id']);
-                  alert("thr:" + cameras[i+1]['id']);
 
                   if(i != camera.length-1) {
                     actId = cameras[i-1]['id'];
+                    alert(actId);
                     go(actId);
                   }else {
                     actId = cameras[i+1]['id'];
+                    alert(actId);
                     go(actId);
                   }
 
