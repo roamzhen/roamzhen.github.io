@@ -58,28 +58,6 @@
           video.style.height = '100%';
           video.style.width = '100%'; 
 
-
-          document.querySelector('.btn-change-camare').addEventListener('touchstart', function(e) {
-            if(cameras.length >= 2){
-              var actCamare =  null;
-              for(var i=0; i<cameras.length; i++) {
-                if (cameras[i]['id'] === actId){
-                  if(i === cameras.length-1) {
-                    actId = cameras[i-1]['id'];
-                    alert(actId);
-                    go(actId);
-                  }else {
-                    actId = cameras[i+1]['id'];
-                    alert(actId);
-                    go(actId);
-                  }
-
-
-                }
-              }
-            }
-          });
-
           if (video.mozCaptureStream) {
             video.mozSrcObject = stream;
           } else {
@@ -112,6 +90,26 @@
       else {
         go();
       }
+
+      document.querySelector('.btn-change-camare').addEventListener('touchstart', function(e) {
+        if(cameras.length >= 2){
+          var actCamare =  null;
+          for(var i=0; i<cameras.length; i++) {
+            if (cameras[i]['id'] === actId){
+              if(i === cameras.length-1) {
+                actId = cameras[i-1]['id'];
+                alert(actId);
+                go(actId);
+              }else {
+                actId = cameras[i+1]['id'];
+                alert(actId);
+                go(actId);
+              }
+
+            }
+          }
+        }
+      });
 
     }
   }
