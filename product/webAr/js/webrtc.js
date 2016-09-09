@@ -12,8 +12,8 @@
   * webRtc wrapper
   *
   */
-  var webrtc = function(){
-    
+  var webrtc = function() {
+
   };
 
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
@@ -113,8 +113,6 @@
 
     }
   }
-
-
 
   return webrtc;
 }));

@@ -5,84 +5,24 @@
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
     <meta name="description" content="web AR"/>
     <title>WebAR</title>
-    <style type="text/css">
-      html, body {
-        margin: 0;
-        height: 100%;
-      }
-      #compare {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-      }
-      #overlay {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-      }
-      #vid {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-      }
-      .btn-change-camare {
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        width:60px;
-        height: 40px;
-        background-color: #fff;
-        border-radius: 15px;
-        z-index: 999;
-      }
-      .btn-change-camare:active {
-        opacity: 0.6;
-      }
-    </style>
-    <style></style>
+    <link rel="stylesheet" href="css/style.css">
   </head>
+  
   <body>
     <canvas id="compare" width="320" height="500"></canvas>
     <video id="vid" autoplay loop ></video>
-    <div class="btn-change-camare"></div>
+    <canvas id="overlay" width="320" height="240"></canvas>
     
-  <script type="text/javascript" src="js/webrtc.js"></script>
-  <script type="text/javascript">
-    var screenWidth = window.screen.availWidth;
-    var screenHeight = window.screen.availHeight;
+    <div class="btn-change-camare"></div>
 
-    var videoInput = document.getElementById('vid');
-    var canvasInput = document.getElementById('compare');
+    <div class="gesture-area">
+      <div class="scale-element"></div>
+    </div>
 
-    var webrtc = new webrtc();
-
-    webrtc.init(videoInput, canvasInput, {
-      "video": {
-        "mandatory": {
-          "minWidth": screenWidth,
-          "maxWidth": screenWidth,
-          "minHeight": screenHeight,
-          "maxHeight": screenHeight
-        }
-      }
-    });
-
-    window.onorientationchange = function() {
-      screenWidth = window.screen.availWidth;
-      screenHeight = window.screen.availHeight;
-
-      alert(screenWidth,screenHeight);
-
-      webrtc.init(videoInput, canvasInput, options);
-    };
-
-
-  </script>
-  </body>
-  </html>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/webrtc.js"></script>
+    <script src="js/interact.min.js"></script>
+    <script src="//open.mobile.qq.com/sdk/qqapi.js?_bid=152"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
