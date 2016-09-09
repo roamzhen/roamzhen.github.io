@@ -73,12 +73,37 @@
   });
 
   window.onorientationchange = function() {
-    screenWidth = window.screen.availWidth;
-    screenHeight = window.screen.availHeight;
+    screenWidth = document.body.clientWidth;
+    screenHeight = document.body.clientHeight;
 
     mwebrtc.init(videoInput, canvasInput, options);
+    
   };
 
-
+	//拍照部分 开始
+	(function(){
+		var video = $("#vid")[0];
+		var qqImg = new Image();
+		qqImg.src = "img/babyq.gif";
+		$(".btn-capture").on("click",function(){
+			var canvas = document.createElement("canvas");
+		    canvas.width = video.videoWidth;
+		    canvas.height = video.videoHeight;
+		    canvas.getContext('2d')
+		       .drawImage(video, 0, 0, canvas.width, canvas.height);
+		    var $qq = $(".gesture-area");
+		    var x = parseInt($qq.attr("data-x")) || 0;
+		    var y = parseInt($qq.attr("data-y")) || 0;
+		    canvas.getContext('2d')
+		       .drawImage(qqImg,x,screenHeight+y-$qq.height()*scale,$qq.width()*scale,$qq.height()*scale);
+		    $(".capture-img").attr("src",canvas.toDataURL());
+		    $(".capture-box").show();
+		});
+		
+		$(".btn-recapture").on("click",function(){
+			$(".capture-box").hide();
+		});
+	})();
+	//拍照部分 结束
 
 })();

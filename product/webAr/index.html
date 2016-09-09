@@ -12,13 +12,17 @@
     <canvas id="compare" width="320" height="500"></canvas>
     <video id="vid" autoplay loop ></video>
     <canvas id="overlay" width="320" height="240"></canvas>
-    
     <div class="btn-change-camare"></div>
-
+	
     <div class="gesture-area">
       <div class="scale-element"></div>
     </div>
-
+    <div class="capture-box" style="display: none;">
+    		<img class="capture-img" src=""/>
+    		<button class="btn-recapture">重拍</button>
+    </div>
+    
+	<button class="btn-capture"></button>
     <script src="js/zepto.min.js"></script>
     <script src="js/webrtc.js"></script>
     <script src="js/interact.min.js"></script>
