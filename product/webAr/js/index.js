@@ -53,8 +53,8 @@
 
 	/* WebRTC by roam */
 
-	var screenWidth = window.screen.availWidth;
-  var screenHeight = window.screen.availHeight;
+	var screenWidth = document.body.clientWidth;
+  var screenHeight = document.body.clientHeight;
 
   var videoInput = document.getElementById('vid');
   var canvasInput = document.getElementById('compare');
