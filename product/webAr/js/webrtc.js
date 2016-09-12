@@ -14,6 +14,9 @@
   */
   var webrtc = {};
 
+  var cameras = [];
+  var actId = null;
+
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
   window.URL = window.URL || window.webkitURL || window.msURL || window.mozURL;
 
@@ -55,8 +58,6 @@
 
   webrtc.init = function (video, canvas, option) {
     var that = this;
-    var cameras = [];
-    var actId = null;
 
     if (window.MediaStreamTrack && window.MediaStreamTrack.getSources) {
       MediaStreamTrack.getSources(function(source_infos) {
@@ -85,10 +86,8 @@
         if (window.stream) {
           window.stream.getTracks().forEach(function(track) {
             track.stop();
-            alert('stop steam');
           });
         }
-
 
         var foundCamera =  false;
         for(var i=0; !foundCamera && i<cameras.length; i++) {
@@ -110,8 +109,14 @@
 
   }
 
-  webrtc.reinit = function() {
+  webrtc.reinit = function(video, canvas, option) {
+    if (window.stream) {
+      window.stream.getTracks().forEach(function(track) {
+        track.stop();
+      });
+    }
 
+    that.renderVideo(video, option, actId);
   }
 
   return webrtc;
