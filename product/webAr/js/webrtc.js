@@ -42,10 +42,13 @@
       if (window.stream) {
         window.stream.getTracks().forEach(function(track) {
           track.stop();
+          alert("preS " + window.stream);
           alert('stop steam');
         });
       }
       window.stream = stream;
+
+      alert(stream);
 
       if (video.mozCaptureStream) {
         video.mozSrcObject = stream;
