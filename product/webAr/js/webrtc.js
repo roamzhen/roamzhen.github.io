@@ -78,7 +78,7 @@
             }
           }
         }
-        that.renderVideo(video, option, source_info.id);
+        that.renderVideo(video, option, actId);
       });
     }
     else {
