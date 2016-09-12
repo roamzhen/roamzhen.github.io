@@ -58,6 +58,8 @@
 
   var videoInput = document.getElementById('vid');
   var canvasInput = document.getElementById('compare');
+  var overlay = document.getElementById('overlay');
+  var overlayCC = overlay.getContext('2d');
 
   var mwebrtc = webrtc;
 
@@ -72,21 +74,7 @@
     }
   });
 
-  window.onorientationchange = function() {
-  //   screenWidth = document.body.clientWidth;
-  //   screenHeight = document.body.clientHeight;
 
-  //   mwebrtc.reinit(videoInput, canvasInput, {
-  //   "video": {
-  //     "mandatory": {
-  //       "minWidth": screenWidth,
-  //       "maxWidth": screenWidth,
-  //       "minHeight": screenHeight,
-  //       "maxHeight": screenHeight
-  //     }
-  //   }
-  // });
-  };
 
 	//拍照部分 开始
 	(function(){
