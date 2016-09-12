@@ -91,7 +91,7 @@
         for(var i=0; i<cameras.length; i++) {
           if (cameras[i]['id'] === actId){
             alert('match');
-            alert('pre-aid ' + actId)
+            alert('pre-aid '+i +' || '+ actId)
             if(i === cameras.length-1) {
               actId = cameras[i-1]['id'];
               alert(actId);
