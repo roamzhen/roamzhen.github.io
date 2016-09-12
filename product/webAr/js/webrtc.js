@@ -42,13 +42,10 @@
       if (window.stream) {
         window.stream.getTracks().forEach(function(track) {
           track.stop();
-          alert("preS " + window.stream);
           alert('stop steam');
         });
       }
       window.stream = stream;
-
-      alert(stream);
 
       if (video.mozCaptureStream) {
         video.mozSrcObject = stream;
@@ -90,6 +87,8 @@
 
     document.querySelector('.btn-change-camera').addEventListener('touchstart', function(e) {
       if(cameras.length >= 2){
+        alert('actId: '+ actId);
+
         var actCamera =  null;
         for(var i=0; i<cameras.length; i++) {
           if (cameras[i]['id'] === actId){
@@ -97,11 +96,11 @@
             alert('pre-aid '+i +' || '+ actId)
             if(i === cameras.length-1) {
               actId = cameras[i-1]['id'];
-              alert(actId);
+              alert('change-id1: ' + actId);
               that.renderVideo(video, option, actId);
             }else {
               actId = cameras[i+1]['id'];
-              alert(actId);
+              alert('change-id2: ' + actId);
               that.renderVideo(video, option, actId);
             }
 
