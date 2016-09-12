@@ -88,21 +88,16 @@
             alert('stop steam');
           });
         }
-        
-        alert('actId: '+ actId);
+
 
         var foundCamera =  false;
         for(var i=0; !foundCamera && i<cameras.length; i++) {
           if (cameras[i]['id'] === actId){
-            alert('match');
-            alert('pre-aid '+i +' || '+ actId)
             if(i === cameras.length-1) {
               actId = cameras[i-1]['id'];
-              alert('change-id1: ' + actId);
               that.renderVideo(video, option, actId);
             }else {
               actId = cameras[i+1]['id'];
-              alert('change-id2: ' + actId);
               that.renderVideo(video, option, actId);
             }
 
