@@ -89,8 +89,8 @@
       if(cameras.length >= 2){
         alert('actId: '+ actId);
 
-        var actCamera =  null;
-        for(var i=0; i<cameras.length; i++) {
+        var foundCamera =  false;
+        for(var i=0; !foundCamera && i<cameras.length; i++) {
           if (cameras[i]['id'] === actId){
             alert('match');
             alert('pre-aid '+i +' || '+ actId)
@@ -103,6 +103,8 @@
               alert('change-id2: ' + actId);
               that.renderVideo(video, option, actId);
             }
+
+            foundCamera = true;
 
           }
         }
