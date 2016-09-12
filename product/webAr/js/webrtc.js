@@ -22,7 +22,7 @@
     navigator.enumerateDevices = function(callback) {
       navigator.mediaDevices.enumerateDevices().then(callback);
     };
-  }
+  } 
 
   webrtc.useable = function () {
     if (navigator.getUserMedia) {
@@ -33,7 +33,6 @@
   }
 
   webrtc.renderVideo = function (video, option, video_source_id) {
-    alert('rendor');
     var options = option;
     if (video_source_id) {
       options['video']['optional'] = [{ facingMode: "environment" }, {sourceId: video_source_id}];
@@ -87,7 +86,9 @@
     }
 
     document.querySelector('.btn-change-camera').addEventListener('touchstart', function(e) {
+      alert('cameras-in');
       if(cameras.length >= 2){
+         alert('cameras-length');
         var actCamera =  null;
         for(var i=0; i<cameras.length; i++) {
           if (cameras[i]['id'] === actId){
