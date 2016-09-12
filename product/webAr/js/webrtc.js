@@ -86,12 +86,12 @@
     }
 
     document.querySelector('.btn-change-camera').addEventListener('touchstart', function(e) {
-      alert('cameras-in');
       if(cameras.length >= 2){
-         alert('cameras-length');
         var actCamera =  null;
         for(var i=0; i<cameras.length; i++) {
           if (cameras[i]['id'] === actId){
+            alert('match');
+            alert('pre-aid ' + actId)
             if(i === cameras.length-1) {
               actId = cameras[i-1]['id'];
               alert(actId);
