@@ -12,9 +12,7 @@
   * webRtc wrapper
   *
   */
-  var webrtc = function() {
-
-  };
+  var webrtc = {};
 
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
   window.URL = window.URL || window.webkitURL || window.msURL || window.mozURL;
@@ -34,84 +32,84 @@
     }
   }
 
-  webrtc.prototype.delete = function() {
+  webrtc.renderVideo = function (video, option, video_source_id) {
+    alert('rendor');
+    var options = option;
+    if (video_source_id) {
+      options['video']['optional'] = [{ facingMode: "environment" }, {sourceId: video_source_id}];
+    }
+
+    navigator.getUserMedia(options, function( stream ) {
+      if (window.stream) {
+        window.stream.getTracks().forEach(function(track) {
+          track.stop();
+          alert('stop steam');
+        });
+      }
+      window.stream = stream;
+
+      if (video.mozCaptureStream) {
+        video.mozSrcObject = stream;
+      } else {
+        video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
+      }
+      video.play();
+
+    }, function() {
+      alert('getUserMedia Fail!!');
+    });
+  }
+
+  webrtc.init = function (video, canvas, option) {
+    var that = this;
+    var cameras = [];
+    var actId = null;
+
+    if (window.MediaStreamTrack && window.MediaStreamTrack.getSources) {
+      MediaStreamTrack.getSources(function(source_infos) {
+        var selected_source = null;
+        for (var i = 0; i != source_infos.length; ++i) {
+          var source_info = source_infos[i];
+          if (source_info.kind === 'video') {
+            cameras.push(source_info);
+
+            if (source_info.facing && source_info.facing == "environment") {
+              selected_source = source_info.id;
+              actId = source_info.id;
+            }
+          }
+        }
+        that.renderVideo(video, option, source_info.id);
+      });
+    }
+    else {
+      that.renderVideo(video, option);
+    }
+
+    document.querySelector('.btn-change-camera').addEventListener('touchstart', function(e) {
+      if(cameras.length >= 2){
+        var actCamera =  null;
+        for(var i=0; i<cameras.length; i++) {
+          if (cameras[i]['id'] === actId){
+            if(i === cameras.length-1) {
+              actId = cameras[i-1]['id'];
+              alert(actId);
+              that.renderVideo(video, option, actId);
+            }else {
+              actId = cameras[i+1]['id'];
+              alert(actId);
+              that.renderVideo(video, option, actId);
+            }
+
+          }
+        }
+      }
+    });
 
   }
 
-  webrtc.prototype.init = function (video, canvas, option) {
-    if(webrtc.useable) {
-      var cameras = [];
-      var actId = null;
+  webrtc.reinit = function() {
 
-      // if many sources try to get the environemt-facing camera
-      var go = function(video_source_id){
-        var options = option;
-        if (video_source_id) {
-          options['video']['optional'] = [{ facingMode: "environment" }, {sourceId: video_source_id}];
-        }
-
-        navigator.getUserMedia(options, function( stream ) {
-          if (window.stream) { 
-            window.stream.getTracks().forEach(function(track) {
-              track.stop();
-            });
-          }
-          window.stream = stream;
-
-          if (video.mozCaptureStream) {
-            video.mozSrcObject = stream;
-          } else {
-            video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
-          }
-          vid.play();
-
-        }, function() {
-          alert('init fail');
-        });
-      }
-
-      if (window.MediaStreamTrack && window.MediaStreamTrack.getSources) {
-        MediaStreamTrack.getSources(function(source_infos) {
-          var selected_source = null;
-          for (var i = 0; i != source_infos.length; ++i) {
-            var source_info = source_infos[i];
-            if (source_info.kind === 'video') {
-              cameras.push(source_info);
-
-              if (source_info.facing && source_info.facing == "environment") {
-                selected_source = source_info.id;
-                actId = source_info.id;
-              }
-            }
-          }
-          go(selected_source);
-        });
-      }
-      else {
-        go();
-      }
-
-      document.querySelector('.btn-change-camare').addEventListener('touchstart', function(e) {
-        if(cameras.length >= 2){
-          var actCamare =  null;
-          for(var i=0; i<cameras.length; i++) {
-            if (cameras[i]['id'] === actId){
-              if(i === cameras.length-1) {
-                actId = cameras[i-1]['id'];
-                alert(actId);
-                go(actId);
-              }else {
-                actId = cameras[i+1]['id'];
-                alert(actId);
-                go(actId);
-              }
-
-            }
-          }
-        }
-      });
-
-    }
   }
 
   return webrtc;
