@@ -73,19 +73,19 @@
   });
 
   window.onorientationchange = function() {
-    screenWidth = document.body.clientWidth;
-    screenHeight = document.body.clientHeight;
+  //   screenWidth = document.body.clientWidth;
+  //   screenHeight = document.body.clientHeight;
 
-    mwebrtc.reinit(videoInput, canvasInput, {
-      "video": {
-        "mandatory": {
-          "minWidth": screenWidth,
-          "maxWidth": screenWidth,
-          "minHeight": screenHeight,
-          "maxHeight": screenHeight
-        }
-      }
-    });  
+  //   mwebrtc.reinit(videoInput, canvasInput, {
+  //   "video": {
+  //     "mandatory": {
+  //       "minWidth": screenWidth,
+  //       "maxWidth": screenWidth,
+  //       "minHeight": screenHeight,
+  //       "maxHeight": screenHeight
+  //     }
+  //   }
+  // });
   };
 
 	//拍照部分 开始
