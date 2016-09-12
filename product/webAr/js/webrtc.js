@@ -39,12 +39,6 @@
     }
 
     navigator.getUserMedia(options, function( stream ) {
-      if (window.stream) {
-        window.stream.getTracks().forEach(function(track) {
-          track.stop();
-          alert('stop steam');
-        });
-      }
       window.stream = stream;
 
       if (video.mozCaptureStream) {
@@ -87,6 +81,14 @@
 
     document.querySelector('.btn-change-camera').addEventListener('touchstart', function(e) {
       if(cameras.length >= 2){
+
+        if (window.stream) {
+          window.stream.getTracks().forEach(function(track) {
+            track.stop();
+            alert('stop steam');
+          });
+        }
+        
         alert('actId: '+ actId);
 
         var foundCamera =  false;
