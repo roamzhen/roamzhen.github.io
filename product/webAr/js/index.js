@@ -81,7 +81,7 @@
 
   /*********** setup of emotion detection *************/
 
-  var ctracker = new clm.tracker();
+  var ctracker = new clm.tracker({useWebGL : true});
   ctracker.init(pModel);
 
 
