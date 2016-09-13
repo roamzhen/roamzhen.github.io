@@ -56,14 +56,19 @@
 	var screenWidth = document.body.clientWidth;
   var screenHeight = document.body.clientHeight;
 
-  var videoInput = document.getElementById('vid');
+  var vid = document.getElementById('vid');
   var canvasInput = document.getElementById('compare');
   var overlay = document.getElementById('overlay');
   var overlayCC = overlay.getContext('2d');
 
+  vid.width = screenWidth;
+  vid.height = screenHeight;
+  overlay.width = screenWidth;
+  overlay.height = screenHeight;
+
   var mwebrtc = webrtc;
 
-  mwebrtc.init(videoInput, canvasInput, {
+  mwebrtc.init(vid, canvasInput, {
     "video": {
       "mandatory": {
         "minWidth": screenWidth,
@@ -74,7 +79,25 @@
     }
   });
 
+  /*********** setup of emotion detection *************/
 
+  var ctracker = new clm.tracker();
+  ctracker.init(pModel);
+
+
+  vid.addEventListener('canplay', function() {
+    vid.play();
+    ctracker.start(vid);
+    drawLoop();
+  }, false);
+
+  function drawLoop() {
+    requestAnimationFrame(drawLoop);
+    overlayCC.clearRect(0, 0, overlay.width, overlay.height);
+    if (ctracker.getCurrentPosition()) {
+      ctracker.draw(overlay);
+    }
+  }
 
 	//拍照部分 开始
 	(function(){

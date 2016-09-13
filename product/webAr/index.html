@@ -9,9 +9,11 @@
   </head>
   
   <body>
-    <canvas id="compare" width="320" height="500"></canvas>
-    <video id="vid" autoplay loop ></video>
-    <canvas id="overlay" width="320" height="240"></canvas>
+    <div id="container">
+        <canvas id="compare" width="320" height="500"></canvas>
+        <video id="vid" autoplay loop ></video>
+        <canvas id="overlay" width="320" height="240"></canvas>
+    </div>
     <div class="btn-change-camera"></div>
 	
     <div class="gesture-area">
@@ -27,6 +29,13 @@
     <script src="js/webrtc.js"></script>
     <script src="js/interact.min.js"></script>
     <script src="//open.mobile.qq.com/sdk/qqapi.js?_bid=152"></script>
+    <script src="js/emotion/utils.js"></script>
+    <script src="js/emotion/clmtrackr.js"></script>
+    <script src="js/emotion/model_pca_20_svm_emotionDetection.js"></script>
+    <script src="js/emotion/Stats.js"></script>
+    <script src="js/emotion/d3.min.js"></script>
+    <script src="js/emotion/emotion_classifier.js"></script>
+    <script src="js/emotion/emotionmodel.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>
