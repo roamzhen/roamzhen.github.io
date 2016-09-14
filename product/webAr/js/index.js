@@ -68,16 +68,7 @@
 
   var mwebrtc = webrtc;
 
-  mwebrtc.init(vid, canvasInput, {
-    "video": {
-      "mandatory": {
-        "minWidth": screenWidth,
-        "maxWidth": screenWidth,
-        "minHeight": screenHeight,
-        "maxHeight": screenHeight
-      }
-    }
-  });
+  mwebrtc.init(vid, canvasInput);
 
   /*********** setup of emotion detection *************/
 

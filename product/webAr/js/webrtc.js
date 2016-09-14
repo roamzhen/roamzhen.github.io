@@ -58,6 +58,9 @@
 
   webrtc.init = function (video, canvas, option) {
     var that = this;
+    if(!option) {
+      option = {video: true};
+    }
 
     if (window.MediaStreamTrack && window.MediaStreamTrack.getSources) {
       MediaStreamTrack.getSources(function(source_infos) {
@@ -114,6 +117,10 @@
       window.stream.getTracks().forEach(function(track) {
         track.stop();
       });
+    }
+
+    if(!option) {
+      option = {video: true};
     }
 
     that.renderVideo(video, option, actId);
