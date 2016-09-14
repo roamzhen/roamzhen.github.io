@@ -61,8 +61,8 @@
   var overlay = document.getElementById('overlay');
   var overlayCC = overlay.getContext('2d');
 
-  vid.width = screenWidth;
-  vid.height = screenHeight;
+  vid.width = 400;
+  vid.height = 300;
   overlay.width = screenWidth;
   overlay.height = screenHeight;
 
