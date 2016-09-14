@@ -86,6 +86,16 @@ html, body {
 .btn-change-camare:active {
   opacity: 0.6;
 }
+.emotion-tag {
+	position: absolute;
+	left: 50%;
+	top: 10px;
+	font-size: 14px;
+	color: #fff;
+	background-color: #000;
+	padding: 5px 10px;
+	-webkit-transform: translateX(-50%);
+}
 
 
 @-webkit-keyframes sprites-anim {
