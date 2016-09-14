@@ -61,8 +61,8 @@
   var overlay = document.getElementById('overlay');
   var overlayCC = overlay.getContext('2d');
 
-  vid.width = screenWidth/4;
-  vid.height = screenHeight/4;
+  vid.width = screenWidth/2;
+  vid.height = screenHeight/2;
   overlay.width = screenWidth;
   overlay.height = screenHeight;
 
@@ -98,17 +98,17 @@
     var er = ec.meanPredict(cp);
     if(er) {
       emotionTag.innerHTML = '';
-      if(er[0]['value'] > 0.4) {
-        emotionTag.innerHTML = emotionTag.innerHTML + 'angry';
+      if(er[0]['value'] >= 0.5) {
+        emotionTag.innerHTML = emotionTag.innerHTML + 'angry ';
       }
-      if(er[1]['value'] > 0.4) {
-        emotionTag.innerHTML = emotionTag.innerHTML + 'sad';
+      if(er[1]['value'] >= 0.5) {
+        emotionTag.innerHTML = emotionTag.innerHTML + 'sad ';
       }
-      if(er[2]['value'] > 0.4) {
-        emotionTag.innerHTML = emotionTag.innerHTML + 'suprised';
+      if(er[2]['value'] >= 0.5) {
+        emotionTag.innerHTML = emotionTag.innerHTML + 'suprised ';
       }
-      if(er[3]['value'] > 0.4) {
-        emotionTag.innerHTML = emotionTag.innerHTML + 'happy';
+      if(er[3]['value'] >= 0.5) {
+        emotionTag.innerHTML = emotionTag.innerHTML + 'happy ';
       }
     }
     //  console.log(er[0]['value'].toFixed(2),er[1]['value'].toFixed(2),er[2]['value'].toFixed(2),er[3]['value'].toFixed(2));
