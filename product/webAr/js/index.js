@@ -61,8 +61,8 @@
   var overlay = document.getElementById('overlay');
   var overlayCC = overlay.getContext('2d');
 
-  vid.width = screenWidth/3;
-  vid.height = screenHeight/3;
+  vid.width = screenWidth/4;
+  vid.height = screenHeight/4;
   overlay.width = screenWidth;
   overlay.height = screenHeight;
 
@@ -71,6 +71,7 @@
   mwebrtc.init(vid, canvasInput, {
     "video": {
       "mandatory": {
+        "minAspectRatio": screenWidth/screenHeight,
         "maxAspectRatio": screenWidth/screenHeight   
       }
     }
