@@ -61,8 +61,8 @@
   var overlay = document.getElementById('overlay');
   var overlayCC = overlay.getContext('2d');
 
-  vid.width = screenWidth/4;
-  vid.height = screenHeight/4;
+  vid.width = screenWidth/3;
+  vid.height = screenHeight/3;
   overlay.width = screenWidth;
   overlay.height = screenHeight;
 
@@ -98,26 +98,26 @@
     var er = ec.meanPredict(cp);
     if(er) {
       emotionTag.innerHTML = '';
-      if(er[0]['value'] >= 0.5) {
-        emotionTag.innerHTML = emotionTag.innerHTML + 'angry ';
+      if(er[0]['value'] >= 0.4) {
+        emotionTag.innerHTML = emotionTag.innerHTML + er[0]['emotion'] + " ";
       }
-      if(er[1]['value'] >= 0.5) {
-        emotionTag.innerHTML = emotionTag.innerHTML + 'sad ';
+      if(er[1]['value'] >= 0.4) {
+        emotionTag.innerHTML = emotionTag.innerHTML + er[1]['emotion'] + " ";
       }
-      if(er[2]['value'] >= 0.5) {
-        emotionTag.innerHTML = emotionTag.innerHTML + 'suprised ';
+      if(er[2]['value'] >= 0.4) {
+        emotionTag.innerHTML = emotionTag.innerHTML + er[2]['emotion'] + " ";
       }
-      if(er[3]['value'] >= 0.5) {
-        emotionTag.innerHTML = emotionTag.innerHTML + 'happy ';
+      if(er[3]['value'] >= 0.4) {
+        emotionTag.innerHTML = emotionTag.innerHTML + er[3]['emotion'] + " ";
       }
     }
-    //  console.log(er[0]['value'].toFixed(2),er[1]['value'].toFixed(2),er[2]['value'].toFixed(2),er[3]['value'].toFixed(2));
   }
 
   var ec = new emotionClassifier();
   ec.init(emotionModel);
   var emotionData = ec.getBlank(); 
 
+  console.log(emotionData);
 
 	//拍照部分 开始
 	(function(){
