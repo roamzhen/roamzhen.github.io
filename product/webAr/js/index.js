@@ -61,14 +61,20 @@
   var overlay = document.getElementById('overlay');
   var overlayCC = overlay.getContext('2d');
 
-  vid.width = 400;
-  vid.height = 300;
+  vid.width = screenWidth/3;
+  vid.height = screenHeight/3;
   overlay.width = screenWidth;
   overlay.height = screenHeight;
 
   var mwebrtc = webrtc;
 
-  mwebrtc.init(vid, canvasInput);
+  mwebrtc.init(vid, canvasInput, {
+    "video": {
+      "mandatory": {
+        "maxAspectRatio": screenWidth/screenHeight   
+      }
+    }
+  });
 
   /*********** setup of emotion detection *************/
 
