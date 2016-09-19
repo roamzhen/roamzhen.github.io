@@ -1,188 +1,370 @@
-@charset "utf-8";
+@charset "UTF-8";
+/* css rest Eric Meyer */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote,
+a, strong, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, tbody, tfoot, thead, tr, th, td,
+aside, canvas, footer, header, hgroup,
+menu, nav, section, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  outline: none;
+}
+
+html, body, p, div, button, input, textarea, a, span {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body, input, textarea, button {
+  font-family: Helvetica;
+  font-size: 16px;
+}
+
+input, input:active, textarea, textarea:active {
+  outline: none;
+}
+
+img {
+  border: none;
+}
+
+button {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}
 
 html, body {
-	margin: 0;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #17b3ed;
 }
 
 #container {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-}
-#compare {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-}
-#overlay {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-}
-#vid {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-}
-.gesture-area {
-	position: absolute;
-	z-index: 10;
-	bottom: 0;
-}
-.gesture-area:after {
-	content: "";
-	position: absolute;
-	top: -40px;
-	bottom: -40px;
-	left: -40px;
-	right: -40px;
-	z-index: 20;
-}
-.scale-element {
-	position: relative;
-	z-index: 10;
-	/* 静态图 */
-	/*width: 122px;
-	height: 210px;
-	-webkit-background-size: 122px auto;
-	background: url(../img/yellowman.png) no-repeat;*/
-
-	/* Gif 图 */
-	/*background: url(../img/babyq.gif) no-repeat;*/
-
-	/* 雪碧图 */
-	width: 100px;
-	height: 100px;
-	overflow: hidden;
-
-	background: url(../img/spritesheet.png) no-repeat;
-	-webkit-animation: sprites-anim 2s steps(1) infinite;
-	-webkit-background-size: 100px auto;
-	background-size: 100px auto;
-	-webkit-transform-origin: center center;
-}
-
-.btn-change-camera {
   position: absolute;
-  right: 10px;
-  top: 10px;
-  width:60px;
-  height: 40px;
-  background-color: #fff;
-  border-radius: 15px;
-  z-index: 999;
-}
-.btn-change-camare:active {
-  opacity: 0.6;
-}
-.emotion-tag {
-	position: absolute;
-	left: 50%;
-	top: 10px;
-	font-size: 14px;
-	color: #fff;
-	background-color: #000;
-	padding: 5px 10px;
-	-webkit-transform: translateX(-50%);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 
+#container .video-box {
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 94px;
+  width: 100%;
+}
+
+#container .bottom-box {
+  position: absolute;
+  height: 94px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 101;
+}
+
+#container .bottom-box .role-list {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  right: 0;
+  display: -webkit-box;
+  -webkit-box-pack: justify;
+  transition: all 0.5s ease;
+}
+
+#container .bottom-box .role-list li {
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: all 0.5s ease;
+}
+
+#container .bottom-box .role-list li.bear {
+  background-image: url(../img/bear.png);
+  width: 41px;
+  height: 52px;
+  margin-top: -46px;
+}
+
+#container .bottom-box .role-list li.babyq {
+  background-image: url(../img/babyq.png);
+  width: 38px;
+  height: 44px;
+  margin-top: -39px;
+}
+
+#container .bottom-box .role-list li.babyq.current {
+  background-image: url(../img/babyq_current.png);
+  width: 70px;
+  height: 78px;
+  margin-top: -72px;
+}
+
+#container .bottom-box .role-list li.qq {
+  background-image: url(../img/qq.png);
+  width: 52px;
+  height: 49px;
+  margin-top: -41px;
+}
+
+#container .bottom-box .role-list li.qq.current {
+  background-image: url(../img/qq_current.png);
+  width: 104px;
+  height: 97px;
+  margin-top: -91px;
+}
+
+#container .bottom-box .role-list li.osca {
+  background-image: url(../img/osca.png);
+  width: 34px;
+  height: 39px;
+  margin-top: -33px;
+}
+
+#container .bottom-box .role-list li.anzi {
+  background-image: url(../img/anzi.png);
+  width: 26px;
+  height: 39px;
+  margin-top: -33px;
+}
+
+#container .bottom-box .role-list li.snowman {
+  background-image: url(../img/snowman.png);
+  width: 44px;
+  height: 58px;
+  margin-top: -53px;
+}
+
+#container .bottom-box .btn-capture {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 67px;
+  height: 67px;
+  border-radius: 67px;
+  background-color: #fff;
+  z-index: 1;
+}
+
+#container .bottom-box .btn-capture:before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 55px;
+  height: 55px;
+  background-color: #fff;
+  border: 2px solid #17b3ed;
+  border-radius: 57px;
+  z-index: 2;
+}
+
+#container .bottom-box .btn-capture:active {
+  opacity: 0.5;
+}
+
+#container .bottom-box .btn-capture:active:before {
+  opacity: 0.5;
+}
+
+#container .bottom-box .btn-change-camera {
+  position: absolute;
+  right: 25px;
+  top: 33px;
+  width: 33px;
+  height: 28px;
+  background-image: url(../img/change.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#container .bottom-box .btn-change-camera:active {
+  opacity: 0.5;
+}
+
+#compare {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#vid {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.gesture-area {
+  position: absolute;
+  z-index: 10;
+  bottom: 0;
+}
+
+.gesture-area:after {
+  content: "";
+  position: absolute;
+  top: -40px;
+  bottom: -40px;
+  left: -40px;
+  right: -40px;
+  z-index: 20;
+}
+
+.scale-element {
+  position: relative;
+  z-index: 10;
+  /* 静态图 */
+  /*width: 122px;
+    height: 210px;
+    -webkit-background-size: 122px auto;
+    background: url(../img/yellowman.png) no-repeat;*/
+  /* Gif 图 */
+  /*background: url(../img/babyq.gif) no-repeat;*/
+  /* 雪碧图 */
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  background: url(../img/spritesheet.png) no-repeat;
+  -webkit-animation: sprites-anim 2s steps(1) infinite;
+  -webkit-background-size: 100px auto;
+  background-size: 100px auto;
+  -webkit-transform-origin: center center;
+}
+
+.emotion-tag {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #000;
+  padding: 5px 10px;
+  -webkit-transform: translateX(-50%);
+}
 
 @-webkit-keyframes sprites-anim {
-	0% {
-		background-position: 0 0;	
-	}
-	10% {
-		background-position: 0 -100px;
-	}
-	20% {
-		background-position: 0 -200px;
-	}
-	30% {
-		background-position: 0 -300px;
-	}
-	40% {
-		background-position: 0 -400px;
-	}
-	50% {
-		background-position: 0 -500px;
-	}
-	60% {
-		background-position: 0 -600px;
-	}
-	70% {
-		background-position: 0 -700px;
-	}
-	80% {
-		background-position: 0 -800px;
-	}
-	90% {
-		background-position: 0 -900px;
-	}
-	100% {
-		background-position: 0 -1000px;
-	}
+  0% {
+    background-position: 0 0;
+  }
+  10% {
+    background-position: 0 -100px;
+  }
+  20% {
+    background-position: 0 -200px;
+  }
+  30% {
+    background-position: 0 -300px;
+  }
+  40% {
+    background-position: 0 -400px;
+  }
+  50% {
+    background-position: 0 -500px;
+  }
+  60% {
+    background-position: 0 -600px;
+  }
+  70% {
+    background-position: 0 -700px;
+  }
+  80% {
+    background-position: 0 -800px;
+  }
+  90% {
+    background-position: 0 -900px;
+  }
+  100% {
+    background-position: 0 -1000px;
+  }
 }
 
-.btn-capture{
-	position: absolute;
-	bottom: 10px;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 50px;
-	height: 50px;
-	background-color: #fff;
-	border: none;
-	border-radius: 50px;
-	&:active{
-		opacity: 0.5;
-	}
+.capture-box {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 102;
+  background-color: #17b3ed;
 }
 
-.capture-box{
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	z-index: 11;
-	.capture-img{
-		position: relative;
-	}
+.capture-box .capture-img {
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 94px;
+  width: 100%;
 }
 
-.capture-img{
-	height: 100%;
-	margin: 0 auto;
-    display: block;
+.btn-recapture {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  height: 44px;
+  display: block;
+  width: 40%;
+  border: none;
+  border-radius: 5px;
+  background-color: #fdfdfd;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, #fff), to(#fafafa));
+  vertical-align: top;
+  color: #00a5e0;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
 }
-
-.btn-recapture{
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-	font-size: 18px;
-    height: 44px;
-    display: block;
-    width: 40%;
-    border: none;
-    border-radius: 5px;
-    background-color: #18b4ed;
-    border-color: #0baae4;
-    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0.5,#1fbaf3),to(#18b4ed));
-    color: #fff;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-}
-

@@ -69,8 +69,7 @@
           var source_info = source_infos[i];
           if (source_info.kind === 'video') {
             cameras.push(source_info);
-
-            if (source_info.facing && source_info.facing == "environment") {
+            if (source_info.facing && source_info.facing != "environment") {
               selected_source = source_info.id;
               actId = source_info.id;
             }
@@ -85,13 +84,11 @@
 
     document.querySelector('.btn-change-camera').addEventListener('touchstart', function(e) {
       if(cameras.length >= 2){
-
         if (window.stream) {
           window.stream.getTracks().forEach(function(track) {
             track.stop();
           });
         }
-
         var foundCamera =  false;
         for(var i=0; !foundCamera && i<cameras.length; i++) {
           if (cameras[i]['id'] === actId){
@@ -102,9 +99,7 @@
               actId = cameras[i+1]['id'];
               that.renderVideo(video, option, actId);
             }
-
             foundCamera = true;
-
           }
         }
       }
