@@ -79,7 +79,8 @@
 		  // }
 
 		  // 剔除其他因素，关注 happy
-		  if(er[0]['value'] <= 0.3 && er[1]['value']  <= 0.3 && er[2]['value']  <= 0.3 && er[3]['value'] >= 0.4) {
+		  // er[0]['value'] <= 0.3 && er[1]['value']  <= 0.3 && er[2]['value']  <= 0.3 && er[3]['value'] >= 0.4
+		  if(er[3]['value'] >= 0.3) {
 		    emotionTag.innerHTML = emotionTag.innerHTML + er[3]['emotion'] + " ";
 		  } else {
 		  	emotionTag.innerHTML = 'analyzing';
@@ -104,22 +105,33 @@
 
 	//拍照部分 开始
 	(function(){
-		var video = $("#vid")[0];
+		var $video = $("#vid"),video = $video[0];
 		var qqImg = new Image();
 		qqImg.src = "img/babyq.gif";
 		$(".btn-capture").on("click",function(){
 			var canvas = document.createElement("canvas");
+			var context = canvas.getContext('2d');
 		    canvas.width = video.videoWidth;
 		    canvas.height = video.videoHeight;
-		    canvas.getContext('2d')
-		       .drawImage(video, 0, 0, canvas.width, canvas.height);
-	       	canvas.getContext('2d')
-		       .drawImage($("#emotion-canvas")[0], 0, 0, canvas.width, canvas.height);
+		    if(!$video.hasClass("hor-change")){//hor-change类,没有的话表示翻转了，要做处翻转处理
+		    		context.save();
+		    		//以右上点为中心 向右翻转画布
+				context.translate(canvas.width, 0);
+			    context.scale(-1, 1);
+			   	//画图
+			    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+			    context.restore();
+		    }else{
+				context.drawImage(video, 0, 0, canvas.width, canvas.height);
+		    }
+	       	context.drawImage($("#emotion-canvas")[0], 0, 0, canvas.width, canvas.height);
 		    $(".capture-img").attr("src",canvas.toDataURL());
 		    $(".capture-box").show();
-//		    mqq.media.saveImage({"content":$(".capture-img").attr("src")},function(data){
-//		    		alert(data.retCode);
-//		    });
+		    if (mqq) {
+		    		mqq.media.saveImage({"content":$(".capture-img").attr("src")},function(data){
+			    		alert(data.retCode);
+			    });
+		    }
 		});
 		
 		$(".btn-recapture").on("click",function(){

@@ -49,6 +49,12 @@ html, body {
                     width: 41px;
                     height: 52px;
                     margin-top: -46px;
+                    &.current{
+                        background-image: url(../img/bear_current.png);
+                        width: 90px;
+                        height: 71px;
+                        margin-top: -66px;
+                    }
                 }
                 &.babyq{
                     background-image: url(../img/babyq.png);
@@ -79,18 +85,36 @@ html, body {
                     width: 34px;
                     height: 39px;
                     margin-top: -33px;
+                    &.current{
+                        background-image: url(../img/osca_current.png);
+                        width: 62px;
+                        height: 72px;
+                        margin-top: -69px;
+                    }
                 }
                 &.anzi{
                     background-image: url(../img/anzi.png);
                     width: 26px;
                     height: 39px;
                     margin-top: -33px;
+                    &.current{
+                        background-image: url(../img/anzi_current.png);
+                        width: 57px;
+                        height: 90px;
+                        margin-top: -87px;
+                    }
                 }
                 &.snowman{
                     background-image: url(../img/snowman.png);
                     width: 44px;
                     height: 58px;
                     margin-top: -53px;
+                    &.current{
+                        background-image: url(../img/snowman_current.png);
+                        width: 82px;
+                        height: 89px;
+                        margin-top: -85px;
+                    }
                 }
             }
         }

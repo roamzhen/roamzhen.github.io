@@ -127,6 +127,13 @@ html, body {
   margin-top: -46px;
 }
 
+#container .bottom-box .role-list li.bear.current {
+  background-image: url(../img/bear_current.png);
+  width: 90px;
+  height: 71px;
+  margin-top: -66px;
+}
+
 #container .bottom-box .role-list li.babyq {
   background-image: url(../img/babyq.png);
   width: 38px;
@@ -162,6 +169,13 @@ html, body {
   margin-top: -33px;
 }
 
+#container .bottom-box .role-list li.osca.current {
+  background-image: url(../img/osca_current.png);
+  width: 62px;
+  height: 72px;
+  margin-top: -69px;
+}
+
 #container .bottom-box .role-list li.anzi {
   background-image: url(../img/anzi.png);
   width: 26px;
@@ -169,11 +183,25 @@ html, body {
   margin-top: -33px;
 }
 
+#container .bottom-box .role-list li.anzi.current {
+  background-image: url(../img/anzi_current.png);
+  width: 57px;
+  height: 90px;
+  margin-top: -87px;
+}
+
 #container .bottom-box .role-list li.snowman {
   background-image: url(../img/snowman.png);
   width: 44px;
   height: 58px;
   margin-top: -53px;
+}
+
+#container .bottom-box .role-list li.snowman.current {
+  background-image: url(../img/snowman_current.png);
+  width: 82px;
+  height: 89px;
+  margin-top: -85px;
 }
 
 #container .bottom-box .btn-capture {
