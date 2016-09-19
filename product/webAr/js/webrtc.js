@@ -92,6 +92,12 @@
         var foundCamera =  false;
         for(var i=0; !foundCamera && i<cameras.length; i++) {
           if (cameras[i]['id'] === actId){
+            if(document.getElementById('vid').classList.contains('hor-change')){
+              document.getElementById('vid').classList.remove('hor-change'); 
+            }else {
+              document.getElementById('vid').classList.add('hor-change');
+            }
+
             if(i === cameras.length-1) {
               actId = cameras[i-1]['id'];
               that.renderVideo(video, option, actId);
