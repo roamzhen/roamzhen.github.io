@@ -84,7 +84,12 @@
 
     document.querySelector('.btn-change-camera').addEventListener('touchstart', function(e) {
       if(cameras.length >= 2){
- 
+        if (window.stream) {
+          window.stream.getTracks().forEach(function(track) {
+            track.stop();
+            track = null;
+          });
+        }
         var foundCamera =  false;
         for(var i=0; !foundCamera && i<cameras.length; i++) {
           if (cameras[i]['id'] === actId){
@@ -96,10 +101,10 @@
 
             if(i === cameras.length-1) {
               actId = cameras[i-1]['id'];
-              webrtc.reinit(video, option, actId);
+              that.renderVideo(video, option, actId);
             }else {
               actId = cameras[i+1]['id'];
-              webrtc.reinit(video, option, actId);
+              that.renderVideo(video, option, actId);
             }
             foundCamera = true;
           }
@@ -109,9 +114,9 @@
 
   }
 
-  webrtc.reinit = function(video, option, actId) {
+  webrtc.reinit = function(video, canvas, option) {
     var that = this;
-
+    
     if (window.stream) {
       window.stream.getTracks().forEach(function(track) {
         track.stop();
