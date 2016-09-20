@@ -84,12 +84,7 @@
 
     document.querySelector('.btn-change-camera').addEventListener('touchstart', function(e) {
       if(cameras.length >= 2){
-        if (window.stream) {
-          window.stream.getTracks().forEach(function(track) {
-            track.stop();
-            track = null;
-          });
-        }
+ 
         var foundCamera =  false;
         for(var i=0; !foundCamera && i<cameras.length; i++) {
           if (cameras[i]['id'] === actId){
@@ -116,7 +111,7 @@
 
   webrtc.reinit = function(video, canvas, option) {
     var that = this;
-    
+
     if (window.stream) {
       window.stream.getTracks().forEach(function(track) {
         track.stop();
