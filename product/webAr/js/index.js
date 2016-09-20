@@ -134,58 +134,58 @@
 		}
 	});
 
-	// /*********** setup of emotion detection *************/
-	// var emotionTag = document.querySelector('.emotion-tag');
+	/*********** setup of emotion detection *************/
+	var emotionTag = document.querySelector('.emotion-tag');
 
-	// var ctracker = new clm.tracker({useWebGL : true});
-	// ctracker.init(pModel);
+	var ctracker = new clm.tracker({useWebGL : true});
+	ctracker.init(pModel);
 
-	// vid.addEventListener('canplay', function() {
-	// 	vid.play();
-	// 	ctracker.start(vid);
-	// 	drawLoop();
-	// }, false);
+	vid.addEventListener('canplay', function() {
+		vid.play();
+		ctracker.start(vid);
+		drawLoop();
+	}, false);
 
-	// function drawLoop() {
-	// 	requestAnimationFrame(drawLoop);
+	function drawLoop() {
+		requestAnimationFrame(drawLoop);
 
-	// 	var cp = ctracker.getCurrentParameters();
-	// 	var er = ec.meanPredict(cp);
-	// 	if(er) {
-	// 	  emotionTag.innerHTML = '';
-	// 	  // if(er[0]['value'] >= 0.4) {
-	// 	  //   emotionTag.innerHTML = emotionTag.innerHTML + er[0]['emotion'] + " ";
-	// 	  // }
-	// 	  // if(er[1]['value'] >= 0.4) {
-	// 	  //   emotionTag.innerHTML = emotionTag.innerHTML + er[1]['emotion'] + " ";
-	// 	  // }
-	// 	  // if(er[2]['value'] >= 0.4) {
-	// 	  //   emotionTag.innerHTML = emotionTag.innerHTML + er[2]['emotion'] + " ";
-	// 	  // }
+		var cp = ctracker.getCurrentParameters();
+		var er = ec.meanPredict(cp);
+		if(er) {
+		  emotionTag.innerHTML = '';
+		  // if(er[0]['value'] >= 0.4) {
+		  //   emotionTag.innerHTML = emotionTag.innerHTML + er[0]['emotion'] + " ";
+		  // }
+		  // if(er[1]['value'] >= 0.4) {
+		  //   emotionTag.innerHTML = emotionTag.innerHTML + er[1]['emotion'] + " ";
+		  // }
+		  // if(er[2]['value'] >= 0.4) {
+		  //   emotionTag.innerHTML = emotionTag.innerHTML + er[2]['emotion'] + " ";
+		  // }
 
-	// 	  // 剔除其他因素，关注 happy
-	// 	  // if(er[0]['value'] <= 0.3 && er[1]['value']  <= 0.3 && er[2]['value']  <= 0.3 && er[3]['value'] >= 0.3) {
-	// 	  // 	canvasEmotion = "_happy";
-	// 	  //   emotionTag.innerHTML = emotionTag.innerHTML + er[3]['emotion'] + " ";
-	// 	  // } else {
-	// 	  // 	canvasEmotion = "";
-	// 	  // 	emotionTag.innerHTML = 'analyzing';
-	// 	  // }
+		  // 剔除其他因素，关注 happy
+		  // if(er[0]['value'] <= 0.3 && er[1]['value']  <= 0.3 && er[2]['value']  <= 0.3 && er[3]['value'] >= 0.3) {
+		  // 	canvasEmotion = "_happy";
+		  //   emotionTag.innerHTML = emotionTag.innerHTML + er[3]['emotion'] + " ";
+		  // } else {
+		  // 	canvasEmotion = "";
+		  // 	emotionTag.innerHTML = 'analyzing';
+		  // }
 
-	// 	  if(er[3]['value'] >= 0.4) {
-	// 	  	canvasEmotion = "_happy";
-	// 	    emotionTag.innerHTML = emotionTag.innerHTML + er[3]['emotion'] + " ";
-	// 	  } else {
-	// 	  	canvasEmotion = "";
-	// 	  	emotionTag.innerHTML = 'analyzing';
-	// 	  }
+		  if(er[3]['value'] >= 0.4) {
+		  	canvasEmotion = "_happy";
+		    emotionTag.innerHTML = emotionTag.innerHTML + er[3]['emotion'] + " ";
+		  } else {
+		  	canvasEmotion = "";
+		  	emotionTag.innerHTML = 'analyzing';
+		  }
 
-	// 	}
-	// }
+		}
+	}
 
-	// var ec = new emotionClassifier();
-	// ec.init(emotionModel);
-	// var emotionData = ec.getBlank(); 
+	var ec = new emotionClassifier();
+	ec.init(emotionModel);
+	var emotionData = ec.getBlank(); 
 
 
 	//切换公仔 开始
