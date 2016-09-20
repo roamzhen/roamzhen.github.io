@@ -87,6 +87,7 @@
         if (window.stream) {
           window.stream.getTracks().forEach(function(track) {
             track.stop();
+            track = null;
           });
         }
         var foundCamera =  false;
