@@ -101,10 +101,10 @@
 
             if(i === cameras.length-1) {
               actId = cameras[i-1]['id'];
-              that.renderVideo(video, option, actId);
+              webrtc.reinit(video, option, actId);
             }else {
               actId = cameras[i+1]['id'];
-              that.renderVideo(video, option, actId);
+              webrtc.reinit(video, option, actId);
             }
             foundCamera = true;
           }
@@ -115,8 +115,12 @@
   }
 
   webrtc.reinit = function(video, canvas, option) {
+    var that = this;
+    
     if (window.stream) {
-      window.stream.stop();
+      window.stream.getTracks().forEach(function(track) {
+        track.stop();
+      });
     }
 
     if(!option) {
