@@ -109,7 +109,7 @@
 
   }
 
-  webrtc.reinit = function(video, canvas, option) {
+  webrtc.reinit = function(video, option, actId) {
     var that = this;
 
     if (window.stream) {
