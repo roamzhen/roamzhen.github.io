@@ -19,7 +19,7 @@ html, body {
     .video-box{
         position: absolute; 
         left: 0;
-        top: 16px;
+        top: 0;
         bottom: 94px;
         width: 100%;
     }
@@ -191,7 +191,7 @@ html, body {
 .preview {
     position: absolute;
     width: 100%;
-    top: 16px; 
+    top: 0; 
     bottom: 94px;
     left: 0;
     z-index: 10;

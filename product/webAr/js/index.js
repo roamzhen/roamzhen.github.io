@@ -168,13 +168,15 @@
 		  // }
 
 		  // 剔除其他因素，关注 happy
-		  // if(er[0]['value'] <= 0.3 && er[1]['value']  <= 0.3 && er[2]['value']  <= 0.3 && er[3]['value'] >= 0.4) {
+		  // if(er[0]['value'] <= 0.3 && er[1]['value']  <= 0.3 && er[2]['value']  <= 0.3 && er[3]['value'] >= 0.3) {
+		  // 	canvasEmotion = "_happy";
 		  //   emotionTag.innerHTML = emotionTag.innerHTML + er[3]['emotion'] + " ";
 		  // } else {
+		  // 	canvasEmotion = "";
 		  // 	emotionTag.innerHTML = 'analyzing';
 		  // }
 
-		  if(er[3]['value'] >= 0.3) {
+		  if(er[3]['value'] >= 0.4) {
 		  	canvasEmotion = "_happy";
 		    emotionTag.innerHTML = emotionTag.innerHTML + er[3]['emotion'] + " ";
 		  } else {
