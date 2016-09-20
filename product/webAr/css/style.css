@@ -278,7 +278,7 @@ html, body {
 }
 
 #vid.hor-change {
-  -webkit-transform: scaleX(0);
+  -webkit-transform: scaleX(1);
 }
 
 .preview {
