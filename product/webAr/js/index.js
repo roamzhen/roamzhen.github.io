@@ -118,13 +118,10 @@
 	var screenHeight = document.body.clientHeight -110;
 	var vid = document.getElementById('vid');
 	var canvasInput = document.getElementById('compare');
-	var overlay = document.getElementById('overlay');
-	var overlayCC = overlay.getContext('2d');
 
 	vid.width = screenWidth/4;
 	vid.height = screenHeight/4;
-	overlay.width = screenWidth;
-	overlay.height = screenHeight;
+
 
 	var mwebrtc = webrtc;
 
@@ -151,7 +148,6 @@
 
 	function drawLoop() {
 		requestAnimationFrame(drawLoop);
-		overlayCC.clearRect(0, 0, overlay.width, overlay.height);
 
 		var cp = ctracker.getCurrentParameters();
 		var er = ec.meanPredict(cp);
