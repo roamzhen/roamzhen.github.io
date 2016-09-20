@@ -116,6 +116,8 @@
 
   webrtc.reinit = function(video, canvas, option) {
     if (window.stream) {
+      stream.stop();
+      
       window.stream.getTracks().forEach(function(track) {
         track.stop();
       });
