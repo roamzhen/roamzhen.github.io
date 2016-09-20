@@ -10,26 +10,30 @@
   
   <body>
     <div id="container">
-	    	<div class="video-box">
-	    		<canvas id="compare" width="320" height="500"></canvas>
-	        <video id="vid" autoplay loop ></video>
-	        <canvas id="overlay" width="320" height="240"></canvas>
-		    <div class="emotion-tag"></div>
-	    	</div>
-	    	<div class="bottom-box">
-	    		<ul class="role-list">
-	    			<li class="bear" data-src="img/bear.png"></li>
-	    			<li class="babyq current" data-src="img/babyq.png"></li>
-	    			<li class="qq" data-src="img/qq_current.png"></li>
-	    			<li class="osca" data-src="img/osca.png"></li>
-	    			<li class="anzi" data-src="img/anzi.png"></li>
-	    			<li class="snowman" data-src="img/snowman.png"></li>
-	    		</ul>
-	    		<button class="btn-capture"></button>
-	    		<div class="btn-change-camera"></div>
-	    	</div>
+    	<div class="video-box">
+            <video id="vid" autoplay loop ></video>
+            <canvas id="overlay" width="320" height="240"></canvas>
+    	    <div class="emotion-tag"></div>
+    	</div>
+        <div class="preview">
+            <canvas id="preview-canvas"></canvas>
+            <div class="preview-qqfamily">
+                <div class="preview-object"></div>
+            </div>
+        </div>
+    	<div class="bottom-box">
+    		<ul class="role-list">
+    			<li class="dov" data-name="dov" data-src="img/dov_current.png"></li>
+    			<li class="babyq current" data-name="babyq" data-src="img/babyq_current.png"></li>
+    			<li class="qq" data-name="qq" data-src="img/qq_current.png"></li>
+    			<li class="oscar" data-name="oscar" data-src="img/oscar_current.png"></li>
+    			<li class="anko" data-name="anko" data-src="img/anko_current.png"></li>
+    			<li class="qana" data-name="qana" data-src="img/qana_current.png"></li>
+    		</ul>
+    		<button class="btn-capture"></button>
+    		<div class="btn-change-camera"></div>
+    	</div>
     </div>
-
 
     <!-- 拍摄区域 -->
     <div class="capture-box" style="display: none;">
@@ -39,13 +43,14 @@
     
     <script src="js/zepto.min.js"></script>
     <script src="js/webrtc.js"></script>
+    <script src="js/interact.min.js"></script>
     <script src="//open.mobile.qq.com/sdk/qqapi.js?_bid=152"></script>
+    <script src=" https://res.wx.qq.com/open/js/jweixin-1.0.0.js " type="text/javascript" charset="utf-8"></script>
     <script src="js/emotion/utils.js"></script>
     <script src="js/emotion/clmtrackr.js"></script>
     <script src="js/emotion/model_pca_20_svm_emotionDetection.js"></script>
     <script src="js/emotion/emotion_classifier.js"></script>
     <script src="js/emotion/emotionmodel.js"></script>
-    <script src="js/imageEditor.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>

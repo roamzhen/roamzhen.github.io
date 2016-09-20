@@ -44,13 +44,13 @@ html, body {
                 background-repeat: no-repeat;
                 background-size: cover;
                 transition: all 0.5s ease; 
-                &.bear{
-                    background-image: url(../img/bear.png);
+                &.dov{
+                    background-image: url(../img/dov.png);
                     width: 41px;
                     height: 52px;
                     margin-top: -46px;
                     &.current{
-                        background-image: url(../img/bear_current.png);
+                        background-image: url(../img/dov_current.png);
                         width: 90px;
                         height: 71px;
                         margin-top: -66px;
@@ -80,37 +80,37 @@ html, body {
                         margin-top: -91px;
                     }
                 }
-                &.osca{
-                    background-image: url(../img/osca.png);
+                &.oscar{
+                    background-image: url(../img/oscar.png);
                     width: 34px;
                     height: 39px;
                     margin-top: -33px;
                     &.current{
-                        background-image: url(../img/osca_current.png);
+                        background-image: url(../img/oscar_current.png);
                         width: 62px;
                         height: 72px;
                         margin-top: -69px;
                     }
                 }
-                &.anzi{
-                    background-image: url(../img/anzi.png);
+                &.anko{
+                    background-image: url(../img/anko.png);
                     width: 26px;
                     height: 39px;
                     margin-top: -33px;
                     &.current{
-                        background-image: url(../img/anzi_current.png);
+                        background-image: url(../img/anko_current.png);
                         width: 57px;
                         height: 90px;
                         margin-top: -87px;
                     }
                 }
-                &.snowman{
-                    background-image: url(../img/snowman.png);
+                &.qana{
+                    background-image: url(../img/qana.png);
                     width: 44px;
                     height: 58px;
                     margin-top: -53px;
                     &.current{
-                        background-image: url(../img/snowman_current.png);
+                        background-image: url(../img/qana_current.png);
                         width: 82px;
                         height: 89px;
                         margin-top: -85px;
@@ -182,13 +182,29 @@ html, body {
     top: 0;
     width: 100%;
     height: 100%;
+    -webkit-transform: scaleX(-1);
+
+    &.hor-change {
+        -webkit-transform: scaleX(0);
+    }
 }
-.gesture-area {
+.preview {
+    position: absolute;
+    width: 100%;
+    top: 16px; 
+    bottom: 94px;
+    left: 0;
+    z-index: 10;
+}
+.preview-qqfamily {
     position: absolute;
     z-index: 10;
-    bottom: 0;
+    top: 50%;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
 }
-.gesture-area:after {
+.preview-qqfamily:after {
     content: "";
     position: absolute;
     top: -40px;
@@ -197,7 +213,7 @@ html, body {
     right: -40px;
     z-index: 20;
 }
-.scale-element {
+.preview-object {
     position: relative;
     z-index: 10;
     /* 静态图 */
@@ -214,10 +230,12 @@ html, body {
     height: 100px;
     overflow: hidden;
 
-    background: url(../img/spritesheet.png) no-repeat;
-    -webkit-animation: sprites-anim 2s steps(1) infinite;
-    -webkit-background-size: 100px auto;
-    background-size: 100px auto;
+    // border: 1px solid #fff;
+
+    // background: url(../img/spritesheet.png) no-repeat;
+    // -webkit-animation: sprites-anim 2s steps(1) infinite;
+    // -webkit-background-size: 100px auto;
+    // background-size: 100px auto;
     -webkit-transform-origin: center center;
 }
 

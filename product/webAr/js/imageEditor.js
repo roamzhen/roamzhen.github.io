@@ -5751,12 +5751,6 @@ document.write(
  * @class
  */
 (function(){
-	
-	
-	
-	
-	
-	
 
 	Motion.add('mo.ImageEditor:mo.Base', function() {
 
@@ -5776,14 +5770,22 @@ document.write(
 		 */
 		var _static = this.constructor;
 
-
-
 		// 插件默认配置
 		_static.config = {
 			width: 320,
 			height: 320,
 			fps: 60
 		};
+
+		_static.imgStatus = {
+			img: null,
+			imgContainer: null,
+			cxt: null,
+			x: 0,
+			y: 0,
+			scale: 0,
+			rotate: 0
+		}
 
 
 		/***
@@ -5864,7 +5866,6 @@ document.write(
 
 			_private.attach.call(self);
 		};
-
 
 
 		_private.attach = function() {
@@ -5965,9 +5966,9 @@ document.write(
 				var canvas = document.createElement('canvas');
 				canvas.width = 1;
 				canvas.height = ih;
-				var ctx = canvas.getContext('2d');
-				ctx.drawImage(img, 0, 0);
-				var data = ctx.getImageData(0, 0, 1, ih).data;
+				_static.imgStatus.cxt = canvas.getContext('2d');
+				_static.imgStatus.cxt.drawImage(img, 0, 0);
+				var data = _static.imgStatus.cxt.getImageData(0, 0, 1, ih).data;
 				var sy = 0;
 				var ey = ih;
 				var py = ih;
@@ -5987,11 +5988,11 @@ document.write(
 
 			this.clear();
 
-			if (typeof img == 'string') {
-				var url = img;
-				img = new Image();
-				img.src = url;
-			}
+			// if (typeof img == 'string') {
+			// 	var url = img;
+			// 	img = new Image();
+			// 	img.src = url;
+			// }
 
 			// 判断拍照设备持有方向调整照片角度
 			// switch (orientation) {
@@ -6021,6 +6022,7 @@ document.write(
 			// 		}
 			// 		break;
 			// }
+
 			imgWidth *= ratio;
 			imgHeight *= ratio;
 
@@ -6031,23 +6033,23 @@ document.write(
 			imgWidth = imgWidth * imgScale;
 			imgHeight = imgHeight * imgScale;
 
-			imgContainer = new Quark.DisplayObjectContainer({
+			_static.imgStatus.imgContainer = new Quark.DisplayObjectContainer({
 				width: imgWidth,
 				height: imgHeight
 			});
-			imgContainer.x = posX;
-			imgContainer.y = posY;
+			_static.imgStatus.imgContainer.x = posX;
+			_static.imgStatus.imgContainer.y = posY;
 
-			img = new Quark.Bitmap({
+			_static.imgStatus.img = new Quark.Bitmap({
 				image: img,
 				regX: imgRegX,
 				regY: imgRegY
 			});
-			img.rotation = imgRotation;
-			img.x = imgX;
-			img.y = 0;
-			img.scaleX = imgScale * ratio;
-			img.scaleY = imgScale;
+			_static.imgStatus.img.rotation = imgRotation;
+			_static.imgStatus.img.x = imgX;
+			_static.imgStatus.img.y = 0;
+			_static.imgStatus.img.scaleX = imgScale * ratio;
+			_static.imgStatus.img.scaleY = imgScale;
 
 			// 取消选中边框
 			// var border = new Q.Graphics({
@@ -6059,59 +6061,58 @@ document.write(
 			// border.lineStyle(5, "#aaa").beginFill("#fff").drawRect(5, 5, imgWidth, imgHeight).endFill().cache();
 			// border.alpha = 0.5;
 			// border.visible = false;
-			// imgContainer.addChild(border);
+			// _static.imgStatus.imgContainer.addChild(border);
 
-			if (config.iconClose) {
-				var iconCloseImg = new Image();
-				iconCloseImg.onload = function() {
-					var rect = config.iconClose.rect;
-					mcClose = new Quark.MovieClip({
-						image: iconCloseImg
-					});
-					mcClose.addFrame([{
-						rect: rect
-					}]);
-					mcClose.x = 0;
-					mcClose.y = 0;
-					mcClose.alpha = 0.5;
-					mcClose.visible = false;
-					mcClose.addEventListener('touchstart', function(e) {
-						mcClose.alpha = 0.8;
-					});
-					mcClose.addEventListener('touchend', function(e) {
-						self.stage.removeChild(imgContainer);
-					});
-					self.stage.addEventListener('touchend', function(e) {
-						mcClose.alpha = 0.5;
-					});
-					imgContainer.addChild(mcClose);
-				};
-				iconCloseImg.src = config.iconClose.url;
-			}
+			// if (config.iconClose) {
+			// 	var iconCloseImg = new Image();
+			// 	iconCloseImg.onload = function() {
+			// 		var rect = config.iconClose.rect;
+			// 		mcClose = new Quark.MovieClip({
+			// 			image: iconCloseImg
+			// 		});
+			// 		mcClose.addFrame([{
+			// 			rect: rect
+			// 		}]);
+			// 		mcClose.x = 0;
+			// 		mcClose.y = 0;
+			// 		mcClose.alpha = 0.5;
+			// 		mcClose.visible = false;
+			// 		mcClose.addEventListener('touchstart', function(e) {
+			// 			mcClose.alpha = 0.8;
+			// 		});
+			// 		mcClose.addEventListener('touchend', function(e) {
+			// 			self.stage.removeChild(_static.imgStatus.imgContainer);
+			// 		});
+			// 		self.stage.addEventListener('touchend', function(e) {
+			// 			mcClose.alpha = 0.5;
+			// 		});
+			// 		_static.imgStatus.imgContainer.addChild(mcClose);
+			// 	};
+			// 	iconCloseImg.src = config.iconClose.url;
+			// }
 
 
 			if (!info.disable) {
 
-				img.fnStart = function(e){
-					//console.log("MimgContainer:("+imgContainer.x+":"+imgContainer.y+")——("+imgContainer.regX+":"+imgContainer.regY+") scale:"+imgContainer.scaleX);
+				_static.imgStatus.img.fnStart = function(e){
 					var isMultiTouch = e.rawEvent && e.rawEvent.touches[1];
 
 					if(!isMultiTouch){
 						// 记录单指
-						img.curW = imgContainer.getCurrentWidth();
-						img.curH = imgContainer.getCurrentHeight();
-						img.moveabled = true;
-						img.touchStart = [{
+						_static.imgStatus.img.curW = _static.imgStatus.imgContainer.getCurrentWidth();
+						_static.imgStatus.img.curH = _static.imgStatus.imgContainer.getCurrentHeight();
+						_static.imgStatus.img.moveabled = true;
+						_static.imgStatus.img.touchStart = [{
 							'x': e.eventX,
 							'y': e.eventY
 						}];
-						delete img.startScaleDistance;
+						delete _static.imgStatus.img.startScaleDistance;
 					}else{
 						// 记录两指
 						var touch1 = e.rawEvent.touches[0];
 						var touch2 = e.rawEvent.touches[1];
-						img.startScaleDistance = Math.sqrt(Math.pow(touch2.pageX - touch1.pageX, 2) + Math.pow(touch2.pageY - touch1.pageY, 2));
-						img.touchStart = [{
+						_static.imgStatus.img.startScaleDistance = Math.sqrt(Math.pow(touch2.pageX - touch1.pageX, 2) + Math.pow(touch2.pageY - touch1.pageY, 2));
+						_static.imgStatus.img.touchStart = [{
 							'x': touch1.pageX,
 							'y': touch1.pageY
 						},
@@ -6120,7 +6121,7 @@ document.write(
 							'y': touch2.pageY
 						}];
 						// 专供双指旋转使用的，不会被fnMove改变值
-						img.touchStartScale = [{
+						_static.imgStatus.img.touchStartScale = [{
 							'x': touch1.pageX,
 							'y': touch1.pageY
 						},
@@ -6128,12 +6129,12 @@ document.write(
 							'x': touch2.pageX,
 							'y': touch2.pageY
 						}];
-						img.imgContainerStartRotation = imgContainer.rotation;
+						_static.imgStatus.img._static.imgStatus.imgContainerStartRotation = _static.imgStatus.imgContainer.rotation;
 
-						/* 核心功能：将imgContainer的reg坐标放到双指中间，以支持按双指中心移动缩放旋转的效果 start */
+						/* 核心功能：将_static.imgStatus.imgContainer的reg坐标放到双指中间，以支持按双指中心移动缩放旋转的效果 start */
 
 						// 1.计算触控中心点，在屏幕中的位置
-						var touches = img.touchStart;
+						var touches = _static.imgStatus.img.touchStart;
 						var nCenterPoint = {'x':0, 'y':0};
 						for (var i = 0; i < touches.length; i++) {
 							nCenterPoint.x += touches[i].x
@@ -6148,11 +6149,11 @@ document.write(
 
 						// 3.计算图片左上角在canvas中的位置
 						var leftUpPiont = {'x':0, 'y':0};
-						var dc = Math.sqrt( Math.pow(imgContainer.regX * imgContainer.scaleX, 2) + Math.pow(imgContainer.regY * imgContainer.scaleY, 2) );
-						var r = Math.atan2(imgContainer.regY, imgContainer.regX);
+						var dc = Math.sqrt( Math.pow(_static.imgStatus.imgContainer.regX * _static.imgStatus.imgContainer.scaleX, 2) + Math.pow(_static.imgStatus.imgContainer.regY * _static.imgStatus.imgContainer.scaleY, 2) );
+						var r = Math.atan2(_static.imgStatus.imgContainer.regY, _static.imgStatus.imgContainer.regX);
 						r = 180 / Math.PI * r;
-						leftUpPiont.x = imgContainer.x - Math.cos( Math.PI * (imgContainer.rotation + r) / 180 ) * dc;
-						leftUpPiont.y = imgContainer.y - Math.sin( Math.PI * (imgContainer.rotation + r) / 180 ) * dc;
+						leftUpPiont.x = _static.imgStatus.imgContainer.x - Math.cos( Math.PI * (_static.imgStatus.imgContainer.rotation + r) / 180 ) * dc;
+						leftUpPiont.y = _static.imgStatus.imgContainer.y - Math.sin( Math.PI * (_static.imgStatus.imgContainer.rotation + r) / 180 ) * dc;
 
 						// 4.触控中心点，离左上角中的距离
 						nCenterPoint.x -= leftUpPiont.x;
@@ -6162,36 +6163,36 @@ document.write(
 						var dc = Math.sqrt( Math.pow(nCenterPoint.x, 2) + Math.pow(nCenterPoint.y, 2) );
 						var r = Math.atan2(nCenterPoint.y, nCenterPoint.x);
 						r = 180 / Math.PI * r;						
-						var newRegX = dc * Math.cos( Math.PI * (r - imgContainer.rotation ) / 180) / imgContainer.scaleX;
-						var newRegY = dc * Math.sin( Math.PI * (r - imgContainer.rotation ) / 180) / imgContainer.scaleY;
-						//console.log("nc("+nCenterPoint.x+", "+nCenterPoint.y+") r:"+r+" ir:"+imgContainer.rotation);
+						var newRegX = dc * Math.cos( Math.PI * (r - _static.imgStatus.imgContainer.rotation ) / 180) / _static.imgStatus.imgContainer.scaleX;
+						var newRegY = dc * Math.sin( Math.PI * (r - _static.imgStatus.imgContainer.rotation ) / 180) / _static.imgStatus.imgContainer.scaleY;
+						//console.log("nc("+nCenterPoint.x+", "+nCenterPoint.y+") r:"+r+" ir:"+_static.imgStatus.imgContainer.rotation);
 
-						// 将 imgContainer 的 regx 移动到触控中心
-						var dx = newRegX - imgContainer.regX;
-						var dy = newRegY - imgContainer.regY;
-						imgContainer.regX += dx;
-						imgContainer.regY += dy;
+						// 将 _static.imgStatus.imgContainer 的 regx 移动到触控中心
+						var dx = newRegX - _static.imgStatus.imgContainer.regX;
+						var dy = newRegY - _static.imgStatus.imgContainer.regY;
+						_static.imgStatus.imgContainer.regX += dx;
+						_static.imgStatus.imgContainer.regY += dy;
 
-						// 反向移动一下imgContainer的x和y，以保证图片不会跳动
+						// 反向移动一下_static.imgStatus.imgContainer的x和y，以保证图片不会跳动
 						var dc = Math.sqrt( Math.pow(dx, 2) + Math.pow(dy, 2) ) ;
 						var r = Math.atan2(dy, dx);
 						r = 180 / Math.PI * r;
-						imgContainer.x += dc * Math.cos(Math.PI * (imgContainer.rotation + r) / 180) * imgContainer.scaleX;
-						imgContainer.y += dc * Math.sin(Math.PI * (imgContainer.rotation + r) / 180) * imgContainer.scaleY;
+						_static.imgStatus.imgContainer.x += dc * Math.cos(Math.PI * (_static.imgStatus.imgContainer.rotation + r) / 180) * _static.imgStatus.imgContainer.scaleX;
+						_static.imgStatus.imgContainer.y += dc * Math.sin(Math.PI * (_static.imgStatus.imgContainer.rotation + r) / 180) * _static.imgStatus.imgContainer.scaleY;
 						//console.log("dx("+dx+", "+dy+")");
 
-						/* 核心功能：将imgContainer的reg坐标放到双指中间，以支持按双指中心移动缩放旋转的效果 end */
+						/* 核心功能：将_static.imgStatus.imgContainer的reg坐标放到双指中间，以支持按双指中心移动缩放旋转的效果 end */
 
 					}
 				};
 				
-				img.fnMove = function(e){
+				_static.imgStatus.img.fnMove = function(e){
 
 					// 检测记录当前触控信息
 					// 1.记录触控坐标的数组
 					var touches = [];
 					// 2.是否多指
-					var isMultiTouch = img.touchStart.length > 1 ? true : false;
+					var isMultiTouch = _static.imgStatus.img.touchStart.length > 1 ? true : false;
 					if(!isMultiTouch){
 						touches = [{
 							'x': e.eventX,
@@ -6213,31 +6214,31 @@ document.write(
 					if(!info.disScale && isMultiTouch){
 						
 						var dis = Math.sqrt(Math.pow(touches[1].x - touches[0].x, 2) + Math.pow(touches[1].y - touches[0].y, 2));
-						if (img.startScaleDistance) {
+						if (_static.imgStatus.img.startScaleDistance) {
 							//console.log("s:"+img.startScaleDistance+"n:"+dis+"x:"+img.scaleX+"y:"+img.scaleY);
-							var newScale = dis * imgContainer.scaleX / img.startScaleDistance;
-							imgContainer.scaleX = newScale;
-							imgContainer.scaleY = newScale;
+							var newScale = dis * _static.imgStatus.imgContainer.scaleX / _static.imgStatus.img.startScaleDistance;
+							_static.imgStatus.imgContainer.scaleX = newScale;
+							_static.imgStatus.imgContainer.scaleY = newScale;
 							
 						}
-						img.startScaleDistance = dis;
+						_static.imgStatus.img.startScaleDistance = dis;
 					}
 
 					// 移动图片
-					if(!info.disMove && img.moveabled){
+					if(!info.disMove && _static.imgStatus.img.moveabled){
 						// 将所有触点的移动距离加起来
 						var disX = 0, disY = 0;
 						for (var i = 0; i < touches.length; i++) {
-							disX += touches[i].x - img.touchStart[i].x;
-							disY += touches[i].y - img.touchStart[i].y;
+							disX += touches[i].x - _static.imgStatus.img.touchStart[i].x;
+							disY += touches[i].y - _static.imgStatus.img.touchStart[i].y;
 						};
 						disX = disX / touches.length;
 						disY = disY / touches.length;
 
 
 					//	// 限制移动范围
-					//	var setX = imgContainer.x + disX;
-					//	var setY = imgContainer.y + disY;
+					//	var setX = _static.imgStatus.imgContainer.x + disX;
+					//	var setY = _static.imgStatus.imgContainer.y + disY;
 					
 					//
 					//	if (setX < -img.curW / 2 + 5 && disX < 0) {
@@ -6253,14 +6254,14 @@ document.write(
 					//		setY = self.stage.height;
 					//	}
 
-						imgContainer.x += disX;
-						imgContainer.y += disY;
+						_static.imgStatus.imgContainer.x += disX;
+						_static.imgStatus.imgContainer.y += disY;
 
 						//console.log(disX+":"+disY);
 						//console.log(img.touchStart[0].x+":"+img.touchStart[0].y);
 						//console.log(touches[0].x+":"+touches[0].y);
 
-						img.touchStart = touches;
+						_static.imgStatus.img.touchStart = touches;
 					}
 
 
@@ -6268,8 +6269,8 @@ document.write(
 					if(isMultiTouch){
 
 						// 1.计算起始双指的角度
-						var dx = img.touchStartScale[1].x - img.touchStartScale[0].x;
-						var dy = img.touchStartScale[1].y - img.touchStartScale[0].y;
+						var dx = _static.imgStatus.img.touchStartScale[1].x - _static.imgStatus.img.touchStartScale[0].x;
+						var dy = _static.imgStatus.img.touchStartScale[1].y - _static.imgStatus.img.touchStartScale[0].y;
 						var r1 = Math.atan2(dy, dx);
 						r1 = 180 / Math.PI * r1;
 
@@ -6280,7 +6281,7 @@ document.write(
 						r2 = 180 / Math.PI * r2;
 
 						// 3.done!
-						imgContainer.rotation = img.imgContainerStartRotation + r2 - r1;
+						_static.imgStatus.imgContainer.rotation = _static.imgStatus.img._static.imgStatus.imgContainerStartRotation + r2 - r1;
 						//console.log("r1:"+r1+" r2:"+r2);
 
 					}
@@ -6288,8 +6289,8 @@ document.write(
 				};
 
 
-				img.fnEnd = function(e){
-					img.moveabled = false;
+				_static.imgStatus.img.fnEnd = function(e){
+					_static.imgStatus.img.moveabled = false;
 					/*
 					 * 此处也要记录，是避免此种情况：
 					 * 1指按住的同时，2指离开，此时只会触发touchend，不会触发touchstart
@@ -6299,20 +6300,20 @@ document.write(
 
 					if(!isMultiTouch){
 						// 记录单指
-						img.curW = imgContainer.getCurrentWidth();
-						img.curH = imgContainer.getCurrentHeight();
-						img.moveabled = true;
-						img.touchStart = [{
+						_static.imgStatus.img.curW = _static.imgStatus.imgContainer.getCurrentWidth();
+						_static.imgStatus.img.curH = _static.imgStatus.imgContainer.getCurrentHeight();
+						_static.imgStatus.img.moveabled = true;
+						_static.imgStatus.img.touchStart = [{
 							'x': e.eventX,
 							'y': e.eventY
 						}];
-						delete img.startScaleDistance;
+						delete _static.imgStatus.img.startScaleDistance;
 					}else{
 						// 记录两指
 						var touch1 = e.rawEvent.touches[0];
 						var touch2 = e.rawEvent.touches[1];
-						img.startScaleDistance = Math.sqrt(Math.pow(touch2.pageX - touch1.pageX, 2) + Math.pow(touch2.pageY - touch1.pageY, 2));
-						img.touchStart = [{
+						_static.imgStatus.img.startScaleDistance = Math.sqrt(Math.pow(touch2.pageX - touch1.pageX, 2) + Math.pow(touch2.pageY - touch1.pageY, 2));
+						_static.imgStatus.img.touchStart = [{
 							'x': touch1.pageX,
 							'y': touch1.pageY
 						},
@@ -6320,24 +6321,22 @@ document.write(
 							'x': touch2.pageX,
 							'y': touch2.pageY
 						}];
-
 					}
-					
 				};
 
-				img.addEventListener('touchstart', function(e) {
-					img.fnStart(e);
+				_static.imgStatus.img.addEventListener('touchstart', function(e) {
+					_static.imgStatus.img.fnStart(e);
 				});
-				img.addEventListener('touchmove', function(e) {
-					img.fnMove(e);
+				_static.imgStatus.img.addEventListener('touchmove', function(e) {
+					_static.imgStatus.img.fnMove(e);
 				});
-				img.addEventListener('touchend', function(e) {
-					img.fnEnd(e);
+				_static.imgStatus.img.addEventListener('touchend', function(e) {
+					_static.imgStatus.img.fnEnd(e);
 				});
 			}
 
 
-			imgContainer.enEditable = function() {
+			_static.imgStatus.imgContainer.enEditable = function() {
 				if (info.disable) {
 					return;
 				}
@@ -6351,7 +6350,7 @@ document.write(
 					mcClose.visible = true;
 				}
 			}
-			imgContainer.disable = function() {
+			_static.imgStatus.imgContainer.disable = function() {
 				// border.visible = false;
 				/*
 				if (mcScale) {
@@ -6364,34 +6363,28 @@ document.write(
 			}
 
 
-			img.update = function() {
-				if (imgContainer && imgContainer.scaleX) {
-					/*
-					if (mcScale && mcScale.scaleX) {
-						mcScale.scaleX = 1 / imgContainer.scaleX;
-						mcScale.scaleY = 1 / imgContainer.scaleY;
-						mcScale.x = border.getCurrentWidth() - 10 - mcScale.getCurrentWidth();
-					}
-					*/
+			_static.imgStatus.img.update = function() {
+				if (_static.imgStatus.imgContainer && _static.imgStatus.imgContainer.scaleX) {
 					if (mcClose && mcClose.scaleX) {
-						mcClose.scaleX = 1 / imgContainer.scaleX;
-						mcClose.scaleY = 1 / imgContainer.scaleY;
+						mcClose.scaleX = 1 / _static.imgStatus.imgContainer.scaleX;
+						mcClose.scaleY = 1 / _static.imgStatus.imgContainer.scaleY;
 						mcClose.x = 0;
 					}
 				}
-
 			}
 
-			// imgContainer.rotation = 10;
-			imgContainer.addChild(img);
+			// _static.imgStatus.imgContainer.rotation = 10;
+			_static.imgStatus.imgContainer.addChild(_static.imgStatus.img);
+
 			self.stage.update = function() {
 				// console.log(0)
 				// img.rotation  ++;
 			}
-			imgContainer.update = function() {
+			_static.imgStatus.imgContainer.update = function() {
+				// console.log('container update')
 				//this.rotation  ++;
 			}
-			self.stage.addChild(imgContainer);
+			self.stage.addChild(_static.imgStatus.imgContainer);
 
 			/**
 			 * 所有图片对象
@@ -6399,12 +6392,21 @@ document.write(
 			 * @type  array
 			 */
 			if (self.imgs) {
-				self.imgs.push(imgContainer);
+				self.imgs.push(_static.imgStatus.imgContainer);
 			} else {
-				self.imgs = [imgContainer];
+				self.imgs = [_static.imgStatus.imgContainer];
 			}
-			return imgContainer;
+			return _static.imgStatus.imgContainer;
 		};
+
+
+		/**
+		 * 更新图片
+		 *
+		 */
+		_public.updateImage = function(info) {
+		}
+
 
 		/**
 		 * 清除画布

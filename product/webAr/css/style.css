@@ -120,15 +120,15 @@ html, body {
   transition: all 0.5s ease;
 }
 
-#container .bottom-box .role-list li.bear {
-  background-image: url(../img/bear.png);
+#container .bottom-box .role-list li.dov {
+  background-image: url(../img/dov.png);
   width: 41px;
   height: 52px;
   margin-top: -46px;
 }
 
-#container .bottom-box .role-list li.bear.current {
-  background-image: url(../img/bear_current.png);
+#container .bottom-box .role-list li.dov.current {
+  background-image: url(../img/dov_current.png);
   width: 90px;
   height: 71px;
   margin-top: -66px;
@@ -162,43 +162,43 @@ html, body {
   margin-top: -91px;
 }
 
-#container .bottom-box .role-list li.osca {
-  background-image: url(../img/osca.png);
+#container .bottom-box .role-list li.oscar {
+  background-image: url(../img/oscar.png);
   width: 34px;
   height: 39px;
   margin-top: -33px;
 }
 
-#container .bottom-box .role-list li.osca.current {
-  background-image: url(../img/osca_current.png);
+#container .bottom-box .role-list li.oscar.current {
+  background-image: url(../img/oscar_current.png);
   width: 62px;
   height: 72px;
   margin-top: -69px;
 }
 
-#container .bottom-box .role-list li.anzi {
-  background-image: url(../img/anzi.png);
+#container .bottom-box .role-list li.anko {
+  background-image: url(../img/anko.png);
   width: 26px;
   height: 39px;
   margin-top: -33px;
 }
 
-#container .bottom-box .role-list li.anzi.current {
-  background-image: url(../img/anzi_current.png);
+#container .bottom-box .role-list li.anko.current {
+  background-image: url(../img/anko_current.png);
   width: 57px;
   height: 90px;
   margin-top: -87px;
 }
 
-#container .bottom-box .role-list li.snowman {
-  background-image: url(../img/snowman.png);
+#container .bottom-box .role-list li.qana {
+  background-image: url(../img/qana.png);
   width: 44px;
   height: 58px;
   margin-top: -53px;
 }
 
-#container .bottom-box .role-list li.snowman.current {
-  background-image: url(../img/snowman_current.png);
+#container .bottom-box .role-list li.qana.current {
+  background-image: url(../img/qana_current.png);
   width: 82px;
   height: 89px;
   margin-top: -85px;
@@ -274,15 +274,32 @@ html, body {
   top: 0;
   width: 100%;
   height: 100%;
+  -webkit-transform: scaleX(-1);
 }
 
-.gesture-area {
+#vid.hor-change {
+  -webkit-transform: scaleX(0);
+}
+
+.preview {
+  position: absolute;
+  width: 100%;
+  top: 16px;
+  bottom: 94px;
+  left: 0;
+  z-index: 10;
+}
+
+.preview-qqfamily {
   position: absolute;
   z-index: 10;
-  bottom: 0;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
 }
 
-.gesture-area:after {
+.preview-qqfamily:after {
   content: "";
   position: absolute;
   top: -40px;
@@ -292,7 +309,7 @@ html, body {
   z-index: 20;
 }
 
-.scale-element {
+.preview-object {
   position: relative;
   z-index: 10;
   /* 静态图 */
@@ -306,10 +323,6 @@ html, body {
   width: 100px;
   height: 100px;
   overflow: hidden;
-  background: url(../img/spritesheet.png) no-repeat;
-  -webkit-animation: sprites-anim 2s steps(1) infinite;
-  -webkit-background-size: 100px auto;
-  background-size: 100px auto;
   -webkit-transform-origin: center center;
 }
 
