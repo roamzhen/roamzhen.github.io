@@ -24,52 +24,58 @@
         -webkit-transition: opacity 0.6s;
       }
       
-      .loading-process-wrap {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        min-width: 100px;
-        text-align: center;
-        -webkit-transform: translate(-50%,-50%);
+      .w-loading-item {
+        width: 5.4rem;
+        margin: 0 auto 0.6rem;
       }
-      
-      .loading-process-wrap:after {
-        content: "";
+      .p-loading-item-wrap {
+        position: relative;
+        overflow: hidden;
+        width: 5.8rem;
+        height: 2.44rem;
+        margin: 0 auto 1rem;
+      }
+      .p-loading-item {
         position: absolute;
         left: 0;
-        right: 0;
-        top: 120%;
-        height: 0.05rem;
-        background-image: url(http://army-10040623.file.myqcloud.com/loading/loading_bottom.png);
-        background-repeat: repeat-x;
-        background-size: 100% 100%;
+        top: 0;
+        width: 100%;
+      }
+      .a-loading-item {
+        position: absolute;
+        left: 0.05rem;
+        top: 0.05rem;
+        width: 1.01rem;
+        height: 2.16rem;
+        
+        -webkit-transform: translate(-20px,-20px) rotate(60deg);
+        -webkit-transform-origin: left top;
+        -webkit-animation: rotate-in-gun 0.8s 1s forwards;
+      }
+      
+      .loading-content-wrap {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
       }
       .loading-percent {
-        font-size: 0.3rem;
-      }
-      
-      .loading-block {
-        position: absolute;
-        border: 0;
-      }
-      .loading-block1 {
-        left: 0;
-        top: 0;
-        width: 3.3rem;
-      }
-      .loading-block2 {
-        right: 0;
-        top: 0;
-        width: 3.1rem;
-      }
-      .loading-block3 {
-        left: 0;
-        bottom: 0;
-        width: 100%;
+        font-size: 0.4rem;
       }
       
       .aside {
         display: none;
+      }
+      
+      @-webkit-keyframes rotate-in-gun {
+        0%{
+          -webkit-transform: translate(-30px,-30px) rotate(60deg);
+        }
+        100% {
+          -webkit-transform: translate(0,0) rotate(0deg);
+        }
       }
       
     </style>
@@ -79,26 +85,22 @@
   </head>
   <body>
     <div class="loading-wrapper">
-      <div class="loading-bg"><img src="http://army-10040623.file.myqcloud.com/loading/loading_block1.png" class="loading-block loading-block1"/><img src="http://army-10040623.file.myqcloud.com/loading/loading_block2.png" class="loading-block loading-block2"/><img src="http://army-10040623.file.myqcloud.com/loading/loading_block3.png" class="loading-block loading-block3"/></div>
-      <div class="loading-process-wrap">
-        <div class="loading-percent">0%</div><img style="opacity: 0; width: 0; height: 0;" src="http://army-10040623.file.myqcloud.com/loading/loading_bottom.png"/>
+      <div class="loading-content-wrap"><img src="http://army-10040623.file.myqcloud.com/wimg/w1_1.png" class="w-loading-item"/>
+        <div class="p-loading-item-wrap"><img src="http://army-10040623.file.myqcloud.com/pimg/p1_1.png" class="p-loading-item"/><img src="http://army-10040623.file.myqcloud.com/wimg/a1_1.png" class="a-loading-item"/></div>
+        <div class="loading-process-wrap">
+          <div class="loading-percent">0%</div>
+        </div>
       </div>
     </div>
     <div class="wrapper">
       <div class="scroller">
         <div class="part part1">
           <div class="step1">
-            <div class="p-item p1-1">
-              <div class="w-item w1-1"></div>
-              <div class="a-item a1-1"></div>
-            </div>
             <div class="p-item p1-2">
-              <div class="w-item w1-2"></div>
+              <div class="w-item w1-2-1"></div>
+              <div class="w-item w1-2-2"></div>
             </div>
-            <div class="p-item p1-3">
-              <div class="w-item w1-3-1"></div>
-              <div class="w-item w1-3-2"></div>
-            </div>
+            <div class="p-item p1-3"></div>
           </div>
         </div>
         <div class="part part2">
@@ -113,7 +115,6 @@
             </div>
             <div class="p-pair zIndex-b">
               <div class="p-item left p2-3">
-                <div class="w-item w2-3-1"></div>
                 <div class="w-item w2-3-2"></div>
               </div>
               <div class="p-item left p2-4"></div>
@@ -121,43 +122,39 @@
           </div>
           <div class="step3">
             <div class="p-item p3-1">
-              <div class="w-item w3-1-1"></div>
-              <div class="w-item w3-1-2"></div>
               <div class="w-item w3-1-3"></div>
+              <div class="w-item w3-1-2"></div>
+              <div class="w-item w3-1-1"></div>
               <div class="w-item w3-1-4"></div>
             </div>
-          </div>
-          <div class="step4">
             <div class="p-pair">
               <div class="p-item left p3-2">
                 <div class="w-item w3-2"></div>
               </div>
               <div class="p-item left p3-3">
-                <div class="w-item w3-3-1"></div>
                 <div class="w-item w3-3-2"></div>
+                <div class="w-item w3-3-1"></div>
                 <div class="w-item w3-3-3"></div>
               </div>
             </div>
           </div>
-          <div class="step5 zIndex-b">
+          <div class="step4 zIndex-b">
             <div class="p-pair">
               <div class="p-item left p4-1">
                 <div class="w-item w4-1"></div>
               </div>
-              <div class="p-item left p4-2">
+              <div class="p-item right p4-2">
                 <div class="w-item w4-2"></div>
               </div>
-              <div class="p-item left zIndex-b p4-3">
-                <div class="w-item w4-3"></div>
-              </div>
             </div>
-          </div>
-          <div class="step6 zIndex-s">
+            <div class="p-item p4-3">
+              <div class="w-item w4-3"></div>
+            </div>
             <div class="p-item p4-4">
               <div class="w-item w4-4"></div>
             </div>
           </div>
-          <div class="step7 zIndex-ss">
+          <div class="step5 zIndex-ss">
             <div class="p-pair">
               <div class="p-item left p4-5">
                 <div class="w-item w4-5"></div>
@@ -166,16 +163,17 @@
                 <div class="w-item w4-6"></div>
               </div>
             </div>
+            <div class="p-item m1">
+              <div class="w-item wm1"></div>
+            </div>
           </div>
         </div>
         <div class="part part3">
-          <div class="step8">
+          <div class="step6">
             <div class="part-title">PART 2</div>
             <div class="p-item p5-1">
               <div class="w-item w5-1"></div>
             </div>
-          </div>
-          <div class="step9">
             <div class="p-pair margin2">
               <div class="p-item left p5-2">
                 <div class="w-item w5-2"></div>
@@ -187,21 +185,22 @@
                 <div class="w-item w5-4"></div>
               </div>
             </div>
-          </div>
-          <div class="step10">
             <div class="p-item p5-5">
               <div class="w-item w5-5-1"></div>
               <div class="w-item w5-5-2"></div>
             </div>
           </div>
-          <div class="step11">
+          <div class="step7">
             <div class="p-item p6-1">
               <div class="w-item w6-1"></div>
+            </div>
+            <div class="p-item m2">
+              <div class="w-item wm2"></div>
             </div>
           </div>
         </div>
         <div class="part part4">
-          <div class="step12">
+          <div class="step8">
             <div class="part-title">PART 3</div>
             <div class="p-item p6-2">
               <div class="w-item w6-2-1"></div>
@@ -212,8 +211,6 @@
               <div class="w-item w7-1-2"></div>
               <div class="w-item w7-1-3"></div>
             </div>
-          </div>
-          <div class="step13">
             <div class="p-pair">
               <div class="p-item left p7-3">
                 <div class="w-item w7-3"></div>
@@ -222,55 +219,49 @@
                 <div class="w-item w7-2"></div>
               </div>
             </div>
-          </div>
-          <div class="step14">
             <div class="p-item p7-4">
-              <div class="w-item w7-4-1"></div>
               <div class="w-item w7-4-2"></div>
             </div>
           </div>
-          <div class="step15">
+          <div class="step9">
             <div class="p-item p7-5">
               <div class="w-item w7-5-1"></div>
               <div class="w-item w7-5-2"></div>
             </div>
-          </div>
-          <div class="step16">
             <div class="p-item p8-1">
               <div class="w-item w8-1-1"></div>
               <div class="w-item w8-1-2"></div>
             </div>
-          </div>
-          <div class="step17">
             <div class="p-item p6-3">
               <div class="w-item w6-3-1"></div>
               <div class="w-item w6-3-2"></div>
               <div class="w-item w6-3-3"></div>
             </div>
           </div>
+          <div class="step10">
+            <div class="p-item m3">
+              <div class="w-item wm3"></div>
+            </div>
+          </div>
         </div>
         <div class="part part5">
-          <div class="step18">
+          <div class="step11">
             <div class="part-title">PART 4</div>
             <div class="p-item p8-2">
               <div class="w-item w8-2-1"></div>
               <div class="w-item w8-2-2"></div>
             </div>
-          </div>
-          <div class="step19">
             <div class="p-item p8-3">
               <div class="w-item w8-3-1"></div>
               <div class="w-item w8-3-2"></div>
             </div>
-          </div>
-          <div class="step20">
             <div class="p-item p9-2">
               <div class="w-item w9-2"></div>
               <div class="a-item a9-2-1"></div>
               <div class="a-item a9-2-2"></div>
             </div>
           </div>
-          <div class="step21">
+          <div class="step12">
             <div class="p-pair">
               <div class="p-item left p9-3">
                 <div class="w-item w9-3"></div>
@@ -279,60 +270,54 @@
                 <div class="w-item w9-4"></div>
               </div>
             </div>
-          </div>
-          <div class="step22">
             <div class="p-item p9-5"></div>
+            <div class="p-item m4">
+              <div class="w-item wm4"></div>
+            </div>
           </div>
         </div>
         <div class="part part6">
-          <div class="step23">
+          <div class="step13">
             <div class="part-title">PART 5</div>
             <div class="p-item p10-1">
               <div class="w-item w10-1"></div>
             </div>
-          </div>
-          <div class="step24">
             <div class="p-item p10-2">
               <div class="w-item w10-2"></div>
             </div>
-          </div>
-          <div class="step25">
             <div class="p-item p10-3">
+              <div class="w-item w10-3-3"></div>
               <div class="w-item w10-3-1"></div>
               <div class="w-item w10-3-2"></div>
-              <div class="w-item w10-3-3"></div>
             </div>
           </div>
-          <div class="step26">
+          <div class="step14">
             <div class="p-item p11-1">
               <div class="w-item w11-1"></div>
             </div>
-          </div>
-          <div class="step27">
-            <div class="p-pair">
-              <div class="p-item left p11-2">
-                <div class="w-item w11-2-1"></div>
-                <div class="w-item w11-2-2"></div>
-              </div>
+            <div class="p-item p11-2">
+              <div class="w-item w11-2-1"></div>
+              <div class="w-item w11-2-2"></div>
             </div>
-          </div>
-          <div class="step28">
             <div class="p-item p11-4">
               <div class="w-item w11-4-1"></div>
               <div class="w-item w11-4-2"></div>
             </div>
           </div>
+          <div class="step15">
+            <div class="p-item m5">
+              <div class="w-item wm5"></div>
+            </div>
+          </div>
         </div>
         <div class="part part7"> 
-          <div class="step29">
+          <div class="step16">
             <div class="part-title">PART 6</div>
             <div class="p-item p12-1">
               <div class="w-item w12-1-1"></div>
               <div class="w-item w12-1-2"></div>
               <div class="a-item a12-1"></div>
             </div>
-          </div>
-          <div class="step30">
             <div class="p-item p12-2">
               <div class="w-item w12-2"></div>
               <div class="a-item a12-2-1"></div>
@@ -344,7 +329,7 @@
               <div class="a-item a12-3"></div>
             </div>
           </div>
-          <div class="step31">
+          <div class="step17">
             <div class="p-item p13-1">
               <div class="w-item w13-1-1"></div>
               <div class="w-item w13-1-2"></div>
@@ -353,14 +338,12 @@
               <div class="w-item w13-2"></div>
             </div>
           </div>
-          <div class="step32">
+          <div class="step18">
             <div class="p-item p13-3">
               <div class="w-item w13-3-1"></div>
               <div class="w-item w13-3-2"></div>
               <div class="a-item a13-3"></div>
             </div>
-          </div>
-          <div class="step33">
             <div class="p-item p14-1">
               <div class="w-item w14-1"></div>
               <div class="a-item a14-1">
@@ -372,26 +355,27 @@
               <div class="w-item w14-2-2"></div>
             </div>
           </div>
-          <div class="step34">
+          <div class="step19">
             <div class="p-item p14-3">
               <div class="w-item w14-3-1"></div>
               <div class="w-item w14-3-2"></div>
               <div class="w-item w14-3-3"></div>
               <div class="w-item w14-3-4"></div>
             </div>
-          </div>
-          <div class="step35">
             <div class="p-item p15-1">
               <div class="w-item w15-1-1"></div>
               <div class="w-item w15-1-2"></div>
             </div>
+            <div class="p-item m6">
+              <div class="w-item wm6"></div>
+            </div>
           </div>
-          <div class="step36">
+          <div class="step20">
             <div class="p-item p15-2">
               <div class="w-item w15-2"></div>
             </div>
           </div>
-          <div class="step37">
+          <div class="step21">
             <div class="p-item p16">
               <div class="w-item w16"></div>
             </div>
@@ -444,194 +428,11 @@
     var staicLocation = 'http://army-10040623.file.myqcloud.com';
     
     var imageArr = [
-      staicLocation + '/img/p1_1.png',
-      staicLocation + '/img/p1_2.png',
-      staicLocation + '/img/p1_3.png',
-      staicLocation + '/img/p2_2.png',
-      staicLocation + '/img/p2_3.png',
-      staicLocation + '/img/p2_4.png',
-      staicLocation + '/img/p3_1.png',
-      staicLocation + '/img/p3_2.png',
-      staicLocation + '/img/p3_3.png',
-      staicLocation + '/img/p4_1.png',
-      staicLocation + '/img/p4_2.png',
-      staicLocation + '/img/p4_3.png',
-      staicLocation + '/img/p4_4.png',
-      staicLocation + '/img/p4_5.png',
-      staicLocation + '/img/p4_6.png',
-      staicLocation + '/img/p5_1.png',
-      staicLocation + '/img/p5_2.png',
-      staicLocation + '/img/p5_3.png',
-      staicLocation + '/img/p5_4.png',
-      staicLocation + '/img/p5_5.png',
-      staicLocation + '/img/p6_1.png',
-      staicLocation + '/img/p6_2.png',
-      staicLocation + '/img/p6_3.png',
-      staicLocation + '/img/p7_1.png',
-      staicLocation + '/img/p7_2.png',
-      staicLocation + '/img/p7_3.png',
-      staicLocation + '/img/p7_4.png',
-      staicLocation + '/img/p7_5.png',
-      staicLocation + '/img/p8_1.png',
-      staicLocation + '/img/p8_2.png',
-      staicLocation + '/img/p8_3.png',
-      staicLocation + '/img/p9_2.png',
-      staicLocation + '/img/p9_3.png',
-      staicLocation + '/img/p9_4.png',
-      staicLocation + '/img/p9_5.png',
-      staicLocation + '/img/p10_1.png',
-      staicLocation + '/img/p10_2.png',
-      staicLocation + '/img/p10_3.png',
-      staicLocation + '/img/p11_1.png',
-      staicLocation + '/img/p11_2.png',
-      staicLocation + '/img/p11_4.png',
-      staicLocation + '/img/p12_1.png',
-      staicLocation + '/img/p12_2.png',
-      staicLocation + '/img/p12_3.png',
-      staicLocation + '/img/p13_1.png',
-      staicLocation + '/img/p13_2.png',
-      staicLocation + '/img/p13_3.png',
-      staicLocation + '/img/p14_1.png',
-      staicLocation + '/img/p14_2.png',
-      staicLocation + '/img/p14_3.png',
-      staicLocation + '/img/p15_1.png',
-      staicLocation + '/img/p15_2.png',
-      staicLocation + '/bimg/a1_1.png',
-      staicLocation + '/bimg/a2_1.png',
-      staicLocation + '/bimg/a2_2_1.png',
-      staicLocation + '/bimg/a2_2_2.png',
-      staicLocation + '/bimg/a2_2_3.png',
-      staicLocation + '/bimg/a2_2_4.png',
-      staicLocation + '/bimg/a9_2_1.png',
-      staicLocation + '/bimg/a9_2_2.png',
-      staicLocation + '/bimg/a12_1.png',
-      staicLocation + '/bimg/a12_2_1.png',
-      staicLocation + '/bimg/a12_2_2.png',
-      staicLocation + '/bimg/a12_2_3.png',
-      staicLocation + '/bimg/a12_3.png',
-      staicLocation + '/bimg/a13_3.png',
-      staicLocation + '/bimg/a14_1_2.png',
-      staicLocation + '/bimg/a14_1.png',
-      staicLocation + '/bimg/a14_2.png',
-      staicLocation + '/bimg/w1_1.png',
-      staicLocation + '/bimg/w1_2.png',
-      staicLocation + '/bimg/w1_3_1.png',
-      staicLocation + '/bimg/w1_3_2.png',
-      staicLocation + '/bimg/w2_2.png',
-      staicLocation + '/bimg/w2_3_1.png',
-      staicLocation + '/bimg/w2_3_2.png',
-      staicLocation + '/bimg/w3_1_1.png',
-      staicLocation + '/bimg/w3_1_2.png',
-      staicLocation + '/bimg/w3_1_3.png',
-      staicLocation + '/bimg/w3_1_4.png',
-      staicLocation + '/bimg/w3_2.png',
-      staicLocation + '/bimg/w3_3_1.png',
-      staicLocation + '/bimg/w3_3_2.png',
-      staicLocation + '/bimg/w3_3_3.png',
-      staicLocation + '/bimg/w4_1.png',
-      staicLocation + '/bimg/w4_2.png',
-      staicLocation + '/bimg/w4_3.png',
-      staicLocation + '/bimg/w4_4.png',
-      staicLocation + '/bimg/w4_5.png',
-      staicLocation + '/bimg/w4_6.png',
-      staicLocation + '/bimg/w5_1.png',
-      staicLocation + '/bimg/w5_2.png',
-      staicLocation + '/bimg/w5_3.png',
-      staicLocation + '/bimg/w5_4.png',
-      staicLocation + '/bimg/w5_5_1.png',
-      staicLocation + '/bimg/w5_5_2.png',
-      staicLocation + '/bimg/w6_1.png',
-      staicLocation + '/bimg/w6_2_1.png',
-      staicLocation + '/bimg/w6_2_2.png',
-      staicLocation + '/bimg/w6_3_1.png',
-      staicLocation + '/bimg/w6_3_2.png',
-      staicLocation + '/bimg/w6_3_3.png',
-      staicLocation + '/bimg/w7_1_1.png',
-      staicLocation + '/bimg/w7_1_2.png',
-      staicLocation + '/bimg/w7_1_3.png',
-      staicLocation + '/bimg/w7_2.png',
-      staicLocation + '/bimg/w7_3.png',
-      staicLocation + '/bimg/w7_4_1.png',
-      staicLocation + '/bimg/w7_4_2.png',
-      staicLocation + '/bimg/w7_5_1.png',
-      staicLocation + '/bimg/w7_5_2.png',
-      staicLocation + '/bimg/w8_1_1.png',
-      staicLocation + '/bimg/w8_1_2.png',
-      staicLocation + '/bimg/w8_2_1.png',
-      staicLocation + '/bimg/w8_2_2.png',
-      staicLocation + '/bimg/w8_3_1.png',
-      staicLocation + '/bimg/w8_3_2.png',
-      staicLocation + '/bimg/w9_2.png',
-      staicLocation + '/bimg/w9_3.png',
-      staicLocation + '/bimg/w9_4.png',
-      staicLocation + '/bimg/w10_1.png',
-      staicLocation + '/bimg/w10_2.png',
-      staicLocation + '/bimg/w10_3_1.png',
-      staicLocation + '/bimg/w10_3_2.png',
-      staicLocation + '/bimg/w10_3_3.png',
-      staicLocation + '/bimg/w11_1.png',
-      staicLocation + '/bimg/w11_2_1.png',
-      staicLocation + '/bimg/w11_2_2.png',
-      staicLocation + '/bimg/w11_4_1.png',
-      staicLocation + '/bimg/w11_4_2.png',
-      staicLocation + '/bimg/w12_1_1.png',
-      staicLocation + '/bimg/w12_1_2.png',
-      staicLocation + '/bimg/w12_2.png',
-      staicLocation + '/bimg/w12_3.png',
-      staicLocation + '/bimg/w13_1_1.png',
-      staicLocation + '/bimg/w13_1_2.png',
-      staicLocation + '/bimg/w13_2.png',
-      staicLocation + '/bimg/w13_3_1.png',
-      staicLocation + '/bimg/w13_3_2.png',
-      staicLocation + '/bimg/w14_1.png',
-      staicLocation + '/bimg/w14_2_1.png',
-      staicLocation + '/bimg/w14_2_2.png',
-      staicLocation + '/bimg/w14_3_1.png',
-      staicLocation + '/bimg/w14_3_2.png',
-      staicLocation + '/bimg/w14_3_3.png',
-      staicLocation + '/bimg/w14_3_4.png',
-      staicLocation + '/bimg/w15_1_1.png',
-      staicLocation + '/bimg/w15_1_2.png',
-      staicLocation + '/bimg/w15_2.png',
-      staicLocation + '/bimg/w16.png',
+      staicLocation + '/pimg/p1_1.png'
     ];
     
     var audioArr = [
-      staicLocation + '/voice/p1-1-l.mp3',
-      staicLocation + '/voice/p1-2-l.mp3',
-      staicLocation + '/voice/p1-3.mp3',
-      staicLocation + '/voice/p1-4.mp3',
-      staicLocation + '/voice/p2-1-l.mp3',
-      staicLocation + '/voice/p2-2.mp3',
-      staicLocation + '/voice/p2-3.mp3',
-      staicLocation + '/voice/p2-4-l.mp3',
-      staicLocation + '/voice/p3-1-l.mp3',
-      staicLocation + '/voice/p3-2-l.mp3',
-      staicLocation + '/voice/p3-3.mp3',
-      staicLocation + '/voice/p3-4-l.mp3',
-      staicLocation + '/voice/p4-1.mp3',
-      staicLocation + '/voice/p4-2-l.mp3',
-      staicLocation + '/voice/p4-3-l.mp3',
-      staicLocation + '/voice/p5-2-l.mp3',
-      staicLocation + '/voice/p5-3-l.mp3',
-      staicLocation + '/voice/p5-4-l.mp3',
-      staicLocation + '/voice/p5-5.mp3',
-      staicLocation + '/voice/p5-6.mp3',
-      staicLocation + '/voice/p6-1-l.mp3',
-      staicLocation + '/voice/p6-2-l.mp3',
-      staicLocation + '/voice/p6-3-l.mp3',
-      staicLocation + '/voice/p6-4-l.mp3',
-      staicLocation + '/voice/p6-5-l.mp3',
-      staicLocation + '/voice/p6-6-l.mp3',
-      staicLocation + '/voice/p1-bg-l.mp3',
-      staicLocation + '/voice/p2-bg-l.mp3',
-      staicLocation + '/voice/p3-bg-l.mp3',
-      staicLocation + '/voice/p3-bg2-l.mp3',
-      staicLocation + '/voice/p4-bg-l.mp3',
-      staicLocation + '/voice/p5-bg-l.mp3',
-      staicLocation + '/voice/p6-bg-l.mp3',
-      staicLocation + '/voice/p6-bg2.mp3',
-      staicLocation + '/voice/p6-bg3-l.mp3',
+    
     ];
     
     var audio_p1_1_l= document.getElementById('audio-p1-1-l');
