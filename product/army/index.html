@@ -398,12 +398,9 @@
       <audio id="audio-p1-bg-l" src="http://army-10040623.file.myqcloud.com/voice/p1-bg-l.mp3" loop="loop"></audio>
       <audio id="audio-p2-bg-l" src="http://army-10040623.file.myqcloud.com/voice/p2-bg-l.mp3" loop="loop"></audio>
       <audio id="audio-p3-bg-l" src="http://army-10040623.file.myqcloud.com/voice/p3-bg-l.mp3" loop="loop"></audio>
-      <audio id="audio-p3-bg2-l" src="http://army-10040623.file.myqcloud.com/voice/p3-bg2-l.mp3" loop="loop"></audio>
       <audio id="audio-p4-bg-l" src="http://army-10040623.file.myqcloud.com/voice/p4-bg-l.mp3" loop="loop"></audio>
       <audio id="audio-p5-bg-l" src="http://army-10040623.file.myqcloud.com/voice/p5-bg-l.mp3" loop="loop"></audio>
       <audio id="audio-p6-bg-l" src="http://army-10040623.file.myqcloud.com/voice/p6-bg-l.mp3" loop="loop"></audio>
-      <audio id="audio-p6-bg2" src="http://army-10040623.file.myqcloud.com/voice/p6-bg2.mp3"></audio>
-      <audio id="audio-p6-bg3-l" src="http://army-10040623.file.myqcloud.com/voice/p6-bg3-l.mp3" loop="loop"></audio>
     </div>
   </body>
   <script>
@@ -413,11 +410,79 @@
     var staicLocation = 'http://army-10040623.file.myqcloud.com';
     
     var imageArr = [
-      staicLocation + '/pimg/p1_1.png'
+      staicLocation + '/pimg/p1_1.png',
+      staicLocation + '/pimg/p1_2.jpg',
+      staicLocation + '/pimg/p1_3.png',
+      staicLocation + '/pimg/p2_2.png',
+      staicLocation + '/pimg/p2_3.png',
+      staicLocation + '/pimg/p2_4.png',
+      staicLocation + '/pimg/p3_1.png',
+      staicLocation + '/pimg/p3_2.png',
+      staicLocation + '/pimg/p3_3.png',
+      staicLocation + '/pimg/p4_1.png',
+      staicLocation + '/pimg/p4_2.png',
+      staicLocation + '/pimg/p4_3.png',
+      staicLocation + '/pimg/p4_4.png',
+      staicLocation + '/pimg/p4_5.png',
+      staicLocation + '/pimg/p4_6.png',
+      staicLocation + '/pimg/p5_1.png',
+      staicLocation + '/pimg/p5_2.png',
+      staicLocation + '/pimg/p5_3.png',
+      staicLocation + '/pimg/p5_4.png',
+      staicLocation + '/pimg/p5_5.png',
+      staicLocation + '/pimg/p6_1.png',
+      staicLocation + '/pimg/p6_2.png',
+      staicLocation + '/pimg/p6_3.png',
+      staicLocation + '/wimg/a1_1.png',
+      staicLocation + '/wimg/a2_1.png',
+      staicLocation + '/wimg/a2_2_1.png',
+      staicLocation + '/wimg/a2_2_2.png',
+      staicLocation + '/wimg/a2_2_3.png',
+      staicLocation + '/wimg/a2_2_4.png',
+      staicLocation + '/wimg/arrow_bottom.png',
+      staicLocation + '/wimg/w1_1.png',
+      staicLocation + '/wimg/w1_2_1.png',
+      staicLocation + '/wimg/w1_2_2.png',
+      staicLocation + '/wimg/w2_2.png',
+      staicLocation + '/wimg/w2_3_1.png',
+      staicLocation + '/wimg/w2_3_2.png',
+      staicLocation + '/wimg/w3_1_1.png',
+      staicLocation + '/wimg/w3_1_2.png',
+      staicLocation + '/wimg/w3_1_3.png',
+      staicLocation + '/wimg/w3_1_4.png',
+      staicLocation + '/wimg/w3_2.png',
+      staicLocation + '/wimg/w3_3_1.png',
+      staicLocation + '/wimg/w3_3_2.png',
+      staicLocation + '/wimg/w3_3_3.png',
+      staicLocation + '/wimg/w4_1.png',
+      staicLocation + '/wimg/w4_2.png',
+      staicLocation + '/wimg/w4_3.png',
+      staicLocation + '/wimg/w4_4.png',
+      staicLocation + '/wimg/w4_5.png',
+      staicLocation + '/wimg/w4_6.png',
+      staicLocation + '/wimg/w5_1.png',
+      staicLocation + '/wimg/w5_2.png',
+      staicLocation + '/wimg/w5_3.png',
+      staicLocation + '/wimg/w5_4.png',
+      staicLocation + '/wimg/w5_5_1.png',
+      staicLocation + '/wimg/w5_5_2.png',
+      staicLocation + '/wimg/w6_1.png',
+      staicLocation + '/wimg/w6_2_1.png',
+      staicLocation + '/wimg/w6_2_2.png',
+      staicLocation + '/wimg/w6_3_1.png',
+      staicLocation + '/wimg/w6_3_2.png',
+      staicLocation + '/wimg/w6_3_3.png',
+      staicLocation + '/mimg/m1.gif',
+      staicLocation + '/mimg/m2.gif',
     ];
     
     var audioArr = [
-    
+      staicLocation + '/voice/p1-bg-l.mp3',
+      staicLocation + '/voice/p2-bg-l.mp3',
+      staicLocation + '/voice/p3-bg-l.mp3',
+      staicLocation + '/voice/p4-bg-l.mp3',
+      staicLocation + '/voice/p5-bg-l.mp3',
+      staicLocation + '/voice/p6-bg-l.mp3'
     ];
     
     //- var audio_p1_1_l= document.getElementById('audio-p1-1-l');
@@ -449,12 +514,12 @@
     var audio_p1_bg= document.getElementById('audio-p1-bg-l');
     var audio_p2_bg= document.getElementById('audio-p2-bg-l');
     var audio_p3_bg= document.getElementById('audio-p3-bg-l');
-    var audio_p3_bg2= document.getElementById('audio-p3-bg2-l');
+    //- var audio_p3_bg2= document.getElementById('audio-p3-bg2-l');
     var audio_p4_bg= document.getElementById('audio-p4-bg-l');
     var audio_p5_bg= document.getElementById('audio-p5-bg-l');
     var audio_p6_bg= document.getElementById('audio-p6-bg-l');
-    var audio_p6_bg2= document.getElementById('audio-p6-bg2');
-    var audio_p6_bg3= document.getElementById('audio-p6-bg3-l');
+    //- var audio_p6_bg2= document.getElementById('audio-p6-bg2');
+    //- var audio_p6_bg3= document.getElementById('audio-p6-bg3-l');
     
      var loader = new Preload({ //可单独使用imageLoad，var imageLoad = new imageLoad()
         isDebug: false,
