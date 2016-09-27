@@ -99,8 +99,8 @@
             <div class="p-item p1-2">
               <div class="w-item w1-2-1"></div>
               <div class="w-item w1-2-2"></div>
+              <div class="p-item p1-3"></div>
             </div>
-            <div class="p-item p1-3"></div>
           </div>
         </div>
         <div class="part part2">
@@ -389,12 +389,22 @@
           </div>
           <div class="step21">
             <div class="p-item p16">
-              <div class="w-item w16"></div>
+              <div class="btn-wrap">
+                <div class="btn-back"></div>
+                <div class="btn-share"></div>
+              </div>
+              <div class="last-step">
+                <div class="last-words"></div>
+              </div>
+              <div class="last-logo"></div>
             </div>
           </div>
         </div>
       </div>
       <div class="arrow-bottom"></div>
+    </div>
+    <div class="share-wrapper">
+      <div class="share-words"></div>
     </div>
     <div class="aside">
       <audio id="audio-p1-1-l" src="http://army-10040623.file.myqcloud.com/voice/p1-1-l.mp3" loop="loop"></audio>
@@ -515,6 +525,8 @@
           setTimeout(function(){
             loadingWrap.style.display = 'none';
             $('.step1').addClass('animated');
+            
+            $('.arrow-bottom').addClass('show');
             
             audio_p1_bg.play();
           },600);
