@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-use-rem="">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+    <meta name="description" content="最伟大的长征，印记世代存！"/>
+    <meta name="keywords" content="a,b"/>
+    <title>24hour</title>
+    <script>
+      (function (win){
+        var doc = win.document;
+        var html = doc.documentElement;
+        var option = html.getAttribute('data-use-rem');
+        if( option === null ) return;
+        // defaut 640px；
+        var baseWidth = option == 'default' || option == '' || parseInt(option) <= 0 ? 640 : parseInt(option);
+        var grids = baseWidth/100,
+        resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize',
+        recalc = function() {
+          var clientWidth = html.clientWidth || 320; // default to 320 if can't get device-width
+          html.style.fontSize = clientWidth / grids + 'px';
+        };
+        // Abort if browser does not support addEventListener
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+        recalc();
+      })(window); 
+    </script>
+    <style type="text/css">
+      html,body {
+        background-color: #ffffff;
+        height: 100%;
+      }
+      
+      .loading-wrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        background-image: url(http://24hour-10040623.file.myqcloud.com/pimg/loading_bg.jpg);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        z-index: 999;
+        -webkit-transition: opacity 0.6s;
+      }
+      
+      .w-loading-item {
+        position: absolute;
+        left: 0;
+        top: 1.2rem;
+        right: 0;
+        width: 5.05rem;
+        height: 5.89rem;
+        background-image: url(http://24hour-10040623.file.myqcloud.com/wimg/loading_words.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        margin: auto;
+      }
+      
+    </style>
+    <link rel="stylesheet" href="http://24hour-10040623.file.myqcloud.com/css/style.css"/>
+    <script src="http://24hour-10040623.file.myqcloud.com/js/zepto.min.js"></script>
+    <script src="http://24hour-10040623.file.myqcloud.com/js/preload.js"></script>
+  </head>
+  <body>
+    <div class="loading-wrapper">
+      <div class="w-loading-item"></div>
+    </div>
+    <div class="wrapper">
+      <div class="scroller">
+        <div class="step step1 fix-screen">
+          <div class="p-item pt-bg">
+            <div class="w-item wt-words"></div>
+          </div>
+        </div>
+        <div class="step step2 fix-screen">
+          <div class="p-item step-bg">
+            <div class="w-item w0-content">
+              <div class="w-item w-don"></div>
+            </div>
+          </div>
+        </div>
+        <div class="step step3">
+          <div class="p-item p1-1"></div>
+          <div class="p-item p1-2">
+            <div class="w-item w1-2"></div>
+          </div>
+          <div class="p-item p1-3">
+            <div class="w-item w1-3-1"></div>
+            <div class="w-item w1-3-2"></div>
+            <div class="w-item w1-3-3"></div>
+          </div>
+        </div>
+        <div class="step step4 fix-screen">
+          <div class="p-item p2-1">
+            <div class="w-item w2-1-1"></div>
+            <div class="w-item w2-1-2"></div>
+          </div>
+          <div class="p-item p2-2">
+            <div class="w-item w2-2"></div>
+          </div>
+          <div class="p-item p2-3"></div>
+        </div>
+        <div class="step step5 fix-screen">
+          <div class="p-item step-bg">
+            <div class="w-item w2-content">
+              <div class="w-item w-don"></div>
+            </div>
+          </div>
+        </div>
+        <div class="step step6">
+          <div class="p-item p3-1"></div>
+          <div class="p-item p3-2">
+            <div class="w-item w3-2-1"></div>
+            <div class="w-item w3-2-2"></div>
+          </div>
+          <div class="p-item p3-3">
+            <div class="w-item w3-3"></div>
+          </div>
+        </div>
+        <div class="step step7">
+          <div class="p-item p4-1">
+            <div class="w-item w4-1"></div>
+          </div>
+          <div class="p-item p4-2 left zIndex-b">
+            <div class="w-item w4-2"></div>
+          </div>
+          <div class="p-item p4-3 right zIndex-s"></div>
+          <div class="p-item p4-4">
+            <div class="w-item w4-4"></div>
+          </div>
+        </div>
+        <div class="step step8">
+          <div class="p-item p5-1 left">
+            <div class="w-item w5-1-1"></div>
+            <div class="w-item w5-1-2"></div>
+          </div>
+          <div class="p-item p5-2 right">
+            <div class="w-item w5-2"></div>
+          </div>
+          <div class="p-item p5-3"></div>
+          <div class="p-item p5-4 left">
+            <div class="w-item w5-4"></div>
+          </div>
+          <div class="p-item p5-5 right">
+            <div class="w-item w5-5"></div>
+          </div>
+        </div>
+        <div class="step step9">
+          <div class="p-item p6-1 left">
+            <div class="w-item w6-1-1"></div>
+            <div class="w-item w6-1-2"></div>
+          </div>
+          <div class="p-item p6-2 right">
+            <div class="w-item w6-2"></div>
+          </div>
+          <div class="p-item p6-3"></div>
+          <div class="p-item p6-4">
+            <div class="w-item w6-4-1"></div>
+            <div class="w-item w6-4-2"></div>
+          </div>
+        </div>
+        <div class="step step10 fix-screen">
+          <div class="p-item step-bg">
+            <div class="w-item w6-content">
+              <div class="w-item w-don"></div>
+            </div>
+          </div>
+        </div>
+        <div class="step step11">
+          <div class="p-item p7-1">
+            <div class="w-item w7-1"></div>
+          </div>
+          <div class="p-item p7-2 left"></div>
+          <div class="p-item p7-3 left">
+            <div class="w-item w7-3"></div>
+          </div>
+          <div class="p-item p7-4 left">
+            <div class="w-item w7-4"></div>
+          </div>
+          <div class="p-item p7-5">
+            <div class="w-item w7-5-1"></div>
+            <div class="w-item w7-5-2"></div>
+          </div>
+        </div>
+        <div class="step step12">
+          <div class="p-pair alignL">
+            <div class="p-item p8-1 left">
+              <div class="w-item w8-1"></div>
+            </div>
+            <div class="p-item p8-2">
+              <div class="w-item w8-2"></div>
+            </div>
+            <div class="p-item p8-3"></div>
+          </div>
+          <div class="p-item p8-4">
+            <div class="w-item w8-4-1"></div>
+            <div class="w-item w8-4-2"></div>
+          </div>
+        </div>
+        <div class="step step13">
+          <div class="p-item p9-1 left"></div>
+          <div class="p-item p9-2 left"></div>
+          <div class="p-item p9-3 zIndex-b">
+            <div class="w-item w9-3"></div>
+          </div>
+          <div class="p-item p9-4 zIndex-s"></div>
+          <div class="p-item p9-5"></div>
+        </div>
+        <div class="step step14 fix-screen">
+          <div class="p-item step-bg">
+            <div class="w-item w9-content">
+              <div class="w-item w-don"></div>
+            </div>
+          </div>
+        </div>
+        <div class="step step15">
+          <div class="p-item p10-1">
+            <div class="w-item w10-1"></div>
+          </div>
+          <div class="p-item p10-2"></div>
+          <div class="p-item p10-3"></div>
+          <div class="p-item p10-4">
+            <div class="w-item w10-4"></div>
+          </div>
+          <div class="p-item p10-5"></div>
+        </div>
+        <div class="step step16">
+          <div class="p-pair alignR">
+            <div class="p-item p11-1">
+              <div class="w-item w11-1"></div>
+            </div>
+            <div class="p-item p11-2">
+              <div class="w-item w11-2"></div>
+            </div>
+            <div class="p-item p11-3 right"></div>
+          </div>
+          <div class="p-item p11-4 zIndex-b">
+            <div class="w-item w11-4-1"></div>
+            <div class="w-item w11-4-2"></div>
+          </div>
+          <div class="p-item p11-5 left"></div>
+          <div class="p-item p11-6 left zIndex-s"></div>
+        </div>
+        <div class="step step17">
+          <div class="p-item p12-1"></div>
+          <div class="p-item p12-2">
+            <div class="w-item w12-2"></div>
+          </div>
+          <div class="p-item p12-3"></div>
+        </div>
+        <div class="step step18">
+          <div class="p-item p13-1 left zIndex-b">
+            <div class="w-item w13-1"></div>
+          </div>
+          <div class="p-item p13-2 right zIndex-s">
+            <div class="w-item w13-2"></div>
+          </div>
+          <div class="p-item p13-3 left zIndex-b">
+            <div class="w-item w13-3"></div>
+          </div>
+          <div class="p-item p13-4 right zIndex-s">
+            <div class="w-item w13-4"></div>
+          </div>
+          <div class="p-item p13-5 zIndex-s"></div>
+        </div>
+        <div class="step step19">
+          <div class="p-item p14-1">
+            <div class="w-item w14-1"></div>
+          </div>
+          <div class="p-item p14-2"></div>
+          <div class="p-item p14-3"></div>
+        </div>
+        <div class="step step20 fix-screen">
+          <div class="p-item step-bg">
+            <div class="w-item w14-content">
+              <div class="w-item w-don"></div>
+            </div>
+          </div>
+        </div>
+        <div class="step step21">
+          <div class="p-item p15-1"></div>
+          <div class="p-item p15-2">
+            <div class="w-item w15-2"></div>
+          </div>
+          <div class="p-item p15-3">
+            <div class="w-item w15-3"></div>
+          </div>
+          <div class="p-item p15-4 left">
+            <div class="w-item w15-4"></div>
+          </div>
+          <div class="p-item p15-5 right">
+            <div class="w-item w15-5"></div>
+          </div>
+        </div>
+        <div class="step step22">
+          <div class="p-item p16-1 left">
+            <div class="w-item w16-1"></div>
+          </div>
+          <div class="p-item p16-2 right">
+            <div class="w-item w16-2"></div>
+          </div>
+          <div class="p-item p16-3">
+            <div class="w-item w16-3"></div>
+          </div>
+          <div class="p-item p16-4">
+            <div class="w-item w16-4-1"></div>
+            <div class="w-item w16-4-2"></div>
+          </div>
+        </div>
+        <div class="step step23 fix-screen">
+          <div class="p-item step-bg">
+            <div class="w-item w16-content">
+              <div class="w-item w-don"></div>
+            </div>
+          </div>
+        </div>
+        <div class="step step24">
+          <div class="p-item p17-1">
+            <div class="w-item w17-1"></div>
+          </div>
+          <div class="p-item p17-2">
+            <div class="w-item w17-2-1"></div>
+            <div class="w-item w17-2-2"></div>
+            <div class="w-item w17-2-3"></div>
+            <div class="w-item w17-2-4"></div>
+          </div>
+        </div>
+        <div class="step step25 fix-screen">
+          <div class="p-item step-bg">
+            <div class="w-item w17-content">
+              <div class="w-item w-don"></div>
+            </div>
+          </div>
+        </div>
+        <div class="step step26">
+          <div class="p-item p18-1">
+            <div class="w-item w18-1"></div>
+          </div>
+          <div class="p-item p18-2">
+            <div class="w-item w18-2"></div>
+          </div>
+        </div>
+        <div class="step step27">
+          <div class="p-item p19-1">
+            <div class="w-item w19-1-1"></div>
+            <div class="w-item w19-1-2"></div>
+          </div>
+          <div class="p-item p19-2">
+            <div class="w-item w19-2"></div>
+          </div>
+        </div>
+        <div class="step step28 fix-screen">
+          <div class="p-item step-bg">
+            <div class="w-item w20-content"></div>
+          </div>
+        </div>
+        <div class="step step29 fix-screen">
+          <div class="p-item p-last">
+            <div class="btn-wrap">
+              <div class="btn-back"></div>
+              <div class="btn-share"></div>
+            </div>
+            <div class="last-step">
+              <div class="last-words"></div>
+            </div>
+            <div class="last-logo"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="share-wrapper">
+      <div class="share-words"></div>
+    </div>
+  </body>
+  <script>
+    var winH = document.documentElement.scrollHeight;
+    var cdnLocation = 'http://24hour-10040623.file.myqcloud.com';
+    
+    var
+      loadingWrap = document.querySelector('.loading-wrapper');
+    var imageArr = [
+      cdnLocation+ '/pimg/p1_1.jpg',
+      cdnLocation + '/pimg/p1_2.jpg',
+      cdnLocation + '/pimg/p1_3.png',
+      cdnLocation + '/pimg/p2_1.png',
+      cdnLocation + '/pimg/p2_2.png',
+      cdnLocation + '/pimg/p2_3.png',
+      cdnLocation + '/pimg/p3_1.png',
+      cdnLocation + '/pimg/p3_2.png',
+      cdnLocation + '/pimg/p3_3.png',
+      cdnLocation + '/pimg/p4_1.png',
+      cdnLocation + '/pimg/p4_2.png',
+      cdnLocation + '/pimg/p4_3.png',
+      cdnLocation + '/pimg/p4_4.png',
+      cdnLocation + '/pimg/p5_1.png',
+      cdnLocation + '/pimg/p5_2.png',
+      cdnLocation + '/pimg/p5_3.png',
+      cdnLocation + '/pimg/p5_4.png',
+      cdnLocation + '/pimg/p5_5.png',
+      cdnLocation + '/pimg/p6_1.png',
+      cdnLocation + '/pimg/p6_2.png',
+      cdnLocation + '/pimg/p6_3.png',
+      cdnLocation + '/pimg/p6_4.png',
+      cdnLocation + '/pimg/p7_1.png',
+      cdnLocation + '/pimg/p7_2.png',
+      cdnLocation + '/pimg/p7_3.png',
+      cdnLocation + '/pimg/p7_4.png',
+      cdnLocation + '/pimg/p7_5.png',
+      cdnLocation + '/pimg/p8_1.png',
+      cdnLocation + '/pimg/p8_2.png',
+      cdnLocation + '/pimg/p8_3.png',
+      cdnLocation + '/pimg/p8_4.png',
+      cdnLocation + '/pimg/p9_1.png',
+      cdnLocation + '/pimg/p9_2.png',
+      cdnLocation + '/pimg/p9_3.png',
+      cdnLocation + '/pimg/p9_4.png',
+      cdnLocation + '/pimg/p9_5.png',
+      cdnLocation+ '/pimg/step_bg.jpg',
+      cdnLocation + '/wimg/arrow_bottom.png',
+      cdnLocation + '/wimg/w_don.png',
+      cdnLocation + '/wimg/w0_content.png',
+      cdnLocation + '/wimg/w1_2.png',
+      cdnLocation + '/wimg/w1_3_1.png',
+      cdnLocation + '/wimg/w1_3_2.png',
+      cdnLocation + '/wimg/w1_3_3.png',
+      cdnLocation + '/wimg/w2_1_1.png',
+      cdnLocation + '/wimg/w2_1_2.png',
+      cdnLocation + '/wimg/w2_2.png',
+      cdnLocation + '/wimg/w2_content.png',
+      cdnLocation + '/wimg/w3_2_1.png',
+      cdnLocation + '/wimg/w3_2_2.png',
+      cdnLocation + '/wimg/w3_3.png',
+      cdnLocation + '/wimg/w4_1.png',
+      cdnLocation + '/wimg/w4_2.png',
+      cdnLocation + '/wimg/w4_4.png',
+      cdnLocation + '/wimg/w5_1_1.png',
+      cdnLocation + '/wimg/w5_1_2.png',
+      cdnLocation + '/wimg/w5_2.png',
+      cdnLocation + '/wimg/w5_4.png',
+      cdnLocation + '/wimg/w5_5.png',
+      cdnLocation + '/wimg/w6_1_1.png',
+      cdnLocation + '/wimg/w6_1_2.png',
+      cdnLocation + '/wimg/w6_2.png',
+      cdnLocation + '/wimg/w6_4_1.png',
+      cdnLocation + '/wimg/w6_4_2.png',
+      cdnLocation + '/wimg/w6_content.png',
+      cdnLocation + '/wimg/w7_1.png',
+      cdnLocation + '/wimg/w7_3.png',
+      cdnLocation + '/wimg/w7_4.png',
+      cdnLocation + '/wimg/w7_5_1.png',
+      cdnLocation + '/wimg/w7_5_2.png',
+      cdnLocation + '/wimg/w8_1.png',
+      cdnLocation + '/wimg/w8_2.png',
+      cdnLocation + '/wimg/w8_4_1.png',
+      cdnLocation + '/wimg/w8_4_2.png',
+      cdnLocation + '/wimg/w9_3.png',
+      cdnLocation + '/wimg/w9_content.png',
+      cdnLocation + '/wimg/wt_words.png',
+    ];
+    var audioArr = [];
+    
+    $('.fix-screen').height(winH);
+    
+    var loader = new Preload({ //可单独使用imageLoad，var imageLoad = new imageLoad()
+        isDebug: false,
+        sources: {
+            imgs: {
+                source: imageArr,
+                callback: function() {
+                    console.log("图片完成");
+                }
+            },
+            audio: {
+                source: audioArr,
+                callback: function() {
+                    console.log("音频完成");
+                }
+            },
+        },
+        loadingOverTime: 3,
+        loadingOverTimeCB: function() {
+          console.log('资源加载超时');
+        },
+        progress: function(completedCount, total) {
+        },
+        completeLoad: function() {
+        
+          loadingWrap.style.opacity = '0';
+          
+          setTimeout(function(){
+            loadingWrap.style.display = 'none';
+            $('.step1').addClass('animated');
+            
+          },600);
+        }
+    });
+  </script>
+  <script src="http://24hour-10040623.file.myqcloud.com/js/gesture.min.js"></script>
+  <script src="http://24hour-10040623.file.myqcloud.com/js/staic-index.js"></script>
+</html>
