@@ -40,7 +40,7 @@
         width: 100%;
         height: 100%;
         background-color: #fff;
-        background-image: url(http://24hour-10040623.file.myqcloud.com/pimg/loading_bg.jpg);
+        background-image: url(../pimg/loading_bg.jpg);
         background-repeat: no-repeat;
         background-size: 100% 100%;
         z-index: 999;
@@ -54,7 +54,7 @@
         right: 0;
         width: 5.05rem;
         height: 5.89rem;
-        background-image: url(http://24hour-10040623.file.myqcloud.com/wimg/loading_words.png);
+        background-image: url(../wimg/loading_words.png);
         background-repeat: no-repeat;
         background-size: 100% 100%;
         margin: auto;
@@ -74,9 +74,9 @@
       }
       
     </style>
-    <link rel="stylesheet" href="http://24hour-10040623.file.myqcloud.com/css/style.css"/>
-    <script src="http://24hour-10040623.file.myqcloud.com/js/zepto.min.js"></script>
-    <script src="http://24hour-10040623.file.myqcloud.com/js/preload.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/preload.js"></script>
   </head>
   <body>
     <div class="loading-wrapper">
@@ -225,7 +225,7 @@
             <div class="w-item w9-3"></div>
           </div>
           <div class="p-item p9-4 zIndex-s"></div>
-          <div class="p-item p9-5"></div>
+          <div class="p-item p9-5 fix-small"></div>
         </div>
         <div class="step step14 fix-screen">
           <div class="p-item step-bg">
@@ -282,7 +282,7 @@
           <div class="p-item p13-4 right zIndex-s">
             <div class="w-item w13-4"></div>
           </div>
-          <div class="p-item p13-5 zIndex-s"></div>
+          <div class="p-item p13-5 zIndex-s fix-small"></div>
         </div>
         <div class="step step19">
           <div class="p-item p14-1">
@@ -394,8 +394,16 @@
     </div>
   </body>
   <script>
+    var winW = document.documentElement.scrollWidth;
     var winH = document.documentElement.scrollHeight;
-    var cdnLocation = 'http://24hour-10040623.file.myqcloud.com';
+    var cdnLocation = '..';
+    
+    if(winH/winW <= 1.6626){
+      document.documentElement.classList.add('small-screen');
+    }
+    
+    console.log(winW+ " " + winH);
+    console.log(winH/winW);
     
     var
       loadingWrap = document.querySelector('.loading-wrapper'),
@@ -520,6 +528,6 @@
         }
     });
   </script>
-  <script src="http://24hour-10040623.file.myqcloud.com/js/gesture.min.js"></script>
-  <script src="http://24hour-10040623.file.myqcloud.com/js/staic-index.js"></script>
+  <script src="../js/gesture.min.js"></script>
+  <script src="../js/staic-index.js"></script>
 </html>
