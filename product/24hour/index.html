@@ -591,15 +591,17 @@
           loadingPercent.innerHTML = parseInt((Math.max((completedCount-5),0)/total)*100)+"%";
         },
         completeLoad: function() {
-          loadingPercent.innerHTML ='100%';
+          loadingPercent.innerHTML ='请稍候～';
           
-          loadingWrap.style.opacity = '0';
-          
-          setTimeout(function(){
-            loadingWrap.style.display = 'none';
-            $('.step1').addClass('animated');
+          setTimeout(function() {
+            loadingWrap.style.opacity = '0';
             
-          },600);
+            setTimeout(function(){
+              loadingWrap.style.display = 'none';
+              $('.step1').addClass('animated');
+              
+            },600);
+          },4000);
         }
     });
   </script>
