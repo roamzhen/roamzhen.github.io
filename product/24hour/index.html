@@ -100,7 +100,7 @@
             </div>
           </div>
         </div>
-        <div class="step step3">
+        <div class="step step3 small-item">
           <div class="p-item p1-1"></div>
           <div class="p-item p1-2">
             <div class="w-item w1-2"></div>
@@ -138,7 +138,7 @@
             <div class="w-item w3-3"></div>
           </div>
         </div>
-        <div class="step step7">
+        <div class="step step7 small-item">
           <div class="p-item p4-1">
             <div class="w-item w4-1"></div>
           </div>
@@ -234,7 +234,7 @@
             </div>
           </div>
         </div>
-        <div class="step step15">
+        <div class="step step15 small-item">
           <div class="p-item p10-1">
             <div class="w-item w10-1"></div>
           </div>
@@ -245,7 +245,7 @@
           </div>
           <div class="p-item p10-5"></div>
         </div>
-        <div class="step step16">
+        <div class="step step16 small-item">
           <div class="p-pair alignR">
             <div class="p-item p11-1">
               <div class="w-item w11-1"></div>
@@ -284,7 +284,7 @@
           </div>
           <div class="p-item p13-5 zIndex-s"></div>
         </div>
-        <div class="step step19">
+        <div class="step step19 small-item">
           <div class="p-item p14-1">
             <div class="w-item w14-1"></div>
           </div>
@@ -298,7 +298,7 @@
             </div>
           </div>
         </div>
-        <div class="step step21">
+        <div class="step step21 small-item">
           <div class="p-item p15-1"></div>
           <div class="p-item p15-2">
             <div class="w-item w15-2"></div>
@@ -353,7 +353,7 @@
             </div>
           </div>
         </div>
-        <div class="step step26">
+        <div class="step step26 small-item">
           <div class="p-item p18-1">
             <div class="w-item w18-1"></div>
           </div>
@@ -361,7 +361,7 @@
             <div class="w-item w18-2"></div>
           </div>
         </div>
-        <div class="step step27">
+        <div class="step step27 small-item">
           <div class="p-item p19-1">
             <div class="w-item w19-1-1"></div>
             <div class="w-item w19-1-2"></div>
@@ -394,16 +394,34 @@
     </div>
   </body>
   <script>
+    var browser={
+      versions:function(){
+        var u = navigator.userAgent, app = navigator.appVersion;
+        return {
+          webKit: u.indexOf('AppleWebKit') > -1, 
+          ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), 
+          android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, 
+          weixin: u.indexOf('MicroMessenger') > -1, 
+          txnews: u.indexOf('qqnews') > -1,
+          sinawb: u.indexOf('weibo') > -1,
+          mqq   : u.indexOf('QQ') > -1
+        };
+      }(),
+      language:(navigator.browserLanguage || navigator.language).toLowerCase()
+    };
+    
     var winW = document.documentElement.scrollWidth;
     var winH = document.documentElement.scrollHeight;
     var cdnLocation = '..';
     
-    if(winH/winW <= 1.6626){
+    if(winH/winW <= 1.64 && browser.versions.android){
+      document.documentElement.classList.add('small-screen');
+    }else if(winH/winW <= 1.62 && browser.versions.ios){
       document.documentElement.classList.add('small-screen');
     }
     
-    alert(winW+ " " + winH);
-    alert(winH/winW);
+    console.log(winW+ " " + winH);
+    console.log(winH/winW);
     
     var
       loadingWrap = document.querySelector('.loading-wrapper'),
