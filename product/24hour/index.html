@@ -73,6 +73,19 @@
         background-color: #000;
       }
       
+      .aside {
+        display: none;
+      }
+      .head-none {
+        opacity: 0;
+        width: 1px;
+        height: 1px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -999;
+      }
+      
     </style>
     <link rel="stylesheet" href="http://24hour-10040623.file.myqcloud.com/css/style.css"/>
     <script src="http://24hour-10040623.file.myqcloud.com/js/zepto.min.js"></script>
@@ -392,6 +405,34 @@
     <div class="share-wrapper">
       <div class="share-words"></div>
     </div>
+    <div class="aside">
+      <audio id="audio-p1-l" src="http://24hour-10040623.file.myqcloud.com/voice/p1_l.mp3" loop="loop"></audio>
+      <audio id="audio-p6-l" src="http://24hour-10040623.file.myqcloud.com/voice/p6_l.mp3" loop="loop"></audio>
+      <audio id="audio-p7-l" src="http://24hour-10040623.file.myqcloud.com/voice/p7_l.mp3" loop="loop"></audio>
+      <audio id="audio-p11-l" src="http://24hour-10040623.file.myqcloud.com/voice/p11_l.mp3" loop="loop"></audio>
+      <audio id="audio-p13" src="http://24hour-10040623.file.myqcloud.com/voice/p13.mp3"></audio>
+      <audio id="audio-p15-l" src="http://24hour-10040623.file.myqcloud.com/voice/p15_l.mp3" loop="loop"></audio>
+      <audio id="audio-p21-l" src="http://24hour-10040623.file.myqcloud.com/voice/p21_l.mp3" loop="loop"></audio>
+      <audio id="audio-p24-l" src="http://24hour-10040623.file.myqcloud.com/voice/p24_l.mp3" loop="loop"></audio>
+      <audio id="audio-p26-l" src="http://24hour-10040623.file.myqcloud.com/voice/p26_l.mp3" loop="loop"></audio>
+      <audio id="audio-w3-l" src="http://24hour-10040623.file.myqcloud.com/voice/w3_l.mp3" loop="loop"></audio>
+      <audio id="audio-w4" src="http://24hour-10040623.file.myqcloud.com/voice/w4.mp3"></audio>
+      <audio id="audio-w6" src="http://24hour-10040623.file.myqcloud.com/voice/w6.mp3"></audio>
+      <audio id="audio-w7" src="http://24hour-10040623.file.myqcloud.com/voice/w7.mp3"></audio>
+      <audio id="audio-w9" src="http://24hour-10040623.file.myqcloud.com/voice/w9.mp3"></audio>
+      <audio id="audio-w11" src="http://24hour-10040623.file.myqcloud.com/voice/w11.mp3"></audio>
+      <audio id="audio-w12" src="http://24hour-10040623.file.myqcloud.com/voice/w12.mp3"></audio>
+      <audio id="audio-w13" src="http://24hour-10040623.file.myqcloud.com/voice/w13.mp3"></audio>
+      <audio id="audio-w16" src="http://24hour-10040623.file.myqcloud.com/voice/w16.mp3"></audio>
+      <audio id="audio-w17" src="http://24hour-10040623.file.myqcloud.com/voice/w17.mp3"></audio>
+      <audio id="audio-w18" src="http://24hour-10040623.file.myqcloud.com/voice/w18.mp3"></audio>
+      <audio id="audio-w19" src="http://24hour-10040623.file.myqcloud.com/voice/w19.mp3"></audio>
+      <audio id="audio-w21-l" src="http://24hour-10040623.file.myqcloud.com/voice/w21_l.mp3" loop="loop"></audio>
+      <audio id="audio-w22-l" src="http://24hour-10040623.file.myqcloud.com/voice/w22_l.mp3" loop="loop"></audio>
+      <audio id="audio-w24-l" src="http://24hour-10040623.file.myqcloud.com/voice/w24_l.mp3" loop="loop"></audio>
+      <audio id="audio-w26" src="http://24hour-10040623.file.myqcloud.com/voice/w26.mp3"></audio>
+      <audio id="audio-w27-l" src="http://24hour-10040623.file.myqcloud.com/voice/w27_l.mp3" loop="loop"></audio>
+    </div>
   </body>
   <script>
     var browser={
@@ -420,8 +461,9 @@
       document.documentElement.classList.add('small-screen');
     }
     
-    console.log(winW+ " " + winH);
-    console.log(winH/winW);
+    if(browser.versions.android) {
+      document.documentElement.classList.add('android');
+    }
     
     var
       loadingWrap = document.querySelector('.loading-wrapper'),
@@ -581,7 +623,63 @@
       cdnLocation + '/wimg/w20_content.png',
       cdnLocation + '/wimg/wt_words.png',
     ];
-    var audioArr = [];
+    var audioArr = [
+      cdnLocation + '/voice/p1_l.mp3',
+      cdnLocation + '/voice/p6_l.mp3',
+      cdnLocation + '/voice/p7_l.mp3',
+      cdnLocation + '/voice/p11_l.mp3',
+      cdnLocation + '/voice/p13.mp3',
+      cdnLocation + '/voice/p15_l.mp3',
+      cdnLocation + '/voice/p21_l.mp3',
+      cdnLocation + '/voice/p24_l.mp3',
+      cdnLocation + '/voice/p26_l.mp3',
+      cdnLocation + '/voice/w3_l.mp3',
+      cdnLocation + '/voice/w4.mp3',
+      cdnLocation + '/voice/w6.mp3',
+      cdnLocation + '/voice/w7.mp3',
+      cdnLocation + '/voice/w9.mp3',
+      cdnLocation + '/voice/w11.mp3',
+      cdnLocation + '/voice/w12.mp3',
+      cdnLocation + '/voice/w13.mp3',
+      cdnLocation + '/voice/w16.mp3',
+      cdnLocation + '/voice/w17.mp3',
+      cdnLocation + '/voice/w18.mp3',
+      cdnLocation + '/voice/w19.mp3',
+      cdnLocation + '/voice/w21_l.mp3',
+      cdnLocation + '/voice/w22_l.mp3',
+      cdnLocation + '/voice/w24_l.mp3',
+      cdnLocation + '/voice/w26.mp3',
+      cdnLocation + '/voice/w27_l.mp3',
+    ];
+    
+    var audio_p1 = document.getElementById('audio-p1-l');
+    var audio_p6 = document.getElementById('audio-p6-l');
+    var audio_p7 = document.getElementById('audio-p7-l');
+    var audio_p11 = document.getElementById('audio-p11-l');
+    var audio_p13 = document.getElementById('audio-p13');
+    var audio_p15 = document.getElementById('audio-p15-l');
+    var audio_p21 = document.getElementById('audio-p21-l');
+    var audio_p24 = document.getElementById('audio-p24-l');
+    var audio_p26 = document.getElementById('audio-p26-l');
+    var audio_w3 = document.getElementById('audio-w3-l');
+    var audio_w4 = document.getElementById('audio-w4');
+    var audio_w6 = document.getElementById('audio-w6');
+    var audio_w7 = document.getElementById('audio-w7');
+    var audio_w9 = document.getElementById('audio-w9');
+    var audio_w11 = document.getElementById('audio-w11');
+    var audio_w12 = document.getElementById('audio-w12');
+    var audio_w13 = document.getElementById('audio-w13');
+    var audio_w16 = document.getElementById('audio-w16');
+    var audio_w17 = document.getElementById('audio-w17');
+    var audio_w18 = document.getElementById('audio-w18');
+    var audio_w19 = document.getElementById('audio-w19');
+    var audio_w21 = document.getElementById('audio-w21-l');
+    var audio_w22 = document.getElementById('audio-w22-l');
+    var audio_w24 = document.getElementById('audio-w24-l');
+    var audio_w26 = document.getElementById('audio-w26');
+    var audio_w27 = document.getElementById('audio-w27-l');
+    
+    
     
     $('.fix-screen').height(winH);
     
@@ -617,6 +715,8 @@
             setTimeout(function(){
               loadingWrap.style.display = 'none';
               $('.step1').addClass('animated');
+              
+              audio_p1.play();
               
             },600);
           },4000);
