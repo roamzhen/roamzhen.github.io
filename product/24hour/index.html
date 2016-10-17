@@ -417,6 +417,8 @@
     if(winH/winW <= 1.64 && browser.versions.android){
       document.documentElement.classList.add('small-screen');
     }else if(winH/winW <= 1.62 && browser.versions.ios){
+      alert(winH/winW);
+      alert(browser.versions.ios);
       document.documentElement.classList.add('small-screen');
     }
     
