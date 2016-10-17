@@ -40,7 +40,7 @@
         width: 100%;
         height: 100%;
         background-color: #fff;
-        background-image: url(http://24hour-10040623.file.myqcloud.com/pimg/loading_bg.jpg);
+        background-image: url(../pimg/loading_bg.jpg);
         background-repeat: no-repeat;
         background-size: 100% 100%;
         z-index: 999;
@@ -54,7 +54,7 @@
         right: 0;
         width: 5.05rem;
         height: 5.89rem;
-        background-image: url(http://24hour-10040623.file.myqcloud.com/wimg/loading_words.png);
+        background-image: url(../wimg/loading_words.png);
         background-repeat: no-repeat;
         background-size: 100% 100%;
         margin: auto;
@@ -74,9 +74,9 @@
       }
       
     </style>
-    <link rel="stylesheet" href="http://24hour-10040623.file.myqcloud.com/css/style.css"/>
-    <script src="http://24hour-10040623.file.myqcloud.com/js/zepto.min.js"></script>
-    <script src="http://24hour-10040623.file.myqcloud.com/js/preload.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <script src="../js/zepto.min.js"></script>
+    <script src="../js/preload.js"></script>
   </head>
   <body>
     <div class="loading-wrapper">
@@ -128,7 +128,7 @@
             </div>
           </div>
         </div>
-        <div class="step step6">
+        <div class="step step6 small-item">
           <div class="p-item p3-1"></div>
           <div class="p-item p3-2">
             <div class="w-item w3-2-1"></div>
@@ -150,7 +150,7 @@
             <div class="w-item w4-4"></div>
           </div>
         </div>
-        <div class="step step8">
+        <div class="step step8 small-item">
           <div class="p-item p5-1 left">
             <div class="w-item w5-1-1"></div>
             <div class="w-item w5-1-2"></div>
@@ -166,7 +166,7 @@
             <div class="w-item w5-5"></div>
           </div>
         </div>
-        <div class="step step9">
+        <div class="step step9 small-item">
           <div class="p-item p6-1 left">
             <div class="w-item w6-1-1"></div>
             <div class="w-item w6-1-2"></div>
@@ -187,7 +187,7 @@
             </div>
           </div>
         </div>
-        <div class="step step11">
+        <div class="step step11 small-item">
           <div class="p-item p7-1">
             <div class="w-item w7-1"></div>
           </div>
@@ -203,7 +203,7 @@
             <div class="w-item w7-5-2"></div>
           </div>
         </div>
-        <div class="step step12">
+        <div class="step step12 small-item">
           <div class="p-pair alignL">
             <div class="p-item p8-1 left">
               <div class="w-item w8-1"></div>
@@ -218,14 +218,14 @@
             <div class="w-item w8-4-2"></div>
           </div>
         </div>
-        <div class="step step13">
+        <div class="step step13 small-item">
           <div class="p-item p9-1 left"></div>
           <div class="p-item p9-2 left"></div>
           <div class="p-item p9-3 zIndex-b">
             <div class="w-item w9-3"></div>
           </div>
           <div class="p-item p9-4 zIndex-s"></div>
-          <div class="p-item p9-5 fix-small"></div>
+          <div class="p-item p9-5"></div>
         </div>
         <div class="step step14 fix-screen">
           <div class="p-item step-bg">
@@ -262,14 +262,14 @@
           <div class="p-item p11-5 left"></div>
           <div class="p-item p11-6 left zIndex-s"></div>
         </div>
-        <div class="step step17">
+        <div class="step step17 small-item">
           <div class="p-item p12-1"></div>
           <div class="p-item p12-2">
             <div class="w-item w12-2"></div>
           </div>
           <div class="p-item p12-3"></div>
         </div>
-        <div class="step step18">
+        <div class="step step18 small-item">
           <div class="p-item p13-1 left zIndex-b">
             <div class="w-item w13-1"></div>
           </div>
@@ -282,7 +282,7 @@
           <div class="p-item p13-4 right zIndex-s">
             <div class="w-item w13-4"></div>
           </div>
-          <div class="p-item p13-5 zIndex-s fix-small"></div>
+          <div class="p-item p13-5 zIndex-s"></div>
         </div>
         <div class="step step19">
           <div class="p-item p14-1">
@@ -313,7 +313,7 @@
             <div class="w-item w15-5"></div>
           </div>
         </div>
-        <div class="step step22">
+        <div class="step step22 small-item">
           <div class="p-item p16-1 left">
             <div class="w-item w16-1"></div>
           </div>
@@ -335,7 +335,7 @@
             </div>
           </div>
         </div>
-        <div class="step step24">
+        <div class="step step24 small-item">
           <div class="p-item p17-1">
             <div class="w-item w17-1"></div>
           </div>
@@ -396,7 +396,7 @@
   <script>
     var winW = document.documentElement.scrollWidth;
     var winH = document.documentElement.scrollHeight;
-    var cdnLocation = 'http://24hour-10040623.file.myqcloud.com';
+    var cdnLocation = '..';
     
     if(winH/winW <= 1.6626){
       document.documentElement.classList.add('small-screen');
@@ -601,10 +601,10 @@
               $('.step1').addClass('animated');
               
             },600);
-          },4000);
+          },10);
         }
     });
   </script>
-  <script src="http://24hour-10040623.file.myqcloud.com/js/gesture.min.js"></script>
-  <script src="http://24hour-10040623.file.myqcloud.com/js/staic-index.js"></script>
+  <script src="../js/gesture.min.js"></script>
+  <script src="../js/staic-index.js"></script>
 </html>
