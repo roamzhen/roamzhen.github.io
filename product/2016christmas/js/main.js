@@ -30,7 +30,7 @@
           transitionWrapper.classList.remove('show');
           transitionWrapper.classList.remove('exit');
 
-          transitionWords.src = '../img/transition_words2.png';
+          transitionWords.src = './img/transition_words2.png';
 
           awardWrapper.classList.add('show-fs');
           awardWrapper.classList.add('show');
@@ -144,7 +144,7 @@
           transitionWrapper.classList.remove('show');
           transitionWrapper.classList.remove('exit');
 
-          transitionWords.src = '../img/transition_words3.png';
+          transitionWords.src = './img/transition_words3.png';
 
           awardWrapper.classList.add('show-travel');
           awardWrapper.classList.add('show');
@@ -190,7 +190,7 @@
           transitionWrapper.classList.remove('show');
           transitionWrapper.classList.remove('exit');
 
-          transitionWords.src = '../img/transition_words4.png';
+          transitionWords.src = './img/transition_words4.png';
 
           awardWrapper.classList.add('show-cash');
           awardWrapper.classList.add('show');
