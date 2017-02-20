@@ -34,9 +34,9 @@
 
     // world
 
-    var sprite1 = new THREE.TextureLoader().load("../img/textures/electric2.png");
-    var sprite2 = new THREE.TextureLoader().load("../img/textures/electric2.png");
-    var sprite3 = new THREE.TextureLoader().load("../img/textures/electric2.png");
+    var sprite1 = new THREE.TextureLoader().load("./img/textures/electric2.png");
+    var sprite2 = new THREE.TextureLoader().load("./img/textures/electric2.png");
+    var sprite3 = new THREE.TextureLoader().load("./img/textures/electric2.png");
 
     var material = new THREE.PointsMaterial( { 
       size: 20, 
