@@ -93,6 +93,9 @@ function btnPanEndAct(){
   cancelAnimationFrame(loopReq);
 }
 
+function EndAct() {
+}
+
 function SetLongAction(){
   var nowTime=$.now();
   longCurr=longCurr+(nowTime-timeStart)*moveStep;
