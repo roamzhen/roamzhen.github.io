@@ -1,6 +1,11 @@
 
 "undefined"!=typeof jQuery&&function(a){"use strict";a.imgpreload=function(b,c){function g(f,h){var i=new Image,j=h,k=i;"string"!=typeof h&&(j=a(h).attr("src")||a(h).css("background-image").replace(/^url\((?:"|')?(.*)(?:'|")?\)$/gm,"$1"),k=h),a(i).bind("load error",function(f){d.push(k),a.data(k,"loaded","error"==f.type?!1:!0),c.each instanceof Function&&c.each.call(k,d.slice(0)),e<b.length?(g(e,b[e]),e++):d.length>=b.length&&c.all instanceof Function&&c.all.call(d),a(this).unbind("load error")}),i.src=j}var d,e,f;for(c=a.extend({},a.fn.imgpreload.defaults,c instanceof Function?{all:c}:c),"string"==typeof b&&(b=[b]),d=[],e=0,f=Math.min(c.number,b.length);f>e;)g(e,b[e]),e++},a.fn.imgpreload=function(b){return a.imgpreload(this,b),this},a.fn.imgpreload.defaults={each:null,all:null,number:5}}(jQuery);
 
+var btnControll = $('#btn-controll');
+var ringItemWrap = $("#btn-controll .ring-item-wrap");
+var ringWords = $('#btn-controll ring-words');
+var ringLight = $('#btn-controll ring-light');
+var longList = $("#long-list");
 
 var longCurr=0,longMax=0,moveStep=0,timeStart=0,loopReq,totalTime=60000;
 var lightCurr=0,lightStep=360/1000;
@@ -11,6 +16,26 @@ var longMax = $("#long-list").height()-$(".sec-page").height();
 
 moveStep=longMax/totalTime;
 
+
+var likeNumber = 0;
+var tmpLikeNum = 0;
+var likeBtn = $('.iconLike-wrap');
+var likeList = $('.like-list');
+
+likeBtn.on('touchstart', function(){
+  addLikeFun(1);
+});
+
+function addLikeFun (num) {
+  var $addLike = $('<div class="add-like-wrap"><span>+' + num + '</span><div class="add-like"></div></div>');
+  likeList.append($addLike);
+
+  likeNumber+=num;
+
+  $addLike.on('animationend', function(){
+    $addLike.remove();
+  })
+}
 
 PreLoadImages();
 
@@ -84,12 +109,16 @@ function DestroyPress(){
 
 function btnPanPressAct(e){
   e.preventDefault();
-  btnPanEndAct();
+  cancelAnimationFrame(loopReq);
   timeStart=$.now();
+  tmpLikeNum = $.now();
   loopReq=requestAnimationFrame(SetLongAction);
 }
 
 function btnPanEndAct(){
+  btnControll.removeClass('press');
+  tmpLikeNum = $.now() - tmpLikeNum;
+  addLikeFun(parseInt(tmpLikeNum/50));
   cancelAnimationFrame(loopReq);
 }
 
@@ -106,14 +135,15 @@ function SetLongAction(){
     SetLongTransform(longMax);
     EndAct();
   }else{
-    $("#btn-controll").css({"-webkit-transform":"rotate("+lightCurr+"deg)","transform":"translateY(-"+lightCurr+"deg)"});
+    btnControll.addClass('press');
+    ringItemWrap.css({"-webkit-transform":"rotate("+lightCurr+"deg)","transform":"translateY(-"+lightCurr+"deg)"});
     SetLongTransform(longCurr);
     loopReq=requestAnimationFrame(SetLongAction);
   }
 }
 
 function SetLongTransform(tx){
-  $("#long-list").css({"-webkit-transform":"translateY(-"+tx+"px)","transform":"translateY(-"+tx+"px)"});
+  longList.css({"-webkit-transform":"translateY(-"+tx+"px)","transform":"translateY(-"+tx+"px)"});
 }
 
 

@@ -58,7 +58,7 @@
         top: 50%;
         width: 100%;
         line-height: 1rem;
-        margin-top: -0.5rem;
+        margin-top: -0.48rem;
         font-size: 0.21rem;
         color: #fff;
         text-align: center;
@@ -113,13 +113,13 @@
       }
       @-webkit-keyframes light-shine {
         0%{
-         opacity: 1;
+         opacity: 0;
         }
         50%{
-          opacity: 0;
+          opacity: 1;
         }
         100% {
-          opacity: 1;
+          opacity: 0;
         }
       }
     </style>
@@ -142,8 +142,17 @@
         </div>
       </section>
       <section class="sec-btn">
+        <div class="iconLike-wrap">
+          <div class="iconlike"></div>
+          <div class="like-list"></div>
+        </div>
+        <div class="music-btn"></div>
         <div id="btn-controll" class="ring">
-          <div class="ring-item"></div>
+          <div class="ring-item-wrap">
+            <div class="ring-item"></div>
+          </div>
+          <div class="ring-words"></div>
+          <div class="ring-light"></div>
         </div>
       </section>
     </div>
@@ -163,8 +172,23 @@
       window.ontouchstart = function(e) { e.preventDefault(); };
       
       window.onload = function () {
-        $bgSound=$('<audio preload="auto" loop><source src="../music/bg_voice.mp3" type="audio/mpeg"></audio>');
+        $bgSound=$('<audio preload="auto" id="bgMusic" loop><source src="../music/bg_voice.mp3" type="audio/mpeg"></audio>');
         $("body").append($bgSound);
+        
+        var musicBtn = $('.music-btn');
+        var musicOff = false;
+        musicBtn.on('touchstart', function(){
+          if(!musicOff) {
+            $('#bgMusic')[0].pause();
+            musicBtn.addClass('off');
+            musicOff = true;
+          }else {
+            $('#bgMusic')[0].play();
+            musicBtn.removeClass('off');
+            musicOff = false;
+          }
+        });
+        
         if(isWeixin){
           document.addEventListener("WeixinJSBridgeReady", function () {
             $bgSound[0].play();
