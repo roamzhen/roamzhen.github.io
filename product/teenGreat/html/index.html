@@ -138,14 +138,13 @@
     </div>
     <div class="wrap">
       <section class="sec-page">
-        <div id="long-list" class="page-list"><b class="page-1"></b><b class="page-2"></b><b class="page-3"></b><b class="page-4"></b><b class="page-5"></b><b class="page-6"></b><b class="page-7"></b><b class="page-8"></b><b class="page-9"></b><b class="page-10"></b><b class="page-11"></b><b class="page-12"></b><b class="page-13"></b><b class="page-14"></b><b class="page-15"></b><b class="page-16"></b><b class="page-17"></b><b class="page-18"></b><b class="page-19"></b><b class="page-20"></b>
+        <div id="long-list" class="page-list"><b class="page-1"></b><b class="page-2"></b><b class="page-3"></b><b class="page-4"></b><b class="page-5"></b><b class="page-6"></b><b class="page-7"></b><b class="page-8"></b><b class="page-9"></b><b class="page-10"></b><b class="page-11"></b><b class="page-12"></b><b class="page-13"></b><b class="page-14"></b><b class="page-15"></b><b class="page-16"></b><b class="page-17"></b><b class="page-18"></b><b class="page-19"></b><b class="page-20"></b><span class="dialog-1"></span><span class="dialog-2"></span><span class="dialog-3"></span><span class="dialog-4"></span><span class="dialog-5"></span><span class="dialog-6"></span><span class="dialog-7"></span><span class="dialog-8"></span><span class="dialog-9"></span><span class="dialog-10"></span><span class="dialog-11"></span><span class="dialog-12"></span>
+          <div class="video-item"></div>
+          <div class="share-btn"></div>
+          <div class="reload-btn"></div>
         </div>
       </section>
       <section class="sec-btn">
-        <div class="iconLike-wrap">
-          <div class="iconlike"></div>
-          <div class="like-list"></div>
-        </div>
         <div class="music-btn"></div>
         <div id="btn-controll" class="ring">
           <div class="ring-item-wrap">
@@ -155,14 +154,17 @@
           <div class="ring-light"></div>
         </div>
       </section>
+      <div class="section sec-canvas"></div>
     </div>
     <script>
+      var htmlWidth = document.documentElement.clientWidth;
       var htmlHeight = document.documentElement.clientHeight;
       
       var loadingRingBottom = (htmlHeight/2 - 1800/parseInt(document.documentElement.style.fontSize)) + 'px';
       $('.loading-ring-wrap').css('bottom', loadingRingBottom);
       
     </script>
+    <script src="../js/pixi.min.js"></script>
     <script src="../js/static-index.js"></script>
     <script>
       var isWeixin=IsWeixinCheck();
