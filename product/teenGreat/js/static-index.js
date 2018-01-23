@@ -12,11 +12,19 @@ var ringItemWrap = $("#btn-controll .ring-item-wrap");
 var ringWords = $('#btn-controll ring-words');
 var ringLight = $('#btn-controll ring-light');
 var longList = $("#long-list");
+var loveNumber =$('#loveNumber');
+
+var secEffect = $('.sec-effect');
+var secEffectMiddle = $('.sec-effect .effect-middle');
+secEffectMiddle.on('animationend', function(){
+  secEffect.removeClass('anim-in');
+});
 
 var longCurr=0,longMax=0,moveStep=0,timeStart=0,loopReq,totalTime=60000;// 60000
+var timeLevel = totalTime/4/9;
 var lightCurr=0,lightStep=360/1000;
 var loadP=0,loadInterv,loadTp=0;
-var basePath="../img/", bgPath="../img/bg/";
+var basePath="../img/", bgPath="../img/bg/", dialogPath="../img/dialog/";
 
 var longMax = $("#long-list").height()-$(".sec-page").height();
 
@@ -53,7 +61,6 @@ var app = new PIXI.Application({
   transparent: true,
 });
 secCanvas.append(app.view);
-
 
 function addCricle(num) {
   for(var i =0; i< num; i++) {
@@ -177,13 +184,14 @@ app.ticker.add(function() {
 PreLoadImages();
 
 function PreLoadImages(){
-  var loadImages=['/bg/bg_1.jpg',"ring.png","ringHalo.png"];
+  var loadImages=['hintImg.png','/bg/bg_1.jpg',"ring.png","ringHalo.png","effect-bar.png","ringWords.png","share-words.png"];
   for(var i=0;i<loadImages.length;i++) loadImages[i]=basePath+loadImages[i];
   jQuery.imgpreload(loadImages,{number:6,all: LoadImages});
 }
 
 function LoadImages(){
-  var loadImages=[
+  var loadImages = [];
+  var loadBgImages=[
     'bg_1.jpg',
     'bg_2.jpg',
     'bg_3.jpg',
@@ -205,7 +213,23 @@ function LoadImages(){
     'bg_19.jpg',
     'bg_20.jpg'
   ];
-  for(var i=0;i<loadImages.length;i++) loadImages[i]=bgPath+loadImages[i];
+  for(var i=0;i<loadBgImages.length;i++) loadBgImages[i]=bgPath+loadBgImages[i];
+  var loadDialogImages=[
+    'dialog1.png',
+    'dialog2.png',
+    'dialog3.png',
+    'dialog4.png',
+    'dialog5.png',
+    'dialog6.png',
+    'dialog7.png',
+    'dialog8.png',
+    'dialog9.png',
+    'dialog10.png',
+    'dialog11.png',
+    'dialog12.png',
+  ];
+  for(var i=0;i<loadDialogImages.length;i++) loadDialogImages[i]=dialogPath+loadDialogImages[i];
+  loadImages = loadImages.concat(loadBgImages, loadDialogImages);
   jQuery.imgpreload(loadImages,{
     number:6,
     each: function(imgs){
@@ -250,9 +274,13 @@ function DestroyPress(){
 var likeAddTimer;
 var addTimes = 0;
 
-function addLoop() {
+function addLoop(number) {
   if(addTimes < 4 ) {
-    addCricle(Math.random()*4 + 3);
+    if(number){
+      addCricle(Math.random()*4 + 3 + number);
+    }else{
+      addCricle(Math.random()*4 + 3);
+    }
 
     addTimes++;
   }else {
@@ -266,6 +294,7 @@ function btnPanPressAct(e){
   timeStart=$.now();
   tmpLikeNum = $.now();
 
+  addLoop(6);
   likeAddTimer = setInterval(addLoop, 150);
 
   loopReq=requestAnimationFrame(SetLongAction);
@@ -278,10 +307,72 @@ function btnPanEndAct(){
   clearInterval(likeAddTimer);
   addTimes= 0;
   cancelAnimationFrame(loopReq);
+
+  if(tmpLikeNum <= timeLevel) {
+    loveNumber.html('99');
+    likeNumber+=99;
+  }else if(tmpLikeNum <= timeLevel*2) {
+    loveNumber.html('168');
+    likeNumber+=168;
+  }else if(tmpLikeNum <= timeLevel*3) {
+    loveNumber.html('365');
+    likeNumber+=365;
+  }else if(tmpLikeNum <= timeLevel*4) {
+    loveNumber.html('520');
+    likeNumber+=520;
+  }else if(tmpLikeNum <= timeLevel*5) {
+    loveNumber.html('666');
+    likeNumber+=666;
+  }else if(tmpLikeNum <= timeLevel*6) {
+    loveNumber.html('999');
+    likeNumber+=999;
+  }else if(tmpLikeNum <= timeLevel*7) {
+    loveNumber.html('1314');
+    likeNumber+=1314;
+  }else if(tmpLikeNum <= timeLevel*8) {
+    loveNumber.html('1668');
+    likeNumber+=1668;
+  }else {
+    loveNumber.html('2018');
+    likeNumber+=2018;
+  }
+
+  secEffect.addClass('anim-in');
 }
 
 function EndAct() {
+  btnPanEndAct();
+  btnControll.fadeOut();
+
+  $('.share-btn').show();
+  $('.reload-btn').show();
+
+  document.title = '2017,我为长长的回忆点了'+ likeNumber +'个赞';
 }
+
+$('.share-btn').on('touchstart', function(){
+  $('.sec-share').show();
+})
+$('.sec-share').on('touchstart', function(){
+  $(this).hide();
+})
+$('.reload-btn').on('touchstart', function(){
+  PlayAgainAct();
+})
+
+function PlayAgainAct(){
+  likeNumber=0;
+  longCurr=sayStep=0;
+  SetLongTransform(0);
+  $('.share-btn').hide();
+  $('.reload-btn').hide();
+  btnControll.show();
+  for (var i = sayArr.length - 1; i >= 0; i--) {
+    $(sayArr[i]["id"]).removeClass("zoom");
+  }
+  SetHamm();
+}
+
 
 function SetLongAction(){
   var nowTime=$.now();
