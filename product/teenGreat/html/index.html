@@ -209,14 +209,6 @@
         var musicBtn = $('.music-btn');
         var musicOff = false;
         
-        setTimeout(function(){
-          $('.lines1').css('animation', 'line-scale 0.6s ease-in-out infinite');
-          $('.lines2').css('animation', 'line-scale 0.6s 0.3s ease-in-out infinite');
-          $('.lines3').css('animation', 'line-scale 0.6s 0.2s ease-in-out infinite');
-          $('.lines4').css('animation', 'line-scale 0.6s 0.3s ease-in-out infinite');
-          $('.lines5').css('animation', 'line-scale 0.6s ease-in-out infinite');
-        },100);
-        
         musicBtn.on('touchstart', function(){
         
           if(!musicOff) {
