@@ -310,31 +310,31 @@ function btnPanEndAct(){
 
   if(tmpLikeNum <= timeLevel) {
     loveNumber.html('99');
-    likeNumber+=99;
+    likeNumber=Math.max(99,likeNumber);
   }else if(tmpLikeNum <= timeLevel*2) {
     loveNumber.html('168');
-    likeNumber+=168;
+    likeNumber=Math.max(168,likeNumber);
   }else if(tmpLikeNum <= timeLevel*3) {
     loveNumber.html('365');
-    likeNumber+=365;
+    likeNumber=Math.max(365,likeNumber);
   }else if(tmpLikeNum <= timeLevel*4) {
     loveNumber.html('520');
-    likeNumber+=520;
+    likeNumber=Math.max(520,likeNumber);
   }else if(tmpLikeNum <= timeLevel*5) {
     loveNumber.html('666');
-    likeNumber+=666;
+    likeNumber=Math.max(666,likeNumber);
   }else if(tmpLikeNum <= timeLevel*6) {
     loveNumber.html('999');
-    likeNumber+=999;
+    likeNumber=Math.max(999,likeNumber);
   }else if(tmpLikeNum <= timeLevel*7) {
     loveNumber.html('1314');
-    likeNumber+=1314;
+    likeNumber=Math.max(1314,likeNumber);
   }else if(tmpLikeNum <= timeLevel*8) {
     loveNumber.html('1668');
-    likeNumber+=1668;
+    likeNumber=Math.max(1668,likeNumber);
   }else {
     loveNumber.html('2018');
-    likeNumber+=2018;
+    likeNumber=Math.max(2018,likeNumber);
   }
 
   secEffect.addClass('anim-in');
@@ -347,7 +347,7 @@ function EndAct() {
   $('.share-btn').show();
   $('.reload-btn').show();
 
-  document.title = '2017,我为长长的回忆点了'+ likeNumber +'个赞';
+  document.title = '贺新春：2017，长长的回忆';
 }
 
 $('.share-btn').on('touchstart', function(){
