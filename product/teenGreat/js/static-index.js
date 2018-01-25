@@ -20,7 +20,7 @@ secEffectMiddle.on('animationend', function(){
   secEffect.removeClass('anim-in');
 });
 
-var longCurr=0,longMax=0,moveStep=0,timeStart=0,loopReq,totalTime=60000;// 60000
+var longCurr=0,longMax=0,moveStep=0,timeStart=0,loopReq,totalTime=6000;// 60000
 var timeLevel = totalTime/4/9;
 var lightCurr=0,lightStep=360/1000;
 var loadP=0,loadInterv,loadTp=0;
@@ -348,6 +348,20 @@ function EndAct() {
   $('.reload-btn').show();
 
   document.title = '贺新春：2017，长长的回忆';
+
+  wx.onMenuShareTimeline({
+    title: "贺新春：2017，长长的回忆", // 分享标题
+    link: wxlink,//window.location.href.split("?")[0]
+    imgUrl: "../img/hintImg.jpg" // 分享图标
+  });
+  // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+  wx.onMenuShareAppMessage({
+    title: "贺新春：2017，长长的回忆", // 分享标题
+    desc: "习近平邀你重温2017，我为长长的回忆连击"+likeNumber+"次赞，你呢？", // 分享描述
+    link: wxlink, //window.location.href.split("?")[0]
+    imgUrl: "../img/hintImg.jpg", // 分享图标
+    type: "link", // 分享类型,music、video或link，不填默认为link
+  });
 }
 
 $('.share-btn').on('touchstart', function(){

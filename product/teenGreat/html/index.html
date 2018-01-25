@@ -129,7 +129,6 @@
       }
     </style>
     <link rel="stylesheet" href="../css/style.css"/>
-    <script src="../js/jquery.min.js"></script>
   </head>
   <body>
     <div src="../src/hintimg.png" style="width:1px;height:1px;position:absolute;left: 0; top:0;z-index:-10;" class="img"></div>
@@ -189,6 +188,8 @@
         <div class="share-words"></div>
       </div>
     </div>
+    <script src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script>
       var htmlWidth = document.documentElement.clientWidth;
       var htmlHeight = document.documentElement.clientHeight;
@@ -199,6 +200,62 @@
     </script>
     <script src="../js/pixi.min.js"></script>
     <script src="../js/static-index.js"></script>
+    <script>
+      var wxlink = window.location.href.split('?')[0]; //微信分享链接
+      
+      function addScript(link){
+        var el = document.createElement("script");
+          el.type="text/javascript";
+          el.lang="javascript";
+          if(el.readyState){
+            el.onreadystatechange=function(){
+              if(!this.readyState||this.readyState=="loaded"||this.readyState=="complete"){
+              }
+            }
+          }
+          else{
+            el.onload=function(){
+            }
+        }
+        el.src=link;
+        document.getElementsByTagName("body")[0].appendChild(el);
+      }     
+      var data={"appid":"newstiket","url":encodeURIComponent(encodeURIComponent(window.location.href))};  
+      //getAjax("http://api.cntv.cn/Apicommon/index?&path=iphoneInterface/general/getWeiXinSignature.jsonp",data,weixinSucess);
+      var getUrl = "http://api.cntv.cn/Apicommon/index?&path=iphoneInterface/general/getWeiXinSignature.jsonp";
+      getUrl += "&appid="+data.appid+"&url="+data.url+"&callback=weixinSucess";
+      function weixinSucess(data){  
+        wx.config({
+        debug: false, 
+        appId: "wx2723c0deaa5a97e9", 
+        timestamp: data.timestamp, 
+        nonceStr:  data.nonceStr, 
+        signature: data.signature,
+        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 功能列表，我们要使用JS-SDK的什么功能
+        });
+      }
+      addScript(getUrl);
+      // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在 页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready 函数中。
+      wx.ready(function(){
+        // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+        wx.onMenuShareTimeline({
+          title: "贺新春：2017，长长的回忆", // 分享标题
+          link: wxlink,//window.location.href.split("?")[0]
+          imgUrl: "../img/hintImg.jpg" // 分享图标
+        });
+        // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+        wx.onMenuShareAppMessage({
+          title: "贺新春：2017，长长的回忆", // 分享标题
+          desc: "习近平邀你重温2017，我为长长的回忆连击2018次赞，你呢？", // 分享描述
+          link: wxlink, //window.location.href.split("?")[0]
+          imgUrl: "../img/hintImg.jpg", // 分享图标
+          type: "link", // 分享类型,music、video或link，不填默认为link
+        });
+      });
+      wx.error(function(res){
+        console.log("失败");
+      });
+    </script>
     <script>
       var isWeixin=IsWeixinCheck();
       window.addEventListener('contextmenu', function(e){
