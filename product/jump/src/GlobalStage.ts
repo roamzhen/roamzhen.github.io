@@ -438,7 +438,7 @@ class GlobalStage extends egret.DisplayObjectContainer {
      */
 
     private durationTime2mainLine(durationTime:number) {
-        let move = Math.round(durationTime/5);
+        let move = Math.round(durationTime/4);
 
         let preX = this.heartState.x, preY = this.heartState.y;
 
