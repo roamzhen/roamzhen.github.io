@@ -1,31 +1,3 @@
-//////////////////////////////////////////////////////////////////////////////////////
-//
-//  Copyright (c) 2014-present, Egret Technology.
-//  All rights reserved.
-//  Redistribution and use in source and binary forms, with or without
-//  modification, are permitted provided that the following conditions are met:
-//
-//     * Redistributions of source code must retain the above copyright
-//       notice, this list of conditions and the following disclaimer.
-//     * Redistributions in binary form must reproduce the above copyright
-//       notice, this list of conditions and the following disclaimer in the
-//       documentation and/or other materials provided with the distribution.
-//     * Neither the name of the Egret nor the
-//       names of its contributors may be used to endorse or promote products
-//       derived from this software without specific prior written permission.
-//
-//  THIS SOFTWARE IS PROVIDED BY EGRET AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
-//  OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
-//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-//  IN NO EVENT SHALL EGRET AND CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-//  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-//  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA,
-//  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-//  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
-//////////////////////////////////////////////////////////////////////////////////////
 var __reflect = (this && this.__reflect) || function (p, c, t) {
     p.__class__ = c, t ? t.push(c) : t = [c], p.__types__ = p.__types__ ? t.concat(p.__types__) : t;
 };
@@ -58,17 +30,18 @@ var GlobalStage = (function (_super) {
         /**
          * 心形形状，尺寸参数
          */
-        _this.heartWidthMax = 60;
-        _this.heartWidthMin = 30;
-        _this.heartHeightMax = 60;
-        _this.heartHeightMin = 30;
-        _this.minScale = 0.5;
+        _this.heartWidthMax = 100;
+        _this.heartWidthMin = 60;
+        _this.heartHeightMax = 150;
+        _this.heartHeightMin = 80;
+        _this.minScale = 0.6;
         _this.currentScale = 1;
+        _this.currentSmall = 0.6;
         /**
          * 桌子形状，尺寸参数
          */
-        _this.tableWidth = 130;
-        _this.tableHeight = 90;
+        _this.tableWidth = 190;
+        _this.tableHeight = 178;
         _this.tableIndex = 0;
         /**
          * 功能记录变量，待添加注释
@@ -81,6 +54,7 @@ var GlobalStage = (function (_super) {
         };
         _this.sqrt3 = Math.sqrt(3);
         _this.animating = false;
+        _this.touchBegined = false;
         _this.once(egret.Event.ADDED_TO_STAGE, _this.onAddToStage, _this);
         return _this;
     }
@@ -90,7 +64,7 @@ var GlobalStage = (function (_super) {
         this.initGame();
         var imgLoader = new egret.ImageLoader;
         imgLoader.once(egret.Event.COMPLETE, this.imgLoadHandler, this);
-        imgLoader.load("resource/assets/heart.png");
+        imgLoader.load("resource/assets/man1.png");
         this.startCreateScene();
         this.addStageEventListener();
     };
@@ -108,12 +82,16 @@ var GlobalStage = (function (_super) {
             y: stageH * 4 / 5,
             radius: 20
         };
-        setTimeout(function () {
-            if (that.heart && that.heart.x && that.heart.y) {
-                that.heart.x = that.heartState.x;
-                that.heart.y = that.heartState.y;
-            }
-        }, 100);
+        if (that.heart && that.heart.x && that.heart.y) {
+            console.log('Fail and back');
+            this.heart.skewY = 0;
+            var tween = egret.Tween.get(this.heart);
+            // 补间动画
+            tween.to({
+                x: that.heartState.x,
+                y: that.heartState.y
+            }, 350);
+        }
         /**
          * 初始化参数
          */
@@ -149,14 +127,13 @@ var GlobalStage = (function (_super) {
          * 心形相关
          */
         var bmd = evt.currentTarget.data;
-        // console.log('bmd:', bmd);
         /// 将已加载完成的图像显示出来
         this.heart = new egret.Bitmap(bmd);
         this.heart.width = this.heartWidthMax;
         this.heart.height = this.heartHeightMax;
         // 设定定位基准
         this.heart.anchorOffsetX = this.heartWidthMax / 2;
-        this.heart.anchorOffsetY = this.heartHeightMax / 2;
+        this.heart.anchorOffsetY = this.heartHeightMax;
         this.heart.x = this.heartState.x;
         this.heart.y = this.heartState.y;
         this.addChild(this.heart);
@@ -176,7 +153,6 @@ var GlobalStage = (function (_super) {
                 break;
         }
         this.heartState.y = this.tableNow.y - moveDistanceY;
-        console.log('move:', move);
         if (move > tableNext.targetMin && move < tableNext.targetMax) {
             this.mainLine = this.mainLine + move;
             this.tableNow = {
@@ -191,30 +167,26 @@ var GlobalStage = (function (_super) {
             else {
                 nextCamaraX = this.camaraState.x - moveDistanceX;
             }
-            if (this.heartState.y + this.camaraState.y > this.stage.stageHeight / 2) {
+            if (this.heartState.y + this.camaraState.y > this.stage.stageHeight * 3 / 5) {
                 this.tweenCamara(this.camaraState.x, this.camaraState.y, nextCamaraX, this.camaraState.y);
             }
             else {
                 this.tweenCamara(this.camaraState.x, this.camaraState.y, nextCamaraX, this.camaraState.y + moveDistanceY);
             }
-            console.log('tableNowX:', this.tableNext.x);
-            console.log('tableNowY:', this.tableNext.y);
             // 结束后随机方向
             this.moveDirection = Math.round(Math.random());
+            if (this.moveDirection === 0) {
+                this.heart.skewY = -180;
+            }
+            else {
+                this.heart.skewY = 0;
+            }
             this.addTabble();
-            console.log('mainLine', this.mainLine);
-            console.log('x:', this.heartState.x, 'y:', this.heartState.y);
         }
         else {
-            console.log('You Fail');
             var that = this;
             setTimeout(function () {
-                if (window.confirm('失败了，是否重新开始')) {
-                    that.restartGame();
-                }
-                else {
-                    that.restartGame();
-                }
+                that.restartGame();
             }, 700);
         }
     };
@@ -224,8 +196,8 @@ var GlobalStage = (function (_super) {
     };
     GlobalStage.prototype.addTabble = function () {
         var tableNow = this.tableNow;
-        var nextTableRadius = Math.round(Math.random() * 30) + 50;
-        var nextTableDistance = Math.round(Math.random() * 200 + 20) + tableNow.radius + nextTableRadius;
+        var nextTableRadius = Math.round(Math.random() * 30) + 40;
+        var nextTableDistance = Math.round(Math.random() * 100 + 40) + tableNow.radius + nextTableRadius + nextTableRadius / 2;
         var nextX = (this.moveDirection === 0) ? tableNow.x - nextTableDistance * this.angleSqrt.x : tableNow.x + nextTableDistance * this.angleSqrt.x;
         this.tableNext = {
             x: nextX,
@@ -236,7 +208,6 @@ var GlobalStage = (function (_super) {
             targetMax: nextTableDistance + nextTableRadius
         };
         this.loadTable(this.tableNext.x, this.tableNext.y, this.tableNext.radius);
-        console.log('tagertArea', this.tableNext.targetMin, this.tableNext.targetMax);
         var shp = new egret.Shape();
         shp.graphics.lineStyle(2, 0x00ff00);
         shp.graphics.moveTo(this.tableNow.x, this.tableNow.y);
@@ -268,10 +239,10 @@ var GlobalStage = (function (_super) {
         imgLoader.once(egret.Event.COMPLETE, function (evt) {
             var bmd = evt.currentTarget.data;
             _this.table = new egret.Bitmap(bmd);
-            _this.table.width = 2 * _this.sqrt3 * r;
-            _this.table.height = _this.table.width / 262 * 234;
+            _this.table.width = 2 * _this.sqrt3 * r + r;
+            _this.table.height = _this.table.width / 190 * 178;
             _this.table.x = x - _this.table.width / 2;
-            _this.table.y = y - r;
+            _this.table.y = y - r - r / 3;
             _this.tableGroup.addChild(_this.table);
             _this.tableGroup.setChildIndex(_this.table, 0);
         }, this);
@@ -289,12 +260,16 @@ var GlobalStage = (function (_super) {
                     tm = new Date();
                     this.startTime = tm.getTime();
                     this.touchBeginTime = setInterval(function () { _this.longPress(); }, 17);
+                    this.touchBegined = true;
                     break;
                 case egret.TouchEvent.TOUCH_END:
-                    tm = new Date();
-                    this.endTime = tm.getTime();
-                    this.countTime();
-                    clearInterval(this.touchBeginTime);
+                    if (this.touchBegined) {
+                        tm = new Date();
+                        this.endTime = tm.getTime();
+                        this.countTime();
+                        clearInterval(this.touchBeginTime);
+                        this.touchBegined = false;
+                    }
                     break;
             }
         }
@@ -304,10 +279,15 @@ var GlobalStage = (function (_super) {
      */
     GlobalStage.prototype.heartTransformation = function () {
         if (this.currentScale <= this.minScale) {
+            this.currentSmall = this.currentSmall - 0.001;
+            if (this.currentSmall > 0.3) {
+                this.heart.scaleX = this.currentSmall;
+                this.heart.scaleY = this.currentSmall;
+            }
             return;
         }
         else {
-            this.currentScale = this.currentScale - 0.02;
+            this.currentScale = this.currentScale - 0.015;
             this.heart.scaleX = this.currentScale;
             this.heart.scaleY = this.currentScale;
         }
@@ -370,6 +350,7 @@ var GlobalStage = (function (_super) {
         this.durationTime = this.endTime - this.startTime;
         this.durationTime2mainLine(this.durationTime);
         this.currentScale = 1;
+        this.currentSmall = 0.6;
         this.clearTime();
     };
     /**
@@ -383,7 +364,7 @@ var GlobalStage = (function (_super) {
      * 长按事件转换为距离
      */
     GlobalStage.prototype.durationTime2mainLine = function (durationTime) {
-        var move = Math.round(durationTime / 5);
+        var move = Math.round(durationTime / 3);
         var preX = this.heartState.x, preY = this.heartState.y;
         this.Calculator(move);
         this.tween(preX, preY, this.heartState.x, this.heartState.y);
@@ -399,7 +380,6 @@ var GlobalStage = (function (_super) {
         var result = new egret.Bitmap();
         var texture = RES.getRes(name);
         result.texture = texture;
-        console.log('result:', result);
         return result;
     };
     return GlobalStage;

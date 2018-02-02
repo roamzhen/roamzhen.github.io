@@ -59,11 +59,6 @@ var Main = (function (_super) {
         egret.lifecycle.onResume = function () {
             egret.ticker.resume();
         };
-        //inject the custom material parser
-        //注入自定义的素材解析器
-        var assetAdapter = new AssetAdapter();
-        egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
-        egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
         //Config loading process interface
         //设置加载进度界面
         this.loadingView = new LoadingUI();
@@ -150,21 +145,25 @@ var Main = (function (_super) {
      * Create scene interface
      */
     Main.prototype.startCreateMainStage = function () {
-        var bg = this.bg;
+        document.querySelector('.boxLoading').remove();
+        var bg = this.createBitmapByName("bgs_jpg");
+        this.addChild(bg);
         var stageW = this.stage.stageWidth;
         var stageH = this.stage.stageHeight;
-        this.bg.width = stageW;
-        this.bg.height = stageH;
-        this.addChild(bg);
-        this.drawBg();
+        bg.height = stageH;
+        bg.width = stageH / 980 * 707;
         this.mainStage = new GlobalStage();
         this.stage.addChild(this.mainStage);
     };
-    Main.prototype.drawBg = function () {
-        var bg = this.bg;
-        bg.graphics.beginFill(0xcaaeda); // 0xccceda
-        bg.graphics.drawRect(0, 0, bg.width, bg.height);
-        bg.graphics.endFill();
+    /**
+     * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
+     * Create a Bitmap object according to name keyword.As for the property of name please refer to the configuration file of resources/resource.json.
+     */
+    Main.prototype.createBitmapByName = function (name) {
+        var result = new egret.Bitmap();
+        var texture = RES.getRes(name);
+        result.texture = texture;
+        return result;
     };
     return Main;
 }(eui.UILayer));

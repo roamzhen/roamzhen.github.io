@@ -49,11 +49,6 @@ class Main extends eui.UILayer {
             egret.ticker.resume();
         }
 
-        //inject the custom material parser
-        //注入自定义的素材解析器
-        let assetAdapter = new AssetAdapter();
-        egret.registerImplementation("eui.IAssetAdapter", assetAdapter);
-        egret.registerImplementation("eui.IThemeAdapter", new ThemeAdapter());
         //Config loading process interface
         //设置加载进度界面
         this.loadingView = new LoadingUI();
@@ -147,25 +142,30 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected startCreateMainStage(): void {
-        let bg:egret.Shape = this.bg;
+        document.querySelector('.boxLoading').remove();
+
+
+        let bg = this.createBitmapByName("bgs_jpg");
+        this.addChild(bg);
         let stageW = this.stage.stageWidth;
         let stageH = this.stage.stageHeight;
-
-        this.bg.width = stageW;
-        this.bg.height = stageH;
-        this.addChild(bg);
-        this.drawBg();
+        bg.height = stageH;
+        bg.width = stageH/980*707;
 
         this.mainStage = new GlobalStage();
         this.stage.addChild(this.mainStage);
     }
 
-    private drawBg():void {
-        var bg:egret.Shape = this.bg;
-        
-        bg.graphics.beginFill(0xcaaeda); // 0xccceda
-        bg.graphics.drawRect(0, 0, bg.width, bg.height);
-        bg.graphics.endFill();
+    /**
+     * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
+     * Create a Bitmap object according to name keyword.As for the property of name please refer to the configuration file of resources/resource.json.
+     */
+    private createBitmapByName(name: string): egret.Bitmap {
+        let result = new egret.Bitmap();
+        let texture: egret.Texture = RES.getRes(name);
+        result.texture = texture;
+        return result;
     }
+
 
 }

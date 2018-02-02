@@ -1,31 +1,3 @@
-//////////////////////////////////////////////////////////////////////////////////////
-//
-//  Copyright (c) 2014-present, Egret Technology.
-//  All rights reserved.
-//  Redistribution and use in source and binary forms, with or without
-//  modification, are permitted provided that the following conditions are met:
-//
-//     * Redistributions of source code must retain the above copyright
-//       notice, this list of conditions and the following disclaimer.
-//     * Redistributions in binary form must reproduce the above copyright
-//       notice, this list of conditions and the following disclaimer in the
-//       documentation and/or other materials provided with the distribution.
-//     * Neither the name of the Egret nor the
-//       names of its contributors may be used to endorse or promote products
-//       derived from this software without specific prior written permission.
-//
-//  THIS SOFTWARE IS PROVIDED BY EGRET AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
-//  OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
-//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-//  IN NO EVENT SHALL EGRET AND CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-//  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-//  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA,
-//  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-//  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
-//////////////////////////////////////////////////////////////////////////////////////
 
 class GlobalStage extends egret.DisplayObjectContainer {
 
@@ -45,17 +17,18 @@ class GlobalStage extends egret.DisplayObjectContainer {
    /**
     * 心形形状，尺寸参数
     */
-   private heartWidthMax = 60;
-   private heartWidthMin = 30;
-   private heartHeightMax = 60;
-   private heartHeightMin = 30;
-   private minScale = 0.5;
+   private heartWidthMax = 100;
+   private heartWidthMin = 60;
+   private heartHeightMax = 150;
+   private heartHeightMin = 80;
+   private minScale = 0.6;
    private currentScale = 1;
+   private currentSmall = 0.6;
    /**
     * 桌子形状，尺寸参数
     */
-   private tableWidth = 130;
-   private tableHeight = 90;
+   private tableWidth = 190;
+   private tableHeight = 178;
    private tableIndex = 0;
    /**
     * 功能记录变量，待添加注释
@@ -72,6 +45,7 @@ class GlobalStage extends egret.DisplayObjectContainer {
    private sqrt3 = Math.sqrt(3);
    
    private animating = false;
+   private touchBegined = false;
 
    // 图形变量
    private heart:egret.Bitmap;
@@ -94,7 +68,7 @@ class GlobalStage extends egret.DisplayObjectContainer {
 
         const imgLoader:egret.ImageLoader = new egret.ImageLoader;
         imgLoader.once( egret.Event.COMPLETE, this.imgLoadHandler, this );
-        imgLoader.load("resource/assets/heart.png");
+        imgLoader.load("resource/assets/man1.png");
 
         this.startCreateScene();
         this.addStageEventListener();
@@ -116,12 +90,20 @@ class GlobalStage extends egret.DisplayObjectContainer {
             radius: 20
         };
 
-        setTimeout(() => {
-            if (that.heart && that.heart.x && that.heart.y) {
-                that.heart.x = that.heartState.x;
-                that.heart.y = that.heartState.y;
-            }
-        }, 100);
+
+
+        if (that.heart && that.heart.x && that.heart.y) {
+            console.log('Fail and back')
+            this.heart.skewY = 0;
+
+            const tween = egret.Tween.get(this.heart);
+            // 补间动画
+            tween.to({
+                x: that.heartState.x,
+                y: that.heartState.y
+            }, 350);
+        }
+
 
         /**
          * 初始化参数
@@ -167,14 +149,13 @@ class GlobalStage extends egret.DisplayObjectContainer {
          * 心形相关
          */
         var bmd:egret.BitmapData = evt.currentTarget.data;
-        // console.log('bmd:', bmd);
         /// 将已加载完成的图像显示出来
         this.heart = new egret.Bitmap( bmd );
         this.heart.width = this.heartWidthMax;
         this.heart.height = this.heartHeightMax;
         // 设定定位基准
         this.heart.anchorOffsetX = this.heartWidthMax/2;
-        this.heart.anchorOffsetY = this.heartHeightMax/2;
+        this.heart.anchorOffsetY = this.heartHeightMax;
         this.heart.x = this.heartState.x;
         this.heart.y = this.heartState.y;
         this.addChild( this.heart );
@@ -203,8 +184,6 @@ class GlobalStage extends egret.DisplayObjectContainer {
         this.heartState.y = this.tableNow.y - moveDistanceY;
 
         
-        console.log('move:',move);
-
         if( move > tableNext.targetMin && move < tableNext.targetMax ){
             this.mainLine = this.mainLine + move;
 
@@ -221,31 +200,26 @@ class GlobalStage extends egret.DisplayObjectContainer {
                 nextCamaraX = this.camaraState.x - moveDistanceX;
             }
 
-            if (this.heartState.y + this.camaraState.y > this.stage.stageHeight /2) {
+            if (this.heartState.y + this.camaraState.y > this.stage.stageHeight *3/5) {
                 this.tweenCamara(this.camaraState.x, this.camaraState.y, nextCamaraX, this.camaraState.y);
             }else {
                 this.tweenCamara(this.camaraState.x, this.camaraState.y, nextCamaraX, this.camaraState.y + moveDistanceY);
             }
-            
-            console.log('tableNowX:', this.tableNext.x);
-            console.log('tableNowY:', this.tableNext.y);
 
             // 结束后随机方向
             this.moveDirection = Math.round(Math.random());
 
-            this.addTabble();
+            if(this.moveDirection === 0) {
+                this.heart.skewY = -180;
+            }else {
+                this.heart.skewY = 0;
+            }
 
-            console.log('mainLine', this.mainLine);
-            console.log('x:', this.heartState.x, 'y:', this.heartState.y);
+            this.addTabble();
         }else {
-            console.log('You Fail');
             var that = this;
             setTimeout(function(){
-                if (window.confirm('失败了，是否重新开始')) {
-                    that.restartGame();
-                } else {
-                    that.restartGame();
-                }
+                that.restartGame();
             }, 700);
         }
         
@@ -258,8 +232,8 @@ class GlobalStage extends egret.DisplayObjectContainer {
 
     private addTabble():void {
         let tableNow = this.tableNow;
-        let nextTableRadius:number = Math.round(Math.random() * 30) + 50;
-        let nextTableDistance: number = Math.round(Math.random() * 200 + 20) + tableNow.radius + nextTableRadius;
+        let nextTableRadius:number = Math.round(Math.random() * 30) + 40;
+        let nextTableDistance: number = Math.round(Math.random() * 100 + 40) + tableNow.radius + nextTableRadius + nextTableRadius/2;
 
         let nextX = (this.moveDirection === 0) ? tableNow.x - nextTableDistance*this.angleSqrt.x : tableNow.x + nextTableDistance*this.angleSqrt.x;
         
@@ -273,7 +247,6 @@ class GlobalStage extends egret.DisplayObjectContainer {
         }
 
         this.loadTable(this.tableNext.x, this.tableNext.y, this.tableNext.radius);
-        console.log('tagertArea', this.tableNext.targetMin, this.tableNext.targetMax);
 
         var shp: egret.Shape = new egret.Shape();
         shp.graphics.lineStyle(2, 0x00ff00);
@@ -307,10 +280,10 @@ class GlobalStage extends egret.DisplayObjectContainer {
         imgLoader.once( egret.Event.COMPLETE, (evt) => {
             var bmd:egret.BitmapData = evt.currentTarget.data;
             this.table = new egret.Bitmap( bmd );
-            this.table.width = 2 * this.sqrt3 * r;
-            this.table.height = this.table.width/262*234;
+            this.table.width = 2 * this.sqrt3 * r + r;
+            this.table.height = this.table.width/190*178;
             this.table.x = x - this.table.width/2;
-            this.table.y = y - r ;
+            this.table.y = y - r - r/3;
             this.tableGroup.addChild(this.table);
 
             this.tableGroup.setChildIndex(this.table, 0);
@@ -332,12 +305,16 @@ class GlobalStage extends egret.DisplayObjectContainer {
                     tm = new Date();
                     this.startTime = tm.getTime();
                     this.touchBeginTime = setInterval(() => { this.longPress(); }, 17);
+                    this.touchBegined = true;
                     break;
                 case egret.TouchEvent.TOUCH_END:
-                    tm = new Date();
-                    this.endTime = tm.getTime();
-                    this.countTime();
-                    clearInterval(this.touchBeginTime);
+                    if(this.touchBegined) {
+                        tm = new Date();
+                        this.endTime = tm.getTime();
+                        this.countTime();
+                        clearInterval(this.touchBeginTime);
+                        this.touchBegined = false;
+                    }
                     break;
             }
         }
@@ -349,9 +326,15 @@ class GlobalStage extends egret.DisplayObjectContainer {
     private heartTransformation():void {
 
       if (this.currentScale <= this.minScale) {
+        this.currentSmall = this.currentSmall - 0.001;
+        
+        if(this.currentSmall> 0.3){
+            this.heart.scaleX = this.currentSmall;
+            this.heart.scaleY = this.currentSmall;
+        }
         return;
       } else {
-        this.currentScale = this.currentScale - 0.02;
+        this.currentScale = this.currentScale - 0.015;
         this.heart.scaleX = this.currentScale;
         this.heart.scaleY = this.currentScale;
       }
@@ -424,6 +407,7 @@ class GlobalStage extends egret.DisplayObjectContainer {
         this.durationTime2mainLine(this.durationTime);
 
         this.currentScale = 1;
+        this.currentSmall = 0.6;
         this.clearTime();
     }
     /**
@@ -438,7 +422,7 @@ class GlobalStage extends egret.DisplayObjectContainer {
      */
 
     private durationTime2mainLine(durationTime:number) {
-        let move = Math.round(durationTime/4);
+        let move = Math.round(durationTime/3);
 
         let preX = this.heartState.x, preY = this.heartState.y;
 
@@ -460,7 +444,6 @@ class GlobalStage extends egret.DisplayObjectContainer {
         let result = new egret.Bitmap();
         let texture: egret.Texture = RES.getRes(name);
         result.texture = texture;
-        console.log('result:', result);
         return result;
     }
 
