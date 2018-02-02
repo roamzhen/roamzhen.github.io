@@ -150,7 +150,7 @@ var Main = (function (_super) {
      * Create scene interface
      */
     Main.prototype.startCreateMainStage = function () {
-        // document.querySelector('.boxLoading').remove();
+        document.querySelector('.boxLoading').remove();
         var bg = this.createBitmapByName("bgs_jpg");
         this.addChild(bg);
         var stageW = this.stage.stageWidth;
