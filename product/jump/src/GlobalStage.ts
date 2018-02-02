@@ -23,7 +23,6 @@ class GlobalStage extends egret.DisplayObjectContainer {
    private heartHeightMin = 80;
    private minScale = 0.6;
    private currentScale = 1;
-   private currentSmall = 0.6;
    /**
     * 桌子形状，尺寸参数
     */
@@ -326,15 +325,9 @@ class GlobalStage extends egret.DisplayObjectContainer {
     private heartTransformation():void {
 
       if (this.currentScale <= this.minScale) {
-        this.currentSmall = this.currentSmall - 0.001;
-        
-        if(this.currentSmall> 0.3){
-            this.heart.scaleX = this.currentSmall;
-            this.heart.scaleY = this.currentSmall;
-        }
         return;
       } else {
-        this.currentScale = this.currentScale - 0.015;
+        this.currentScale = this.currentScale - 0.01;
         this.heart.scaleX = this.currentScale;
         this.heart.scaleY = this.currentScale;
       }
@@ -407,7 +400,6 @@ class GlobalStage extends egret.DisplayObjectContainer {
         this.durationTime2mainLine(this.durationTime);
 
         this.currentScale = 1;
-        this.currentSmall = 0.6;
         this.clearTime();
     }
     /**
