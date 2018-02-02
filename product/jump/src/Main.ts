@@ -147,8 +147,7 @@ class Main extends eui.UILayer {
      * Create scene interface
      */
     protected startCreateMainStage(): void {
-        document.querySelector('.boxLoading').remove();
-
+        // document.querySelector('.boxLoading').remove();
 
         let bg = this.createBitmapByName("bgs_jpg");
         this.addChild(bg);
