@@ -281,7 +281,7 @@ var GlobalStage = (function (_super) {
             return;
         }
         else {
-            this.currentScale = this.currentScale - 0.02;
+            this.currentScale = this.currentScale - 0.015;
             this.heart.scaleX = this.currentScale;
             this.heart.scaleY = this.currentScale;
         }
