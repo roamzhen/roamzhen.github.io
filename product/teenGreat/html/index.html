@@ -174,6 +174,11 @@
         </div>
         <div class="share-btn"></div>
         <div class="reload-btn"></div>
+        <div class="video-btn">
+          <video id="mainVideo" controls="controls" preload="none">
+            <source src="../video/mainVideo.mp4" type="video/mp4"/>
+          </video>
+        </div>
       </section>
       <div class="section sec-canvas"></div>
       <div class="section sec-effect">
@@ -189,6 +194,8 @@
       </div>
     </div>
     <script src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="http://js.player.cntv.cn/creator/swfobject.js"></script>
+    <script type="text/javascript" src="http://js.player.cntv.cn/creator/common_standard.js"></script>
     <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
     <script>
       var htmlWidth = document.documentElement.clientWidth;
@@ -241,14 +248,14 @@
         wx.onMenuShareTimeline({
           title: "贺新春：2017，长长的回忆", // 分享标题
           link: wxlink,//window.location.href.split("?")[0]
-          imgUrl: "../img/hintImg.jpg" // 分享图标
+          imgUrl: "http://news.cctv.com/special/xysp/h5/ceshiyemian2017ccdhy/img/hintImg.png" // 分享图标
         });
         // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
         wx.onMenuShareAppMessage({
           title: "贺新春：2017，长长的回忆", // 分享标题
           desc: "测试邀你重温2017，我为长长的回忆连击2018次赞，你呢？", // 分享描述
           link: wxlink, //window.location.href.split("?")[0]
-          imgUrl: "../img/hintImg.jpg", // 分享图标
+          imgUrl: "http://news.cctv.com/special/xysp/h5/ceshiyemian2017ccdhy/img/hintImg.png", // 分享图标
           type: "link", // 分享类型,music、video或link，不填默认为link
         });
       });
@@ -324,6 +331,13 @@
         }
         PreLoadImages();
       };
+    </script>
+    <script>
+      var mainVideo = $('#mainVideo');
+      $('.video-btm').on('touchstart', function(){
+        mainVideo[0].load();
+        mainVideo[0].play();
+      });
       
       
       

@@ -20,7 +20,7 @@ secEffectMiddle.on('animationend', function(){
   secEffect.removeClass('anim-in');
 });
 
-var longCurr=0,longMax=0,moveStep=0,timeStart=0,loopReq,totalTime=60000;// 60000
+var longCurr=0,longMax=0,moveStep=0,timeStart=0,loopReq,totalTime=600;// 60000
 var timeLevel = totalTime/4/9;
 var lightCurr=0,lightStep=360/1000;
 var loadP=0,loadInterv,loadTp=0;
@@ -346,6 +346,7 @@ function EndAct() {
 
   $('.share-btn').show();
   $('.reload-btn').show();
+  $('.video-btn').show();
 
   document.title = '贺新春：2017，长长的回忆';
 
@@ -380,6 +381,7 @@ function PlayAgainAct(){
   SetLongTransform(0);
   $('.share-btn').hide();
   $('.reload-btn').hide();
+  $('.video-btn').hide();
   btnControll.show();
   for (var i = sayArr.length - 1; i >= 0; i--) {
     $(sayArr[i]["id"]).removeClass("zoom");
