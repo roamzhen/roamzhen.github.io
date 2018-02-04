@@ -20,7 +20,7 @@ secEffectMiddle.on('animationend', function(){
   secEffect.removeClass('anim-in');
 });
 
-var longCurr=0,longMax=0,moveStep=0,timeStart=0,loopReq,totalTime=600;// 60000
+var longCurr=0,longMax=0,moveStep=0,timeStart=0,loopReq,totalTime=60000;// 60000
 var timeLevel = totalTime/4/9;
 var lightCurr=0,lightStep=360/1000;
 var loadP=0,loadInterv,loadTp=0;
