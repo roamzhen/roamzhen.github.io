@@ -290,6 +290,7 @@ function addLoop(number) {
 
 function btnPanPressAct(e){
   e.preventDefault();
+  clearInterval(likeAddTimer);
   cancelAnimationFrame(loopReq);
   timeStart=$.now();
   tmpLikeNum = $.now();
@@ -332,7 +333,7 @@ function btnPanEndAct(){
   }else if(tmpLikeNum <= timeLevel*8) {
     loveNumber.html('1668');
     likeNumber=Math.max(1668,likeNumber);
-  }else {
+  }else if (tmpLikeNum > timeLevel*8) {
     loveNumber.html('2018');
     likeNumber=Math.max(2018,likeNumber);
   }
@@ -353,14 +354,14 @@ function EndAct() {
   wx.onMenuShareTimeline({
     title: "贺新春：2017，长长的回忆", // 分享标题
     link: wxlink,//window.location.href.split("?")[0]
-    imgUrl: "../img/hintImg.jpg" // 分享图标
+    imgUrl: "http://news.cctv.com/special/xysp/h5/ceshiyemian2017ccdhy/img/hintImg.png" // 分享图标
   });
   // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
   wx.onMenuShareAppMessage({
     title: "贺新春：2017，长长的回忆", // 分享标题
     desc: "习近平邀你重温2017，我为长长的回忆连击"+likeNumber+"次赞，你呢？", // 分享描述
     link: wxlink, //window.location.href.split("?")[0]
-    imgUrl: "../img/hintImg.jpg", // 分享图标
+    imgUrl: "http://news.cctv.com/special/xysp/h5/ceshiyemian2017ccdhy/img/hintImg.png", // 分享图标
     type: "link", // 分享类型,music、video或link，不填默认为link
   });
 }
