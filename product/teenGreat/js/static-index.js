@@ -339,6 +339,8 @@ function btnPanEndAct(){
     likeNumber=Math.max(2018,likeNumber);
   }
 
+  document.title = '习近平邀你重温，我为长长的回忆连击' + likeNumber + '次赞，你呢？';
+
   secEffect.addClass('anim-in');
 }
 
