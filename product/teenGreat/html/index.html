@@ -144,7 +144,7 @@
     <div class="wrap">
       <section class="sec-page">
         <div id="long-list" class="page-list"><b class="page-1"></b><b class="page-2"></b><b class="page-3"></b><b class="page-4"></b><b class="page-5"></b><b class="page-6"></b><b class="page-7"></b><b class="page-8"></b><b class="page-9"></b><b class="page-10"></b><b class="page-11"></b><b class="page-12"></b><b class="page-13"></b><b class="page-14"></b><b class="page-15"></b><b class="page-16"></b><b class="page-17"></b><b class="page-18"></b><b class="page-19"></b><b class="page-20"></b><b class="page-21"></b><span id="dialog_1" class="dialog-1"></span><span id="dialog_2" class="dialog-2"></span><span id="dialog_3" class="dialog-3"></span><span id="dialog_4" class="dialog-4"></span><span id="dialog_5" class="dialog-5"></span><span id="dialog_6" class="dialog-6"></span><span id="dialog_7" class="dialog-7"></span><span id="dialog_8" class="dialog-8"></span><span id="dialog_9" class="dialog-9"></span><span id="dialog_10" class="dialog-10"></span><span id="dialog_11" class="dialog-11"></span><span id="dialog_12" class="dialog-12"></span><span id="dialog_13" class="dialog-13"></span>
-          <!--.video-item-->
+          <div class="video-item"></div>
           <div class="share-btn"></div>
           <div class="reload-btn"></div>
           <div class="video-btn">
@@ -336,13 +336,16 @@
       mainVideo.onplay = function(){
         if(!musicOff)
           $('#bgMusic')[0].pause();
+        $('.video-item').hide();
         mainVideo.play();
       }
       mainVideo.onpause = function(){
+        $('.video-item').show();
         if(!musicOff)
           $('#bgMusic')[0].play();
       }
       mainVideo.onended = function(){
+        $('.video-item').show();
         if(!musicOff)
           $('#bgMusic')[0].play();
       }
