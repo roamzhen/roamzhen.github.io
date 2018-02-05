@@ -362,10 +362,6 @@ function EndAct() {
   btnPanEndAct();
   btnControll.fadeOut();
 
-  $('.share-btn').show();
-  $('.reload-btn').show();
-  $('.video-btn').show();
-
 
   wx.onMenuShareTimeline({
     title: "习近平邀你重温2017，我为长长的回忆连击"+likeNumber+"次赞，你呢？", // 分享标题
@@ -396,9 +392,6 @@ function PlayAgainAct(){
   likeNumber=0;
   longCurr=sayStep=0;
   SetLongTransform(0);
-  $('.share-btn').hide();
-  $('.reload-btn').hide();
-  $('.video-btn').hide();
   btnControll.show();
   for (var i = sayArr.length - 1; i >= 0; i--) {
     $(sayArr[i]["id"]).removeClass("zoom");
