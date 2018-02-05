@@ -353,13 +353,13 @@ function EndAct() {
   document.title = '贺新春，长长的回忆';
 
   wx.onMenuShareTimeline({
-    title: "贺新春：，长长的回忆", // 分享标题
+    title: "贺新春：长长的回忆", // 分享标题
     link: wxlink,//window.location.href.split("?")[0]
     imgUrl: "http://news.cctv.com/special/xysp/h5/ceshiyemian2017ccdhy/img/hintImg.png" // 分享图标
   });
   // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
   wx.onMenuShareAppMessage({
-    title: "贺新春：，长长的回忆", // 分享标题
+    title: "贺新春：长长的回忆", // 分享标题
     desc: "习近平邀你重温2017，我为长长的回忆连击"+likeNumber+"次赞，你呢？", // 分享描述
     link: wxlink, //window.location.href.split("?")[0]
     imgUrl: "http://news.cctv.com/special/xysp/h5/ceshiyemian2017ccdhy/img/hintImg.png", // 分享图标
