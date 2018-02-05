@@ -340,12 +340,10 @@
         mainVideo.play();
       }
       mainVideo.onpause = function(){
-        $('.video-item').show();
         if(!musicOff)
           $('#bgMusic')[0].play();
       }
       mainVideo.onended = function(){
-        $('.video-item').show();
         if(!musicOff)
           $('#bgMusic')[0].play();
       }
