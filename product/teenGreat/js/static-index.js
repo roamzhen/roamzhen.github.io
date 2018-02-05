@@ -32,18 +32,19 @@ moveStep=longMax/totalTime;
 
 var $ph=$("body").height(), $pw=$("body").width(), remStep=$pw*100/640;
 var sayStep=0,sayArr=[
-  {h:25.65,id:"#dialog_1"},
-  {h:37.65,id:"#dialog_2"},
-  {h:52.07,id:"#dialog_3"},
-  {h:64.7,id:"#dialog_4"},
-  {h:77.59,id:"#dialog_5"},
-  {h:88.92,id:"#dialog_6"},
-  {h:102.3,id:"#dialog_7"},
-  {h:115.22,id:"#dialog_8"},
-  {h:126.16,id:"#dialog_9"},
-  {h:137.25,id:"#dialog_10"},
-  {h:153.82,id:"#dialog_11"},
-  {h:161.58,id:"#dialog_12"},];
+  {h:25.55,id:"#dialog_1"},
+  {h:37.55,id:"#dialog_2"},
+  {h:51.97,id:"#dialog_3"},
+  {h:64.6,id:"#dialog_4"},
+  {h:77.49,id:"#dialog_5"},
+  {h:88.82,id:"#dialog_6"},
+  {h:102.2,id:"#dialog_7"},
+  {h:114.8,id:"#dialog_8"},
+  {h:125.8,id:"#dialog_9"},
+  {h:138.5,id:"#dialog_10"},
+  {h:148.5,id:"#dialog_11"},
+  {h:164.8,id:"#dialog_12"},
+  {h:172.9,id:"#dialog_13"},];
 
 
 // like Canvas
@@ -349,16 +350,16 @@ function EndAct() {
   $('.reload-btn').show();
   $('.video-btn').show();
 
-  document.title = '贺新春：2017，长长的回忆';
+  document.title = '贺新春，长长的回忆';
 
   wx.onMenuShareTimeline({
-    title: "贺新春：2017，长长的回忆", // 分享标题
+    title: "贺新春：，长长的回忆", // 分享标题
     link: wxlink,//window.location.href.split("?")[0]
     imgUrl: "http://news.cctv.com/special/xysp/h5/ceshiyemian2017ccdhy/img/hintImg.png" // 分享图标
   });
   // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
   wx.onMenuShareAppMessage({
-    title: "贺新春：2017，长长的回忆", // 分享标题
+    title: "贺新春：，长长的回忆", // 分享标题
     desc: "习近平邀你重温2017，我为长长的回忆连击"+likeNumber+"次赞，你呢？", // 分享描述
     link: wxlink, //window.location.href.split("?")[0]
     imgUrl: "http://news.cctv.com/special/xysp/h5/ceshiyemian2017ccdhy/img/hintImg.png", // 分享图标
