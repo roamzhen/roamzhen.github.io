@@ -212,7 +212,8 @@ function LoadImages(){
     'bg_17.jpg',
     'bg_18.jpg',
     'bg_19.jpg',
-    'bg_20.jpg'
+    'bg_20.jpg',
+    'bg_21.jpg'
   ];
   for(var i=0;i<loadBgImages.length;i++) loadBgImages[i]=bgPath+loadBgImages[i];
   var loadDialogImages=[
@@ -228,6 +229,7 @@ function LoadImages(){
     'dialog10.png',
     'dialog11.png',
     'dialog12.png',
+    'dialog13.png',
   ];
   for(var i=0;i<loadDialogImages.length;i++) loadDialogImages[i]=dialogPath+loadDialogImages[i];
   loadImages = loadImages.concat(loadBgImages, loadDialogImages);
