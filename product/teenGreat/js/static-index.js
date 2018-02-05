@@ -339,7 +339,19 @@ function btnPanEndAct(){
     likeNumber=Math.max(2018,likeNumber);
   }
 
-  document.title = '习近平邀你重温，我为长长的回忆连击' + likeNumber + '次赞，你呢？';
+  wx.onMenuShareTimeline({
+    title: "习近平邀你重温2017，我为长长的回忆连击"+likeNumber+"次赞，你呢？", // 分享标题
+    link: wxlink,//window.location.href.split("?")[0]
+    imgUrl: "http://news.cctv.com/special/xysp/h5/ceshiyemian2017ccdhy/img/hintImg.png" // 分享图标
+  });
+  // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+  wx.onMenuShareAppMessage({
+    title: "习近平邀你重温2017，我为长长的回忆连击"+likeNumber+"次赞，你呢？？", // 分享标题
+    desc: "贺新春：长长的回忆", // 分享描述
+    link: wxlink, //window.location.href.split("?")[0]
+    imgUrl: "http://news.cctv.com/special/xysp/h5/ceshiyemian2017ccdhy/img/hintImg.png", // 分享图标
+    type: "link", // 分享类型,music、video或link，不填默认为link
+  });
 
   secEffect.addClass('anim-in');
 }
@@ -352,7 +364,6 @@ function EndAct() {
   $('.reload-btn').show();
   $('.video-btn').show();
 
-  document.title = '习近平邀你重温，我为长长的回忆连击' + likeNumber + '次赞，你呢？';
 
   wx.onMenuShareTimeline({
     title: "习近平邀你重温2017，我为长长的回忆连击"+likeNumber+"次赞，你呢？", // 分享标题
