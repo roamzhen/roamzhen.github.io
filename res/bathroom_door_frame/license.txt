@@ -1,0 +1,11 @@
+Model Information:
+* title:	Bathroom Door Frame
+* source:	https://sketchfab.com/3d-models/bathroom-door-frame-b3485144c13c42ab9f89b48a18d8b0bb
+* author:	RubaQewar (https://sketchfab.com/RubaQewar)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Bathroom Door Frame" (https://sketchfab.com/3d-models/bathroom-door-frame-b3485144c13c42ab9f89b48a18d8b0bb) by RubaQewar (https://sketchfab.com/RubaQewar) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
