@@ -8,5 +8,5 @@ const withTM = require('next-transpile-modules')(['three'])
 const withTMObj = withTM();
 
 module.exports = {
-  ...nextConfig, withTMObj
+  ...nextConfig, ...withTM
 }
