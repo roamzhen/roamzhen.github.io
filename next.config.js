@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  output: "export"
 }
 
 const withTM = require('next-transpile-modules')(['three'])
