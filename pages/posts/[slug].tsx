@@ -7,6 +7,10 @@ import markdownToHtml from '../../lib/markdownToHtml'
 import type PostType from '../../interfaces/post'
 import PostBody from "../../components/post/post-body";
 
+// Components
+import Tabbar from '../../components/tabbar';
+import Footer from '../../components/footer';
+
 type Props = {
   post: PostType
   morePosts: PostType[]
@@ -24,10 +28,14 @@ export default function Post({ post, morePosts, preview }: Props) {
         <title>{post.title}</title>
         <meta name="description" content={post.title} />
       </Head>
-      <div>
-          <div className='max-w-3xl mx-auto mt-10'>
+
+      {/* 顶部导航栏 */}
+      <Tabbar />
+
+      {/* 正文区域 */}
+      <div className='blog-post max-w-4xl px-10 mx-auto'>
+          <div>
             <p className='text-3xl font-mediun text-black'>{post.title}</p>
-            {/* <p>Next.js Blog Example with {CMS_NAME}</p> */}
             <p className='text-xl mt-2'>
               <span className='inline-block w-8 h-8 bg-contain align-middle' style={{backgroundImage: `url(${post.author.picture})`}}></span>
               <span className='inline-block align-middle ml-2'>{post.author.name}</span>
@@ -36,6 +44,9 @@ export default function Post({ post, morePosts, preview }: Props) {
           </div>
           <PostBody content={post.content} />
       </div>
+
+      {/* 底部导航栏 */}
+      <Footer />
     </>
   )
 }

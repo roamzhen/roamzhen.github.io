@@ -1,44 +1,27 @@
-.wrap {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-}
-
 .wrap-canvas {
   position: absolute;
   width: 100%;
   height: 100%;
+  z-index: -10;
 }
 
-.wrap-cover {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-
-  padding-bottom: 5rem;
-
-  transform: translate(-50%, -50%);
-
-  pointer-events: none;
+.text-changing{
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.15;
 }
 
-
-.intro h2 {
-  font-size: 2rem;
-  line-height: 1.2;
-  margin: 0;
-}
-
-.intro h2.big {
-  font-size: 4rem;
-}
-
-.intro h2 span {
+.text-changing span {
   display: inline-block;
-  color: white;
-  padding: 0.2rem 0.6rem;
-  margin: 0.2rem;
-  background-color: black;
-  white-space: nowrap;
+  vertical-align: middle;
+}
+
+
+.cursor::before {
+  content: '_';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }
