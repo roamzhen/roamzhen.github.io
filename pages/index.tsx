@@ -100,32 +100,31 @@ const Home: NextPage = () => {
               I'm<span className="font-bold px-2">Ye Zhenpeng</span>, you can also call me<span className="font-bold px-2">Roam</span>.
             </p>
             <p className="text-2xl font-medium">
-              A Senior Developer focused on 3D graphics, AI integration and cross-platform Application development.
+              A Senior Developer specializing on 3D Graphics Rendering, AI integration and cross-platform Application development.
             </p>
             <p className="text-xl">
               Currently working in the WeChat Mini Program team at Tencent, previously worked at Alibaba TaoBao, Tencent ISUX, Netease.
             </p>
-            <p className="text-xl">
+            <p className="mt-8 text-xl leading-relaxed">
+              <span className="font-bold text-gray-900 block mb-2">What I've done</span>
             </p>
             <p className="mt-8 text-lg leading-relaxed">
-              <span className="font-bold text-gray-900 block mb-2">What I've done</span>
-              <span className="font-bold text-gray-900 block mb-2">During my time at Tencent</span>
+              <span className="font-bold text-gray-900 block mb-2">Tencent WeChat Mini Program</span>
             </p>
             <p className="mt-4 text-lg leading-relaxed text-gray-700">
-              In AR and 3D graphics, I led the development of the xr-frame framework's rendering system, implementing a complete PBR rendering pipeline,
-              and developed corresponding rendering logic for different platforms (mobile OpenGL, Vision Pro Metal, Meta Quest WebGPU).
-            </p>
-            <p className="mt-4 text-lg leading-relaxed text-gray-700">
-              In AI applications, I developed intelligent tools based on LLM and computer vision, including a Mini Program transaction page information extraction system
-              and an OpenCV-based intelligent ad adaptation system, significantly improving business efficiency.
+              In 3D graphics, I architected the development of the xr-frame framework's rendering system, implementing a complete PBR rendering pipeline and developed corresponding rendering logic for different platforms (mobile OpenGL, Vision Pro Metal, Meta Quest WebGPU).
             </p>
             <p className="mt-4 text-lg leading-relaxed text-gray-700">
               In Game engine, I was one of the main developers of the WeChat Mini Game Engine, I was responsible for developing the 2D system, implementing complete rendering, layout, and interaction capabilities.
               Through technical innovations like shared memory optimization and render batching, the engine achieved performance levels 4 times faster than CocosCreator.
               The engine has successfully supported the porting of multiple large Unity games, including Tianlong Babu Honor Edition.
             </p>
+            <p className="mt-4 text-lg leading-relaxed text-gray-700">
+              In AI applications, I developed intelligent tools based on LLM and computer vision, including a Mini Program transaction page information extraction system
+              and an OpenCV-based intelligent ad adaptation system, significantly improving business efficiency.
+            </p>
             <p className="mt-8 text-lg leading-relaxed">
-              <span className="font-bold text-gray-900 block mb-2">During my time at Alibaba</span>
+              <span className="font-bold text-gray-900 block mb-2">Alibaba TaoBao</span>
               I worked on imgcook, an AI-powered platform that transforms design mockups into code using computer vision and OCR.
             </p>
 

@@ -15,11 +15,8 @@ const Footer = () => {
             <a href="https://github.com/roamzhen" className="text-gray-600 hover:text-gray-800 transition-colors duration-200">
               GitHub
             </a>
-            <a href="/rss.xml" className="text-gray-600 hover:text-gray-800 transition-colors duration-200">
-              RSS
-            </a>
-            <a href="/sitemap.xml" className="text-gray-600 hover:text-gray-800 transition-colors duration-200">
-              站点地图
+            <a href="mailto:roamzhen@gmail.com" className="text-gray-600 hover:text-gray-800 transition-colors duration-200">
+              Email
             </a>
           </div>
         </div>

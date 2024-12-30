@@ -19,8 +19,30 @@ const LABS: NextPage = () => {
       <Tabbar />
 
       {/* 正文区域 */}
-      <div className='wrap-content'>
-        <div className='intro'>
+      <div className='container max-w-screen-lg mx-auto px-4 py-10'>
+        <div className='flex items-center justify-center min-h-[400px]'>
+          <div className='text-center animate-bounce'>
+            <h1 className='text-3xl font-bold mb-4'>
+              <span className='inline-block animate-spin'>🚧</span>
+              <span className='mx-2'>Under Construction</span>
+              <span className='inline-block animate-spin'>🚧</span>
+            </h1>
+            <p className='text-gray-600 animate-pulse'>
+              This page is under construction...
+              <br/>
+              <span className='text-sm opacity-75'>Stay tuned for some interesting experiments!</span>
+            </p>
+            <div className='mt-8 flex justify-center gap-4'>
+              {[1,2,3].map((i) => (
+                <div key={i} 
+                  className='w-3 h-3 rounded-full bg-gray-400'
+                  style={{
+                    animation: `bounce 1s ease-in-out ${i * 0.2}s infinite`
+                  }}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 

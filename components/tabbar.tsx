@@ -1,6 +1,22 @@
 import { Link, Button, Navbar } from "@nextui-org/react";
+import { useState, useEffect } from 'react';
+
+// 获取当前页面路径的 hook
+function useCurrentPath() {
+  const [currentPath, setCurrentPath] = useState('/');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setCurrentPath(window.location.pathname);
+    }
+  }, []);
+
+  return currentPath;
+}
 
 const Tabbar = () => {
+  const currentPath = useCurrentPath();
+  
   return (
     <header className="header-tabbar bg-white border-b border-gray-200">
       <nav className="max-w-screen-lg mx-auto px-4">
@@ -41,7 +57,7 @@ const Tabbar = () => {
           <div className="md:hidden flex justify-center w-full">
             <select 
               className="absolute top-4 right-4 w-32 px-3 py-1.5 text-gray-800 border rounded-md focus:outline-none bg-white shadow-sm"
-              value={typeof window !== 'undefined' ? window.location.pathname : '/'}
+              value={currentPath}
               onChange={(e) => {
                 window.location.href = e.target.value;
               }}

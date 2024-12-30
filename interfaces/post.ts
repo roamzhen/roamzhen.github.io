@@ -11,6 +11,7 @@ type PostType = {
     url: string
   }
   content: string
+  hide: string
 }
 
 export default PostType

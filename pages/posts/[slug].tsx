@@ -33,17 +33,29 @@ export default function Post({ post, morePosts, preview }: Props) {
       <Tabbar />
 
       {/* 正文区域 */}
-      <div className='blog-post max-w-4xl px-10 mx-auto'>
-          <div>
-            <p className='text-3xl font-mediun text-black'>{post.title}</p>
-            <p className='text-xl mt-2'>
-              <span className='inline-block w-8 h-8 bg-contain align-middle' style={{backgroundImage: `url(${post.author.picture})`}}></span>
-              <span className='inline-block align-middle ml-2'>{post.author.name}</span>
-              <span className='inline-block font-thin align-middle ml-2'>{post.date}</span>
-            </p>
+      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <header className="mb-12 text-center">
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-6">
+            {post.title}
+          </h1>
+          <div className="flex items-center justify-center space-x-4 text-gray-600">
+            <div className="flex items-center">
+              <img 
+                src={post.author.picture} 
+                alt={post.author.name}
+                className="w-10 h-10 rounded-full object-cover"
+              />
+              <span className="ml-2 font-medium">{post.author.name}</span>
+            </div>
+            <span className="text-gray-300">|</span>
+            <time className="font-light">{post.date}</time>
           </div>
+        </header>
+
+        <div className="prose prose-lg prose-indigo mx-auto">
           <PostBody content={post.content} />
-      </div>
+        </div>
+      </article>
 
       {/* 底部导航栏 */}
       <Footer />

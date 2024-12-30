@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head'
 import React, { useRef, useState, useEffect } from 'react'
+import Link from 'next/link'
 
 // Components
 import Tabbar from '../components/tabbar';
@@ -22,6 +23,7 @@ export const getStaticProps = async () => {
     'slug',
     'author',
     'excerpt',
+    'hide',
   ])
 
   return {
@@ -59,7 +61,7 @@ function useWindowSize() {
 }
 
 // Blog
-const Blog: NextPage = () => {
+const Blog: NextPage<Props> = ({ allPosts }) => {
   const windowSize = useWindowSize();
   return (
     <>
@@ -72,8 +74,30 @@ const Blog: NextPage = () => {
       <Tabbar />
 
       {/* 正文区域 */}
-      <div className='wrap-content'>
-        <div className='intro'>
+      <div className='container max-w-screen-lg mx-auto px-4 py-10'>
+        <div className='grid gap-8'>
+          {allPosts.map((post) => (
+            !post.hide && (
+              <article key={post.slug} className="border-b pb-8">
+                <Link href={`/posts/${post.slug}`}>
+                  <h2 className="text-2xl font-bold mb-2 hover:text-blue-600 transition-colors">
+                  {post.title}
+                </h2>
+              </Link>
+              <div className="text-gray-600 mb-4">
+                <time>{post.date}</time>
+                {post.author && (
+                  <span className="ml-4">By {post.author.name}</span>
+                )}
+              </div>
+              {post.excerpt && (
+                <p className="text-gray-700 leading-relaxed">
+                  {post.excerpt}
+                </p>
+              )}
+              </article>
+            )
+          ))}
         </div>
       </div>
 
