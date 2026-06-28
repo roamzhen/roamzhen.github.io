@@ -76,6 +76,22 @@ const Blog: NextPage<Props> = ({ allPosts }) => {
       {/* 正文区域 */}
       <div className='container max-w-screen-lg mx-auto px-4 py-10'>
         <div className='grid gap-8'>
+          {/* 外部 HTML 文章：我为什么离开企业 */}
+          <article className="border-b pb-8">
+            <a href="/why-i-left.html">
+              <h2 className="text-2xl font-bold mb-2 hover:text-blue-600 transition-colors">
+                我为什么离开企业 · 一个算账人的推演
+              </h2>
+            </a>
+            <div className="text-gray-600 mb-4">
+              <time>2026-06-28</time>
+              <span className="ml-4">By roamzhen</span>
+            </div>
+            <p className="text-gray-700 leading-relaxed">
+              不是因为公司不好，也不是被 AI 卷怕了。是我算了一笔账，发现现在是我做自己一直想做那件事——性价比最高的时刻。
+            </p>
+          </article>
+
           {allPosts.map((post) => (
             !post.hide && (
               <article key={post.slug} className="border-b pb-8">

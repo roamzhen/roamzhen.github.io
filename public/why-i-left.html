@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我为什么离开企业 · 一个算账人的推演</title>
+<style>
+  :root{
+    --ink:#1a1a1a;
+    --ink-soft:#4a4a4a;
+    --ink-faint:#8a8a8a;
+    --paper:#f6f3ec;
+    --paper-card:#fffdf8;
+    --line:#e2dccf;
+    --accent:#b5562a;      /* 赭石，克制的强调色 */
+    --accent-soft:#c98a5e;
+    --dark:#16181d;        /* 理论图深色块 */
+    --dark-soft:#22252d;
+    --dark-line:#363b46;
+    --dark-text:#d9dae0;
+    --dark-faint:#8b909c;
+    --gold:#d9a441;        /* 押注点高亮 */
+    --serif: "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
+    --sans: "Noto Sans SC", -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.85;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- HERO ---------- */
+  header{
+    padding:120px 0 80px;
+    border-bottom:1px solid var(--line);
+  }
+  .kicker{
+    font-size:13px;letter-spacing:.32em;color:var(--accent);
+    text-transform:uppercase;margin-bottom:28px;font-weight:600;
+  }
+  h1{
+    font-family:var(--serif);
+    font-size:clamp(40px,7vw,68px);
+    line-height:1.18;font-weight:700;letter-spacing:-0.5px;
+    margin-bottom:36px;
+  }
+  .lede{
+    font-size:clamp(19px,2.4vw,23px);
+    color:var(--ink-soft);line-height:1.7;max-width:600px;
+  }
+  .lede b{color:var(--ink);font-weight:600;border-bottom:2px solid var(--accent-soft);}
+  .meta{
+    margin-top:48px;font-size:14px;color:var(--ink-faint);
+    display:flex;gap:20px;flex-wrap:wrap;align-items:center;
+  }
+  .meta .dot{width:4px;height:4px;border-radius:50%;background:var(--ink-faint);}
+
+  /* ---------- SECTION ---------- */
+  section{padding:80px 0;}
+  .sec-label{
+    font-size:13px;letter-spacing:.28em;color:var(--accent);
+    font-weight:600;margin-bottom:20px;text-transform:uppercase;
+  }
+  h2{
+    font-family:var(--serif);
+    font-size:clamp(28px,4vw,40px);
+    line-height:1.3;font-weight:700;margin-bottom:40px;letter-spacing:-0.3px;
+  }
+  .chapter{margin-bottom:56px;}
+  .chapter:last-child{margin-bottom:0;}
+  .chapter h3{
+    font-family:var(--serif);
+    font-size:23px;font-weight:700;margin-bottom:18px;line-height:1.4;
+    display:flex;align-items:baseline;gap:14px;
+  }
+  .chapter h3 .num{
+    font-size:15px;color:var(--accent);font-family:var(--sans);
+    font-weight:700;letter-spacing:.05em;flex-shrink:0;
+  }
+  .chapter p{color:var(--ink-soft);margin-bottom:16px;}
+  .chapter p:last-child{margin-bottom:0;}
+  .chapter p b{color:var(--ink);font-weight:600;}
+
+  /* pull quote */
+  .pull{
+    font-family:var(--serif);
+    font-size:clamp(24px,3.6vw,34px);
+    line-height:1.5;font-weight:700;
+    color:var(--ink);
+    border-left:4px solid var(--accent);
+    padding:8px 0 8px 32px;
+    margin:24px 0;
+  }
+
+  /* ---------- THEORY (dark) ---------- */
+  .theory{
+    background:var(--dark);
+    color:var(--dark-text);
+    padding:96px 0;
+  }
+  .theory .sec-label{color:var(--accent-soft);}
+  .theory h2{color:#fff;}
+  .theory .intro{color:var(--dark-faint);max-width:620px;margin-bottom:64px;font-size:17px;}
+
+  .flow{display:flex;flex-direction:column;gap:0;}
+  .node{
+    background:var(--dark-soft);
+    border:1px solid var(--dark-line);
+    border-radius:14px;
+    padding:26px 28px;
+    position:relative;
+  }
+  .node .tag{
+    font-size:12px;letter-spacing:.2em;color:var(--dark-faint);
+    text-transform:uppercase;font-weight:600;margin-bottom:10px;
+  }
+  .node .title{font-size:20px;font-weight:700;color:#fff;margin-bottom:8px;font-family:var(--serif);}
+  .node .desc{font-size:15px;color:var(--dark-faint);line-height:1.7;}
+  .connector{
+    width:2px;height:38px;background:linear-gradient(var(--dark-line),var(--accent-soft));
+    margin:0 auto;position:relative;
+  }
+  .connector::after{
+    content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);
+    border-left:6px solid transparent;border-right:6px solid transparent;
+    border-top:8px solid var(--accent-soft);
+  }
+
+  /* split row: three inferences */
+  .triple{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+  .triple .node{padding:22px 20px;}
+  .triple .node .title{font-size:17px;}
+  .triple .node.bet{
+    border-color:var(--gold);
+    background:linear-gradient(160deg,rgba(217,164,65,.14),rgba(217,164,65,.03));
+    box-shadow:0 0 0 1px rgba(217,164,65,.3),0 8px 30px rgba(217,164,65,.08);
+  }
+  .triple .node.bet .tag{color:var(--gold);}
+  .triple .node.bet .badge{
+    position:absolute;top:-11px;left:20px;
+    background:var(--gold);color:#16181d;font-size:11px;font-weight:800;
+    letter-spacing:.1em;padding:3px 10px;border-radius:20px;
+  }
+
+  /*落地三层 */
+  .triple.land .node .title{font-size:16px;}
+
+  /* anchor finale node */
+  .node.anchor{
+    background:linear-gradient(135deg,var(--accent),#8f3f1d);
+    border-color:transparent;text-align:center;
+  }
+  .node.anchor .title{color:#fff;font-size:22px;}
+  .node.anchor .desc{color:rgba(255,255,255,.82);}
+
+  /* ---------- QA ---------- */
+  .qa-item{
+    background:var(--paper-card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    margin-bottom:16px;
+    overflow:hidden;
+  }
+  .qa-q{
+    padding:24px 28px;cursor:pointer;
+    display:flex;align-items:center;gap:16px;
+    font-weight:600;font-size:18px;color:var(--ink);
+    list-style:none;user-select:none;
+  }
+  .qa-q::-webkit-details-marker{display:none;}
+  .qa-q .q-mark{
+    flex-shrink:0;width:26px;height:26px;border-radius:7px;
+    background:var(--accent);color:#fff;font-size:14px;font-weight:800;
+    display:flex;align-items:center;justify-content:center;font-family:var(--serif);
+  }
+  .qa-q .plus{margin-left:auto;color:var(--accent);font-size:22px;transition:transform .25s;flex-shrink:0;}
+  details[open] .qa-q .plus{transform:rotate(45deg);}
+  .qa-a{padding:0 28px 26px 70px;color:var(--ink-soft);font-size:16px;line-height:1.8;}
+  .qa-a b{color:var(--ink);font-weight:600;}
+
+  /* ---------- FINALE ---------- */
+  .finale{
+    background:var(--dark);color:var(--dark-text);
+    padding:110px 0;text-align:center;
+  }
+  .finale .big{
+    font-family:var(--serif);
+    font-size:clamp(26px,4vw,38px);line-height:1.55;font-weight:700;color:#fff;
+    max-width:640px;margin:0 auto 32px;
+  }
+  .finale .big .hl{color:var(--gold);}
+  .finale .sign{color:var(--dark-faint);font-size:15px;letter-spacing:.1em;}
+
+  footer{
+    background:var(--dark);color:var(--dark-faint);
+    padding:40px 0 60px;text-align:center;font-size:13px;
+    border-top:1px solid var(--dark-line);
+  }
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media(max-width:680px){
+    .triple{grid-template-columns:1fr;}
+    .qa-a{padding-left:28px;}
+    header{padding:84px 0 56px;}
+    section,.theory,.finale{padding:64px 0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header>
+  <div class="wrap">
+    <div class="kicker">一个算账人的推演</div>
+    <h1>我为什么<br>离开企业</h1>
+    <p class="lede">
+      不是因为公司不好，也不是被 AI 卷怕了。<br>
+      是我算了一笔账，发现现在是我做自己一直想做那件事——<b>性价比最高的时刻</b>。
+    </p>
+    <div class="meta">
+      <span>叶振鹏</span><span class="dot"></span>
+      <span>2026 · 离开前的思考</span><span class="dot"></span>
+      <span>谋事在人，成事在天</span>
+    </div>
+  </div>
+</header>
+
+<!-- ===== NARRATIVE ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-label reveal">叙事 · 这十年与这一刻</div>
+    <h2 class="reveal">从在别人的菜里偷一勺，<br>到自己做一桌菜</h2>
+
+    <div class="chapter reveal">
+      <h3><span class="num">01</span>我一直想做自己的东西</h3>
+      <p>我做了十年技术，一直有个想自己做出一个作品的念头。只是这十年里，它一直是<b>配角</b>：主菜永远是公司定的，我只能在被分配的活里，偷偷留一勺自己想做的。</p>
+      <p>这不是抱怨，大厂就是这么运转的，也应该这么运转。只是对一个一直想自己做点东西的人来说，总有一天要面对那个问题——什么时候，轮到那一勺变成主菜。</p>
+    </div>
+
+    <div class="chapter reveal">
+      <h3><span class="num">02</span>为什么是现在</h3>
+      <p>因为 AI 真正改变的，是<b>"一个人做出一个完整作品"的成本</b>。过去需要一支团队、几年时间的事，现在一个人加一堆工具，能啃下来。大量重复劳动可以自动化。</p>
+      <p>对"想自己做点东西"的人来说，这是几十年一遇的窗口期——不是因为 AI 多神，是因为它把门槛砸到了地板上。</p>
+    </div>
+
+    <div class="chapter reveal">
+      <h3><span class="num">03</span>但门槛降了，不等于变容易了</h3>
+      <p>这里有个反直觉的地方：当人人都能做，瓶颈就从<b>"做不做得出"</b>，整体平移到了<b>"做不做得对"</b>。会动手不再稀缺；知道该做什么、做给谁、为什么是你来做——这个反而更稀缺了。</p>
+      <div class="pull">实现成本是普惠的，<br>但"发现一件有价值的事"本身的难度，一点没降。</div>
+      <p>我赌的就是后面这件事：我相对擅长从一堆因果关系里判断该做什么，那我就该去那个<b>"判断"值钱</b>的地方，而不是待在"执行"越来越不值钱的地方。</p>
+    </div>
+
+    <div class="chapter reveal">
+      <h3><span class="num">04</span>那为什么不一边上班一边做</h3>
+      <p>因为账不划算。AI 让我在公司里提效好几倍，但一门成熟饱和的生意，需求总量不会因为我变快了就变大——省下来的成本变成了公司利润，跟我关系不大；而我的心力消耗反而更高了。</p>
+      <p>更关键的是，我和公司的目标，已经不是同一件事了。继续待着，对我的安全感提升很有限，但要花掉我现在最缺的东西：<b>时间</b>。</p>
+      <p>所以这不是逃离一份不好的工作，是<b>换一张桌子</b>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THEORY (dark, visualized) ===== -->
+<div class="theory">
+  <div class="wrap">
+    <div class="sec-label reveal">推演 · 这套账是怎么算出来的</div>
+    <h2 class="reveal">从 AI 的本质，<br>一路推到我该坐哪张桌子</h2>
+    <p class="intro reveal">这不是"我不爽所以我走"的倒推。是从一个起点的因果链，一步步推下来的——你可以在任何一环上反驳我。</p>
+
+    <div class="flow">
+      <!-- 起点 -->
+      <div class="node reveal">
+        <div class="tag">起点 · AI 的本质</div>
+        <div class="title">模拟脑力 + 自动化</div>
+        <div class="desc">互联网做的是"数字化 + 连接"，天然产生新场景、新需求。AI 做的是"把已有的脑力活动用更低成本重做一遍"——它是提效，不天然产生新需求。这是两件不同的事。</div>
+      </div>
+      <div class="connector reveal"></div>
+
+      <!-- 三推论 -->
+      <div class="triple reveal">
+        <div class="node">
+          <div class="tag">推论 A</div>
+          <div class="title">效率 ≠ 新需求</div>
+          <div class="desc">对成熟饱和的生意，AI 压低单位成本，但需求总量没变。省下的钱变利润，路径只有一条：挤压。</div>
+        </div>
+        <div class="node">
+          <div class="tag">推论 B</div>
+          <div class="title">新需求长在别处</div>
+          <div class="desc">真正的新需求来自：以前用人做不划算、现在 AI 压到划算的事；以及原本啃不动的复杂系统问题。</div>
+        </div>
+        <div class="node bet">
+          <div class="badge">押注点</div>
+          <div class="tag">推论 C</div>
+          <div class="title">发现好东西的难度，没降</div>
+          <div class="desc">实现门槛降了，但"知道该做什么"没变便宜。瓶颈从"做不做得出"平移到"做不做得对"。</div>
+        </div>
+      </div>
+      <div class="connector reveal"></div>
+
+      <!-- 落地三层 -->
+      <div class="triple land reveal">
+        <div class="node">
+          <div class="tag">落到 · 企业</div>
+          <div class="title">只能挤利润</div>
+          <div class="desc">老现金流不会因 AI 扩张；想开新业务，结构上又接不住——为现金牛优化到极致的组织，理性上就该拒绝又小又不确定的机会（创新者窘境）。</div>
+        </div>
+        <div class="node">
+          <div class="tag">落到 · 员工</div>
+          <div class="title">分享不到增益</div>
+          <div class="desc">提效数倍，但需求总量不变 → 用工要减；活下来的人心力消耗更高，绩效仍按旧时代定价。这是结构使然。</div>
+        </div>
+        <div class="node">
+          <div class="tag">落到 · 我</div>
+          <div class="title">窗口正当时</div>
+          <div class="desc">和公司目标已不一致；继续待对安全感提升有限，却要花掉我最缺的——时间。现在做，性价比最高。</div>
+        </div>
+      </div>
+      <div class="connector reveal"></div>
+
+      <!-- 锚点 -->
+      <div class="node anchor reveal">
+        <div class="tag" style="color:rgba(255,255,255,.7)">落点 · 锚点哲学</div>
+        <div class="title">钱是手段，锚点才是目的</div>
+        <div class="desc">真想要钱，最佳路径是去最靠近钱的地方（比如投资）。我要的不是钱，是把锚点做成一个<b style="color:#fff">无限游戏</b>——建立能一直玩下去的机制，让过程本身有乐趣。这是温饱之后，对抗虚无的方式，也是 AI 带不来、只能自己长出来的东西。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== METHOD · 高达驾驶员 ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-label reveal">方法 · 那 AI 到底怎么用</div>
+    <h2 class="reveal">不是 AI 取代你，<br>是你得学会开高达</h2>
+
+    <div class="chapter reveal">
+      <h3><span class="num">①</span>你是驾驶员，它是机体</h3>
+      <p>别把 AI 当外挂或玩具，当成你的机体：它出力、放大、执行，但<b>方向、约束、验证由你定</b>。它会跑偏、会一本正经地胡说——正因为这样，驾驶员的判断和验收才值钱。这就是"判断值钱"落到地面的样子。</p>
+    </div>
+
+    <div class="chapter reveal">
+      <h3><span class="num">②</span>和它协作，接近"真正有效的管理"</h3>
+      <p>大部分公司的管理是无效的——一半精力耗在汇报、对齐、人际政治上。和 AI 协作剥掉了这层，只剩管理最干净的内核：<b>定目标、给约束、收结果</b>。这也解释了为什么"边上班边用 AI"反而更累：你在同时做两种管理，一种有效、一种无效，双重消耗。</p>
+    </div>
+
+    <div class="chapter reveal">
+      <h3><span class="num">③</span>窗口在行动差，不在认知差</h3>
+      <p>现在的 AI 能力已经过了某条线，强到完整消化它都要好几年。但真正的窗口<b>不在"谁先意识到 AI 厉害"</b>——这个人人都知道；在<b>"谁先真的把自己整个工作方式改造过去"</b>。看见的人多，动手的人少。</p>
+      <div class="pull">真正的问题不是会不会被取代，<br>是你愿不愿意从执行位，挪到驾驶位。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QA ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-label reveal">接招 · 你可能想怼我的</div>
+    <h2 class="reveal">这套逻辑，<br>经得起追问</h2>
+
+    <details class="qa-item reveal">
+      <summary class="qa-q"><span class="q-mark">Q</span>AI 不也在创造新需求吗？<span class="plus">+</span></summary>
+      <div class="qa-a">对成熟饱和的生意，它不创造新需求，它只在那儿挤利润。新需求长在<b>别处</b>——以前用人来做不划算、现在 AI 压到划算的事，还有原本啃不动的复杂系统问题。所以"AI 提效就等于扩张"这个等式，只对还在增长的赛道成立，对存量生意不成立。</div>
+    </details>
+
+    <details class="qa-item reveal">
+      <summary class="qa-q"><span class="q-mark">Q</span>你能想到的，大厂想不到、做不了？<span class="plus">+</span></summary>
+      <div class="qa-a">不是想不到，是<b>结构上接不住</b>。一个为现金牛优化到极致的组织，理性上就该拒绝那些又小、又不确定、还可能蚕食自己主业的机会——这不是它笨，是它的组织结构决定的。所以这类机会，天然就留给个人和小团队。</div>
+    </details>
+
+    <details class="qa-item reveal">
+      <summary class="qa-q"><span class="q-mark">Q</span>那你想清楚要做什么了吗？<span class="plus">+</span></summary>
+      <div class="qa-a">还在发掘。我要做的东西，<b>卖什么、卖给谁、为什么是我</b>——这三个还没全定下来。但这恰恰是要全职扑进去才想得清楚的事，不是边上班边能想明白的。这也是我现在就走、而不是再等等的原因之一。</div>
+    </details>
+  </div>
+</section>
+
+<!-- ===== FINALE ===== -->
+<div class="finale">
+  <div class="wrap">
+    <p class="big reveal">
+      我把这件事当成一个<span class="hl">无限游戏</span>来玩——<br>
+      不是赌这一把成不成，<br>
+      是想办法让自己<span class="hl">能一直玩下去</span>。
+    </p>
+    <p class="sign reveal">温饱之后，能一直追自己觉得有意义的东西，本身就是回报。</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">叶振鹏 · 2026 &nbsp;|&nbsp; 谋事在人，成事在天</div>
+</footer>
+
+<script>
+  // 克制的滚动渐入
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    // 同组元素轻微错位
+    el.style.transitionDelay = (Math.min(i%4,3)*0.06)+'s';
+    io.observe(el);
+  });
+</script>
+
+</body>
+</html>
