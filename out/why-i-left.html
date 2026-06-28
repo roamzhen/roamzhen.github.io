@@ -98,6 +98,19 @@
     margin:24px 0;
   }
 
+  /* ---------- GRID (三套操作系统) ---------- */
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:8px;}
+  .gcard{
+    background:var(--paper-card);border:1px solid var(--line);
+    border-radius:14px;padding:28px 24px;
+  }
+  .gcard .ic{
+    font-size:12px;letter-spacing:.18em;color:var(--accent);
+    font-weight:700;text-transform:uppercase;margin-bottom:14px;
+  }
+  .gcard h4{font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:12px;}
+  .gcard p{font-size:15px;color:var(--ink-soft);line-height:1.72;}
+
   /* ---------- THEORY (dark) ---------- */
   .theory{
     background:var(--dark);
@@ -208,7 +221,7 @@
   .reveal.in{opacity:1;transform:none;}
 
   @media(max-width:680px){
-    .triple{grid-template-columns:1fr;}
+    .triple,.grid3{grid-template-columns:1fr;}
     .qa-a{padding-left:28px;}
     header{padding:84px 0 56px;}
     section,.theory,.finale{padding:64px 0;}
@@ -356,6 +369,34 @@
       <p>现在的 AI 能力已经过了某条线，强到完整消化它都要好几年。但真正的窗口<b>不在"谁先意识到 AI 厉害"</b>——这个人人都知道；在<b>"谁先真的把自己整个工作方式改造过去"</b>。看见的人多，动手的人少。</p>
       <div class="pull">真正的问题不是会不会被取代，<br>是你愿不愿意从执行位，挪到驾驶位。</div>
     </div>
+  </div>
+</section>
+
+<!-- ===== OS · 三套操作系统 ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-label reveal">操作系统 · 我怎么管自己</div>
+    <h2 class="reveal">三个透镜，<br>分别管时间、生活和工作</h2>
+
+    <div class="grid3">
+      <div class="gcard reveal">
+        <div class="ic">投资思路</div>
+        <h4>管时间与资产</h4>
+        <p>把时间当筹码，按自己的风险偏好配仓，找符合自己风格的目标和最佳路径。看的是 ROI、仓位、风险——而不是"够不够勤奋"。</p>
+      </div>
+      <div class="gcard reveal">
+        <div class="ic">养成游戏思维</div>
+        <h4>管生活与反馈</h4>
+        <p>把生活设计成有数值、有反馈、有成长曲线的系统，给自己持续的正反馈，对抗"自由＝失锚"的虚无。——这套我尤其顺手：我本来就是设计游戏的人。</p>
+      </div>
+      <div class="gcard reveal">
+        <div class="ic">经营公司思路</div>
+        <h4>管工作流</h4>
+        <p>把自己当一家一人公司：结合 AI 的自动化 + 把经验数字化，把流程搭起来。这是"高达驾驶员"的放大版——你是 CEO 兼驾驶员，AI 是你的团队。</p>
+      </div>
+    </div>
+
+    <div class="pull reveal" style="margin-top:48px;">框架是脚手架，不是建筑。<br>搭到能开工就够了，别把脚手架本身盖成大楼。</div>
   </div>
 </section>
 
